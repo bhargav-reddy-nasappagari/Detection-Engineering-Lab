@@ -1,0 +1,106 @@
+{0
+  "EventType": "ProcessCreation",
+  "EventCategory": "Execution",
+  "Timestamp": "2026-05-26T19:58:14Z",
+  "Host": {
+    "Hostname": "ubuntu-lab",
+    "Platform": "Linux",
+    "Distribution": "Ubuntu",
+    "Architecture": "x86_64"
+  },
+  "User": {
+    "Username": "bunny",
+    "UID": 1000,
+    "SessionID": 3,
+    "TTY": "pts2",
+    "InteractiveSession": true
+  },
+  "ParentProcess": {
+    "PID": 4833,
+    "Name": "bash",
+    "Image": "/usr/bin/bash",
+    "CommandLine": "bash"
+  },
+  "Process": {
+    "PID": 4843,
+    "Name": "bash",
+    "Image": "/usr/bin/bash",
+    "CommandLine": "bash -i",
+    "Arguments": [
+      "bash",
+      "-i"
+    ],
+    "CurrentWorkingDirectory": "/home/bunny/Detection-Engineering-Lab",
+    "IntegrityLevel": "User",
+    "ExecutionType": "InteractiveShell"
+  },
+  "Syscall": {
+    "Name": "execve",
+    "Number": 59,
+    "Success": true
+  },
+  "ProcessLineage": {
+    "RootProcess": "bash",
+    "Relationship": "ParentChildConfirmed",
+    "ObservedChildren": [
+      {
+        "Name": "whoami",
+        "PID": 4858,
+        "ObservedAt": "2026-05-26T19:58:35Z"
+      },
+      {
+        "Name": "hostname",
+        "PID": 4861,
+        "ObservedAt": "2026-05-26T19:58:41Z"
+      },
+      {
+        "Name": "sleep",
+        "ObservedDuring": "htop monitoring"
+      }
+    ]
+  },
+  "Behavior": {
+    "InteractiveShell": true,
+    "TTYBackedExecution": true,
+    "DiscoveryActivityObserved": true,
+    "PotentialReverseShellContext": true
+  },
+  "Telemetry": {
+    "Source": "auditd",
+    "AuditKey": "exec_monitor",
+    "CorrelationMethod": "PID lineage reconstruction",
+    "Visibility": {
+      "CommandLine": true,
+      "ExecutablePath": true,
+      "ParentPID": true,
+      "ChildProcesses": true
+    }
+  },
+  "MITREATTACK": {
+    "TechniqueID": "T1059",
+    "TechniqueName": "Command and Scripting Interpreter",
+    "RelatedTechniques": [
+      {
+        "TechniqueID": "T1033",
+        "TechniqueName": "System Owner/User Discovery"
+      },
+      {
+        "TechniqueID": "T1082",
+        "TechniqueName": "System Information Discovery"
+      }
+    ]
+  },
+  "DetectionIndicators": [
+    "Interactive bash execution",
+    "Shell spawned child discovery commands",
+    "execve syscall observed",
+    "TTY-associated command execution",
+    "Potential post-exploitation shell activity"
+  ],
+  "AnalystAssessment": {
+    "Severity": "High",
+    "Confidence": "Medium",
+    "Assessment": "Interactive shell execution with subsequent discovery commands observed during reverse shell simulation.",
+    "DetectionValue": "Strong process lineage visibility through auditd execve telemetry."
+  }
+}

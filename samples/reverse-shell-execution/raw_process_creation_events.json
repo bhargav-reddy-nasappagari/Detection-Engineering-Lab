@@ -1,0 +1,153 @@
+{
+  "EventMetadata": {
+    "EventType": "ProcessCreation",
+    "EventCategory": "Execution",
+    "EventSubCategory": "InteractiveShellExecution",
+    "EventSource": "auditd",
+    "LogType": "EXECVE",
+    "CollectionMethod": "Linux Audit Framework",
+    "AuditKey": "exec_monitor",
+    "Technique": {
+      "ID": "T1059",
+      "Name": "Command and Scripting Interpreter"
+    },
+    "Simulation": {
+      "Name": "Reverse Shell Execution",
+      "Repository": "Detection-Engineering-Lab",
+      "Environment": "Ubuntu VirtualBox Lab"
+    }
+  },
+  "Timestamp": {
+    "LocalTime": "Tue May 26 19:58:14 2026",
+    "UnixEpoch": "1779805694.284",
+    "AuditEventID": "719"
+  },
+  "Host": {
+    "Hostname": "ubuntu-lab",
+    "OperatingSystem": "Ubuntu Linux",
+    "Architecture": "x86_64",
+    "KernelAuditArch": "c000003e"
+  },
+  "Process": {
+    "PID": 4843,
+    "PPID": 4833,
+    "Name": "bash",
+    "Executable": "/usr/bin/bash",
+    "CommandLine": "bash -i",
+    "Arguments": [
+      "bash",
+      "-i"
+    ],
+    "CurrentWorkingDirectory": "/home/bunny/Detection-Engineering-Lab",
+    "TTY": "pts2",
+    "SessionID": 3,
+    "Interactive": true,
+    "ExecutionContext": {
+      "ExecutionType": "InteractiveShell",
+      "ShellMode": "Interactive",
+      "PotentialUseCase": "ReverseShellSimulation"
+    }
+  },
+  "ParentProcess": {
+    "PID": 4833,
+    "Name": "bash",
+    "Executable": "/usr/bin/bash",
+    "Relationship": "ParentShell"
+  },
+  "User": {
+    "Username": "bunny",
+    "UID": 1000,
+    "AUID": 1000,
+    "GID": 1000,
+    "EUID": 1000,
+    "SessionOwner": true,
+    "PrivilegeLevel": "StandardUser"
+  },
+  "Syscall": {
+    "SyscallNumber": 59,
+    "SyscallName": "execve",
+    "Success": true,
+    "ExitCode": 0,
+    "Architecture": "x86_64",
+    "AuditSubsystem": "Linux Audit Framework"
+  },
+  "ExecutableMetadata": {
+    "BinaryPath": "/usr/bin/bash",
+    "LoaderPath": "/lib64/ld-linux-x86-64.so.2",
+    "BinaryType": "ELF",
+    "Interpreter": "GNU Bash"
+  },
+  "AuditdRecords": {
+    "PROCTITLE": {
+      "RawHex": "62617368002D69",
+      "Decoded": "bash -i"
+    },
+    "EXECVE": {
+      "argc": 2,
+      "a0": "bash",
+      "a1": "-i"
+    },
+    "SYSCALL": {
+      "arch": "c000003e",
+      "syscall": 59,
+      "success": "yes",
+      "exit": 0,
+      "ppid": 4833,
+      "pid": 4843,
+      "comm": "bash",
+      "exe": "/usr/bin/bash",
+      "tty": "pts2",
+      "ses": 3,
+      "key": "exec_monitor"
+    },
+    "CWD": {
+      "cwd": "/home/bunny/Detection-Engineering-Lab"
+    },
+    "PATH": [
+      {
+        "item": 0,
+        "name": "/usr/bin/bash",
+        "nametype": "NORMAL"
+      },
+      {
+        "item": 1,
+        "name": "/lib64/ld-linux-x86-64.so.2",
+        "nametype": "NORMAL"
+      }
+    ]
+  },
+  "BehavioralIndicators": [
+    "Interactive bash execution detected",
+    "Shell spawned from existing shell session",
+    "execve syscall observed",
+    "TTY-backed interactive process execution",
+    "Potential reverse shell staging behavior"
+  ],
+  "DetectionContext": {
+    "DetectionOpportunity": [
+      "Interactive shell monitoring",
+      "Shell execution lineage analysis",
+      "TTY-associated shell execution",
+      "Reverse shell behavioral analytics"
+    ],
+    "PotentialFollowOnActivity": [
+      "Outbound TCP callback",
+      "Discovery command execution",
+      "Privilege enumeration",
+      "Post-exploitation activity"
+    ]
+  },
+  "TelemetryAssessment": {
+    "TelemetryQuality": "High",
+    "LineageVisibility": "Confirmed",
+    "CommandLineVisibility": "Confirmed",
+    "PIDCorrelation": "Confirmed",
+    "AuditdFunctionality": "Operational"
+  },
+  "AnalystNotes": [
+    "Interactive bash shell execution successfully captured through auditd execve monitoring.",
+    "Parent-child PID lineage reconstruction validated using ppid=4833 and pid=4843.",
+    "Process execution originated from Detection-Engineering-Lab working directory.",
+    "This event represents the initial shell execution phase preceding reverse shell activity correlation."
+  ]
+}

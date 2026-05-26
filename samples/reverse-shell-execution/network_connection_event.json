@@ -1,0 +1,120 @@
+{
+  "EventType": "NetworkConnection",
+  "EventCategory": "CommandAndControl",
+  "EventSubCategory": "ReverseShellCallback",
+  "Timestamp": "2026-05-26T20:00:12Z",
+  "Host": {
+    "Hostname": "ubuntu-lab",
+    "Platform": "Linux",
+    "Distribution": "Ubuntu",
+    "Architecture": "x86_64"
+  },
+  "Process": {
+    "PID": 4843,
+    "PPID": 4833,
+    "Name": "bash",
+    "Image": "/usr/bin/bash",
+    "CommandLine": "bash -i",
+    "ExecutionContext": "InteractiveShell",
+    "AssociatedTTY": "pts2",
+    "WorkingDirectory": "/home/bunny/Detection-Engineering-Lab"
+  },
+  "ParentProcess": {
+    "PID": 4833,
+    "Name": "bash",
+    "Image": "/usr/bin/bash"
+  },
+  "User": {
+    "Username": "bunny",
+    "UID": 1000,
+    "SessionID": 3,
+    "InteractiveSession": true
+  },
+  "Connection": {
+    "Protocol": "TCP",
+    "State": "ESTABLISHED",
+    "Direction": "Outbound",
+    "InitiatedByProcess": true,
+    "Source": {
+      "IPAddress": "VICTIM_IP",
+      "Port": 49172
+    },
+    "Destination": {
+      "IPAddress": "ATTACKER_IP",
+      "Port": 4444
+    }
+  },
+  "TelemetrySource": {
+    "Primary": "ss -plant",
+    "Secondary": "auditd",
+    "CorrelationMethod": "PID-based process-to-network association"
+  },
+  "ObservedActivity": {
+    "InteractiveShellEstablished": true,
+    "RemoteCommandExecutionObserved": true,
+    "DiscoveryCommandsExecuted": [
+      "whoami",
+      "hostname",
+      "sleep 5"
+    ],
+    "ShellPersistenceDuration": "Temporary interactive session"
+  },
+  "MITREATTACK": {
+    "PrimaryTechnique": {
+      "ID": "T1059",
+      "Name": "Command and Scripting Interpreter"
+    },
+    "RelatedTechniques": [
+      {
+        "ID": "T1071",
+        "Name": "Application Layer Protocol"
+      },
+      {
+        "ID": "T1105",
+        "Name": "Ingress Tool Transfer"
+      }
+    ],
+    "Tactic": [
+      "Execution",
+      "Command and Control"
+    ]
+  },
+  "BehavioralIndicators": [
+    "Interactive bash process initiated outbound TCP connection",
+    "Shell-associated ESTABLISHED network session observed",
+    "Remote interactive command execution confirmed",
+    "Discovery command activity executed through shell context",
+    "Potential reverse shell callback behavior identified"
+  ],
+  "DetectionContext": {
+    "HighValueIndicators": [
+      "bash process with outbound network connection",
+      "interactive shell execution",
+      "TCP callback to remote listener",
+      "post-connection discovery commands"
+    ],
+    "DetectionOpportunities": [
+      "shell-to-network correlation",
+      "interactive interpreter monitoring",
+      "suspicious outbound connection analytics",
+      "reverse shell behavioral detection"
+    ]
+  },
+  "EvidenceArtifacts": {
+    "ListenerValidation": "Netcat listener received inbound shell connection",
+    "NetworkEvidence": "ESTABLISHED TCP session observed through ss -plant",
+    "ProcessEvidence": "bash process lineage validated using htop monitoring",
+    "TelemetryEvidence": "auditd execve telemetry correlated through PID reconstruction"
+  },
+  "AnalystAssessment": {
+    "Severity": "High",
+    "Confidence": "High",
+    "Assessment": "Interactive bash process established outbound TCP connection to remote listener and executed post-compromise discovery commands indicative of reverse shell behavior.",
+    "InvestigationPriority": "Immediate analyst review recommended"
+  },
+  "Limitations": {
+    "TransientProcesses": "Short-lived child commands terminated rapidly during live observation",
+    "ManualObservation": "Process visualization through pstree proved inefficient for transient reverse shell activity",
+    "AuthoritativeTelemetry": "auditd execve telemetry used as primary process execution evidence source"
+  }
+}

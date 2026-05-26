@@ -1,0 +1,8 @@
+State  Recv-Q Send-Q Local Address:Port  Peer Address:Port Process                                                                      
+LISTEN 0      1            0.0.0.0:4444       0.0.0.0:*     users:(("nc",pid=4750,fd=3))                                                
+LISTEN 0      4096      127.0.0.54:53         0.0.0.0:*     users:(("systemd-resolve",pid=643,fd=19))                                   
+LISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*     users:(("systemd-resolve",pid=643,fd=17))                                   
+LISTEN 0      4096       127.0.0.1:631        0.0.0.0:*     users:(("cupsd",pid=1510,fd=7))                                             
+ESTAB  0      0          127.0.0.1:4444     127.0.0.1:53620 users:(("nc",pid=4750,fd=4))                                                
+ESTAB  0      0          127.0.0.1:53620    127.0.0.1:4444  users:(("bash",pid=4843,fd=2),("bash",pid=4843,fd=1),("bash",pid=4843,fd=0))
+LISTEN 0      4096           [::1]:631           [::]:*     users:(("cupsd",pid=1510,fd=6))                                             

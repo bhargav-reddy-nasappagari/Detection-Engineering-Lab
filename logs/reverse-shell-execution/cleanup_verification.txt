@@ -1,0 +1,48 @@
+Reverse Shell Cleanup Verification
+=================================
+
+[1] Listener Termination
+------------------------
+Command:
+ss -tulpn | grep 4444
+
+Result:
+No active listener detected.
+
+------------------------------------------------
+
+[2] Reverse Shell Process Verification
+--------------------------------------
+Command:
+ps aux | grep -E "bash|nc|socat"
+
+Result:
+No malicious reverse shell processes observed.
+
+------------------------------------------------
+
+[3] Socket Verification
+-----------------------
+Command:
+ss -antp
+
+Result:
+No active outbound reverse shell connections detected.
+
+------------------------------------------------
+
+[4] Auditd Rule Verification
+----------------------------
+Command:
+auditctl -l
+
+Result:
+Temporary reverse-shell monitoring rules removed.
+Baseline auditd configuration restored.
+
+------------------------------------------------
+
+[5] Environment Status
+----------------------
+Reverse shell simulation successfully terminated.
+Environment returned to baseline operational state.

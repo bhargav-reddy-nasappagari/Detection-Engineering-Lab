@@ -1,0 +1,148 @@
+{
+  "DetectionMetadata": {
+    "DetectionName": "Suspicious Interactive Reverse Shell Activity",
+    "DetectionID": "RS-TRIGGER-2026-0001",
+    "DetectionCategory": "BehavioralAnalytics",
+    "DetectionVersion": "1.0",
+    "Severity": "High",
+    "Status": "Triggered",
+    "GeneratedAt": "2026-05-26T20:02:18Z"
+  },
+  "TriggerSummary": {
+    "PrimaryTrigger": "Interactive bash process established outbound TCP connection and executed discovery commands",
+    "CorrelationType": "Process + Network + Child Command Correlation",
+    "Confidence": "High"
+  },
+  "TriggeredFields": {
+    "ProcessCreation": {
+      "Process.Image": "/usr/bin/bash",
+      "Process.CommandLine": "bash -i",
+      "Process.Name": "bash",
+      "Process.PID": 4843,
+      "Process.PPID": 4833,
+      "Process.ExecutionType": "InteractiveShell",
+      "Process.TTY": "pts2",
+      "Process.CurrentWorkingDirectory": "/home/bunny/Detection-Engineering-Lab"
+    },
+    "SyscallTelemetry": {
+      "Syscall.Name": "execve",
+      "Syscall.Number": 59,
+      "Syscall.Success": true,
+      "Auditd.Key": "exec_monitor",
+      "Auditd.EventID": 719
+    },
+    "NetworkActivity": {
+      "Connection.Protocol": "TCP",
+      "Connection.State": "ESTABLISHED",
+      "Connection.Direction": "Outbound",
+      "Connection.DestinationIP": "ATTACKER_IP",
+      "Connection.DestinationPort": 4444,
+      "Connection.AssociatedProcess": "/usr/bin/bash"
+    },
+    "ChildProcessActivity": {
+      "ObservedChildProcesses": [
+        {
+          "ProcessName": "whoami",
+          "PID": 4858,
+          "Purpose": "User discovery"
+        },
+        {
+          "ProcessName": "hostname",
+          "PID": 4861,
+          "Purpose": "Host identification"
+        },
+        {
+          "ProcessName": "sleep",
+          "Purpose": "Extended process observation"
+        }
+      ]
+    },
+    "BehavioralIndicators": {
+      "InteractiveShellExecution": true,
+      "ShellSpawnedChildProcesses": true,
+      "ShellAssociatedOutboundConnection": true,
+      "DiscoveryCommandExecution": true,
+      "TTYBackedExecution": true,
+      "PotentialReverseShellBehavior": true
+    }
+  },
+  "CorrelationLogic": {
+    "ProcessCorrelation": {
+      "ParentPID": 4833,
+      "ChildPID": 4843,
+      "LineageConfirmed": true
+    },
+    "ExecutionCorrelation": {
+      "InitialShellExecution": "bash -i",
+      "SubsequentCommands": [
+        "whoami",
+        "hostname",
+        "sleep 5"
+      ],
+      "ExecutionFlowValidated": true
+    },
+    "NetworkCorrelation": {
+      "ProcessBoundConnection": true,
+      "InteractiveSessionLinked": true,
+      "OutboundCallbackConfirmed": true
+    }
+  },
+  "DetectionReasoning": [
+    "Interactive bash shell execution detected through execve telemetry",
+    "Shell process associated with outbound ESTABLISHED TCP connection",
+    "Child discovery commands executed from shell context",
+    "PID lineage reconstruction confirmed parent-child relationships",
+    "Reverse shell behavioral indicators matched detection criteria"
+  ],
+  "MITREATTACK": {
+    "PrimaryTechnique": {
+      "ID": "T1059",
+      "Name": "Command and Scripting Interpreter"
+    },
+    "RelatedTechniques": [
+      {
+        "ID": "T1033",
+        "Name": "System Owner/User Discovery"
+      },
+      {
+        "ID": "T1082",
+        "Name": "System Information Discovery"
+      },
+      {
+        "ID": "T1071",
+        "Name": "Application Layer Protocol"
+      }
+    ],
+    "Tactics": [
+      "Execution",
+      "Discovery",
+      "Command and Control"
+    ]
+  },
+  "TelemetrySources": {
+    "PrimarySources": [
+      "auditd",
+      "ss -plant",
+      "htop"
+    ],
+    "AuthoritativeSource": "auditd execve telemetry",
+    "CorrelationMethod": "PID lineage and process-network association"
+  },
+  "EvidenceValidation": {
+    "AuditdTelemetryCaptured": true,
+    "NetworkConnectionObserved": true,
+    "InteractiveShellValidated": true,
+    "ChildProcessExecutionObserved": true,
+    "ReverseShellListenerConfirmed": true
+  },
+  "InvestigationContext": {
+    "ExecutionEnvironment": "Ubuntu VirtualBox Lab",
+    "SimulationType": "Reverse Shell Detection Engineering",
+    "Repository": "Detection-Engineering-Lab",
+    "AnalystNotes": [
+      "Short-lived commands such as whoami terminated rapidly during live process observation.",
+      "htop monitoring proved more effective than pstree for transient shell process analysis.",
+      "auditd telemetry served as the authoritative source for process execution reconstruction."
+    ]
+  }
+}

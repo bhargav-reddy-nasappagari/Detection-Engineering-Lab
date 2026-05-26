@@ -1,0 +1,159 @@
+{
+  "AlertMetadata": {
+    "AlertID": "RS-2026-0001",
+    "AlertName": "Suspicious Interactive Reverse Shell Activity",
+    "AlertCategory": "Execution",
+    "AlertSubCategory": "ReverseShell",
+    "Severity": "High",
+    "Priority": "P1",
+    "Status": "Triggered",
+    "DetectionEngine": "Custom Linux Behavioral Analytics",
+    "DetectionVersion": "1.0",
+    "GeneratedAt": "2026-05-26T20:02:18Z"
+  },
+  "Host": {
+    "Hostname": "ubuntu-lab",
+    "Platform": "Linux",
+    "Distribution": "Ubuntu",
+    "Architecture": "x86_64"
+  },
+  "User": {
+    "Username": "bunny",
+    "UID": 1000,
+    "SessionID": 3,
+    "TTY": "pts2",
+    "InteractiveSession": true
+  },
+  "PrimaryProcess": {
+    "PID": 4843,
+    "PPID": 4833,
+    "Name": "bash",
+    "Image": "/usr/bin/bash",
+    "CommandLine": "bash -i",
+    "ExecutionType": "InteractiveShell",
+    "CurrentWorkingDirectory": "/home/bunny/Detection-Engineering-Lab"
+  },
+  "ParentProcess": {
+    "PID": 4833,
+    "Name": "bash",
+    "Image": "/usr/bin/bash",
+    "Relationship": "ShellSpawnedShell"
+  },
+  "NetworkActivity": {
+    "ConnectionState": "ESTABLISHED",
+    "Protocol": "TCP",
+    "Direction": "Outbound",
+    "Source": {
+      "IPAddress": "VICTIM_IP",
+      "Port": 49172
+    },
+    "Destination": {
+      "IPAddress": "ATTACKER_IP",
+      "Port": 4444
+    },
+    "AssociatedProcess": "/usr/bin/bash"
+  },
+  "ObservedChildProcesses": [
+    {
+      "PID": 4858,
+      "Name": "whoami",
+      "Purpose": "User discovery"
+    },
+    {
+      "PID": 4861,
+      "Name": "hostname",
+      "Purpose": "Host identification"
+    },
+    {
+      "Name": "sleep",
+      "Purpose": "Process persistence for observation"
+    }
+  ],
+  "MITREATTACK": {
+    "PrimaryTechnique": {
+      "ID": "T1059",
+      "Name": "Command and Scripting Interpreter"
+    },
+    "RelatedTechniques": [
+      {
+        "ID": "T1033",
+        "Name": "System Owner/User Discovery"
+      },
+      {
+        "ID": "T1082",
+        "Name": "System Information Discovery"
+      },
+      {
+        "ID": "T1071",
+        "Name": "Application Layer Protocol"
+      }
+    ],
+    "Tactics": [
+      "Execution",
+      "Discovery",
+      "Command and Control"
+    ]
+  },
+  "DetectionLogic": {
+    "TriggeredIndicators": [
+      "Interactive bash execution detected",
+      "bash process initiated outbound TCP connection",
+      "Shell-associated ESTABLISHED session identified",
+      "Discovery commands executed from shell context",
+      "execve telemetry correlation successful"
+    ],
+    "CorrelationLogic": [
+      "Process creation telemetry matched with outbound network activity",
+      "PID lineage reconstruction identified child command execution",
+      "Interactive shell activity correlated with remote callback behavior"
+    ],
+    "TelemetrySources": [
+      "auditd",
+      "ss -plant",
+      "htop"
+    ]
+  },
+  "EvidenceSummary": {
+    "AuditdTelemetry": "execve events captured successfully",
+    "NetworkEvidence": "Outbound TCP callback observed",
+    "ProcessLineage": "Child process execution confirmed",
+    "InteractiveActivity": "Remote shell interaction validated",
+    "ListenerEvidence": "Netcat listener received reverse shell connection"
+  },
+  "AnalystAssessment": {
+    "Confidence": "High",
+    "Assessment": "Interactive bash shell established outbound TCP connection to remote listener and executed post-compromise discovery commands consistent with reverse shell behavior.",
+    "ThreatClassification": "Potential Command and Control Activity",
+    "RecommendedResponse": [
+      "Investigate associated remote IP address",
+      "Review additional shell command history",
+      "Inspect active user sessions",
+      "Validate persistence mechanisms",
+      "Acquire full process execution timeline"
+    ]
+  },
+  "TelemetryArtifacts": {
+    "AuditEventIDs": [
+      719,
+      725,
+      727
+    ],
+    "ObservedCommands": [
+      "bash -i",
+      "whoami",
+      "hostname",
+      "sleep 5"
+    ],
+    "MonitoringLimitations": [
+      "Short-lived commands terminated rapidly during live observation",
+      "pstree visibility limitations observed during transient process execution",
+      "auditd used as authoritative telemetry source"
+    ]
+  },
+  "SimulationContext": {
+    "Repository": "Detection-Engineering-Lab",
+    "Scenario": "Linux Reverse Shell Detection Simulation",
+    "Environment": "Ubuntu VirtualBox Lab",
+    "Objective": "Behavioral reverse shell telemetry collection and detection engineering validation"
+  }
+}
