@@ -1,0 +1,18 @@
+{
+  "AlertName": "Suspicious systemd Service Persistence via Interpreter Execution",
+  "Severity": "High",
+  "Technique": "T1543.002",
+  "TechniqueName": "Create or Modify System Process: Systemd Service",
+  "Host": "bunny-VirtualBox",
+  "User": "root",
+  "ParentImage": "/usr/lib/systemd/systemd",
+  "Image": "/usr/bin/bash",
+  "CommandLine": "/bin/bash /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh",
+  "ProcessName": "updater.sh",
+  "PID": 10377,
+  "PPID": 1,
+  "DetectionTime": "2026-03-25T07:15:54.722Z",
+  "DetectionSource": "auditd",
+  "EventType": "ProcessCreate",
+  "Status": "Triggered"
+}

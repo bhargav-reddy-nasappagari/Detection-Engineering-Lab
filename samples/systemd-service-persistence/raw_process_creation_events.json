@@ -1,0 +1,52 @@
+{
+  "EventType": "ProcessCreate",
+  "Timestamp": "2026-03-25T07:15:54.722Z",
+  "EventID": 632,
+  "Host": "bunny-VirtualBox",
+  "User": {
+    "uid": 0,
+    "username": "root"
+  },
+  "Process": {
+    "pid": 10377,
+    "name": "updater.sh",
+    "image": "/usr/bin/bash",
+    "command_line": "/bin/bash /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh",
+    "current_working_directory": null,
+    "integrity_level": "root",
+    "execution_success": true
+  },
+  "ParentProcess": {
+    "pid": 1,
+    "name": "systemd",
+    "image": "/usr/lib/systemd/systemd"
+  },
+  "File": {
+    "target_path": "/home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh",
+    "inode": 282163,
+    "permissions": "0775",
+    "owner_uid": 1000,
+    "owner_gid": 1000
+  },
+  "Audit": {
+    "record_types": [
+      "PATH",
+      "EXECVE",
+      "SYSCALL"
+    ],
+    "syscall": 59,
+    "syscall_name": "execve",
+    "arch": "x86_64",
+    "audit_session": 4294967295,
+    "tty": null
+  },
+  "MITRE": {
+    "technique_id": "T1543.002",
+    "technique_name": "Create or Modify System Process: Systemd Service"
+  },
+  "RawEvent": {
+    "PATH": "item=0 name=\"/home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh\" inode=282163 dev=08:02 mode=0100775 ouid=1000 ogid=1000",
+    "EXECVE": "argc=2 a0=\"/bin/bash\" a1=\"/home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh\"",
+    "SYSCALL": "arch=c000003e syscall=59 success=yes exit=0 ppid=1 pid=10377 uid=0 gid=0 comm=\"updater.sh\" exe=\"/usr/bin/bash\""
+  }
+}

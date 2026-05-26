@@ -1,0 +1,9 @@
+[Unit]
+Description=Updater Service
+
+[Service]
+ExecStart=/home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

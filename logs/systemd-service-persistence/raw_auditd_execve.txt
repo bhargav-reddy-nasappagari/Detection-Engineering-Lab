@@ -1,0 +1,7 @@
+type=EXECVE msg=audit(1779770154.682:621): argc=4 a0="sudo" a1="systemctl" a2="restart" a3="updater.service"
+type=EXECVE msg=audit(1779770154.697:626): argc=3 a0="systemctl" a1="restart" a2="updater.service"
+type=PATH msg=audit(1779770154.722:632): item=0 name="/home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh" inode=282163 dev=08:02 mode=0100775 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=EXECVE msg=audit(1779770154.722:632): argc=2 a0="/bin/bash" a1="/home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh"
+type=SYSCALL msg=audit(1779770154.722:632): arch=c000003e syscall=59 success=yes exit=0 a0=60159d0d2a40 a1=60159d0cd390 a2=60159d0cc920 a3=0 items=3 ppid=1 pid=10377 auid=4294967295 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=4294967295 comm="updater.sh" exe="/usr/bin/bash" subj=unconfined key=(null)
+type=EXECVE msg=audit(1779770737.343:688): argc=3 a0="grep" a1="--color=auto" a2="updater"
+type=EXECVE msg=audit(1779771105.174:726): argc=3 a0="grep" a1="--color=auto" a2="updater"

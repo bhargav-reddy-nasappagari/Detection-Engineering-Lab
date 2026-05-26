@@ -1,0 +1,5 @@
+root        1261       1  0 08:45 ?        00:00:00 /usr/sbin/cron -f -P
+root        6661    1261  0 10:36 ?        00:00:00  \_ /usr/sbin/CRON -f -P
+bunny       6663    6661  0 10:36 ?        00:00:00      \_ /bin/sh -c ~/Detection-Engineering-Lab/scripts/he
+bunny       6664    6663  0 10:36 ?        00:00:00          \_ /bin/bash /home/bunny/Detection-Engineering-L
+bunny       6666    6664  0 10:36 ?        00:00:00              \_ sleep 20

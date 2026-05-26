@@ -1,0 +1,7 @@
+systemd,1 --switched-root --system --deserialize=52 splash
+  ├─cron,1261 -f -P
+  │   └─cron,6440 -f -P
+  │       └─sh,6442 -c ~/Detection-Engineering-Lab/scripts/heartbeat.sh
+  │           └─heartbeat.sh,6443 /home/bunny/Detection-Engineering-Lab/scripts/heartbeat.sh
+  │               └─sleep,6445 20
+

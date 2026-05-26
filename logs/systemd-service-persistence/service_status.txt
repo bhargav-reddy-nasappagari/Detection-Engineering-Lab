@@ -1,0 +1,16 @@
+● updater.service - Updater Service
+     Loaded: loaded (/etc/systemd/system/updater.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2026-05-25 12:49:03 IST; 2min 13s ago
+ Invocation: 359dceab329442bf9c3e9ae9f72b51e6
+   Main PID: 11641 (updater.sh)
+      Tasks: 2 (limit: 1856)
+     Memory: 1.6M (peak: 2.6M)
+        CPU: 115ms
+     CGroup: /system.slice/updater.service
+             ├─11641 /bin/bash /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh
+             └─11671 sleep 60
+
+May 25 12:49:03 bunny-VirtualBox systemd[1]: Started updater.service - Updater Service.
+May 25 12:49:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:50:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:51:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied

@@ -1,0 +1,9 @@
+{
+  "Timestamp": "2026-05-22T21:04:01Z",
+  "ParentImage": "/usr/sbin/cron",
+  "ParentProcessId": 1269,
+  "Image": "/bin/sh",
+  "ProcessId": 4021,
+  "CommandLine": "/bin/sh /home/bunny/Detection-Engineering-Lab/scripts/heartbeat.sh",
+  "User": "bunny"
+}

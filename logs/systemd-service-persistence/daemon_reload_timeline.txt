@@ -1,0 +1,6 @@
+# Execution Timeline
+
+15:05 - daemon reloaded
+15:06 - updater.service enabled
+15:07 - updater.service started
+15:12 - telemetry collected

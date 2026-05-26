@@ -1,0 +1,5 @@
+UID        PID     PPID   C STIME TTY      TIME     COMMAND
+root       1              0 12:30 ?        00:00:00 systemd --switched-root --system --deserialize=53 splash
+root       11641       1  0 12:49 ?        00:00:00   \_ /bin/bash /home/bunny/Detection-Engineering-Lab/scenarios
+root       14530   11641  0 15:20 ?        00:00:00        \_ sleep 60
+

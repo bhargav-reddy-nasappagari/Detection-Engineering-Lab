@@ -1,0 +1,3 @@
+cf679664eb26b83ad7da07c590e1e0fb946c39e34acdfc5141d01de99322e40d  scenarios/systemd-service-persistence/updater.sh
+dfb0cd5244a041f4900867017df8bc21  scenarios/systemd-service-persistence/updater.sh
+1a568c7cbcc25ed3f884a2f781a1419dac6a6799  scenarios/systemd-service-persistence/updater.sh

@@ -1,0 +1,202 @@
+May 24 20:17:10 bunny-VirtualBox systemd[1]: Started updater.service - Fake Updater.
+May 24 20:17:10 bunny-VirtualBox bash[6198]: running
+May 24 20:17:40 bunny-VirtualBox bash[6198]: running
+May 24 20:18:10 bunny-VirtualBox bash[6198]: running
+May 24 20:18:40 bunny-VirtualBox bash[6198]: running
+May 24 20:19:11 bunny-VirtualBox bash[6198]: running
+May 24 20:19:41 bunny-VirtualBox bash[6198]: running
+May 24 20:20:11 bunny-VirtualBox bash[6198]: running
+May 24 20:20:41 bunny-VirtualBox bash[6198]: running
+May 24 20:21:11 bunny-VirtualBox bash[6198]: running
+May 24 20:21:41 bunny-VirtualBox bash[6198]: running
+May 24 20:22:11 bunny-VirtualBox bash[6198]: running
+May 24 20:22:41 bunny-VirtualBox bash[6198]: running
+May 24 20:23:11 bunny-VirtualBox bash[6198]: running
+May 24 20:23:41 bunny-VirtualBox bash[6198]: running
+May 24 20:24:11 bunny-VirtualBox bash[6198]: running
+May 24 20:24:41 bunny-VirtualBox bash[6198]: running
+May 24 20:25:11 bunny-VirtualBox bash[6198]: running
+May 24 20:25:41 bunny-VirtualBox bash[6198]: running
+May 24 20:26:11 bunny-VirtualBox bash[6198]: running
+May 24 20:26:41 bunny-VirtualBox bash[6198]: running
+May 24 20:27:11 bunny-VirtualBox bash[6198]: running
+May 24 20:27:41 bunny-VirtualBox bash[6198]: running
+May 24 20:28:11 bunny-VirtualBox bash[6198]: running
+May 24 20:28:41 bunny-VirtualBox bash[6198]: running
+May 24 20:29:11 bunny-VirtualBox bash[6198]: running
+May 24 20:29:41 bunny-VirtualBox bash[6198]: running
+May 24 20:30:11 bunny-VirtualBox bash[6198]: running
+May 24 20:30:41 bunny-VirtualBox bash[6198]: running
+May 24 20:31:11 bunny-VirtualBox bash[6198]: running
+May 24 20:31:41 bunny-VirtualBox bash[6198]: running
+May 24 20:32:11 bunny-VirtualBox bash[6198]: running
+May 24 20:32:30 bunny-VirtualBox systemd[1]: Stopping updater.service - Fake Updater...
+May 24 20:32:30 bunny-VirtualBox systemd[1]: updater.service: Deactivated successfully.
+May 24 20:32:30 bunny-VirtualBox systemd[1]: Stopped updater.service - Fake Updater.
+-- Boot 4906e96c25014c7da47051dc6d5add56 --
+May 25 12:49:03 bunny-VirtualBox systemd[1]: Started updater.service - Updater Service.
+May 25 12:49:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:50:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:51:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:52:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:53:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:54:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:55:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:56:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:57:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:58:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:59:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:00:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:01:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:02:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:03:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:04:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:05:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:06:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:07:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:08:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:09:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:10:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:11:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:12:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:13:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:14:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:15:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:16:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:17:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:18:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:19:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:20:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:21:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:22:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:23:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:24:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:25:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:26:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:27:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:28:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:29:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:30:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:31:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:32:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:33:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:34:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:35:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:36:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:37:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:38:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:39:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:40:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:41:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:42:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:43:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:44:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:45:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:46:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:47:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:48:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:49:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:50:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:51:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:52:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:53:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:54:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:55:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:56:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:57:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:58:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 13:59:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:00:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:01:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:02:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:03:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:04:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:05:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:06:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:07:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:08:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:09:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:10:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:11:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:12:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:13:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:14:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:15:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:16:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:17:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:18:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:19:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:20:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:21:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:22:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:23:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:24:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:25:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:26:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:27:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:28:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:29:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:30:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:31:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:32:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:33:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:34:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:35:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:36:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:37:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:38:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:39:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:40:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:41:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:42:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:43:05 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:44:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:45:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:46:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:47:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:48:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:49:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:50:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:51:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:52:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:53:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:54:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:55:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:56:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:57:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:58:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 14:59:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:00:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:01:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:02:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:03:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:04:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:05:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:06:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:07:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:08:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:09:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:10:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:11:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:12:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:13:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:14:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:15:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:16:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:17:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:18:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:19:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:20:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:21:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:22:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:23:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:24:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:25:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:26:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 15:27:06 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+-- Boot 532f2119742b49f582d7ff2187838053 --
+May 25 19:50:03 bunny-VirtualBox systemd[1]: Started updater.service - Updater Service.
+May 25 20:13:25 bunny-VirtualBox systemd[1]: Stopping updater.service - Updater Service...
+May 25 20:13:25 bunny-VirtualBox systemd[1]: updater.service: Deactivated successfully.
+May 25 20:13:25 bunny-VirtualBox systemd[1]: Stopped updater.service - Updater Service.
+May 25 20:13:25 bunny-VirtualBox systemd[1]: Started updater.service - Updater Service.

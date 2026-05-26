@@ -1,0 +1,46 @@
+May 24 20:17:10 bunny-VirtualBox systemd[1]: Started updater.service - Fake Updater.
+May 24 20:17:10 bunny-VirtualBox bash[6198]: running
+May 24 20:17:40 bunny-VirtualBox bash[6198]: running
+May 24 20:18:10 bunny-VirtualBox bash[6198]: running
+May 24 20:18:40 bunny-VirtualBox bash[6198]: running
+May 24 20:19:11 bunny-VirtualBox bash[6198]: running
+May 24 20:19:41 bunny-VirtualBox bash[6198]: running
+May 24 20:20:11 bunny-VirtualBox bash[6198]: running
+May 24 20:20:41 bunny-VirtualBox bash[6198]: running
+May 24 20:21:11 bunny-VirtualBox bash[6198]: running
+May 24 20:21:41 bunny-VirtualBox bash[6198]: running
+May 24 20:22:11 bunny-VirtualBox bash[6198]: running
+May 24 20:22:41 bunny-VirtualBox bash[6198]: running
+May 24 20:23:11 bunny-VirtualBox bash[6198]: running
+May 24 20:23:41 bunny-VirtualBox bash[6198]: running
+May 24 20:24:11 bunny-VirtualBox bash[6198]: running
+May 24 20:24:41 bunny-VirtualBox bash[6198]: running
+May 24 20:25:11 bunny-VirtualBox bash[6198]: running
+May 24 20:25:41 bunny-VirtualBox bash[6198]: running
+May 24 20:26:11 bunny-VirtualBox bash[6198]: running
+May 24 20:26:41 bunny-VirtualBox bash[6198]: running
+May 24 20:27:11 bunny-VirtualBox bash[6198]: running
+May 24 20:27:41 bunny-VirtualBox bash[6198]: running
+May 24 20:28:11 bunny-VirtualBox bash[6198]: running
+May 24 20:28:41 bunny-VirtualBox bash[6198]: running
+May 24 20:29:11 bunny-VirtualBox bash[6198]: running
+May 24 20:29:41 bunny-VirtualBox bash[6198]: running
+May 24 20:30:11 bunny-VirtualBox bash[6198]: running
+May 24 20:30:41 bunny-VirtualBox bash[6198]: running
+May 24 20:31:11 bunny-VirtualBox bash[6198]: running
+May 24 20:31:41 bunny-VirtualBox bash[6198]: running
+May 24 20:32:11 bunny-VirtualBox bash[6198]: running
+May 24 20:32:30 bunny-VirtualBox systemd[1]: Stopping updater.service - Fake Updater...
+May 24 20:32:30 bunny-VirtualBox systemd[1]: updater.service: Deactivated successfully.
+May 24 20:32:30 bunny-VirtualBox systemd[1]: Stopped updater.service - Fake Updater.
+-- Boot 4906e96c25014c7da47051dc6d5add56 --
+May 25 12:49:03 bunny-VirtualBox systemd[1]: Started updater.service - Updater Service.
+May 25 12:49:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:50:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:51:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:52:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:53:03 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:54:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:55:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:56:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied
+May 25 12:57:04 bunny-VirtualBox updater.sh[11641]: /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh: line 5: /tmp/systemd-heartbeat.log: Permission denied

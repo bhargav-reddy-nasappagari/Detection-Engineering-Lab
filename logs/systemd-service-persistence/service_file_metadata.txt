@@ -1,0 +1,8 @@
+  File: /etc/systemd/system/updater.service
+  size: 196       	Blocks: 8          IO Block: 4096   regular file
+Device: 8,2	Inode: 282495      Links: 1
+Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-05-25 12:40:47.561397560 +0530
+Modify: 2026-05-25 12:27:40.479123396 +0530
+Change: 2026-05-25 12:27:40.479123396 +0530
+ Birth: 2026-05-25 12:27:40.477523874 +0530

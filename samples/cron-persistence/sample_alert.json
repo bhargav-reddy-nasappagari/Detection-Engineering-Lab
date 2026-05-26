@@ -1,0 +1,11 @@
+{
+  "alert_name": "Linux Cron Persistence - Suspicious Shell Execution",
+  "severity": "medium",
+  "technique": "T1053.003",
+  "hostname": "bunny-VirtualBox",
+  "user": "bunny",
+  "parent_process": "/usr/sbin/cron",
+  "child_process": "/bin/sh",
+  "command_line": "/bin/sh /home/bunny/Detection-Engineering-Lab/scripts/heartbeat.sh",
+  "status": "triggered"
+}

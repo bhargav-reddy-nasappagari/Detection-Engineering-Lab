@@ -1,0 +1,10 @@
+{
+  "Timestamp": "2026-03-25T07:15:54.722Z",
+  "ParentImage": "/usr/lib/systemd/systemd",
+  "Image": "/usr/bin/bash",
+  "CommandLine": "/bin/bash /home/user/updater.sh",
+  "User": "root",
+  "PID": 10377,
+  "PPID": 1,
+  "Host": "ubuntu-lab"
+}

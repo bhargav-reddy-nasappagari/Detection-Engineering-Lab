@@ -1,0 +1,8 @@
+{
+  "ParentImage": "/usr/lib/systemd/systemd",
+  "Image": "/usr/bin/bash",
+  "CommandLine": "/bin/bash /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh",
+  "User": "root",
+  "ProcessId": 10377,
+  "ParentProcessId": 1
+}

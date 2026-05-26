@@ -1,0 +1,20 @@
+May 25 12:40:26 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set TCP instead of UDP for DNS server fd17:625c:f037:2::3.
+May 25 12:40:36 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set UDP instead of TCP for DNS server fd17:625c:f037:2::3.
+May 25 12:40:41 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set TCP instead of UDP for DNS server fd17:625c:f037:2::3.
+May 25 12:40:47 bunny-VirtualBox sudo[10964]: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+May 25 12:40:47 bunny-VirtualBox sudo[10964]: bunny : TTY=/dev/pts/1 ; PWD=/ ; USER=root ; COMMAND=/usr/bin/cp /etc/systemd/system/updater.service /home/bunny/Detection-Engineering-Lab/logs/systemd-service-persistence/service_definition.txt
+May 25 12:40:47 bunny-VirtualBox sudo[10964]: pam_unix(sudo:session): session closed for user root
+May 25 12:40:52 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set UDP instead of TCP for DNS server fd17:625c:f037:2::3.
+May 25 12:41:31 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set TCP instead of UDP for DNS server fd17:625c:f037:2::3.
+May 25 12:41:41 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set UDP instead of TCP for DNS server fd17:625c:f037:2::3.
+May 25 12:41:46 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set TCP instead of UDP for DNS server fd17:625c:f037:2::3.
+May 25 12:41:54 bunny-VirtualBox sudo[10972]: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+May 25 12:41:54 bunny-VirtualBox sudo[10972]: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/systemctl daemon-reload
+May 25 12:41:54 bunny-VirtualBox systemd[1]: Reload requested from client PID 10975 ('systemctl') (unit user@1000.service)...
+May 25 12:41:54 bunny-VirtualBox systemd[1]: Reloading...
+May 25 12:41:55 bunny-VirtualBox systemd[1]: Reloading finished in 1047 ms.
+May 25 12:41:55 bunny-VirtualBox sudo[10972]: pam_unix(sudo:session): session closed for user root
+May 25 12:41:57 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set UDP instead of TCP for DNS server fd17:625c:f037:2::3.
+May 25 12:43:39 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set TCP instead of UDP for DNS server fd17:625c:f037:2::3.
+May 25 12:43:49 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set UDP instead of TCP for DNS server fd17:625c:f037:2::3.
+May 25 12:43:54 bunny-VirtualBox systemd-resolved[10098]: Using degraded feature set TCP instead of UDP for DNS server fd17:625c:f037:2::3.

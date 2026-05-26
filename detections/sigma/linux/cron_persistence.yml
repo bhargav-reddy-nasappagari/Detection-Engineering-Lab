@@ -1,0 +1,52 @@
+title: Linux Cron Persistence - Suspicious Shell Execution
+id: 7c8d9d7d-3d4e-4e4b-9d11-2f8e7c6a1001
+status: experimental
+description: >
+  Detects suspicious shell execution spawned by cron that may indicate
+  persistence or scheduled malicious activity on Linux systems.
+
+author: Bunny
+date: 2026-05-25
+
+references:
+  - https://attack.mitre.org/techniques/T1053/003/
+
+tags:
+  - attack.persistence
+  - attack.t1053
+  - attack.t1053.003
+  - linux
+  - cron
+
+logsource:
+  category: process_creation
+  product: linux
+
+detection:
+
+  selection_parent:
+    ParentImage|endswith:
+      - '/cron'
+      - '/crond'
+
+  selection_shell:
+    Image|endswith:
+      - '/sh'
+      - '/bash'
+      - '/dash'
+
+  selection_suspicious_paths:
+    CommandLine|contains:
+      - '/tmp/'
+      - '/dev/shm/'
+      - '/home/'
+      - '.sh'
+
+  condition: selection_parent and selection_shell and selection_suspicious_paths
+
+falsepositives:
+  - Legitimate administrative cron jobs
+  - Developer automation scripts
+  - Scheduled maintenance tasks
+
+level: medium

@@ -1,0 +1,2 @@
+root       11641       1  0 12:49 ?        00:00:00 /bin/bash /home/bunny/Detection-Engineering-Lab/scenarios/systemd-service-persistence/updater.sh
+bunny      11835    4120  0 12:57 pts/0    00:00:00 grep --color=auto updater
