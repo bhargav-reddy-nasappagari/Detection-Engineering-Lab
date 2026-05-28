@@ -1,0 +1,361 @@
+2026-05-27T11:31:06.261815+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T11:33:54.353887+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T11:33:54.354697+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/systemctl enable ssh
+2026-05-27T11:33:54.365279+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T11:36:44.709141+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T11:36:44.724841+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/apt install openssh-server -y
+2026-05-27T11:37:17.435324+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T11:37:32.910503+05:30 bunny-VirtualBox pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T11:37:32.912857+05:30 bunny-VirtualBox pkexec[5418]: bunny: Executing command [USER=root] [TTY=unknown] [CWD=/home/bunny] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-05-27T11:39:38.298974+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T11:39:38.300210+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/systemctl enable ssh
+2026-05-27T11:39:39.523584+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T11:39:54.701843+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T11:39:54.702165+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/systemctl start ssh
+2026-05-27T11:39:54.779881+05:30 bunny-VirtualBox sshd[5886]: Server listening on 0.0.0.0 port 22.
+2026-05-27T11:39:54.780421+05:30 bunny-VirtualBox sshd[5886]: Server listening on :: port 22.
+2026-05-27T11:39:54.783857+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T11:40:35.704583+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T11:40:35.704852+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/ss -tulnp
+2026-05-27T11:40:35.763190+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T11:43:50.440732+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T11:43:50.457169+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/auth.log
+2026-05-27T12:38:27.799345+05:30 bunny-VirtualBox CRON[6377]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-27T12:38:27.799415+05:30 bunny-VirtualBox CRON[6377]: pam_unix(cron:session): session closed for user root
+2026-05-27T12:38:29.948947+05:30 bunny-VirtualBox systemd-logind[6494]: New seat seat0.
+2026-05-27T12:38:30.000051+05:30 bunny-VirtualBox systemd-logind[6494]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-05-27T12:38:30.000364+05:30 bunny-VirtualBox systemd-logind[6494]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-05-27T12:38:30.000396+05:30 bunny-VirtualBox systemd-logind[6494]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-05-27T12:38:30.024496+05:30 bunny-VirtualBox systemd-logind[6494]: New session '3' of user 'bunny' with class 'manager' and type 'unspecified'.
+2026-05-27T12:38:30.025157+05:30 bunny-VirtualBox systemd-logind[6494]: New session '2' of user 'bunny' with class 'user' and type 'wayland'.
+2026-05-27T12:38:30.861998+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60579) by (uid=0)
+2026-05-27T12:38:30.924362+05:30 bunny-VirtualBox systemd-logind[6494]: New session 'c1' of user 'gdm-greeter' with class 'greeter' and type 'wayland'.
+2026-05-27T12:38:31.811733+05:30 bunny-VirtualBox (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60579) by gdm-greeter(uid=0)
+2026-05-27T12:38:31.821207+05:30 bunny-VirtualBox systemd-logind[6494]: New session '7' of user 'gdm-greeter' with class 'manager-early' and type 'unspecified'.
+2026-05-27T12:39:47.701433+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T12:40:00.058744+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm-greeter
+2026-05-27T12:40:00.127390+05:30 bunny-VirtualBox systemd-logind[6494]: Session c1 logged out. Waiting for processes to exit.
+2026-05-27T12:40:00.131326+05:30 bunny-VirtualBox systemd-logind[6494]: Removed session c1.
+2026-05-27T12:40:10.389940+05:30 bunny-VirtualBox (sd-pam): pam_unix(systemd-user:session): session closed for user gdm-greeter
+2026-05-27T12:40:10.391120+05:30 bunny-VirtualBox systemd-logind[6494]: Removed session 7.
+2026-05-27T13:17:01.288209+05:30 bunny-VirtualBox CRON[8034]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-27T13:17:01.309207+05:30 bunny-VirtualBox CRON[8034]: pam_unix(cron:session): session closed for user root
+2026-05-27T13:28:57.755376+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T13:30:01.368293+05:30 bunny-VirtualBox CRON[8278]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-27T13:30:01.374264+05:30 bunny-VirtualBox CRON[8278]: pam_unix(cron:session): session closed for user root
+2026-05-27T13:30:24.985792+05:30 bunny-VirtualBox sshd-session[8269]: Accepted password for bunny from 127.0.0.1 port 34714 ssh2
+2026-05-27T13:30:24.987783+05:30 bunny-VirtualBox sshd-session[8269]: pam_unix(sshd:session): session opened for user bunny(uid=1000) by bunny(uid=0)
+2026-05-27T13:30:24.992704+05:30 bunny-VirtualBox systemd-logind[6494]: New session '10' of user 'bunny' with class 'user' and type 'tty'.
+2026-05-27T13:31:09.436239+05:30 bunny-VirtualBox sshd-session[8444]: Accepted password for bunny from 127.0.0.1 port 44132 ssh2
+2026-05-27T13:31:09.451607+05:30 bunny-VirtualBox sshd-session[8444]: pam_unix(sshd:session): session opened for user bunny(uid=1000) by bunny(uid=0)
+2026-05-27T13:31:09.452274+05:30 bunny-VirtualBox systemd-logind[6494]: New session '11' of user 'bunny' with class 'user' and type 'tty'.
+2026-05-27T13:36:18.152383+05:30 bunny-VirtualBox sshd-session[8480]: Received disconnect from 127.0.0.1 port 44132:11: disconnected by user
+2026-05-27T13:36:18.159398+05:30 bunny-VirtualBox sshd-session[8480]: Disconnected from user bunny 127.0.0.1 port 44132
+2026-05-27T13:36:18.159988+05:30 bunny-VirtualBox sshd-session[8444]: syslogin_perform_logout: logout() returned an error
+2026-05-27T13:36:18.164821+05:30 bunny-VirtualBox sshd-session[8444]: pam_unix(sshd:session): session closed for user bunny
+2026-05-27T13:36:18.172868+05:30 bunny-VirtualBox systemd-logind[6494]: Session 11 logged out. Waiting for processes to exit.
+2026-05-27T13:36:18.177513+05:30 bunny-VirtualBox systemd-logind[6494]: Removed session 11.
+2026-05-27T13:36:27.299336+05:30 bunny-VirtualBox sshd-session[8269]: syslogin_perform_logout: logout() returned an error
+2026-05-27T13:36:27.302360+05:30 bunny-VirtualBox sshd-session[8343]: Received disconnect from 127.0.0.1 port 34714:11: disconnected by user
+2026-05-27T13:36:27.302684+05:30 bunny-VirtualBox sshd-session[8343]: Disconnected from user bunny 127.0.0.1 port 34714
+2026-05-27T13:36:27.304529+05:30 bunny-VirtualBox sshd-session[8269]: pam_unix(sshd:session): session closed for user bunny
+2026-05-27T13:36:27.326856+05:30 bunny-VirtualBox systemd-logind[6494]: Session 10 logged out. Waiting for processes to exit.
+2026-05-27T13:36:27.335168+05:30 bunny-VirtualBox systemd-logind[6494]: Removed session 10.
+2026-05-27T13:36:53.601101+05:30 bunny-VirtualBox unix_chkpwd[8608]: password check failed for user (bunny)
+2026-05-27T13:36:53.601973+05:30 bunny-VirtualBox sshd-session[8605]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T13:36:55.640810+05:30 bunny-VirtualBox sshd-session[8605]: Failed password for bunny from 127.0.0.1 port 53146 ssh2
+2026-05-27T13:37:30.659221+05:30 bunny-VirtualBox gdm-password]: pam_unix(gdm-password:session): session closed for user bunny
+2026-05-27T13:37:30.667029+05:30 bunny-VirtualBox sshd-session[8605]: Connection closed by authenticating user bunny 127.0.0.1 port 53146 [preauth]
+2026-05-27T13:37:30.791787+05:30 bunny-VirtualBox systemd-logind[6494]: Session 2 logged out. Waiting for processes to exit.
+2026-05-27T13:37:30.989589+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60580) by (uid=0)
+2026-05-27T13:37:31.048612+05:30 bunny-VirtualBox systemd-logind[6494]: New session 'c2' of user 'gdm-greeter' with class 'greeter' and type 'wayland'.
+2026-05-27T13:37:31.184011+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T13:37:31.535636+05:30 bunny-VirtualBox (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60580) by gdm-greeter(uid=0)
+2026-05-27T13:37:31.544680+05:30 bunny-VirtualBox systemd-logind[6494]: New session '12' of user 'gdm-greeter' with class 'manager-early' and type 'unspecified'.
+2026-05-27T13:37:35.039229+05:30 bunny-VirtualBox systemd-logind[6494]: Removed session 2.
+2026-05-27T13:37:45.493917+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unable to locate daemon control file
+2026-05-27T13:37:45.496394+05:30 bunny-VirtualBox gdm-password]: gkr-pam: stashed password to try later in open session
+2026-05-27T13:37:45.515368+05:30 bunny-VirtualBox gdm-password]: pam_unix(gdm-password:session): session opened for user bunny(uid=1000) by bunny(uid=0)
+2026-05-27T13:37:45.529290+05:30 bunny-VirtualBox systemd-logind[6494]: New session '13' of user 'bunny' with class 'user' and type 'wayland'.
+2026-05-27T13:37:45.662338+05:30 bunny-VirtualBox systemd-logind[6494]: Removed session 3.
+2026-05-27T13:37:45.736676+05:30 bunny-VirtualBox (systemd): pam_unix(systemd-user:session): session opened for user bunny(uid=1000) by bunny(uid=0)
+2026-05-27T13:37:45.742047+05:30 bunny-VirtualBox systemd-logind[6494]: New session '14' of user 'bunny' with class 'manager' and type 'unspecified'.
+2026-05-27T13:37:46.538665+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T13:37:53.519854+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm-greeter
+2026-05-27T13:37:53.528871+05:30 bunny-VirtualBox systemd-logind[6494]: Session c2 logged out. Waiting for processes to exit.
+2026-05-27T13:37:53.543418+05:30 bunny-VirtualBox systemd-logind[6494]: Removed session c2.
+2026-05-27T13:37:57.458439+05:30 bunny-VirtualBox pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T13:37:57.642089+05:30 bunny-VirtualBox pkexec[11068]: bunny: Executing command [USER=root] [TTY=unknown] [CWD=/home/bunny] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-05-27T13:38:03.949680+05:30 bunny-VirtualBox (sd-pam): pam_unix(systemd-user:session): session closed for user gdm-greeter
+2026-05-27T13:38:03.951133+05:30 bunny-VirtualBox systemd-logind[6494]: Removed session 12.
+2026-05-27T13:38:43.931998+05:30 bunny-VirtualBox sshd-session[11177]: Invalid user invaliduser from 127.0.0.1 port 43138
+2026-05-27T13:38:51.480063+05:30 bunny-VirtualBox sshd-session[11177]: pam_unix(sshd:auth): check pass; user unknown
+2026-05-27T13:38:51.480373+05:30 bunny-VirtualBox sshd-session[11177]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1 
+2026-05-27T13:38:53.890032+05:30 bunny-VirtualBox sshd-session[11177]: Failed password for invalid user invaliduser from 127.0.0.1 port 43138 ssh2
+2026-05-27T13:39:52.008022+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T13:39:52.009325+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/1 ; PWD=/home/bunny ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/auth.log
+2026-05-27T13:40:46.880538+05:30 bunny-VirtualBox sshd[5886]: Timeout before authentication for connection from 127.0.0.1 to 127.0.0.1, pid = 11177
+2026-05-27T13:46:39.489955+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T13:52:10.103535+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T13:52:45.673289+05:30 bunny-VirtualBox sshd-session[11601]: Accepted password for bunny from 127.0.0.1 port 60562 ssh2
+2026-05-27T13:52:45.679713+05:30 bunny-VirtualBox sshd-session[11601]: pam_unix(sshd:session): session opened for user bunny(uid=1000) by bunny(uid=0)
+2026-05-27T13:52:45.689432+05:30 bunny-VirtualBox systemd-logind[6494]: New session '15' of user 'bunny' with class 'user' and type 'tty'.
+2026-05-27T13:58:21.811044+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T14:07:46.478526+05:30 bunny-VirtualBox systemd-logind[11955]: New seat seat0.
+2026-05-27T14:07:46.544770+05:30 bunny-VirtualBox systemd-logind[11955]: Watching system buttons on /dev/input/event0 (Power Button)
+2026-05-27T14:07:46.545003+05:30 bunny-VirtualBox systemd-logind[11955]: Watching system buttons on /dev/input/event1 (Sleep Button)
+2026-05-27T14:07:46.546624+05:30 bunny-VirtualBox systemd-logind[11955]: Watching system buttons on /dev/input/event2 (AT Translated Set 2 keyboard)
+2026-05-27T14:07:46.571064+05:30 bunny-VirtualBox systemd-logind[11955]: New session '13' of user 'bunny' with class 'user' and type 'wayland'.
+2026-05-27T14:07:46.610281+05:30 bunny-VirtualBox systemd-logind[11955]: New session '14' of user 'bunny' with class 'manager' and type 'unspecified'.
+2026-05-27T14:07:46.611951+05:30 bunny-VirtualBox systemd-logind[11955]: New session '15' of user 'bunny' with class 'user' and type 'tty'.
+2026-05-27T14:07:47.076485+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60581) by (uid=0)
+2026-05-27T14:07:47.165188+05:30 bunny-VirtualBox systemd-logind[11955]: New session 'c1' of user 'gdm-greeter' with class 'greeter' and type 'wayland'.
+2026-05-27T14:07:47.315943+05:30 bunny-VirtualBox (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60581) by gdm-greeter(uid=0)
+2026-05-27T14:07:47.320205+05:30 bunny-VirtualBox systemd-logind[11955]: New session '16' of user 'gdm-greeter' with class 'manager-early' and type 'unspecified'.
+2026-05-27T14:17:01.958658+05:30 bunny-VirtualBox CRON[12969]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-27T14:17:01.972459+05:30 bunny-VirtualBox CRON[12969]: pam_unix(cron:session): session closed for user root
+2026-05-27T14:30:01.080078+05:30 bunny-VirtualBox CRON[13093]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-27T14:30:01.115171+05:30 bunny-VirtualBox CRON[13093]: pam_unix(cron:session): session closed for user root
+2026-05-27T14:31:52.573928+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T14:32:05.350724+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm-greeter
+2026-05-27T14:32:05.375825+05:30 bunny-VirtualBox systemd-logind[11955]: Session c1 logged out. Waiting for processes to exit.
+2026-05-27T14:32:05.381317+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session c1.
+2026-05-27T14:32:06.587248+05:30 bunny-VirtualBox sshd-session[11601]: syslogin_perform_logout: logout() returned an error
+2026-05-27T14:32:06.589734+05:30 bunny-VirtualBox sshd-session[11641]: Received disconnect from 127.0.0.1 port 60562:11: disconnected by user
+2026-05-27T14:32:06.589965+05:30 bunny-VirtualBox sshd-session[11641]: Disconnected from user bunny 127.0.0.1 port 60562
+2026-05-27T14:32:06.591503+05:30 bunny-VirtualBox sshd-session[11601]: pam_unix(sshd:session): session closed for user bunny
+2026-05-27T14:32:06.606928+05:30 bunny-VirtualBox systemd-logind[11955]: Session 15 logged out. Waiting for processes to exit.
+2026-05-27T14:32:06.613004+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session 15.
+2026-05-27T14:32:15.758502+05:30 bunny-VirtualBox (sd-pam): pam_unix(systemd-user:session): session closed for user gdm-greeter
+2026-05-27T14:32:15.760556+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session 16.
+2026-05-27T14:32:34.757038+05:30 bunny-VirtualBox unix_chkpwd[13511]: password check failed for user (bunny)
+2026-05-27T14:32:34.761494+05:30 bunny-VirtualBox sshd-session[13508]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:32:36.337730+05:30 bunny-VirtualBox sshd-session[13508]: Failed password for bunny from 127.0.0.1 port 38956 ssh2
+2026-05-27T14:33:28.424174+05:30 bunny-VirtualBox unix_chkpwd[13512]: password check failed for user (bunny)
+2026-05-27T14:33:30.566657+05:30 bunny-VirtualBox sshd-session[13508]: Failed password for bunny from 127.0.0.1 port 38956 ssh2
+2026-05-27T14:33:37.808813+05:30 bunny-VirtualBox unix_chkpwd[13513]: password check failed for user (bunny)
+2026-05-27T14:33:39.625369+05:30 bunny-VirtualBox sshd-session[13508]: Failed password for bunny from 127.0.0.1 port 38956 ssh2
+2026-05-27T14:33:40.028895+05:30 bunny-VirtualBox sshd-session[13508]: Connection closed by authenticating user bunny 127.0.0.1 port 38956 [preauth]
+2026-05-27T14:33:40.033384+05:30 bunny-VirtualBox sshd-session[13508]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:35:03.564013+05:30 bunny-VirtualBox gdm-password]: pam_unix(gdm-password:session): session closed for user bunny
+2026-05-27T14:35:03.748141+05:30 bunny-VirtualBox systemd-logind[11955]: Session 13 logged out. Waiting for processes to exit.
+2026-05-27T14:35:03.787843+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T14:35:04.136704+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60582) by (uid=0)
+2026-05-27T14:35:04.174136+05:30 bunny-VirtualBox systemd-logind[11955]: New session 'c2' of user 'gdm-greeter' with class 'greeter' and type 'wayland'.
+2026-05-27T14:35:04.557901+05:30 bunny-VirtualBox (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60582) by gdm-greeter(uid=0)
+2026-05-27T14:35:04.573002+05:30 bunny-VirtualBox systemd-logind[11955]: New session '19' of user 'gdm-greeter' with class 'manager-early' and type 'unspecified'.
+2026-05-27T14:35:06.172239+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm-greeter
+2026-05-27T14:35:06.189057+05:30 bunny-VirtualBox systemd-logind[11955]: Session c2 logged out. Waiting for processes to exit.
+2026-05-27T14:35:06.272486+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter-2(uid=60583) by (uid=0)
+2026-05-27T14:35:06.293841+05:30 bunny-VirtualBox systemd-logind[11955]: New session 'c3' of user 'gdm-greeter-2' with class 'greeter' and type 'wayland'.
+2026-05-27T14:35:06.583544+05:30 bunny-VirtualBox (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter-2(uid=60583) by gdm-greeter-2(uid=0)
+2026-05-27T14:35:06.597880+05:30 bunny-VirtualBox systemd-logind[11955]: New session '20' of user 'gdm-greeter-2' with class 'manager-early' and type 'unspecified'.
+2026-05-27T14:35:06.654307+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session c2.
+2026-05-27T14:35:08.124059+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session 13.
+2026-05-27T14:35:08.390723+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm-greeter-2
+2026-05-27T14:35:08.403613+05:30 bunny-VirtualBox systemd-logind[11955]: Session c3 logged out. Waiting for processes to exit.
+2026-05-27T14:35:08.492753+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session opened for user gdm-greeter(uid=60584) by (uid=0)
+2026-05-27T14:35:08.511487+05:30 bunny-VirtualBox systemd-logind[11955]: New session 'c4' of user 'gdm-greeter' with class 'greeter' and type 'wayland'.
+2026-05-27T14:35:08.958582+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session c3.
+2026-05-27T14:35:09.037940+05:30 bunny-VirtualBox (systemd): pam_unix(systemd-user:session): session opened for user gdm-greeter(uid=60584) by gdm-greeter(uid=0)
+2026-05-27T14:35:09.045730+05:30 bunny-VirtualBox systemd-logind[11955]: New session '21' of user 'gdm-greeter' with class 'manager-early' and type 'unspecified'.
+2026-05-27T14:35:17.042205+05:30 bunny-VirtualBox (sd-pam): pam_unix(systemd-user:session): session closed for user gdm-greeter
+2026-05-27T14:35:17.044924+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session 19.
+2026-05-27T14:35:18.323144+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session 14.
+2026-05-27T14:35:19.254632+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session 20.
+2026-05-27T14:35:23.041721+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unable to locate daemon control file
+2026-05-27T14:35:23.042501+05:30 bunny-VirtualBox gdm-password]: gkr-pam: stashed password to try later in open session
+2026-05-27T14:35:23.102477+05:30 bunny-VirtualBox gdm-password]: pam_unix(gdm-password:session): session opened for user bunny(uid=1000) by bunny(uid=0)
+2026-05-27T14:35:23.136331+05:30 bunny-VirtualBox systemd-logind[11955]: New session '22' of user 'bunny' with class 'user' and type 'wayland'.
+2026-05-27T14:35:23.233301+05:30 bunny-VirtualBox (systemd): pam_unix(systemd-user:session): session opened for user bunny(uid=1000) by bunny(uid=0)
+2026-05-27T14:35:23.240435+05:30 bunny-VirtualBox systemd-logind[11955]: New session '23' of user 'bunny' with class 'manager' and type 'unspecified'.
+2026-05-27T14:35:24.006271+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T14:35:30.825936+05:30 bunny-VirtualBox gdm-launch-environment]: pam_unix(gdm-launch-environment:session): session closed for user gdm-greeter
+2026-05-27T14:35:30.842881+05:30 bunny-VirtualBox systemd-logind[11955]: Session c4 logged out. Waiting for processes to exit.
+2026-05-27T14:35:30.849143+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session c4.
+2026-05-27T14:35:33.761663+05:30 bunny-VirtualBox pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T14:35:33.765891+05:30 bunny-VirtualBox pkexec[16763]: bunny: Executing command [USER=root] [TTY=unknown] [CWD=/home/bunny] [COMMAND=/usr/lib/update-notifier/package-system-locked]
+2026-05-27T14:35:41.300866+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session 21.
+2026-05-27T14:36:27.877436+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T14:36:27.879245+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/auth.log
+2026-05-27T14:36:49.923781+05:30 bunny-VirtualBox unix_chkpwd[16934]: password check failed for user (bunny)
+2026-05-27T14:36:49.924874+05:30 bunny-VirtualBox sshd-session[16928]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:36:52.289415+05:30 bunny-VirtualBox sshd-session[16928]: Failed password for bunny from 127.0.0.1 port 37162 ssh2
+2026-05-27T14:37:23.643161+05:30 bunny-VirtualBox unix_chkpwd[16936]: password check failed for user (bunny)
+2026-05-27T14:37:25.377744+05:30 bunny-VirtualBox sshd-session[16928]: Failed password for bunny from 127.0.0.1 port 37162 ssh2
+2026-05-27T14:37:58.610262+05:30 bunny-VirtualBox unix_chkpwd[16938]: password check failed for user (bunny)
+2026-05-27T14:37:59.892876+05:30 bunny-VirtualBox sshd-session[16928]: Failed password for bunny from 127.0.0.1 port 37162 ssh2
+2026-05-27T14:38:00.831198+05:30 bunny-VirtualBox sshd-session[16928]: Connection closed by authenticating user bunny 127.0.0.1 port 37162 [preauth]
+2026-05-27T14:38:00.831406+05:30 bunny-VirtualBox sshd-session[16928]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:43:49.211479+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T14:44:08.293938+05:30 bunny-VirtualBox sshd-session[17180]: Accepted password for bunny from 127.0.0.1 port 38030 ssh2
+2026-05-27T14:44:08.305746+05:30 bunny-VirtualBox sshd-session[17180]: pam_unix(sshd:session): session opened for user bunny(uid=1000) by bunny(uid=0)
+2026-05-27T14:44:08.333593+05:30 bunny-VirtualBox systemd-logind[11955]: New session '24' of user 'bunny' with class 'user' and type 'tty'.
+2026-05-27T14:44:16.461327+05:30 bunny-VirtualBox sshd-session[17180]: syslogin_perform_logout: logout() returned an error
+2026-05-27T14:44:16.461899+05:30 bunny-VirtualBox sshd-session[17240]: Received disconnect from 127.0.0.1 port 38030:11: disconnected by user
+2026-05-27T14:44:16.462533+05:30 bunny-VirtualBox sshd-session[17240]: Disconnected from user bunny 127.0.0.1 port 38030
+2026-05-27T14:44:16.463823+05:30 bunny-VirtualBox sshd-session[17180]: pam_unix(sshd:session): session closed for user bunny
+2026-05-27T14:44:16.489966+05:30 bunny-VirtualBox systemd-logind[11955]: Session 24 logged out. Waiting for processes to exit.
+2026-05-27T14:44:16.499437+05:30 bunny-VirtualBox systemd-logind[11955]: Removed session 24.
+2026-05-27T14:44:29.936722+05:30 bunny-VirtualBox unix_chkpwd[17337]: password check failed for user (bunny)
+2026-05-27T14:44:29.937521+05:30 bunny-VirtualBox sshd-session[17332]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:44:31.436772+05:30 bunny-VirtualBox sshd-session[17332]: Failed password for bunny from 127.0.0.1 port 52820 ssh2
+2026-05-27T14:44:33.838933+05:30 bunny-VirtualBox unix_chkpwd[17338]: password check failed for user (bunny)
+2026-05-27T14:44:35.850451+05:30 bunny-VirtualBox sshd-session[17332]: Failed password for bunny from 127.0.0.1 port 52820 ssh2
+2026-05-27T14:44:40.702917+05:30 bunny-VirtualBox sshd-session[17332]: Connection closed by authenticating user bunny 127.0.0.1 port 52820 [preauth]
+2026-05-27T14:44:40.703479+05:30 bunny-VirtualBox sshd-session[17332]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:45:40.406298+05:30 bunny-VirtualBox unix_chkpwd[17350]: password check failed for user (bunny)
+2026-05-27T14:45:40.426344+05:30 bunny-VirtualBox sshd-session[17343]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:45:42.381076+05:30 bunny-VirtualBox sshd-session[17343]: Failed password for bunny from 127.0.0.1 port 49824 ssh2
+2026-05-27T14:45:45.505074+05:30 bunny-VirtualBox sshd-session[17343]: Connection closed by authenticating user bunny 127.0.0.1 port 49824 [preauth]
+2026-05-27T14:46:07.343788+05:30 bunny-VirtualBox unix_chkpwd[17358]: password check failed for user (bunny)
+2026-05-27T14:46:07.350578+05:30 bunny-VirtualBox sshd-session[17354]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:46:09.666964+05:30 bunny-VirtualBox sshd-session[17354]: Failed password for bunny from 127.0.0.1 port 43214 ssh2
+2026-05-27T14:46:16.892913+05:30 bunny-VirtualBox unix_chkpwd[17359]: password check failed for user (bunny)
+2026-05-27T14:46:18.851473+05:30 bunny-VirtualBox sshd-session[17354]: Failed password for bunny from 127.0.0.1 port 43214 ssh2
+2026-05-27T14:46:20.864571+05:30 bunny-VirtualBox sshd-session[17354]: Connection closed by authenticating user bunny 127.0.0.1 port 43214 [preauth]
+2026-05-27T14:46:20.867022+05:30 bunny-VirtualBox sshd-session[17354]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:46:29.314168+05:30 bunny-VirtualBox unix_chkpwd[17368]: password check failed for user (bunny)
+2026-05-27T14:46:29.315464+05:30 bunny-VirtualBox sshd-session[17364]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:46:31.010985+05:30 bunny-VirtualBox sshd-session[17364]: Failed password for bunny from 127.0.0.1 port 49434 ssh2
+2026-05-27T14:46:32.660751+05:30 bunny-VirtualBox sshd-session[17364]: Connection closed by authenticating user bunny 127.0.0.1 port 49434 [preauth]
+2026-05-27T14:46:38.753573+05:30 bunny-VirtualBox unix_chkpwd[17373]: password check failed for user (bunny)
+2026-05-27T14:46:38.757068+05:30 bunny-VirtualBox sshd-session[17371]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:46:40.807507+05:30 bunny-VirtualBox sshd-session[17371]: Failed password for bunny from 127.0.0.1 port 42264 ssh2
+2026-05-27T14:46:45.853355+05:30 bunny-VirtualBox unix_chkpwd[17374]: password check failed for user (bunny)
+2026-05-27T14:46:47.550910+05:30 bunny-VirtualBox sshd-session[17371]: Failed password for bunny from 127.0.0.1 port 42264 ssh2
+2026-05-27T14:46:50.895182+05:30 bunny-VirtualBox sshd-session[17371]: Connection closed by authenticating user bunny 127.0.0.1 port 42264 [preauth]
+2026-05-27T14:46:50.895757+05:30 bunny-VirtualBox sshd-session[17371]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T14:48:30.886921+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T15:17:01.365900+05:30 bunny-VirtualBox CRON[17634]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-27T15:17:01.372776+05:30 bunny-VirtualBox CRON[17634]: pam_unix(cron:session): session closed for user root
+2026-05-27T15:23:55.171003+05:30 bunny-VirtualBox gdm-password]: gkr-pam: unlocked login keyring
+2026-05-27T15:24:09.646466+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T15:24:09.647157+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny ; USER=root ; COMMAND=/usr/bin/tail -f /var/log/auth.log
+2026-05-27T15:24:50.833082+05:30 bunny-VirtualBox unix_chkpwd[17793]: password check failed for user (bunny)
+2026-05-27T15:24:50.833761+05:30 bunny-VirtualBox sshd-session[17786]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:24:52.826212+05:30 bunny-VirtualBox sshd-session[17786]: Failed password for bunny from 127.0.0.1 port 57014 ssh2
+2026-05-27T15:24:55.533301+05:30 bunny-VirtualBox unix_chkpwd[17794]: password check failed for user (bunny)
+2026-05-27T15:24:57.164547+05:30 bunny-VirtualBox sshd-session[17786]: Failed password for bunny from 127.0.0.1 port 57014 ssh2
+2026-05-27T15:24:59.900404+05:30 bunny-VirtualBox unix_chkpwd[17795]: password check failed for user (bunny)
+2026-05-27T15:25:01.412655+05:30 bunny-VirtualBox sshd-session[17786]: Failed password for bunny from 127.0.0.1 port 57014 ssh2
+2026-05-27T15:25:02.121480+05:30 bunny-VirtualBox sshd-session[17786]: Connection closed by authenticating user bunny 127.0.0.1 port 57014 [preauth]
+2026-05-27T15:25:02.121976+05:30 bunny-VirtualBox sshd-session[17786]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:25:05.705363+05:30 bunny-VirtualBox unix_chkpwd[17799]: password check failed for user (bunny)
+2026-05-27T15:25:05.707176+05:30 bunny-VirtualBox sshd-session[17797]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:25:07.901204+05:30 bunny-VirtualBox sshd-session[17797]: Failed password for bunny from 127.0.0.1 port 59702 ssh2
+2026-05-27T15:25:09.067198+05:30 bunny-VirtualBox unix_chkpwd[17800]: password check failed for user (bunny)
+2026-05-27T15:25:11.304842+05:30 bunny-VirtualBox sshd-session[17797]: Failed password for bunny from 127.0.0.1 port 59702 ssh2
+2026-05-27T15:25:16.357417+05:30 bunny-VirtualBox unix_chkpwd[17801]: password check failed for user (bunny)
+2026-05-27T15:25:18.936770+05:30 bunny-VirtualBox sshd-session[17797]: Failed password for bunny from 127.0.0.1 port 59702 ssh2
+2026-05-27T15:25:20.816706+05:30 bunny-VirtualBox sshd-session[17797]: Connection closed by authenticating user bunny 127.0.0.1 port 59702 [preauth]
+2026-05-27T15:25:20.818750+05:30 bunny-VirtualBox sshd-session[17797]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:25:23.070885+05:30 bunny-VirtualBox unix_chkpwd[17806]: password check failed for user (bunny)
+2026-05-27T15:25:23.071584+05:30 bunny-VirtualBox sshd-session[17803]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:25:24.991618+05:30 bunny-VirtualBox sshd-session[17803]: Failed password for bunny from 127.0.0.1 port 46700 ssh2
+2026-05-27T15:25:28.092621+05:30 bunny-VirtualBox unix_chkpwd[17807]: password check failed for user (bunny)
+2026-05-27T15:25:30.070900+05:30 bunny-VirtualBox sshd-session[17803]: Failed password for bunny from 127.0.0.1 port 46700 ssh2
+2026-05-27T15:25:31.987777+05:30 bunny-VirtualBox unix_chkpwd[17808]: password check failed for user (bunny)
+2026-05-27T15:25:34.215266+05:30 bunny-VirtualBox sshd-session[17803]: Failed password for bunny from 127.0.0.1 port 46700 ssh2
+2026-05-27T15:25:36.442616+05:30 bunny-VirtualBox sshd-session[17803]: Connection closed by authenticating user bunny 127.0.0.1 port 46700 [preauth]
+2026-05-27T15:25:36.443360+05:30 bunny-VirtualBox sshd-session[17803]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:25:39.464812+05:30 bunny-VirtualBox unix_chkpwd[17813]: password check failed for user (bunny)
+2026-05-27T15:25:39.465481+05:30 bunny-VirtualBox sshd-session[17810]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:25:41.302626+05:30 bunny-VirtualBox sshd-session[17810]: Failed password for bunny from 127.0.0.1 port 36056 ssh2
+2026-05-27T15:25:45.846575+05:30 bunny-VirtualBox unix_chkpwd[17814]: password check failed for user (bunny)
+2026-05-27T15:25:47.676770+05:30 bunny-VirtualBox sshd-session[17810]: Failed password for bunny from 127.0.0.1 port 36056 ssh2
+2026-05-27T15:25:54.944718+05:30 bunny-VirtualBox unix_chkpwd[17817]: password check failed for user (bunny)
+2026-05-27T15:25:56.659056+05:30 bunny-VirtualBox sshd-session[17810]: Failed password for bunny from 127.0.0.1 port 36056 ssh2
+2026-05-27T15:25:57.234030+05:30 bunny-VirtualBox sshd-session[17810]: Connection closed by authenticating user bunny 127.0.0.1 port 36056 [preauth]
+2026-05-27T15:25:57.237323+05:30 bunny-VirtualBox sshd-session[17810]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:26:00.643796+05:30 bunny-VirtualBox unix_chkpwd[17822]: password check failed for user (bunny)
+2026-05-27T15:26:00.644259+05:30 bunny-VirtualBox sshd-session[17819]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:26:02.071192+05:30 bunny-VirtualBox sshd-session[17819]: Failed password for bunny from 127.0.0.1 port 56512 ssh2
+2026-05-27T15:26:04.022447+05:30 bunny-VirtualBox unix_chkpwd[17823]: password check failed for user (bunny)
+2026-05-27T15:26:06.113500+05:30 bunny-VirtualBox sshd-session[17819]: Failed password for bunny from 127.0.0.1 port 56512 ssh2
+2026-05-27T15:26:09.244493+05:30 bunny-VirtualBox unix_chkpwd[17824]: password check failed for user (bunny)
+2026-05-27T15:26:11.226404+05:30 bunny-VirtualBox sshd-session[17819]: Failed password for bunny from 127.0.0.1 port 56512 ssh2
+2026-05-27T15:26:11.468406+05:30 bunny-VirtualBox sshd-session[17819]: Connection closed by authenticating user bunny 127.0.0.1 port 56512 [preauth]
+2026-05-27T15:26:11.476681+05:30 bunny-VirtualBox sshd-session[17819]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:26:12.793514+05:30 bunny-VirtualBox unix_chkpwd[17828]: password check failed for user (bunny)
+2026-05-27T15:26:12.793951+05:30 bunny-VirtualBox sshd-session[17826]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:26:15.203760+05:30 bunny-VirtualBox sshd-session[17826]: Failed password for bunny from 127.0.0.1 port 37860 ssh2
+2026-05-27T15:26:19.753265+05:30 bunny-VirtualBox unix_chkpwd[17829]: password check failed for user (bunny)
+2026-05-27T15:26:22.160840+05:30 bunny-VirtualBox sshd-session[17826]: Failed password for bunny from 127.0.0.1 port 37860 ssh2
+2026-05-27T15:26:27.017335+05:30 bunny-VirtualBox unix_chkpwd[17830]: password check failed for user (bunny)
+2026-05-27T15:26:28.486953+05:30 bunny-VirtualBox sshd-session[17826]: Failed password for bunny from 127.0.0.1 port 37860 ssh2
+2026-05-27T15:26:29.245016+05:30 bunny-VirtualBox sshd-session[17826]: Connection closed by authenticating user bunny 127.0.0.1 port 37860 [preauth]
+2026-05-27T15:26:29.246375+05:30 bunny-VirtualBox sshd-session[17826]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:26:31.676481+05:30 bunny-VirtualBox unix_chkpwd[17835]: password check failed for user (bunny)
+2026-05-27T15:26:31.677022+05:30 bunny-VirtualBox sshd-session[17832]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:26:33.936186+05:30 bunny-VirtualBox sshd-session[17832]: Failed password for bunny from 127.0.0.1 port 40398 ssh2
+2026-05-27T15:26:39.228556+05:30 bunny-VirtualBox unix_chkpwd[17836]: password check failed for user (bunny)
+2026-05-27T15:26:41.316153+05:30 bunny-VirtualBox sshd-session[17832]: Failed password for bunny from 127.0.0.1 port 40398 ssh2
+2026-05-27T15:26:43.302902+05:30 bunny-VirtualBox unix_chkpwd[17837]: password check failed for user (bunny)
+2026-05-27T15:26:44.951705+05:30 bunny-VirtualBox sshd-session[17832]: Failed password for bunny from 127.0.0.1 port 40398 ssh2
+2026-05-27T15:26:45.526318+05:30 bunny-VirtualBox sshd-session[17832]: Connection closed by authenticating user bunny 127.0.0.1 port 40398 [preauth]
+2026-05-27T15:26:45.527932+05:30 bunny-VirtualBox sshd-session[17832]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:26:47.652984+05:30 bunny-VirtualBox unix_chkpwd[17842]: password check failed for user (bunny)
+2026-05-27T15:26:47.654132+05:30 bunny-VirtualBox sshd-session[17839]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:26:50.291742+05:30 bunny-VirtualBox sshd-session[17839]: Failed password for bunny from 127.0.0.1 port 41078 ssh2
+2026-05-27T15:26:54.058485+05:30 bunny-VirtualBox unix_chkpwd[17843]: password check failed for user (bunny)
+2026-05-27T15:26:56.247352+05:30 bunny-VirtualBox sshd-session[17839]: Failed password for bunny from 127.0.0.1 port 41078 ssh2
+2026-05-27T15:26:58.398405+05:30 bunny-VirtualBox unix_chkpwd[17845]: password check failed for user (bunny)
+2026-05-27T15:26:59.750376+05:30 bunny-VirtualBox sshd-session[17839]: Failed password for bunny from 127.0.0.1 port 41078 ssh2
+2026-05-27T15:27:00.621307+05:30 bunny-VirtualBox sshd-session[17839]: Connection closed by authenticating user bunny 127.0.0.1 port 41078 [preauth]
+2026-05-27T15:27:00.623453+05:30 bunny-VirtualBox sshd-session[17839]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:27:04.761299+05:30 bunny-VirtualBox unix_chkpwd[17849]: password check failed for user (bunny)
+2026-05-27T15:27:04.762169+05:30 bunny-VirtualBox sshd-session[17847]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:27:06.863398+05:30 bunny-VirtualBox sshd-session[17847]: Failed password for bunny from 127.0.0.1 port 45382 ssh2
+2026-05-27T15:27:09.425718+05:30 bunny-VirtualBox unix_chkpwd[17850]: password check failed for user (bunny)
+2026-05-27T15:27:11.616172+05:30 bunny-VirtualBox sshd-session[17847]: Failed password for bunny from 127.0.0.1 port 45382 ssh2
+2026-05-27T15:27:14.221231+05:30 bunny-VirtualBox unix_chkpwd[17851]: password check failed for user (bunny)
+2026-05-27T15:27:16.132205+05:30 bunny-VirtualBox sshd-session[17847]: Failed password for bunny from 127.0.0.1 port 45382 ssh2
+2026-05-27T15:27:16.445414+05:30 bunny-VirtualBox sshd-session[17847]: Connection closed by authenticating user bunny 127.0.0.1 port 45382 [preauth]
+2026-05-27T15:27:16.445759+05:30 bunny-VirtualBox sshd-session[17847]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:27:18.456543+05:30 bunny-VirtualBox unix_chkpwd[17856]: password check failed for user (bunny)
+2026-05-27T15:27:18.456821+05:30 bunny-VirtualBox sshd-session[17853]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:27:20.494585+05:30 bunny-VirtualBox sshd-session[17853]: Failed password for bunny from 127.0.0.1 port 56500 ssh2
+2026-05-27T15:28:00.025288+05:30 bunny-VirtualBox unix_chkpwd[17858]: password check failed for user (bunny)
+2026-05-27T15:28:01.850713+05:30 bunny-VirtualBox sshd-session[17853]: Failed password for bunny from 127.0.0.1 port 56500 ssh2
+2026-05-27T15:28:05.925283+05:30 bunny-VirtualBox unix_chkpwd[17859]: password check failed for user (bunny)
+2026-05-27T15:28:07.908303+05:30 bunny-VirtualBox sshd-session[17853]: Failed password for bunny from 127.0.0.1 port 56500 ssh2
+2026-05-27T15:28:08.149842+05:30 bunny-VirtualBox sshd-session[17853]: Connection closed by authenticating user bunny 127.0.0.1 port 56500 [preauth]
+2026-05-27T15:28:08.150410+05:30 bunny-VirtualBox sshd-session[17853]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:30:01.426490+05:30 bunny-VirtualBox CRON[17889]: pam_unix(cron:session): session opened for user root(uid=0) by root(uid=0)
+2026-05-27T15:30:01.437037+05:30 bunny-VirtualBox CRON[17889]: pam_unix(cron:session): session closed for user root
+2026-05-27T15:35:54.960402+05:30 bunny-VirtualBox unix_chkpwd[17913]: password check failed for user (bunny)
+2026-05-27T15:35:54.973561+05:30 bunny-VirtualBox sshd-session[17899]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:35:57.302561+05:30 bunny-VirtualBox sshd-session[17899]: Failed password for bunny from 127.0.0.1 port 45618 ssh2
+2026-05-27T15:36:05.053541+05:30 bunny-VirtualBox sshd-session[17899]: Connection closed by authenticating user bunny 127.0.0.1 port 45618 [preauth]
+2026-05-27T15:37:00.832314+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-05-27T15:37:00.848133+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/1 ; PWD=/home/bunny ; USER=root ; COMMAND=/usr/bin/apt install sshpass
+2026-05-27T15:37:06.912452+05:30 bunny-VirtualBox sudo: pam_unix(sudo:session): session closed for user root
+2026-05-27T15:37:10.316331+05:30 bunny-VirtualBox unix_chkpwd[18185]: password check failed for user (bunny)
+2026-05-27T15:37:10.318044+05:30 bunny-VirtualBox sshd-session[18182]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:37:12.315400+05:30 bunny-VirtualBox sshd-session[18182]: Failed password for bunny from 127.0.0.1 port 34484 ssh2
+2026-05-27T15:37:12.544463+05:30 bunny-VirtualBox sshd-session[18182]: Connection closed by authenticating user bunny 127.0.0.1 port 34484 [preauth]
+2026-05-27T15:37:12.628429+05:30 bunny-VirtualBox unix_chkpwd[18190]: password check failed for user (bunny)
+2026-05-27T15:37:12.628936+05:30 bunny-VirtualBox sshd-session[18188]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:37:14.577519+05:30 bunny-VirtualBox sshd-session[18188]: Failed password for bunny from 127.0.0.1 port 34492 ssh2
+2026-05-27T15:37:14.859031+05:30 bunny-VirtualBox sshd-session[18188]: Connection closed by authenticating user bunny 127.0.0.1 port 34492 [preauth]
+2026-05-27T15:37:14.952989+05:30 bunny-VirtualBox unix_chkpwd[18195]: password check failed for user (bunny)
+2026-05-27T15:37:14.953297+05:30 bunny-VirtualBox sshd-session[18193]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:37:16.579779+05:30 bunny-VirtualBox sshd-session[18193]: Failed password for bunny from 127.0.0.1 port 34496 ssh2
+2026-05-27T15:37:17.181371+05:30 bunny-VirtualBox sshd-session[18193]: Connection closed by authenticating user bunny 127.0.0.1 port 34496 [preauth]
+2026-05-27T15:37:17.265342+05:30 bunny-VirtualBox unix_chkpwd[18200]: password check failed for user (bunny)
+2026-05-27T15:37:17.266484+05:30 bunny-VirtualBox sshd-session[18198]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:37:19.360449+05:30 bunny-VirtualBox sshd-session[18198]: Failed password for bunny from 127.0.0.1 port 55730 ssh2
+2026-05-27T15:37:19.492537+05:30 bunny-VirtualBox sshd-session[18198]: Connection closed by authenticating user bunny 127.0.0.1 port 55730 [preauth]
+2026-05-27T15:37:19.582310+05:30 bunny-VirtualBox unix_chkpwd[18205]: password check failed for user (bunny)
+2026-05-27T15:37:19.583008+05:30 bunny-VirtualBox sshd-session[18203]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=127.0.0.1  user=bunny
+2026-05-27T15:37:21.262077+05:30 bunny-VirtualBox sshd-session[18203]: Failed password for bunny from 127.0.0.1 port 55734 ssh2
+2026-05-27T15:37:21.813373+05:30 bunny-VirtualBox sshd-session[18203]: Connection closed by authenticating user bunny 127.0.0.1 port 55734 [preauth]
+2026-05-27T15:37:21.815776+05:30 bunny-VirtualBox sshd[5886]: srclimit_penalise: 127.0.0.1/32: activating ipv4 penalty of 16 seconds for penalty: failed authentication
+2026-05-27T15:37:21.825550+05:30 bunny-VirtualBox sshd[5886]: drop connection #0 from [127.0.0.1]:55738 on [127.0.0.1]:22 penalty: failed authentication
+2026-05-27T15:37:21.847839+05:30 bunny-VirtualBox sshd[5886]: drop connection #0 from [127.0.0.1]:55740 on [127.0.0.1]:22 penalty: failed authentication
+2026-05-27T15:37:21.859576+05:30 bunny-VirtualBox sshd[5886]: drop connection #0 from [127.0.0.1]:55744 on [127.0.0.1]:22 penalty: failed authentication
+2026-05-27T15:37:21.871811+05:30 bunny-VirtualBox sshd[5886]: drop connection #0 from [127.0.0.1]:55750 on [127.0.0.1]:22 penalty: failed authentication
+2026-05-27T15:37:21.886389+05:30 bunny-VirtualBox sshd[5886]: drop connection #0 from [127.0.0.1]:55756 on [127.0.0.1]:22 penalty: failed authentication
+2026-05-27T15:38:32.101400+05:30 bunny-VirtualBox pkexec: pam_unix(polkit-1:session): session opened for user root(uid=0) by bunny(uid=1000)
+2026-

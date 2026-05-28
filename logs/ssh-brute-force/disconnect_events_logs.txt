@@ -1,0 +1,6 @@
+2026-05-27T13:36:18.152383+05:30 bunny-VirtualBox sshd-session[8480]: Received disconnect from 127.0.0.1 port 44132:11: disconnected by user
+2026-05-27T13:36:27.302360+05:30 bunny-VirtualBox sshd-session[8343]: Received disconnect from 127.0.0.1 port 34714:11: disconnected by user
+2026-05-27T14:32:06.589734+05:30 bunny-VirtualBox sshd-session[11641]: Received disconnect from 127.0.0.1 port 60562:11: disconnected by user
+2026-05-27T14:44:16.461899+05:30 bunny-VirtualBox sshd-session[17240]: Received disconnect from 127.0.0.1 port 38030:11: disconnected by user
+2026-05-28T10:21:55.535716+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/grep -a disconnect /var/log/auth.log
+2026-05-28T10:22:51.411296+05:30 bunny-VirtualBox sudo: bunny : TTY=/dev/pts/0 ; PWD=/home/bunny/Detection-Engineering-Lab ; USER=root ; COMMAND=/usr/bin/grep -a disconnect /var/log/auth.log

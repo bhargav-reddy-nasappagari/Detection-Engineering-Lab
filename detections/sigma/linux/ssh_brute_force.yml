@@ -1,0 +1,503 @@
+title: SSH Brute Force Authentication Failures
+id: 9d1d8d0f-9d91-4e5f-a5a2-sshbf001
+status: experimental
+description: |
+  Detects potential SSH brute force activity by identifying repeated
+  SSH authentication failures originating from the same source IP
+  within a constrained timeframe.
+
+  The rule focuses on behavioral correlation patterns associated with:
+  - repeated failed SSH logins
+  - invalid username attempts
+  - PAM authentication failures
+  - SSH daemon disconnect behavior
+  - rapid authentication retry activity
+
+references:
+  - https://attack.mitre.org/techniques/T1110/
+  - https://attack.mitre.org/techniques/T1110/001/
+
+author: Bunny
+date: 2026/05/27
+modified: 2026/05/27
+
+tags:
+  - attack.credential_access
+  - attack.t1110
+  - attack.t1110.001
+  - linux
+  - ssh
+  - brute_force
+  - authentication
+
+logsource:
+  product: linux
+  service: sshd
+
+detection:
+
+  failed_password:
+    message|contains:
+      - 'Failed password'
+      - 'authentication failure'
+      - 'Invalid user'
+      - 'pam_unix(sshd:auth): authentication failure'
+      - 'error: PAM: Authentication failure'
+
+  disconnect_behavior:
+    message|contains:
+      - 'Connection closed by authenticating user'
+      - 'Received disconnect from'
+      - 'Disconnected from invalid user'
+      - 'maximum authentication attempts exceeded'
+
+  condition: failed_password or disconnect_behavior
+
+fields:
+  - timestamp
+  - hostname
+  - source.ip
+  - user.name
+  - process.name
+  - process.pid
+  - message
+
+falsepositives:
+  - User repeatedly mistyping passwords
+  - Outdated SSH credentials
+  - Administrative SSH testing
+  - SOC validation activity
+  - Broken automation scripts repeatedly attempting authentication
+  - Misconfigured monitoring or backup services
+
+level: medium
+
+---
+
+title: SSH Brute Force Threshold Correlation
+id: 3f0d7e2a-7c5b-4d89-b1c4-sshbf002
+status: experimental
+description: |
+  Detects probable SSH brute force activity by correlating repeated
+  SSH authentication failures from the same source IP over a short
+  period of time.
+
+  This rule is intended for SIEM correlation engines capable of
+  thresholding and aggregation logic.
+
+references:
+  - https://attack.mitre.org/techniques/T1110/
+  - https://attack.mitre.org/techniques/T1110/001/
+
+author: Bunny
+date: 2026/05/27
+modified: 2026/05/27
+
+tags:
+  - attack.credential_access
+  - attack.t1110
+  - attack.t1110.001
+  - linux
+  - ssh
+  - brute_force
+  - correlation
+
+logsource:
+  product: linux
+  service: sshd
+
+detection:
+
+  selection:
+    message|contains:
+      - 'Failed password'
+      - 'authentication failure'
+      - 'Invalid user'
+
+  timeframe: 5m
+
+  condition: selection
+
+aggregation:
+  - field: source.ip
+    function: count
+    condition: gte
+    value: 5
+
+fields:
+  - timestamp
+  - hostname
+  - source.ip
+  - user.name
+  - message
+
+falsepositives:
+  - Users repeatedly entering incorrect passwords
+  - Internal password rotation issues
+  - SSH automation failures
+  - Administrative testing activity
+
+level: high
+
+---
+
+title: SSH Brute Force Followed By Successful Authentication
+id: a7e0c1b3-c2aa-44e0-8d5f-sshbf003
+status: experimental
+description: |
+  Detects possible successful SSH brute force compromise where
+  multiple authentication failures are followed by a successful
+  SSH login from the same source IP.
+
+references:
+  - https://attack.mitre.org/techniques/T1110/
+  - https://attack.mitre.org/techniques/T1110/001/
+
+author: Bunny
+date: 2026/05/27
+modified: 2026/05/27
+
+tags:
+  - attack.credential_access
+  - attack.t1110
+  - attack.t1110.001
+  - linux
+  - ssh
+  - brute_force
+  - successful_compromise
+
+logsource:
+  product: linux
+  service: sshd
+
+detection:
+
+  failed_auth:
+    message|contains:
+      - 'Failed password'
+      - 'authentication failure'
+
+  successful_auth:
+    message|contains:
+      - 'Accepted password'
+      - 'Accepted publickey'
+
+  timeframe: 10m
+
+  condition: failed_auth followed_by successful_auth
+
+fields:
+  - timestamp
+  - hostname
+  - source.ip
+  - user.name
+  - message
+
+falsepositives:
+  - Users eventually remembering correct credentials
+  - Password manager synchronization delays
+  - Administrative troubleshooting activity
+
+level: critical
+title: SSH Brute Force Authentication Detection
+id: 1f5d3c87-6b2a-4d91-8f3c-ssh-bruteforce-001
+status: experimental
+
+description: |
+  Detects SSH brute force activity through behavioral correlation
+  of repeated authentication failures, PAM authentication rejection
+  telemetry, username guessing activity, and SSH daemon disconnect behavior.
+
+  The detection logic was engineered from observed telemetry during
+  SSH brute force simulation and validation exercises.
+
+  Detection focuses on:
+    - repeated SSH authentication failures
+    - repeated attempts from same source IP
+    - rapid authentication retry velocity
+    - username guessing behavior
+    - PAM authentication failures
+    - SSH disconnect and pre-auth termination activity
+
+references:
+  - https://attack.mitre.org/techniques/T1110/
+  - https://attack.mitre.org/techniques/T1110/001/
+
+author: Bunny
+date: 2026/05/28
+modified: 2026/05/28
+
+tags:
+  - attack.credential_access
+  - attack.t1110
+  - attack.t1110.001
+  - linux
+  - ssh
+  - brute_force
+  - password_guessing
+  - authentication
+  - behavioral_detection
+
+logsource:
+  product: linux
+  service: sshd
+
+detection:
+
+  failed_authentication:
+    message|contains:
+      - 'Failed password'
+      - 'authentication failure'
+      - 'Failed password for invalid user'
+      - 'Failed password for user'
+      - 'Invalid user'
+
+  pam_authentication_failure:
+    message|contains:
+      - 'pam_unix(sshd:auth): authentication failure'
+      - 'error: PAM: Authentication failure'
+
+  ssh_disconnect_behavior:
+    message|contains:
+      - 'Connection closed by authenticating user'
+      - 'Received disconnect from'
+      - 'Disconnected from invalid user'
+      - 'maximum authentication attempts exceeded'
+
+  condition: failed_authentication
+             or pam_authentication_failure
+             or ssh_disconnect_behavior
+
+fields:
+  - timestamp
+  - hostname
+  - source.ip
+  - destination.ip
+  - user.name
+  - event.outcome
+  - process.name
+  - process.pid
+  - service.name
+  - message
+
+falsepositives:
+  - Users repeatedly mistyping passwords
+  - Outdated SSH credentials
+  - Administrative SSH testing
+  - SOC validation exercises
+  - Broken automation scripts
+  - CI/CD authentication failures
+  - Misconfigured backup or monitoring services
+
+level: medium
+
+---
+
+title: SSH Brute Force Threshold Correlation
+id: 7c2a6a90-4e11-41f5-b32d-ssh-bruteforce-002
+status: experimental
+
+description: |
+  Detects probable SSH brute force activity by correlating repeated
+  SSH authentication failures originating from the same source IP
+  within a constrained timeframe.
+
+  This rule is intended for SIEM platforms capable of:
+    - threshold analytics
+    - event aggregation
+    - temporal correlation
+
+references:
+  - https://attack.mitre.org/techniques/T1110/
+  - https://attack.mitre.org/techniques/T1110/001/
+
+author: Bunny
+date: 2026/05/28
+modified: 2026/05/28
+
+tags:
+  - attack.credential_access
+  - attack.t1110
+  - attack.t1110.001
+  - linux
+  - ssh
+  - brute_force
+  - threshold_detection
+  - behavioral_correlation
+
+logsource:
+  product: linux
+  service: sshd
+
+detection:
+
+  selection:
+    message|contains:
+      - 'Failed password'
+      - 'authentication failure'
+      - 'Invalid user'
+      - 'pam_unix(sshd:auth): authentication failure'
+
+  timeframe: 5m
+
+  condition: selection
+
+aggregation:
+  - field: source.ip
+    function: count
+    condition: gte
+    value: 5
+
+fields:
+  - timestamp
+  - hostname
+  - source.ip
+  - user.name
+  - event.outcome
+  - message
+
+falsepositives:
+  - Users forgetting passwords
+  - Password rotation synchronization issues
+  - Broken SSH automation
+  - Administrative validation testing
+  - Security team simulation exercises
+
+level: high
+
+---
+
+title: SSH Username Guessing Detection
+id: 9b3e5d1f-3d42-4a8f-95f1-ssh-bruteforce-003
+status: experimental
+
+description: |
+  Detects SSH authentication attempts targeting multiple usernames
+  from the same source IP within a short timeframe.
+
+  This behavior may indicate:
+    - username enumeration
+    - password spraying
+    - brute force reconnaissance activity
+
+references:
+  - https://attack.mitre.org/techniques/T1110/
+  - https://attack.mitre.org/techniques/T1110/001/
+
+author: Bunny
+date: 2026/05/28
+modified: 2026/05/28
+
+tags:
+  - attack.credential_access
+  - attack.t1110
+  - attack.t1110.001
+  - linux
+  - ssh
+  - username_enumeration
+  - password_spraying
+
+logsource:
+  product: linux
+  service: sshd
+
+detection:
+
+  username_guessing:
+    message|contains:
+      - 'Invalid user'
+      - 'Failed password for invalid user'
+
+  common_targeted_users:
+    message|contains:
+      - 'root'
+      - 'admin'
+      - 'ubuntu'
+      - 'test'
+
+  timeframe: 5m
+
+  condition: username_guessing and common_targeted_users
+
+fields:
+  - timestamp
+  - source.ip
+  - user.name
+  - message
+
+falsepositives:
+  - User account testing
+  - Administrative troubleshooting
+  - SSH account validation activity
+
+level: high
+
+---
+
+title: SSH Brute Force Successful Authentication Correlation
+id: d4f2c7a1-5b44-4b4b-a2f0-ssh-bruteforce-004
+status: experimental
+
+description: |
+  Detects possible successful SSH brute force compromise where
+  repeated SSH authentication failures are followed by a successful
+  authentication event from the same source IP.
+
+  This may indicate:
+    - successful credential guessing
+    - account compromise
+    - brute force intrusion success
+
+references:
+  - https://attack.mitre.org/techniques/T1110/
+  - https://attack.mitre.org/techniques/T1110/001/
+
+author: Bunny
+date: 2026/05/28
+modified: 2026/05/28
+
+tags:
+  - attack.credential_access
+  - attack.t1110
+  - attack.t1110.001
+  - linux
+  - ssh
+  - successful_compromise
+  - credential_access
+
+logsource:
+  product: linux
+  service: sshd
+
+detection:
+
+  failed_authentication:
+    message|contains:
+      - 'Failed password'
+      - 'authentication failure'
+
+  successful_authentication:
+    message|contains:
+      - 'Accepted password'
+      - 'Accepted publickey'
+
+  timeframe: 10m
+
+  condition: failed_authentication followed_by successful_authentication
+
+fields:
+  - timestamp
+  - hostname
+  - source.ip
+  - destination.ip
+  - user.name
+  - event.outcome
+  - message
+
+falsepositives:
+  - User eventually entering correct password
+  - Password manager synchronization delays
+  - Administrative troubleshooting
+  - Automated account recovery operations
+
+level: critical

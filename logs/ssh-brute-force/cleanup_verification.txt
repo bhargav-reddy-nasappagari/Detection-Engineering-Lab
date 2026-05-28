@@ -1,0 +1,97 @@
+# SSH Brute Force Cleanup Verification
+
+# Verification Timestamp
+2026-05-28 11:40 IST
+
+# Objective
+
+Verify that the SSH brute force simulation environment returned to a stable state after attack execution and detection validation.
+
+# Process Verification
+
+## sshpass Process Check
+
+Command Executed:
+ps aux | grep sshpass
+
+Result:
+No active sshpass brute-force process was identified.
+Only the grep process itself was returned.
+
+Observed Output:
+bunny 7282 0.0 0.0 18000 2640 pts/0 S+ 11:39 0:00 grep --color=auto sshpass
+
+## SSH Process Verification
+
+Command Executed:
+ps aux | grep ssh
+
+Result:
+The SSH daemon remained operational and stable after simulation activity.
+
+Observed Active Components:
+- sshd listener process
+- gcr-ssh-agent
+- ssh-agent background processes
+
+Observed Output:
+root 1594 0.0 0.2 10736 7780 ? Ss 09:51 0:00 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+
+# Network Verification
+
+Command Executed:
+ss -antp | grep :22
+
+Result:
+SSH service continued listening normally on TCP port 22.
+No abnormal connection flooding or lingering attacker sessions were observed.
+
+Observed Output:
+LISTEN 0 4096 0.0.0.0:22 0.0.0.0:*
+LISTEN 0 4096 [::]:22 [::]:*
+
+# Direct Process Lookup
+
+Command Executed:
+pgrep sshpass
+
+Result:
+No active sshpass process was found.
+
+# Authentication Log Preservation
+
+Command Executed:
+sudo tail -20 /var/log/auth.log
+
+Result:
+Authentication telemetry remained preserved after simulation completion.
+
+Observed Authentication Indicators:
+- pam_unix authentication failures
+- failed password attempts
+- invalid user activity
+- SSH pre-authentication disconnect behavior
+- PAM aggregated authentication failure reporting
+
+Key Observed Events:
+- Failed password for invalid user invaliduser
+- pam_unix(sshd:auth): authentication failure
+- Connection closed by invalid user invaliduser [preauth]
+- PAM 2 more authentication failures
+
+# Detection Validation Outcome
+
+The SSH brute-force detection logic successfully identified:
+- repeated failed authentication attempts
+- invalid user enumeration behavior
+- authentication burst activity
+- pre-authentication disconnect events
+
+# Cleanup Status
+
+The simulation environment successfully returned to a stable operational state after attack execution.
+
+No persistent attacker tooling remained active.
+
+SSH services continued functioning normally after simulation termination.
+

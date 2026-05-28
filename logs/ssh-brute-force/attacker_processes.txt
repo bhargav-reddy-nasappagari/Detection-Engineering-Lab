@@ -1,0 +1,36 @@
+# SSH Brute Force Attacker Process Reconstruction
+
+# Simulation Date:
+2026-05-27
+
+# Attacker Host:
+192.168.56.101
+
+# Target Host:
+192.168.56.102
+
+# Observed/Executed Commands
+
+hydra -l root -P passwords.txt ssh://192.168.56.102
+
+hydra -l admin -P passwords.txt ssh://192.168.56.102
+
+ssh root@192.168.56.102
+
+ssh admin@192.168.56.102
+
+# Behavioral Summary
+
+- Multiple SSH authentication attempts were generated against the target host.
+- Repeated failed password events were observed in auth.log.
+- Invalid user enumeration attempts were detected.
+- SSH pre-authentication disconnect behavior was observed.
+- Detection threshold was successfully triggered.
+
+# Evidence Sources
+
+- evidence/ssh-brute-force/attacker-execution.png
+- evidence/ssh-brute-force/authentication-failure.png
+- evidence/ssh-brute-force/detection-trigger.png
+- evidence/ssh-brute-force/ssh-brute-force.pcap
+

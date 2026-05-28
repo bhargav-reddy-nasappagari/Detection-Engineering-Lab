@@ -1,0 +1,54 @@
+{
+  "event_type": "ssh_authentication_failure",
+  "event_category": "authentication",
+  "event_action": "failed-password",
+  "event_outcome": "failure",
+  "timestamp": "2026-05-27T17:11:42Z",
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Ubuntu Linux"
+  },
+  "source": {
+    "ip": "192.168.56.101",
+    "port": 49832
+  },
+  "destination": {
+    "ip": "192.168.56.102",
+    "port": 22,
+    "service": "ssh"
+  },
+  "user": {
+    "name": "root",
+    "exists": false
+  },
+  "process": {
+    "name": "sshd",
+    "pid": 1847,
+    "parent_name": "systemd"
+  },
+  "authentication": {
+    "method": "password",
+    "failure_reason": "invalid credentials",
+    "attempt_count": 1
+  },
+  "ssh": {
+    "protocol": "SSH-2.0",
+    "client_version": "OpenSSH_9.3",
+    "preauth_disconnect": false
+  },
+  "log": {
+    "source": "/var/log/auth.log",
+    "message": "Failed password for invalid user root from 192.168.56.101 port 49832 ssh2"
+  },
+  "tags": [
+    "linux",
+    "ssh",
+    "authentication_failure",
+    "brute_force",
+    "attack_simulation"
+  ],
+  "mitre_attack": {
+    "technique_id": "T1110",
+    "technique_name": "Brute Force"
+  }
+}

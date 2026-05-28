@@ -1,0 +1,83 @@
+{
+  "alert_id": "SSH-BRUTEFORCE-2026-0001",
+  "alert_name": "Potential SSH Brute Force Attack Detected",
+  "description": "Multiple failed SSH authentication attempts detected from a single source IP within a short time window.",
+  "severity": "high",
+  "status": "triggered",
+  "confidence": "medium",
+  "timestamp": "2026-05-27T17:14:31Z",
+  "rule": {
+    "name": "ssh_brute_force",
+    "type": "sigma",
+    "file": "detections/sigma/linux/ssh_brute_force.yml",
+    "trigger_condition": "5 failed authentication attempts within 2 minutes from same source IP"
+  },
+  "source": {
+    "ip": "192.168.56.101",
+    "hostname": "attacker-vm"
+  },
+  "target": {
+    "hostname": "bunny-VirtualBox",
+    "service": "ssh",
+    "port": 22
+  },
+  "attack": {
+    "technique_id": "T1110",
+    "technique_name": "Brute Force",
+    "framework": "MITRE ATT&CK"
+  },
+  "observables": {
+    "failed_attempt_count": 8,
+    "targeted_users": [
+      "root",
+      "admin",
+      "test"
+    ],
+    "authentication_method": "password",
+    "time_window_seconds": 120
+  },
+  "related_events": [
+    {
+      "timestamp": "2026-05-27T17:12:01Z",
+      "event_type": "failed-password",
+      "username": "root",
+      "source_ip": "192.168.56.101"
+    },
+    {
+      "timestamp": "2026-05-27T17:12:15Z",
+      "event_type": "failed-password",
+      "username": "admin",
+      "source_ip": "192.168.56.101"
+    },
+    {
+      "timestamp": "2026-05-27T17:12:37Z",
+      "event_type": "invalid-user",
+      "username": "test",
+      "source_ip": "192.168.56.101"
+    }
+  ],
+  "log_sources": [
+    "/var/log/auth.log",
+    "journalctl -u ssh"
+  ],
+  "evidence": [
+    "evidence/ssh-brute-force/authentication-failure.png",
+    "evidence/ssh-brute-force/detection-trigger.png",
+    "evidence/ssh-brute-force/connection-drop-behaviour.png"
+  ],
+  "recommendations": [
+    "Block or rate-limit the offending IP address",
+    "Review targeted usernames for unauthorized access attempts",
+    "Enable fail2ban or equivalent SSH protection mechanisms",
+    "Investigate for potential credential stuffing activity"
+  ],
+  "tags": [
+    "linux",
+    "ssh",
+    "brute-force",
+    "authentication",
+    "sigma",
+    "attack-simulation"
+  ]
+}
+

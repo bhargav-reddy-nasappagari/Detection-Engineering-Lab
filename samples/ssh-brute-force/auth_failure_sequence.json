@@ -1,0 +1,112 @@
+{
+  "sequence_name": "ssh_authentication_failure_sequence",
+  "description": "Chronological sequence of SSH authentication failures observed during brute force simulation activity.",
+  "simulation_id": "SSH-BRUTEFORCE-2026-01",
+  "attack_technique": {
+    "technique_id": "T1110",
+    "technique_name": "Brute Force",
+    "framework": "MITRE ATT&CK"
+  },
+  "source": {
+    "ip": "192.168.56.101",
+    "hostname": "attacker-vm"
+  },
+  "target": {
+    "hostname": "bunny-VirtualBox",
+    "service": "ssh",
+    "port": 22
+  },
+  "timeline": [
+    {
+      "timestamp": "2026-05-27T17:12:01Z",
+      "event_type": "failed-password",
+      "username": "root",
+      "result": "failure",
+      "log_message": "Failed password for invalid user root from 192.168.56.101 port 49832 ssh2"
+    },
+    {
+      "timestamp": "2026-05-27T17:12:09Z",
+      "event_type": "failed-password",
+      "username": "admin",
+      "result": "failure",
+      "log_message": "Failed password for invalid user admin from 192.168.56.101 port 49836 ssh2"
+    },
+    {
+      "timestamp": "2026-05-27T17:12:15Z",
+      "event_type": "pam-authentication-failure",
+      "username": "test",
+      "result": "failure",
+      "log_message": "pam_unix(sshd:auth): authentication failure; user=test"
+    },
+    {
+      "timestamp": "2026-05-27T17:12:24Z",
+      "event_type": "invalid-user",
+      "username": "oracle",
+      "result": "failure",
+      "log_message": "Invalid user oracle from 192.168.56.101"
+    },
+    {
+      "timestamp": "2026-05-27T17:12:33Z",
+      "event_type": "preauth-disconnect",
+      "username": "unknown",
+      "result": "connection_closed",
+      "log_message": "Connection closed by authenticating user unknown 192.168.56.101 port 49845 [preauth]"
+    },
+    {
+      "timestamp": "2026-05-27T17:12:47Z",
+      "event_type": "failed-password",
+      "username": "ubuntu",
+      "result": "failure",
+      "log_message": "Failed password for invalid user ubuntu from 192.168.56.101 port 49851 ssh2"
+    },
+    {
+      "timestamp": "2026-05-27T17:13:02Z",
+      "event_type": "pam-authentication-failure",
+      "username": "guest",
+      "result": "failure",
+      "log_message": "pam_unix(sshd:auth): authentication failure; user=guest"
+    },
+    {
+      "timestamp": "2026-05-27T17:13:18Z",
+      "event_type": "detection-threshold-reached",
+      "threshold": "5 failures within 2 minutes",
+      "result": "alert_triggered",
+      "rule_name": "ssh_brute_force"
+    }
+  ],
+  "sequence_statistics": {
+    "total_events": 8,
+    "failed_authentication_attempts": 6,
+    "invalid_user_attempts": 3,
+    "pam_failures": 2,
+    "preauth_disconnects": 1,
+    "unique_usernames_targeted": 6,
+    "time_window_seconds": 77
+  },
+  "behavioral_observations": [
+    "Rapid authentication failures from single source IP",
+    "Multiple username targeting pattern observed",
+    "Invalid account enumeration attempts detected",
+    "Authentication burst exceeded configured threshold",
+    "Pre-authentication disconnect behavior observed"
+  ],
+  "related_logs": [
+    "logs/ssh-brute-force/raw_auth_logs.txt",
+    "logs/ssh-brute-force/failed_password_logs.txt",
+    "logs/ssh-brute-force/pam_auth_failures.txt",
+    "logs/ssh-brute-force/disconnect_events_logs.txt"
+  ],
+  "detection_outcome": {
+    "alert_triggered": true,
+    "severity": "high",
+    "confidence": "medium"
+  },
+  "tags": [
+    "ssh",
+    "linux",
+    "authentication",
+    "brute-force",
+    "timeline-analysis",
+    "attack-simulation"
+  ]
+}
