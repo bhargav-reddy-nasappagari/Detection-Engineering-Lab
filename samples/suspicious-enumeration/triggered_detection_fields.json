@@ -1,0 +1,82 @@
+{
+  "detection_context": {
+    "rule_name": "Suspicious Enumeration Activity",
+    "rule_type": "Behavioral Detection",
+    "data_source": "Linux auditd EXECVE telemetry",
+    "trigger_reason": "Execution of known reconnaissance and enumeration commands associated with post-compromise discovery activity"
+  },
+  "trigger_fields": {
+    "process.name": {
+      "value": "whoami",
+      "detection_relevance": "Matched known enumeration command list"
+    },
+    "process.command_line": {
+      "value": "whoami",
+      "detection_relevance": "Direct execution of reconnaissance command"
+    },
+    "process.executable": {
+      "value": "/usr/bin/whoami",
+      "detection_relevance": "Execution from monitored system binary path"
+    },
+    "auditd.message_type": {
+      "value": "EXECVE",
+      "detection_relevance": "Indicates process execution event captured by auditd"
+    },
+    "auditd.record.a0": {
+      "value": "whoami",
+      "detection_relevance": "Primary command argument used for detection matching"
+    },
+    "parent.process.name": {
+      "value": "bash",
+      "detection_relevance": "Enumeration executed through interactive shell context"
+    },
+    "process.working_directory": {
+      "value": "/home/bunny/Detection-Engineering-Lab/simulations/suspicious-enumeration/scripts",
+      "detection_relevance": "Execution originated from simulation scripts directory"
+    },
+    "user.name": {
+      "value": "bunny",
+      "detection_relevance": "User context associated with suspicious enumeration activity"
+    },
+    "host.hostname": {
+      "value": "bunny-VirtualBox",
+      "detection_relevance": "Host where enumeration activity was observed"
+    },
+    "event.category": {
+      "value": "process",
+      "detection_relevance": "Categorized as process execution telemetry"
+    },
+    "event.action": {
+      "value": "process_exec",
+      "detection_relevance": "Normalized action indicating process execution"
+    },
+    "tags": {
+      "value": [
+        "attack.discovery",
+        "attack.t1082",
+        "linux",
+        "enumeration"
+      ],
+      "detection_relevance": "Threat classification and ATT&CK mapping enrichment"
+    }
+  },
+  "behavioral_logic": {
+    "observed_pattern": "Multiple system discovery commands executed sequentially within short timeframe",
+    "commands_observed": [
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ifconfig",
+      "ip addr",
+      "ps aux",
+      "netstat -tulnp"
+    ],
+    "detection_strategy": "Match execution of known Linux enumeration utilities from auditd EXECVE telemetry",
+    "mapped_attack_tactic": "Discovery",
+    "mapped_attack_technique": {
+      "id": "T1082",
+      "name": "System Information Discovery"
+    }
+  }
+}

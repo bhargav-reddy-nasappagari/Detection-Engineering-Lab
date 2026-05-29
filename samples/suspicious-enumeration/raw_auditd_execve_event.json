@@ -1,0 +1,58 @@
+{
+  "type": "EXECVE",
+  "timestamp": "2026-05-28T14:41:12.369Z",
+  "auditd_event": {
+    "msg": "audit(1779979272.369:2134)",
+    "serial": 2134,
+    "epoch": 1779979272.369
+  },
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "architecture": "x86_64",
+    "os": "Ubuntu Linux"
+  },
+  "process": {
+    "pid": 4821,
+    "ppid": 4817,
+    "auid": 1000,
+    "uid": 1000,
+    "gid": 1000,
+    "euid": 1000,
+    "tty": "pts0",
+    "cwd": "/home/bunny/Detection-Engineering-Lab/scripts",
+    "exe": "/usr/bin/uname",
+    "comm": "uname",
+    "key": "execve-monitor"
+  },
+  "execve": {
+    "argc": 2,
+    "argv": [
+      "uname",
+      "-a"
+    ],
+    "command_line": "uname -a"
+  },
+  "parent_process": {
+    "name": "bash",
+    "exe": "/usr/bin/bash",
+    "command_line": "./enumeration.sh"
+  },
+  "raw_event": [
+    "type=EXECVE msg=audit(1779979272.369:2134): argc=2 a0=\"uname\" a1=\"-a\"",
+    "type=SYSCALL msg=audit(1779979272.369:2134): arch=c000003e syscall=59 success=yes exit=0 a0=55fbcf4e5260 a1=55fbcf4e5370 a2=55fbcf4e55c0 a3=7ffc44f4d3d0 items=2 ppid=4817 pid=4821 auid=1000 uid=1000 gid=1000 euid=1000 tty=pts0 ses=3 comm=\"uname\" exe=\"/usr/bin/uname\" key=\"execve-monitor\"",
+    "type=CWD msg=audit(1779979272.369:2134): cwd=\"/home/bunny/Detection-Engineering-Lab/scripts\"",
+    "type=PROCTITLE msg=audit(1779979272.369:2134): proctitle=756E616D65002D61"
+  ],
+  "detection_metadata": {
+    "simulation": "Suspicious Enumeration Activity",
+    "mitre_attack": {
+      "technique_id": "T1082",
+      "technique_name": "System Information Discovery"
+    },
+    "detection_reason": [
+      "native_system_enumeration_command_execution",
+      "auditd_execve_monitoring_triggered",
+      "interactive_host_reconnaissance_activity"
+    ]
+  }
+}

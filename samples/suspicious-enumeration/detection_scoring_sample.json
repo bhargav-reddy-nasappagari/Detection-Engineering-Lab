@@ -1,0 +1,246 @@
+{
+  "engine_name": "linux_enumeration_detection_scoring_engine",
+  "engine_version": "1.0",
+  "simulation": "Suspicious Enumeration Activity",
+  "simulation_alignment": {
+    "attack_technique": "T1082",
+    "attack_name": "System Information Discovery",
+    "related_techniques": [
+      "T1069",
+      "T1087",
+      "T1548"
+    ],
+    "telemetry_source": "auditd_execve_logs",
+    "environment": "Linux",
+    "scenario_origin": "scenarios/suspicious-enumeration/enumeration.sh"
+  },
+  "correlation_fields": [
+    "auid",
+    "tty",
+    "session_id",
+    "parent_pid"
+  ],
+  "session_context": {
+    "auid": 1000,
+    "tty": "pts4",
+    "session_id": 3,
+    "parent_pid": 9421,
+    "root_process": "enumeration.sh",
+    "cwd": "/home/bunny/Detection-Engineering-Lab"
+  },
+  "scoring_model": {
+    "base_score": 0,
+    "score_thresholds": {
+      "low": 20,
+      "medium": 45,
+      "high": 70,
+      "critical": 90
+    },
+    "time_window_seconds": 180,
+    "behavioral_weights": [
+      {
+        "behavior": "identity_enumeration",
+        "commands": [
+          "whoami",
+          "id",
+          "groups"
+        ],
+        "score_per_event": 10,
+        "observed_events": [
+          {
+            "pid": 9423,
+            "command": "whoami",
+            "audit_event_id": 973
+          },
+          {
+            "pid": 9425,
+            "command": "id",
+            "audit_event_id": 975
+          },
+          {
+            "pid": 9431,
+            "command": "groups",
+            "audit_event_id": 981
+          }
+        ],
+        "subtotal": 30
+      },
+      {
+        "behavior": "host_discovery",
+        "commands": [
+          "hostname",
+          "uname -a"
+        ],
+        "score_per_event": 8,
+        "observed_events": [
+          {
+            "pid": 9427,
+            "command": "hostname",
+            "audit_event_id": 977
+          },
+          {
+            "pid": 9429,
+            "command": "uname -a",
+            "audit_event_id": 979
+          }
+        ],
+        "subtotal": 16
+      },
+      {
+        "behavior": "account_enumeration",
+        "commands": [
+          "getent passwd",
+          "who",
+          "w"
+        ],
+        "score_per_event": 12,
+        "observed_events": [
+          {
+            "pid": 9433,
+            "command": "getent passwd",
+            "audit_event_id": 983
+          },
+          {
+            "pid": 9438,
+            "command": "w",
+            "audit_event_id": 989
+          },
+          {
+            "pid": 9440,
+            "command": "who",
+            "audit_event_id": 991
+          }
+        ],
+        "subtotal": 36
+      },
+      {
+        "behavior": "network_enumeration",
+        "commands": [
+          "ip a",
+          "ip route",
+          "ss -tulnp"
+        ],
+        "score_per_event": 15,
+        "observed_events": [
+          {
+            "pid": 9442,
+            "command": "ip a",
+            "audit_event_id": 994
+          },
+          {
+            "pid": 9444,
+            "command": "ip route",
+            "audit_event_id": 996
+          },
+          {
+            "pid": 9446,
+            "command": "ss -tulnp",
+            "audit_event_id": 998
+          }
+        ],
+        "subtotal": 45
+      },
+      {
+        "behavior": "process_service_enumeration",
+        "commands": [
+          "ps aux",
+          "systemctl list-units --type=service"
+        ],
+        "score_per_event": 14,
+        "observed_events": [
+          {
+            "pid": 9448,
+            "command": "ps aux",
+            "audit_event_id": 1000
+          },
+          {
+            "pid": 9452,
+            "command": "systemctl list-units --type=service",
+            "audit_event_id": 1002
+          }
+        ],
+        "subtotal": 28
+      },
+      {
+        "behavior": "privilege_probe",
+        "commands": [
+          "sudo -l",
+          "unix_chkpwd"
+        ],
+        "score_per_event": 20,
+        "observed_events": [
+          {
+            "pid": 9435,
+            "command": "sudo -l",
+            "audit_event_id": 985
+          },
+          {
+            "pid": 9436,
+            "command": "unix_chkpwd",
+            "audit_event_id": 986
+          }
+        ],
+        "subtotal": 40
+      }
+    ],
+    "behavioral_modifiers": [
+      {
+        "condition": "same_auid_and_tty",
+        "description": "all commands tied to same interactive user session",
+        "modifier": 15
+      },
+      {
+        "condition": "shared_parent_process",
+        "description": "commands spawned from same enumeration shell",
+        "modifier": 20
+      },
+      {
+        "condition": "high_command_density",
+        "description": "multiple discovery commands executed rapidly within correlation window",
+        "modifier": 25
+      },
+      {
+        "condition": "privilege_enumeration_present",
+        "description": "sudo capability assessment observed",
+        "modifier": 20
+      }
+    ]
+  },
+  "score_calculation": {
+    "raw_behavior_score": 195,
+    "behavioral_modifier_score": 80,
+    "final_score": 100,
+    "score_cap": 100,
+    "severity": "critical"
+  },
+  "detection_decision": {
+    "triggered": true,
+    "decision_reason": [
+      "Large cluster of reconnaissance commands executed in single session.",
+      "Commands covered identity, host, network, process, and privilege discovery.",
+      "Shared parent process indicates orchestrated enumeration behavior.",
+      "sudo privilege probing increases attack confidence."
+    ],
+    "recommended_alert_title": "Correlated Linux Enumeration and Privilege Discovery Activity",
+    "recommended_response": [
+      "Investigate originating user session.",
+      "Review shell history and executed scripts.",
+      "Validate whether enumeration activity was administrative or simulated.",
+      "Pivot into subsequent persistence or credential access telemetry."
+    ]
+  },
+  "telemetry_summary": {
+    "first_seen": "2026-05-28T15:42:32",
+    "last_seen": "2026-05-28T15:45:01",
+    "total_correlated_events": 15,
+    "interactive_terminal": true,
+    "tty": "pts4",
+    "session_duration_seconds": 149
+  },
+  "engine_notes": [
+    "This scoring engine favors behavioral clustering over isolated command execution.",
+    "Single administrative commands should not independently trigger high severity.",
+    "Correlation across identity discovery, network discovery, and privilege probing substantially increases confidence.",
+    "The simulation demonstrates attacker-style staged enumeration rather than normal ad-hoc administration."
+  ]
+}

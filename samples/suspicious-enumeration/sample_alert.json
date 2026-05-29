@@ -1,0 +1,107 @@
+{
+  "alert": {
+    "id": "ALERT-ENUM-2026-0001",
+    "timestamp": "2026-05-28T09:42:15.102Z",
+    "status": "open",
+    "severity": "medium",
+    "risk_score": 68,
+    "title": "Suspicious Enumeration Activity Detected",
+    "description": "Multiple Linux enumeration commands were executed within a short time window, indicating potential post-compromise discovery activity.",
+    "category": "Discovery",
+    "provider": "Detection Engineering Lab",
+    "rule": {
+      "name": "Suspicious Enumeration Activity",
+      "id": "DET-LNX-ENUM-001",
+      "type": "Behavioral Detection",
+      "author": "Bunny",
+      "version": "1.0",
+      "severity": "medium"
+    }
+  },
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "ip": "192.168.56.101",
+    "os": {
+      "family": "linux",
+      "name": "Ubuntu",
+      "version": "22.04"
+    }
+  },
+  "user": {
+    "name": "bunny",
+    "uid": "1000",
+    "effective_user": "root"
+  },
+  "process": {
+    "name": "whoami",
+    "pid": 9423,
+    "ppid": 9421,
+    "executable": "/usr/bin/whoami",
+    "command_line": "whoami",
+    "working_directory": "/home/bunny/Detection-Engineering-Lab/simulations/suspicious-enumeration/scripts"
+  },
+  "parent_process": {
+    "name": "bash",
+    "pid": 9421,
+    "command_line": "bash enumeration.sh"
+  },
+  "detection": {
+    "trigger_fields": [
+      "process.name",
+      "process.command_line",
+      "auditd.record.a0",
+      "event.action"
+    ],
+    "matched_command": "whoami",
+    "matched_pattern": "Known Linux enumeration utility execution",
+    "correlation_logic": "Multiple discovery commands executed sequentially within 60 seconds",
+    "commands_observed": [
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ifconfig",
+      "ip addr",
+      "ps aux",
+      "netstat -tulnp"
+    ],
+    "telemetry_source": "auditd EXECVE"
+  },
+  "threat": {
+    "framework": "MITRE ATT&CK",
+    "tactic": {
+      "id": "TA0007",
+      "name": "Discovery"
+    },
+    "technique": {
+      "id": "T1082",
+      "name": "System Information Discovery"
+    }
+  },
+  "investigation": {
+    "analyst_notes": "Observed execution of multiple reconnaissance commands commonly used by attackers after initial access. Activity aligns with host and network enumeration behavior.",
+    "recommended_actions": [
+      "Review preceding authentication events",
+      "Investigate related shell activity",
+      "Check for persistence mechanisms",
+      "Correlate with outbound network connections",
+      "Validate whether activity was authorized administrative behavior"
+    ]
+  },
+  "auditd": {
+    "message_type": "EXECVE",
+    "key": "exec_monitor",
+    "sequence": 2145,
+    "session": 3,
+    "argc": 1,
+    "a0": "whoami"
+  },
+  "tags": [
+    "linux",
+    "enumeration",
+    "auditd",
+    "attack.discovery",
+    "attack.t1082",
+    "behavioral-detection"
+  ]
+}

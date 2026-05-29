@@ -1,0 +1,80 @@
+{
+  "event_type": "process_creation",
+  "timestamp": "2026-05-28T14:41:12Z",
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Ubuntu Linux",
+    "kernel_version": "5.15.0"
+  },
+  "user": {
+    "name": "bunny",
+    "uid": 1000,
+    "gid": 1000,
+    "shell": "/bin/bash"
+  },
+  "process": {
+    "pid": 4821,
+    "ppid": 4817,
+    "name": "uname",
+    "executable": "/usr/bin/uname",
+    "command_line": "uname -a",
+    "working_directory": "/home/bunny/Detection-Engineering-Lab/scripts",
+    "tty": "pts0",
+    "start_time": "2026-05-28T14:41:12Z",
+    "integrity_level": "user"
+  },
+  "parent_process": {
+    "pid": 4817,
+    "name": "bash",
+    "executable": "/usr/bin/bash",
+    "command_line": "./enumeration.sh"
+  },
+  "auditd": {
+    "record_type": "EXECVE",
+    "audit_key": "execve-monitor",
+    "argc": 2,
+    "arguments": [
+      "uname",
+      "-a"
+    ],
+    "success": true,
+    "auid": 1000,
+    "session": 3
+  },
+  "detection_context": {
+    "simulation": "Suspicious Enumeration Activity",
+    "attack_technique": {
+      "id": "T1082",
+      "name": "System Information Discovery"
+    },
+    "behavioral_tags": [
+      "enumeration",
+      "system_discovery",
+      "host_reconnaissance",
+      "linux_discovery_commands"
+    ],
+    "suspicious_indicators": [
+      "execution_of_native_enumeration_utility",
+      "interactive_shell_reconnaissance",
+      "multiple_discovery_commands_in_sequence"
+    ]
+  },
+  "related_processes": [
+    {
+      "name": "whoami",
+      "command_line": "whoami"
+    },
+    {
+      "name": "id",
+      "command_line": "id"
+    },
+    {
+      "name": "hostname",
+      "command_line": "hostname"
+    },
+    {
+      "name": "ps",
+      "command_line": "ps aux"
+    }
+  ]
+}

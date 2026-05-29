@@ -1,0 +1,108 @@
+{
+  "event": {
+    "kind": "event",
+    "category": [
+      "process",
+      "host"
+    ],
+    "type": [
+      "start",
+      "info"
+    ],
+    "action": "process_exec",
+    "outcome": "success",
+    "dataset": "auditd.execve",
+    "module": "auditd",
+    "severity": 3,
+    "risk_score": 21,
+    "created": "2026-05-28T09:42:13.369Z"
+  },
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": {
+      "family": "linux",
+      "platform": "ubuntu",
+      "name": "Ubuntu",
+      "version": "22.04"
+    },
+    "architecture": "x86_64"
+  },
+  "user": {
+    "name": "bunny",
+    "id": "1000",
+    "group": {
+      "id": "1000"
+    },
+    "effective": {
+      "name": "root",
+      "id": "0"
+    }
+  },
+  "process": {
+    "pid": 2147,
+    "ppid": 2139,
+    "name": "whoami",
+    "executable": "/usr/bin/whoami",
+    "command_line": "whoami",
+    "working_directory": "/home/bunny/Detection-Engineering-Lab/simulations/suspicious-enumeration/scripts",
+    "args": [
+      "whoami"
+    ],
+    "entity_id": "2147-1779778933",
+    "hash": {
+      "sha256": "simulation-placeholder-hash"
+    }
+  },
+  "parent": {
+    "process": {
+      "pid": 2139,
+      "name": "bash",
+      "executable": "/usr/bin/bash",
+      "command_line": "bash enumeration.sh"
+    }
+  },
+  "auditd": {
+    "message_type": "EXECVE",
+    "sequence": 2145,
+    "result": "success",
+    "session": 3,
+    "key": "exec_monitor",
+    "record": {
+      "type": "EXECVE",
+      "argc": 1,
+      "a0": "whoami"
+    }
+  },
+  "rule": {
+    "name": "Suspicious Enumeration Activity",
+    "description": "Detects execution of common Linux enumeration commands associated with post-compromise reconnaissance.",
+    "author": "Bunny",
+    "mitre": {
+      "tactic": "Discovery",
+      "technique": {
+        "id": "T1082",
+        "name": "System Information Discovery"
+      }
+    }
+  },
+  "tags": [
+    "attack.discovery",
+    "attack.t1082",
+    "linux",
+    "enumeration",
+    "auditd"
+  ],
+  "related": {
+    "commands_observed": [
+      "whoami",
+      "id",
+      "uname -a",
+      "hostname",
+      "ifconfig",
+      "ip addr",
+      "ps aux",
+      "netstat -tulnp"
+    ]
+  },
+  "message": "Enumeration command executed on Linux host during suspicious discovery activity simulation."
+}

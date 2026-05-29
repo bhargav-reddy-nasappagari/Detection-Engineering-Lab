@@ -1,0 +1,106 @@
+1. Session ID definition
+
+we derive one logical session
+
+SESSION_ID = S1 (auid=1000, tty=pts4, window: 15:42–15:45)
+
+We are deliberately collapsing:
+
+* auditd EXECVE logs
+* auth logs
+* process tree
+
+into one correlated session object
+
+2. Unified Session Reconstruction Table
+
+Legend for “Stage”
+
+INIT → session / shell setup
+DISCOVERY → system introspection (whoami, hostname, uname)
+ENUM_USER → users/groups/passwd enumeration
+ENUM_SYSTEM → services, processes, sockets
+PRIV_PROBE → sudo, unix_chkpwd, privilege checks
+DEF_AWARENESS → log inspection / audit querying
+
+📊 Session Table
+
+session_id	pid	ppid	tty	command	timestamp	auid	stage
+S1	8907	4449	pts/2	bash	15:42:32	1000	INIT
+S1	9403	8907	pts/2	script logs/suspicious-enumeration/terminal_session.log	15:41	1000	INIT
+S1	9404	9403	pts/4	bash -i	15:41	1000	INIT
+S1	9421	9404	pts/4	bash enumeration.sh	15:42:32	1000	INIT
+
+Discovery Phase
+
+session_id	pid	ppid	tty	command	timestamp	auid	stage
+S1	9423	9421	pts/4	whoami	15:42:34	1000	DISCOVERY
+S1	9427	9421	pts/4	hostname	15:42:36	1000	DISCOVERY
+S1	9429	9421	pts/4	uname -a	15:42:37	1000	DISCOVERY
+
+User / Identity Enumeration
+
+session_id	pid	ppid	tty	command	timestamp	auid	stage
+S1	9425	9421	pts/4	id	15:42:35	1000	ENUM_USER
+S1	9431	9421	pts/4	groups	15:42:39	1000	ENUM_USER
+S1	9433	9421	pts/4	getent passwd	15:42:40	1000	ENUM_USER
+
+System / Network Discovery
+
+session_id	pid	ppid	tty	command	timestamp	auid	stage
+S1	9442	9421	pts/4	ip a	15:44:53	1000	ENUM_SYSTEM
+S1	9444	9421	pts/4	ip route	15:44:55	1000	ENUM_SYSTEM
+S1	9446	9421	pts/4	ss -tulnp	15:44:57	1000	ENUM_SYSTEM
+S1	9448	9421	pts/4	ps aux	15:44:59	1000	ENUM_SYSTEM
+S1	9452	9421	pts/4	systemctl list-units --type=service	15:45:01	1000	ENUM_SYSTEM
+S1	9453	9452	pts/4	pager (systemctl output handler)	15:45:01	1000	ENUM_SYSTEM
+
+Privilege / Security Probing
+
+session_id	pid	ppid	tty	command	timestamp	auid	stage
+S1	9435	9421	pts/4	sudo -l	15:44:47	1000	PRIV_PROBE
+S1	9436	9435	pts/4	unix_chkpwd bunny nonull	15:44:47	1000	PRIV_PROBE
+
+Defense / Awareness Activity
+
+session_id	pid	ppid	tty	command	timestamp	auid	stage
+S1	9438	9421	pts/4	w	15:44:49	1000	DEF_AWARENESS
+S1	9440	9421	pts/4	who	15:44:51	1000	DEF_AWARENESS
+S1	9451	9421	pts/4	cp /var/log/auth.log logs/suspicious-enumeration/auth.log	15:58:24	1000	DEF_AWARENESS
+
+3. SESSION GRAPH 
+
+S1 (pts/2 bash)
+   |
+   └── 9403 script logs/suspicious-enumeration/terminal_session.log
+           |
+           └── 9404 bash -i (new interactive shell)
+                   |
+                   └── 9421 bash enumeration.sh
+                           |
+                           ├── DISCOVERY
+                           │     ├── whoami
+                           │     ├── hostname
+                           │     └── uname -a
+                           |
+                           ├── ENUM_USER
+                           │     ├── id
+                           │     ├── groups
+                           │     └── getent passwd
+                           |
+                           ├── ENUM_SYSTEM
+                           │     ├── ip a
+                           │     ├── ip route
+                           │     ├── ss -tulnp
+                           │     ├── ps aux
+                           │     └── systemctl list-units
+                           │             └── pager (child process)
+                           |
+                           ├── PRIV_PROBE
+                           │     ├── sudo -l
+                           │     └── unix_chkpwd
+                           |
+                           └── DEF_AWARENESS
+                                 ├── w
+                                 ├── who
+                                 └── auth.log copy

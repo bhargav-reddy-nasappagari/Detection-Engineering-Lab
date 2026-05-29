@@ -1,0 +1,334 @@
+title: Linux Suspicious Enumeration Activity
+id: 7f4a9f76-6e4d-4d0f-9f5b-structured-enum-linux
+status: experimental
+
+description: >
+  Detects structured Linux enumeration behavior commonly associated
+  with post-compromise reconnaissance activity. The rule identifies
+  bursts of reconnaissance commands, privilege probing, and staged
+  discovery behavior executed within a short time window.
+
+references:
+  - https://attack.mitre.org/techniques/T1082/
+  - https://attack.mitre.org/techniques/T1087/
+  - https://attack.mitre.org/techniques/T1049/
+  - https://attack.mitre.org/techniques/T1069/
+  - https://attack.mitre.org/techniques/T1068/
+
+author: Bunny
+date: 2026-05-29
+
+tags:
+  - attack.discovery
+  - attack.t1082
+  - attack.t1087
+  - attack.t1049
+  - attack.t1069
+  - attack.t1068
+  - linux
+  - reconnaissance
+  - post-compromise
+
+logsource:
+  product: linux
+  service: auditd
+  category: process_creation
+
+detection:
+
+  #
+  # Identity Enumeration
+  #
+  selection_identity:
+    CommandLine|contains:
+      - 'whoami'
+      - 'id'
+      - 'groups'
+
+  #
+  # System Discovery
+  #
+  selection_system:
+    CommandLine|contains:
+      - 'uname'
+      - 'hostname'
+      - 'cat /etc/os-release'
+
+  #
+  # User Discovery
+  #
+  selection_users:
+    CommandLine|contains:
+      - 'getent passwd'
+      - 'who'
+      - 'w '
+      - 'last'
+
+  #
+  # Network Discovery
+  #
+  selection_network:
+    CommandLine|contains:
+      - 'ip a'
+      - 'ip addr'
+      - 'ifconfig'
+      - 'ss -tulnp'
+      - 'netstat'
+      - 'ip route'
+
+  #
+  # Service Enumeration
+  #
+  selection_services:
+    CommandLine|contains:
+      - 'systemctl list-units'
+      - 'service --status-all'
+
+  #
+  # Process Enumeration
+  #
+  selection_processes:
+    CommandLine|contains:
+      - 'ps aux'
+      - 'pstree'
+      - 'top'
+      - 'htop'
+
+  #
+  # Privilege Enumeration
+  #
+  selection_privilege_probe:
+    CommandLine|contains:
+      - 'sudo -l'
+
+  #
+  # Interactive Shell Wrapping
+  #
+  selection_shell_wrapping:
+    CommandLine|contains:
+      - 'bash -i'
+      - 'sh -i'
+
+  #
+  # Sleep / pacing indicators
+  #
+  selection_pacing:
+    CommandLine|contains:
+      - 'sleep '
+
+  #
+  # Correlation logic
+  #
+  condition: >
+    (
+      3 of selection_*
+    )
+
+fields:
+  - _time
+  - host.name
+  - user.name
+  - process.pid
+  - process.parent.pid
+  - process.command_line
+  - process.executable
+  - process.parent.command_line
+  - audit.auid
+  - audit.session
+  - tty
+
+falsepositives:
+  - System administrators performing diagnostics
+  - CI/CD automation scripts
+  - Infrastructure inventory tooling
+  - Security auditing activities
+  - Configuration management frameworks
+  - Troubleshooting sessions by privileged users
+
+level: high
+
+---
+
+title: Linux Enumeration Burst Activity
+id: 8d2b0f91-22aa-4b0e-9ef6-linux-enum-burst
+status: experimental
+
+description: >
+  Detects high-density execution of Linux enumeration commands
+  within a short time window, indicating structured reconnaissance
+  behavior after initial compromise.
+
+references:
+  - https://attack.mitre.org/techniques/T1082/
+
+author: Bunny
+date: 2026-05-29
+
+tags:
+  - attack.discovery
+  - linux
+  - reconnaissance
+  - enumeration
+
+logsource:
+  product: linux
+  service: auditd
+  category: process_creation
+
+detection:
+
+  selection:
+    CommandLine|contains:
+      - 'whoami'
+      - 'id'
+      - 'uname'
+      - 'hostname'
+      - 'getent passwd'
+      - 'ip a'
+      - 'ss -tulnp'
+      - 'systemctl list-units'
+      - 'ps aux'
+      - 'sudo -l'
+
+  timeframe: 2m
+
+  condition: selection
+
+aggregation:
+  - field: audit.session
+    function: count
+    value: 6
+
+fields:
+  - host.name
+  - user.name
+  - process.command_line
+  - audit.session
+  - tty
+
+falsepositives:
+  - Administrative maintenance
+  - Automated inventory collection
+  - Compliance scanning tools
+
+level: high
+
+---
+
+title: Linux Privilege Enumeration Following Discovery Activity
+id: 19c0dc84-privilege-enum-correlation-linux
+status: experimental
+
+description: >
+  Detects sudo privilege probing occurring after multiple
+  Linux discovery commands inside the same session.
+
+references:
+  - https://attack.mitre.org/techniques/T1068/
+  - https://attack.mitre.org/techniques/T1082/
+
+author: Bunny
+date: 2026-05-29
+
+tags:
+  - attack.discovery
+  - attack.privilege_escalation
+  - linux
+  - sudo
+
+logsource:
+  product: linux
+  service: auditd
+  category: process_creation
+
+detection:
+
+  selection_enum:
+    CommandLine|contains:
+      - 'whoami'
+      - 'id'
+      - 'uname'
+      - 'ip a'
+      - 'ps aux'
+
+  selection_sudo_probe:
+    CommandLine|contains:
+      - 'sudo -l'
+
+  timeframe: 5m
+
+  condition: selection_enum and selection_sudo_probe
+
+fields:
+  - host.name
+  - user.name
+  - process.command_line
+  - process.parent.command_line
+  - audit.session
+
+falsepositives:
+  - Legitimate administrator privilege validation
+  - Security audits
+  - DevOps troubleshooting
+
+level: high
+
+---
+
+title: Linux Controlled Enumeration Pacing
+id: 52f5f61a-controlled-pacing-linux
+status: experimental
+
+description: >
+  Detects enumeration activity combined with sleep-based pacing,
+  potentially indicating anti-detection behavior or scripted
+  reconnaissance execution.
+
+references:
+  - https://attack.mitre.org/techniques/T1082/
+
+author: Bunny
+date: 2026-05-29
+
+tags:
+  - attack.discovery
+  - linux
+  - defense-evasion
+  - scripted-execution
+
+logsource:
+  product: linux
+  service: auditd
+  category: process_creation
+
+detection:
+
+  selection_enum:
+    CommandLine|contains:
+      - 'whoami'
+      - 'id'
+      - 'uname'
+      - 'ip a'
+      - 'ps aux'
+
+  selection_sleep:
+    CommandLine|contains:
+      - 'sleep '
+
+  condition: selection_enum and selection_sleep
+
+fields:
+  - host.name
+  - user.name
+  - process.command_line
+  - process.parent.command_line
+  - process.pid
+  - audit.session
+
+falsepositives:
+  - Shell automation scripts
+  - Scheduled maintenance scripts
+  - CI/CD orchestration
+
+level: medium
+

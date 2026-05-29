@@ -1,0 +1,141 @@
+{
+  "alert_name": "Linux Privilege Enumeration Activity",
+  "alert_type": "privilege_probe",
+  "severity": "medium",
+  "status": "confirmed_simulation",
+  "technique": {
+    "mitre_attack_id": "T1087",
+    "technique_name": "Account Discovery"
+  },
+  "related_techniques": [
+    {
+      "mitre_attack_id": "T1069",
+      "technique_name": "Permission Groups Discovery"
+    },
+    {
+      "mitre_attack_id": "T1082",
+      "technique_name": "System Information Discovery"
+    },
+    {
+      "mitre_attack_id": "T1548",
+      "technique_name": "Abuse Elevation Control Mechanism"
+    }
+  ],
+  "session_context": {
+    "auid": 1000,
+    "uid": 1000,
+    "tty": "pts4",
+    "session_id": 3,
+    "interactive": true,
+    "cwd": "/home/bunny/Detection-Engineering-Lab",
+    "parent_process": {
+      "pid": 9421,
+      "name": "enumeration.sh",
+      "exe": "/usr/bin/bash",
+      "command_line": "/bin/bash scenarios/suspicious-enumeration/enumeration.sh"
+    }
+  },
+  "privilege_probe_sequence": [
+    {
+      "timestamp": "2026-05-28T15:42:35",
+      "pid": 9425,
+      "ppid": 9421,
+      "command": "id",
+      "exe": "/usr/lib/cargo/bin/coreutils/id",
+      "telemetry_reason": "queried effective uid gid and group membership"
+    },
+    {
+      "timestamp": "2026-05-28T15:42:39",
+      "pid": 9431,
+      "ppid": 9421,
+      "command": "groups",
+      "exe": "/usr/lib/cargo/bin/coreutils/groups",
+      "telemetry_reason": "queried supplementary groups"
+    },
+    {
+      "timestamp": "2026-05-28T15:42:40",
+      "pid": 9433,
+      "ppid": 9421,
+      "command": "getent passwd",
+      "exe": "/usr/bin/getent",
+      "telemetry_reason": "enumerated local user accounts"
+    },
+    {
+      "timestamp": "2026-05-28T15:42:42",
+      "pid": 9435,
+      "ppid": 9421,
+      "command": "sudo -l",
+      "exe": "/usr/lib/cargo/bin/sudo",
+      "telemetry_reason": "attempted sudo capability discovery",
+      "privilege_transition": {
+        "uid": 1000,
+        "euid": 0,
+        "suid": 0
+      }
+    },
+    {
+      "timestamp": "2026-05-28T15:44:47",
+      "pid": 9436,
+      "ppid": 9435,
+      "command": "/usr/sbin/unix_chkpwd bunny nonull",
+      "exe": "/usr/sbin/unix_chkpwd",
+      "telemetry_reason": "sudo authentication helper invoked during privilege validation",
+      "authentication_context": {
+        "uid": 0,
+        "euid": 0,
+        "egid": 42
+      }
+    }
+  ],
+  "correlation_logic": {
+    "grouping_fields": [
+      "auid",
+      "tty",
+      "session_id",
+      "parent_pid"
+    ],
+    "shared_auid": 1000,
+    "shared_tty": "pts4",
+    "shared_parent_pid": 9421,
+    "time_window_seconds": 135,
+    "behavior_pattern": "interactive_privilege_reconnaissance"
+  },
+  "behavioral_assessment": {
+    "confidence": "high",
+    "reasoning": [
+      "Multiple privilege and identity discovery commands executed in sequence.",
+      "sudo capability probing observed through sudo -l.",
+      "Authentication helper unix_chkpwd spawned immediately after sudo invocation.",
+      "All commands tied to same interactive session and enumeration shell."
+    ],
+    "attack_progression_indicator": "attacker assessing escalation opportunities before lateral movement or persistence"
+  },
+  "detection_recommendations": [
+    "Correlate sudo -l with preceding identity enumeration utilities.",
+    "Monitor clustered execution of id, groups, getent, and sudo enumeration commands.",
+    "Alert when unix_chkpwd execution follows suspicious discovery chains.",
+    "Increase severity if privilege probing is followed by service manipulation or credential access activity."
+  ],
+  "raw_log_references": [
+    {
+      "audit_event_id": 975,
+      "command": "id"
+    },
+    {
+      "audit_event_id": 981,
+      "command": "groups"
+    },
+    {
+      "audit_event_id": 983,
+      "command": "getent passwd"
+    },
+    {
+      "audit_event_id": 985,
+      "command": "sudo -l"
+    },
+    {
+      "audit_event_id": 986,
+      "command": "unix_chkpwd"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Sensitive raw authentication logs
+logs/**/auth.log
+logs/**/raw_auth_logs.txt

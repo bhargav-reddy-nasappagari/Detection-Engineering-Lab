@@ -1,0 +1,166 @@
+{
+  "correlation_type": "session_activity_correlation",
+  "correlation_basis": [
+    "auid",
+    "tty",
+    "session_id",
+    "parent_pid"
+  ],
+  "session": {
+    "auid": 1000,
+    "tty": "pts4",
+    "ses": 3,
+    "root_process": {
+      "pid": 9421,
+      "process": "enumeration.sh",
+      "exe": "/usr/bin/bash",
+      "cwd": "/home/bunny/Detection-Engineering-Lab",
+      "command_line": "/bin/bash scenarios/suspicious-enumeration/enumeration.sh",
+      "timestamp": "2026-05-28T15:42:32"
+    },
+    "correlated_activity": [
+      {
+        "timestamp": "2026-05-28T15:42:34",
+        "pid": 9423,
+        "ppid": 9421,
+        "command": "whoami",
+        "exe": "/usr/lib/cargo/bin/coreutils/whoami",
+        "purpose": "current user discovery"
+      },
+      {
+        "timestamp": "2026-05-28T15:42:35",
+        "pid": 9425,
+        "ppid": 9421,
+        "command": "id",
+        "exe": "/usr/lib/cargo/bin/coreutils/id",
+        "purpose": "uid gid privilege enumeration"
+      },
+      {
+        "timestamp": "2026-05-28T15:42:36",
+        "pid": 9427,
+        "ppid": 9421,
+        "command": "hostname",
+        "exe": "/usr/bin/hostname",
+        "purpose": "host identification"
+      },
+      {
+        "timestamp": "2026-05-28T15:42:37",
+        "pid": 9429,
+        "ppid": 9421,
+        "command": "uname -a",
+        "exe": "/usr/lib/cargo/bin/coreutils/uname",
+        "purpose": "kernel and operating system enumeration"
+      },
+      {
+        "timestamp": "2026-05-28T15:42:39",
+        "pid": 9431,
+        "ppid": 9421,
+        "command": "groups",
+        "exe": "/usr/lib/cargo/bin/coreutils/groups",
+        "purpose": "group membership discovery"
+      },
+      {
+        "timestamp": "2026-05-28T15:42:40",
+        "pid": 9433,
+        "ppid": 9421,
+        "command": "getent passwd",
+        "exe": "/usr/bin/getent",
+        "purpose": "local account enumeration"
+      },
+      {
+        "timestamp": "2026-05-28T15:42:42",
+        "pid": 9435,
+        "ppid": 9421,
+        "command": "sudo -l",
+        "exe": "/usr/lib/cargo/bin/sudo",
+        "purpose": "sudo privilege enumeration",
+        "privilege_context": {
+          "euid": 0,
+          "uid": 1000
+        }
+      },
+      {
+        "timestamp": "2026-05-28T15:44:47",
+        "pid": 9436,
+        "ppid": 9435,
+        "command": "/usr/sbin/unix_chkpwd bunny nonull",
+        "exe": "/usr/sbin/unix_chkpwd",
+        "purpose": "sudo authentication helper invocation",
+        "relationship": "child_of_sudo"
+      },
+      {
+        "timestamp": "2026-05-28T15:44:49",
+        "pid": 9438,
+        "ppid": 9421,
+        "command": "w",
+        "exe": "/usr/bin/w",
+        "purpose": "logged in user enumeration"
+      },
+      {
+        "timestamp": "2026-05-28T15:44:51",
+        "pid": 9440,
+        "ppid": 9421,
+        "command": "who",
+        "exe": "/usr/lib/cargo/bin/coreutils/who",
+        "purpose": "interactive session enumeration"
+      },
+      {
+        "timestamp": "2026-05-28T15:44:53",
+        "pid": 9442,
+        "ppid": 9421,
+        "command": "ip a",
+        "exe": "/usr/bin/ip",
+        "purpose": "network interface enumeration"
+      },
+      {
+        "timestamp": "2026-05-28T15:44:55",
+        "pid": 9444,
+        "ppid": 9421,
+        "command": "ip route",
+        "exe": "/usr/bin/ip",
+        "purpose": "routing table discovery"
+      },
+      {
+        "timestamp": "2026-05-28T15:44:57",
+        "pid": 9446,
+        "ppid": 9421,
+        "command": "ss -tulnp",
+        "exe": "/usr/bin/ss",
+        "purpose": "network service and listening port enumeration"
+      },
+      {
+        "timestamp": "2026-05-28T15:44:59",
+        "pid": 9448,
+        "ppid": 9421,
+        "command": "ps aux",
+        "exe": "/usr/bin/ps",
+        "purpose": "process enumeration"
+      },
+      {
+        "timestamp": "2026-05-28T15:45:01",
+        "pid": 9452,
+        "ppid": 9421,
+        "command": "systemctl list-units --type=service",
+        "exe": "/usr/bin/systemctl",
+        "purpose": "service enumeration"
+      }
+    ],
+    "session_characteristics": {
+      "shared_auid": 1000,
+      "shared_tty": "pts4",
+      "shared_session_id": 3,
+      "shared_parent_process": 9421,
+      "execution_pattern": "sequential_discovery_commands",
+      "behavioral_cluster": "host_and_network_enumeration",
+      "detection_relevance": "multiple reconnaissance commands executed from same interactive session and parent shell"
+    },
+    "analytic_observations": [
+      "All enumeration utilities inherit the same auid=1000 indicating the same authenticated user context.",
+      "All commands originate from tty pts4 indicating an interactive terminal session.",
+      "Most commands share ppid=9421 linking them directly to enumeration.sh.",
+      "The command chain demonstrates structured discovery behavior rather than isolated administrative activity.",
+      "Temporal clustering of discovery utilities within minutes increases confidence for reconnaissance detection.",
+      "sudo -l followed by unix_chkpwd indicates attempted privilege capability assessment."
+    ]
+  }
+}
