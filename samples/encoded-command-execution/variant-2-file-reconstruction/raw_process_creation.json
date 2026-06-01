@@ -1,0 +1,124 @@
+{
+  "event_type": "process_creation",
+  "scenario": "encoded-command-execution",
+  "variant": "variant-2-file-reconstruction",
+  "attack_technique": {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information"
+  },
+  "session": {
+    "session_id": 21,
+    "auid": 1000,
+    "tty": "pts4",
+    "user": "bunny",
+    "host": "bunny-VirtualBox"
+  },
+  "process_tree": {
+    "root_process": {
+      "pid": 14633,
+      "name": "bash",
+      "image": "/usr/bin/bash",
+      "role": "interactive_shell"
+    },
+    "children": [
+      {
+        "pid": 16839,
+        "ppid": 14633,
+        "name": "chmod",
+        "image": "/usr/lib/cargo/bin/coreutils/chmod",
+        "command_line": "chmod +x /tmp/payload.sh",
+        "timestamp": "2026-05-30T23:22:34",
+        "purpose": "prepare_payload_execution"
+      },
+      {
+        "pid": 16845,
+        "ppid": 14633,
+        "name": "ls",
+        "image": "/usr/lib/cargo/bin/coreutils/ls",
+        "command_line": "ls --color=auto -la /tmp/payload.sh",
+        "timestamp": "2026-05-30T23:22:36",
+        "purpose": "verify_payload_permissions"
+      },
+      {
+        "pid": 16858,
+        "ppid": 14633,
+        "name": "payload.sh",
+        "image": "/usr/bin/bash",
+        "command_line": "/bin/bash /tmp/payload.sh",
+        "timestamp": "2026-05-30T23:28:07",
+        "purpose": "decoded_payload_execution",
+        "children": [
+          {
+            "pid": 16861,
+            "ppid": 16858,
+            "name": "whoami",
+            "image": "/usr/lib/cargo/bin/coreutils/whoami",
+            "command_line": "whoami",
+            "category": "system_discovery"
+          },
+          {
+            "pid": 16862,
+            "ppid": 16858,
+            "name": "id",
+            "image": "/usr/lib/cargo/bin/coreutils/id",
+            "command_line": "id",
+            "category": "system_discovery"
+          },
+          {
+            "pid": 16865,
+            "ppid": 16858,
+            "name": "hostname",
+            "image": "/usr/bin/hostname",
+            "command_line": "hostname",
+            "category": "system_discovery"
+          },
+          {
+            "pid": 16866,
+            "ppid": 16858,
+            "name": "uname",
+            "image": "/usr/lib/cargo/bin/coreutils/uname",
+            "command_line": "uname -a",
+            "category": "system_discovery"
+          },
+          {
+            "pid": 16869,
+            "ppid": 16858,
+            "name": "ps",
+            "image": "/usr/bin/ps",
+            "command_line": "ps aux",
+            "category": "process_discovery"
+          },
+          {
+            "pid": 16872,
+            "ppid": 16858,
+            "name": "touch",
+            "image": "/usr/lib/cargo/bin/coreutils/touch",
+            "command_line": "touch /tmp/.enc_exec_marker",
+            "category": "artifact_creation"
+          },
+          {
+            "pid": 16875,
+            "ppid": 16858,
+            "name": "curl",
+            "image": "/usr/bin/curl",
+            "command_line": "curl -s http://127.0.0.1:8080/ping",
+            "category": "network_activity"
+          }
+        ]
+      }
+    ]
+  },
+  "detection_context": {
+    "suspicious_parent": "/tmp/payload.sh",
+    "execution_directory": "/tmp",
+    "behavior_chain": [
+      "chmod +x payload",
+      "execute payload from /tmp",
+      "host discovery",
+      "process discovery",
+      "marker file creation",
+      "network callback"
+    ],
+    "risk_score": 85
+  }
+}

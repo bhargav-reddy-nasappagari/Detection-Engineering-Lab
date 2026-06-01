@@ -1,0 +1,189 @@
+{
+  "session_reconstruction_id": "SESSION-ENCODED-EXEC-001",
+  "scenario": "encoded-command-execution",
+  "attack_technique": {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information"
+  },
+  "session_metadata": {
+    "hostname": "bunny-VirtualBox",
+    "username": "bunny",
+    "auid": 1000,
+    "uid": 1000,
+    "tty": "pts1",
+    "session_id": 3,
+    "start_time": "2026-05-31T16:52:17Z",
+    "end_time": "2026-05-31T16:52:18Z"
+  },
+  "attack_story": {
+    "initial_access": "User executed a Python decoder script from an interactive terminal session.",
+    "payload_staging": "Python decoded content and wrote a temporary shell payload to /tmp/python_payload.sh.",
+    "payload_execution": "Python launched Bash and executed the staged payload.",
+    "host_reconnaissance": "The payload collected user, host, operating system, and process information.",
+    "artifact_creation": "Execution log and marker files were created in /tmp.",
+    "network_activity": "The payload initiated an HTTP request using curl.",
+    "completion": "The payload completed execution and exited."
+  },
+  "timeline": [
+    {
+      "sequence": 1,
+      "time": "2026-05-31T16:52:17Z",
+      "event_type": "execution",
+      "process": "python3",
+      "pid": 6385,
+      "description": "Python decoder script launched."
+    },
+    {
+      "sequence": 2,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "file_creation",
+      "process": "python3",
+      "pid": 6385,
+      "artifact": "/tmp/python_payload.sh",
+      "description": "Decoded payload written to temporary directory."
+    },
+    {
+      "sequence": 3,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "execution",
+      "process": "bash",
+      "pid": 6390,
+      "parent_pid": 6385,
+      "description": "Temporary payload executed through Bash."
+    },
+    {
+      "sequence": 4,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "discovery",
+      "process": "whoami",
+      "pid": 6393,
+      "description": "User discovery activity."
+    },
+    {
+      "sequence": 5,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "discovery",
+      "process": "id",
+      "pid": 6394,
+      "description": "Privilege and identity enumeration."
+    },
+    {
+      "sequence": 6,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "discovery",
+      "process": "hostname",
+      "pid": 6397,
+      "description": "Host identification."
+    },
+    {
+      "sequence": 7,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "discovery",
+      "process": "uname",
+      "pid": 6398,
+      "command_line": "uname -a",
+      "description": "Operating system enumeration."
+    },
+    {
+      "sequence": 8,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "discovery",
+      "process": "ps",
+      "pid": 6401,
+      "command_line": "ps aux",
+      "description": "Running process enumeration."
+    },
+    {
+      "sequence": 9,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "artifact_creation",
+      "process": "touch",
+      "pid": 6404,
+      "artifact": "/tmp/.enc_exec_marker",
+      "description": "Execution marker file created."
+    },
+    {
+      "sequence": 10,
+      "time": "2026-05-31T16:52:18Z",
+      "event_type": "network_activity",
+      "process": "curl",
+      "pid": 6407,
+      "command_line": "curl -s http://127.0.0.1:8080/ping",
+      "description": "HTTP communication initiated."
+    }
+  ],
+  "observed_artifacts": [
+    {
+      "type": "script",
+      "path": "/tmp/python_payload.sh",
+      "purpose": "Decoded payload staging"
+    },
+    {
+      "type": "log_file",
+      "path": "/tmp/encoded_execution.log",
+      "purpose": "Execution logging"
+    },
+    {
+      "type": "marker_file",
+      "path": "/tmp/.enc_exec_marker",
+      "purpose": "Execution completion indicator"
+    }
+  ],
+  "process_lineage": {
+    "root": "python3",
+    "child": "bash",
+    "grandchildren": [
+      "whoami",
+      "id",
+      "hostname",
+      "uname",
+      "ps",
+      "touch",
+      "curl"
+    ]
+  },
+  "behavioral_phases": [
+    {
+      "phase": "Execution",
+      "evidence": [
+        "python3",
+        "bash"
+      ]
+    },
+    {
+      "phase": "Payload Staging",
+      "evidence": [
+        "/tmp/python_payload.sh"
+      ]
+    },
+    {
+      "phase": "Host Discovery",
+      "evidence": [
+        "whoami",
+        "id",
+        "hostname",
+        "uname -a",
+        "ps aux"
+      ]
+    },
+    {
+      "phase": "Artifact Creation",
+      "evidence": [
+        "/tmp/encoded_execution.log",
+        "/tmp/.enc_exec_marker"
+      ]
+    },
+    {
+      "phase": "Network Activity",
+      "evidence": [
+        "curl -s http://127.0.0.1:8080/ping"
+      ]
+    }
+  ],
+  "analyst_assessment": {
+    "severity": "high",
+    "confidence": "high",
+    "verdict": "Encoded payload successfully decoded, staged, and executed through a shell interpreter. Subsequent discovery activity and network interaction were observed.",
+    "investigation_priority": "Process lineage, temporary file execution, and post-execution discovery behavior should be reviewed."
+  }
+}

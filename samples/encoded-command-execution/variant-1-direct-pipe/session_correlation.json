@@ -1,0 +1,179 @@
+{
+"correlation_id": "SESSION-21-ENCODED-EXECUTION-V1",
+"scenario": "Encoded Command Execution - Variant 1 (Direct Pipe Decode & Execute)",
+"correlation_type": "session_activity_reconstruction",
+
+"session": {
+"session_id": 21,
+"auid": 1000,
+"uid": 1000,
+"user": "bunny",
+"tty": "pts4",
+"host": "bunny-VirtualBox",
+"parent_payload_pid": 14645
+},
+
+"execution_summary": {
+"execution_method": "base64_decode_pipe_to_bash",
+"decoder": "base64",
+"interpreter": "bash",
+"risk_level": "high",
+"behavior_category": "encoded_command_execution"
+},
+
+"timeline": [
+{
+"sequence": 1,
+"phase": "payload_access",
+"process": "cat",
+"pid": 14643,
+"description": "Encoded payload retrieved from local file"
+},
+{
+"sequence": 2,
+"phase": "payload_decode",
+"process": "base64",
+"pid": 14644,
+"command_line": "base64 -d",
+"description": "Encoded payload decoded"
+},
+{
+"sequence": 3,
+"phase": "payload_execution",
+"process": "bash",
+"pid": 14645,
+"description": "Decoded payload executed through child shell"
+},
+
+```
+{
+  "sequence": 4,
+  "phase": "identity_discovery",
+  "process": "whoami",
+  "pid": 14652,
+  "ppid": 14645,
+  "description": "Current account name enumerated"
+},
+{
+  "sequence": 5,
+  "phase": "identity_discovery",
+  "process": "id",
+  "pid": 14653,
+  "ppid": 14645,
+  "description": "User, group and privilege context enumerated"
+},
+
+{
+  "sequence": 6,
+  "phase": "host_discovery",
+  "process": "hostname",
+  "pid": 14656,
+  "ppid": 14645,
+  "description": "Hostname collected"
+},
+{
+  "sequence": 7,
+  "phase": "host_discovery",
+  "process": "uname",
+  "pid": 14657,
+  "ppid": 14645,
+  "command_line": "uname -a",
+  "description": "Operating system and kernel information collected"
+},
+
+{
+  "sequence": 8,
+  "phase": "process_discovery",
+  "process": "ps",
+  "pid": 14660,
+  "ppid": 14645,
+  "command_line": "ps aux",
+  "description": "Running processes enumerated"
+},
+
+{
+  "sequence": 9,
+  "phase": "filesystem_activity",
+  "process": "touch",
+  "pid": 14663,
+  "ppid": 14645,
+  "artifact": "/tmp/.enc_exec_marker",
+  "description": "Execution marker file created"
+},
+
+{
+  "sequence": 10,
+  "phase": "network_activity",
+  "process": "curl",
+  "pid": 14666,
+  "ppid": 14645,
+  "command_line": "curl -s http://127.0.0.1:8080/ping",
+  "destination": {
+    "ip": "127.0.0.1",
+    "port": 8080,
+    "protocol": "http"
+  },
+  "description": "HTTP request initiated from payload"
+}
+```
+
+],
+
+"behavioral_phases": {
+"payload_preparation": [
+"cat",
+"base64"
+],
+"payload_execution": [
+"bash"
+],
+"identity_discovery": [
+"whoami",
+"id"
+],
+"host_discovery": [
+"hostname",
+"uname"
+],
+"process_discovery": [
+"ps"
+],
+"filesystem_activity": [
+"touch"
+],
+"network_activity": [
+"curl"
+]
+},
+
+"correlation_keys": {
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4",
+"payload_shell_pid": 14645
+},
+
+"session_indicators": {
+"encoded_payload_accessed": true,
+"payload_decoded": true,
+"child_shell_spawned": true,
+"identity_discovery_observed": true,
+"host_discovery_observed": true,
+"process_discovery_observed": true,
+"filesystem_artifact_created": true,
+"network_activity_observed": true
+},
+
+"investigation_artifacts": {
+"payload_log": "/tmp/encoded_execution.log",
+"marker_file": "/tmp/.enc_exec_marker",
+"decoder_process": "base64",
+"executor_process": "bash"
+},
+
+"analyst_assessment": {
+"finding": "A base64-encoded payload was decoded and executed through a spawned bash interpreter. The resulting shell performed identity discovery, host discovery, process enumeration, temporary artifact creation, and network activity within a single correlated user session.",
+"confidence": "high",
+"reconstruction_complete": true
+}
+}

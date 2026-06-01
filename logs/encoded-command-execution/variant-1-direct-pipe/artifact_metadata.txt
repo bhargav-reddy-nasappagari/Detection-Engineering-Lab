@@ -1,0 +1,11 @@
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ stat /tmp/.enc_exec_marker
+  File: /tmp/.enc_exec_marker
+  size: 0         	Blocks: 0          IO Block: 4096   regular empty file
+Device: 0,44	Inode: 631         Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/   bunny)   Gid: ( 1000/   bunny)
+Access: 2026-05-30 20:55:29.167801762 +0530
+Modify: 2026-05-30 20:55:29.167801762 +0530
+Change: 2026-05-30 20:55:29.167801762 +0530
+ Birth: 2026-05-30 20:37:05.050915380 +0530
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ ls -la /tmp/.enc_exec_marker
+-rw-rw-r-- 1 bunny bunny 0 May 30 20:55 /tmp/.enc_exec_marker

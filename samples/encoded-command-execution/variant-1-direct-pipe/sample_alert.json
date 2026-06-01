@@ -1,0 +1,118 @@
+{
+"alert_id": "ENCODED-EXECUTION-001",
+"alert_name": "Encoded Payload Decoded and Executed via Bash",
+"severity": "high",
+"status": "open",
+"confidence": 88,
+"detection_time": "2026-05-30T00:00:00Z",
+"host": {
+"hostname": "bunny-VirtualBox",
+"os": "Linux"
+},
+"user": {
+"auid": "1000",
+"tty": "pts/4",
+"session": "21"
+},
+"attack": {
+"tactic": [
+"Defense Evasion",
+"Execution",
+"Discovery"
+],
+"techniques": [
+{
+"id": "T1140",
+"name": "Deobfuscate/Decode Files or Information"
+},
+{
+"id": "T1059.004",
+"name": "Unix Shell"
+},
+{
+"id": "T1033",
+"name": "System Owner/User Discovery"
+},
+{
+"id": "T1082",
+"name": "System Information Discovery"
+},
+{
+"id": "T1057",
+"name": "Process Discovery"
+}
+]
+},
+"summary": {
+"description": "An encoded payload was decoded using base64 and immediately executed through a spawned bash interpreter. The resulting process chain performed host discovery, process enumeration, file creation in /tmp, and network utility execution.",
+"risk_reason": "Behavior is consistent with obfuscated payload execution frequently observed in post-compromise activity."
+},
+"trigger_conditions": [
+"base64 decoder execution observed",
+"shell execution observed following decode",
+"multiple discovery commands executed in same session",
+"temporary filesystem artifact created",
+"network utility execution observed"
+],
+"process_chain": [
+{
+"process": "cat",
+"command_line": "cat encoded_payload.txt"
+},
+{
+"process": "base64",
+"command_line": "base64 -d"
+},
+{
+"process": "bash",
+"command_line": "decoded payload execution"
+},
+{
+"process": "id"
+},
+{
+"process": "hostname"
+},
+{
+"process": "uname"
+},
+{
+"process": "ps"
+},
+{
+"process": "touch",
+"target": "/tmp/.enc_exec_marker"
+},
+{
+"process": "curl",
+"command_line": "curl -s http://127.0.0.1:8080/ping"
+}
+],
+"artifacts": [
+{
+"type": "file",
+"path": "/tmp/.enc_exec_marker"
+},
+{
+"type": "log",
+"path": "/tmp/encoded_execution.log"
+}
+],
+"telemetry_sources": [
+"auditd",
+"Sysmon for Linux"
+],
+"investigation_notes": [
+"Review parent-child process lineage around base64 execution",
+"Determine origin of encoded payload",
+"Inspect decoded payload contents",
+"Review additional commands executed in session 21",
+"Validate whether network activity reached external destinations"
+],
+"recommended_actions": [
+"Acquire decoded payload",
+"Review user activity for session correlation",
+"Inspect additional processes launched from the decoded shell",
+"Collect filesystem artifacts for forensic review"
+]
+}

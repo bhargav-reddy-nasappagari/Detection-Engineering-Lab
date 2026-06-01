@@ -1,0 +1,140 @@
+----
+time->Sat May 30 23:22:34 2026
+type=PROCTITLE msg=audit(1780163554.304:200763): proctitle=63686D6F64002B78002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163554.304:200763): item=0 name="/tmp/payload.sh" inode=883 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163554.304:200763): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163554.304:200763): arch=c000003e syscall=90 success=yes exit=0 a0=7ffd3e1bfb58 a1=1fd a2=10 a3=0 items=1 ppid=14633 pid=16839 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="chmod" exe="/usr/lib/cargo/bin/coreutils/chmod" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:22:36 2026
+type=PROCTITLE msg=audit(1780163556.588:200766): proctitle=6C73002D2D636F6C6F723D6175746F002D6C61002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163556.588:200766): item=0 name="/tmp/payload.sh" inode=883 dev=00:2c mode=0100775 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163556.588:200766): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163556.588:200766): arch=c000003e syscall=194 success=yes exit=0 a0=7fffd315ed48 a1=7fffd315eec0 a2=1000 a3=0 items=1 ppid=14633 pid=16845 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="ls" exe="/usr/lib/cargo/bin/coreutils/ls" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:22:36 2026
+type=PROCTITLE msg=audit(1780163556.605:200767): proctitle=6C73002D2D636F6C6F723D6175746F002D6C61002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163556.605:200767): item=0 name="/tmp/payload.sh" inode=883 dev=00:2c mode=0100775 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163556.605:200767): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163556.605:200767): arch=c000003e syscall=194 success=yes exit=0 a0=7fffd315ee58 a1=7fffd315efd0 a2=1000 a3=0 items=1 ppid=14633 pid=16845 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="ls" exe="/usr/lib/cargo/bin/coreutils/ls" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:07 2026
+type=PROCTITLE msg=audit(1780163887.996:200781): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163887.996:200781): item=0 name="/tmp/payload.sh" inode=883 dev=00:2c mode=0100775 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163887.996:200781): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163887.996:200781): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b55bb0 a2=0 a3=0 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.012:200783): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.012:200783): item=1 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=CREATE cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.012:200783): item=0 name="/tmp/" inode=1 dev=00:2c mode=041777 ouid=0 ogid=0 rdev=00:00 nametype=PARENT cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.012:200783): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.012:200783): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5a390 a2=441 a3=1b6 items=2 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.021:200785): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.021:200785): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.021:200785): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.021:200785): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5c590 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.021:200786): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.021:200786): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.021:200786): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.021:200786): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b599a0 a2=441 a3=1b6 items=1 ppid=16858 pid=16861 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.041:200788): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.041:200788): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.041:200788): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.041:200788): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b599a0 a2=441 a3=1b6 items=1 ppid=16858 pid=16862 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.059:200791): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.059:200791): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.059:200791): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.059:200791): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5d960 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.068:200793): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.068:200793): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.068:200793): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.068:200793): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5e370 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.068:200794): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.068:200794): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.068:200794): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.068:200794): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b599a0 a2=441 a3=1b6 items=1 ppid=16858 pid=16865 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.079:200796): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.079:200796): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.079:200796): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.079:200796): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5e840 a2=441 a3=1b6 items=1 ppid=16858 pid=16866 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.102:200799): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.102:200799): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.102:200799): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.102:200799): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5d830 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.112:200801): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.112:200801): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.112:200801): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.112:200801): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5cbc0 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.112:200802): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.112:200802): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.112:200802): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.112:200802): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5e3d0 a2=441 a3=1b6 items=1 ppid=16858 pid=16869 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.166:200805): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.166:200805): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.166:200805): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.166:200805): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5c590 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.176:200807): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.176:200807): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.176:200807): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.176:200807): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b58dd0 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.185:200809): proctitle=746F756368002F746D702F2E656E635F657865635F6D61726B6572
+type=PATH msg=audit(1780163888.185:200809): item=0 name="/tmp/.enc_exec_marker" inode=631 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.185:200809): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.185:200809): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=7ffc0cba7420 a2=80801 a3=0 items=1 ppid=16858 pid=16872 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="touch" exe="/usr/lib/cargo/bin/coreutils/touch" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.196:200811): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.196:200811): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.196:200811): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.196:200811): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b58c60 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.206:200813): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.206:200813): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.206:200813): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.206:200813): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b593f0 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.206:200814): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.206:200814): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.206:200814): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.206:200814): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5cbc0 a2=441 a3=1b6 items=1 ppid=16858 pid=16875 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.271:200817): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.271:200817): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.271:200817): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.271:200817): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b5e220 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.285:200819): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.285:200819): item=0 name="/tmp/encoded_execution.log" inode=905 dev=00:2c mode=0100664 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.285:200819): cwd="/home/bunny"
+type=SYSCALL msg=audit(1780163888.285:200819): arch=c000003e syscall=257 success=yes exit=3 a0=ffffffffffffff9c a1=5e3567b593f0 a2=441 a3=1b6 items=1 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="tmp_activity"
+----

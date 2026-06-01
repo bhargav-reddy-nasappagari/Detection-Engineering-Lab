@@ -1,0 +1,94 @@
+{
+"scenario": "encoded-command-execution",
+"execution_time": "2026-05-30T23:28:07Z",
+"host": "bunny-VirtualBox",
+"session": {
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+"process_chain": {
+"pid": 14633,
+"name": "bash",
+"role": "interactive_shell",
+"children": [
+{
+"pid": 16858,
+"name": "payload.sh",
+"image": "/usr/bin/bash",
+"command_line": "/bin/bash /tmp/payload.sh",
+"role": "temporary_payload_execution",
+"children": [
+{
+"pid": 16859,
+"name": "date",
+"command_line": "date",
+"role": "execution_timestamp"
+},
+{
+"pid": 16860,
+"name": "date",
+"command_line": "date",
+"role": "execution_timestamp"
+},
+{
+"pid": 16861,
+"name": "whoami",
+"command_line": "whoami",
+"role": "user_discovery",
+"mitre_attack": "T1033"
+},
+{
+"pid": 16862,
+"name": "id",
+"command_line": "id",
+"role": "privilege_discovery",
+"mitre_attack": "T1033"
+},
+{
+"pid": 16865,
+"name": "hostname",
+"command_line": "hostname",
+"role": "host_discovery",
+"mitre_attack": "T1082"
+},
+{
+"pid": 16866,
+"name": "uname",
+"command_line": "uname -a",
+"role": "system_discovery",
+"mitre_attack": "T1082"
+},
+{
+"pid": 16869,
+"name": "ps",
+"command_line": "ps aux",
+"role": "process_discovery",
+"mitre_attack": "T1057"
+},
+{
+"pid": 16872,
+"name": "touch",
+"command_line": "touch /tmp/.enc_exec_marker",
+"role": "filesystem_modification"
+},
+{
+"pid": 16875,
+"name": "curl",
+"command_line": "curl -s http://127.0.0.1:8080/ping",
+"role": "network_activity",
+"mitre_attack": "T1071"
+}
+]
+}
+]
+},
+"lineage_summary": [
+"Interactive shell launched payload from /tmp",
+"Payload spawned multiple discovery commands",
+"Payload modified filesystem by creating marker file",
+"Payload initiated HTTP communication",
+"All activity correlated through PID 16858 and Session 21"
+]
+}
+\

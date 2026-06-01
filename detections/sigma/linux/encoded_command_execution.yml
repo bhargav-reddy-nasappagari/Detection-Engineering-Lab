@@ -1,0 +1,148 @@
+title: Encoded Command Execution Followed By Discovery Activity
+id: 4f7f1c0c-7e1b-4d6e-a3b7-encoded-command-execution
+status: experimental
+description: |
+Detects encoded command execution techniques observed during detection engineering simulations.
+The rule focuses on payload decoding, script reconstruction, interpreter handoff,
+and subsequent discovery activity commonly associated with attacker reconnaissance.
+
+author: Detection Engineering Lab
+date: 2026-06-01
+
+references:
+
+* https://attack.mitre.org/techniques/T1027/
+* https://attack.mitre.org/techniques/T1140/
+* https://attack.mitre.org/techniques/T1059/004/
+* https://attack.mitre.org/techniques/T1033/
+* https://attack.mitre.org/techniques/T1082/
+* https://attack.mitre.org/techniques/T1057/
+
+tags:
+
+* attack.execution
+* attack.defense_evasion
+* attack.discovery
+* attack.t1027
+* attack.t1140
+* attack.t1059.004
+* attack.t1033
+* attack.t1082
+* attack.t1057
+
+logsource:
+product: linux
+category: process_creation
+
+detection:
+
+#
+
+# Variant 1 & Variant 4
+
+# bash -> base64 -> bash
+
+# bash -> base64 -> base64 -> bash
+
+#
+
+selection_base64_decode:
+Image|endswith:
+- '/base64'
+CommandLine|contains:
+- ' -d'
+- ' --decode'
+
+#
+
+# Variant 3
+
+# bash -> python -> bash
+
+#
+
+selection_python_decoder:
+Image|endswith:
+- '/python'
+- '/python3'
+
+#
+
+# Variant 2 & Variant 3
+
+# Temporary script reconstruction
+
+#
+
+selection_tmp_script:
+CommandLine|contains:
+- '/tmp/'
+- '.sh'
+
+selection_chmod:
+Image|endswith:
+- '/chmod'
+CommandLine|contains:
+- '+x'
+
+#
+
+# Discovery behaviour observed after execution
+
+#
+
+selection_user_discovery:
+Image|endswith:
+- '/whoami'
+- '/id'
+
+selection_host_discovery:
+Image|endswith:
+- '/hostname'
+- '/uname'
+
+selection_process_discovery:
+Image|endswith:
+- '/ps'
+
+#
+
+# Additional common enumeration
+
+#
+
+selection_network_enumeration:
+Image|endswith:
+- '/curl'
+- '/wget'
+- '/ss'
+- '/netstat'
+- '/ip'
+- '/ifconfig'
+- '/host'
+- '/dig'
+- '/nslookup'
+
+condition: 1 of selection_base64_decode,selection_python_decoder,selection_tmp_script,selection_chmod
+and
+1 of selection_user_discovery,selection_host_discovery,selection_process_discovery,selection_network_enumeration
+
+falsepositives:
+
+* Administrative scripting
+* DevOps automation
+* Software installation scripts
+* CI/CD build pipelines
+* System troubleshooting activities
+
+level: medium
+
+fields:
+
+* Image
+* ParentImage
+* CommandLine
+* ParentCommandLine
+* User
+* ProcessId
+* ParentProcessId

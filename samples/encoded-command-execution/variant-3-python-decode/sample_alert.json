@@ -1,0 +1,110 @@
+{
+  "alert_id": "ENCODED-EXEC-2026-0001",
+  "alert_name": "Encoded Command Execution via Python Decoder",
+  "severity": "high",
+  "status": "triggered",
+  "detection_engine": "Custom Detection Logic",
+  "technique": {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information"
+  },
+  "timestamp": "2026-05-31T16:52:18Z",
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Linux"
+  },
+  "user": {
+    "username": "bunny",
+    "uid": 1000,
+    "auid": 1000,
+    "session_id": 3,
+    "tty": "pts1"
+  },
+  "process_chain": [
+    {
+      "pid": 6385,
+      "ppid": 5047,
+      "process": "python3",
+      "command_line": "python3 /home/bunny/Detection-Engineering-Lab/scenarios/encoded-command-execution/python_decoder.py"
+    },
+    {
+      "pid": 6390,
+      "ppid": 6385,
+      "process": "bash",
+      "command_line": "/bin/bash /tmp/python_payload.sh"
+    }
+  ],
+  "staging_activity": {
+    "file_created": "/tmp/python_payload.sh",
+    "location": "/tmp",
+    "created_by": "python3",
+    "observed": true
+  },
+  "child_processes": [
+    {
+      "pid": 6393,
+      "process": "whoami",
+      "command_line": "whoami"
+    },
+    {
+      "pid": 6394,
+      "process": "id",
+      "command_line": "id"
+    },
+    {
+      "pid": 6397,
+      "process": "hostname",
+      "command_line": "hostname"
+    },
+    {
+      "pid": 6398,
+      "process": "uname",
+      "command_line": "uname -a"
+    },
+    {
+      "pid": 6401,
+      "process": "ps",
+      "command_line": "ps aux"
+    },
+    {
+      "pid": 6407,
+      "process": "curl",
+      "command_line": "curl -s http://127.0.0.1:8080/ping"
+    }
+  ],
+  "file_artifacts": [
+    {
+      "path": "/tmp/python_payload.sh",
+      "type": "temporary_script",
+      "action": "created_and_executed"
+    },
+    {
+      "path": "/tmp/encoded_execution.log",
+      "type": "execution_log",
+      "action": "created"
+    },
+    {
+      "path": "/tmp/.enc_exec_marker",
+      "type": "marker_file",
+      "action": "created"
+    }
+  ],
+  "behavior_summary": [
+    "Python decoder execution observed",
+    "Payload staged in temporary directory",
+    "Python spawned bash",
+    "Discovery commands executed",
+    "Host information collected",
+    "Process enumeration observed",
+    "Network utility execution observed",
+    "Temporary execution artifacts created"
+  ],
+  "telemetry_sources": [
+    "auditd_execve",
+    "auditd_tmp_activity",
+    "sysmon_linux"
+  ],
+  "risk_score": 87,
+  "confidence": "high",
+  "reason": "Python process created a temporary shell script in /tmp, executed it via bash, and subsequently launched multiple host discovery and process enumeration commands followed by network activity."
+}

@@ -1,0 +1,12 @@
+23:28:08.240693 IP 127.0.0.1.48276 > 127.0.0.1.8080: Flags [S], seq 3724383459, win 65495, options [mss 65495,sackOK,TS val 3592054548 ecr 0,nop,wscale 9], length 0
+23:28:08.240773 IP 127.0.0.1.8080 > 127.0.0.1.48276: Flags [S.], seq 3426394941, ack 3724383460, win 65483, options [mss 65495,sackOK,TS val 735018451 ecr 3592054548,nop,wscale 9], length 0
+23:28:08.240927 IP 127.0.0.1.48276 > 127.0.0.1.8080: Flags [.], ack 1, win 128, options [nop,nop,TS val 3592054548 ecr 735018451], length 0
+23:28:08.241200 IP 127.0.0.1.48276 > 127.0.0.1.8080: Flags [P.], seq 1:83, ack 1, win 128, options [nop,nop,TS val 3592054548 ecr 735018451], length 82: HTTP: GET /ping HTTP/1.1
+23:28:08.241207 IP 127.0.0.1.8080 > 127.0.0.1.48276: Flags [.], ack 83, win 128, options [nop,nop,TS val 735018451 ecr 3592054548], length 0
+23:28:08.258510 IP 127.0.0.1.8080 > 127.0.0.1.48276: Flags [P.], seq 1:186, ack 83, win 128, options [nop,nop,TS val 735018469 ecr 3592054548], length 185: HTTP: HTTP/1.0 404 File not found
+23:28:08.258538 IP 127.0.0.1.48276 > 127.0.0.1.8080: Flags [.], ack 186, win 128, options [nop,nop,TS val 3592054566 ecr 735018469], length 0
+23:28:08.258710 IP 127.0.0.1.8080 > 127.0.0.1.48276: Flags [P.], seq 186:646, ack 83, win 128, options [nop,nop,TS val 735018469 ecr 3592054566], length 460: HTTP
+23:28:08.258737 IP 127.0.0.1.48276 > 127.0.0.1.8080: Flags [.], ack 646, win 128, options [nop,nop,TS val 3592054566 ecr 735018469], length 0
+23:28:08.258844 IP 127.0.0.1.8080 > 127.0.0.1.48276: Flags [F.], seq 646, ack 83, win 128, options [nop,nop,TS val 735018469 ecr 3592054566], length 0
+23:28:08.259747 IP 127.0.0.1.48276 > 127.0.0.1.8080: Flags [F.], seq 83, ack 647, win 128, options [nop,nop,TS val 3592054567 ecr 735018469], length 0
+23:28:08.259905 IP 127.0.0.1.8080 > 127.0.0.1.48276: Flags [.], ack 84, win 128, options [nop,nop,TS val 735018470 ecr 3592054567], length 0

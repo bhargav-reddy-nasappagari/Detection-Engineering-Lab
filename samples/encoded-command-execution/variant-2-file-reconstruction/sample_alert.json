@@ -1,0 +1,137 @@
+{
+  "alert_id": "ENCODED-CMD-EXEC-001",
+  "alert_name": "Encoded Payload Reconstruction Followed By Temporary Script Execution",
+  "severity": "high",
+  "status": "triggered",
+  "timestamp": "2026-05-30T23:28:07Z",
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Linux"
+  },
+  "user": {
+    "auid": 1000,
+    "uid": 1000,
+    "username": "bunny",
+    "session_id": 21,
+    "tty": "pts4"
+  },
+  "parent_process": {
+    "pid": 14633,
+    "name": "bash"
+  },
+  "trigger_process": {
+    "pid": 16858,
+    "name": "payload.sh",
+    "image": "/usr/bin/bash",
+    "command_line": "/bin/bash /tmp/payload.sh",
+    "working_directory": "/home/bunny"
+  },
+  "detection_reason": [
+    "Script executed from temporary directory",
+    "Temporary payload previously modified with execute permission",
+    "Discovery commands spawned immediately after execution",
+    "Network activity observed from payload execution chain",
+    "Filesystem modification observed during payload execution"
+  ],
+  "behavior_chain": [
+    {
+      "timestamp": "2026-05-30T23:22:34Z",
+      "action": "permission_change",
+      "command": "chmod +x /tmp/payload.sh",
+      "pid": 16839
+    },
+    {
+      "timestamp": "2026-05-30T23:28:07Z",
+      "action": "payload_execution",
+      "command": "/bin/bash /tmp/payload.sh",
+      "pid": 16858
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "action": "user_discovery",
+      "command": "whoami",
+      "pid": 16861
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "action": "privilege_discovery",
+      "command": "id",
+      "pid": 16862
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "action": "host_discovery",
+      "command": "hostname",
+      "pid": 16865
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "action": "system_discovery",
+      "command": "uname -a",
+      "pid": 16866
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "action": "process_discovery",
+      "command": "ps aux",
+      "pid": 16869
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "action": "filesystem_modification",
+      "command": "touch /tmp/.enc_exec_marker",
+      "pid": 16872
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "action": "network_activity",
+      "command": "curl -s http://127.0.0.1:8080/ping",
+      "pid": 16875
+    }
+  ],
+  "mitre_attack": [
+    {
+      "technique_id": "T1027",
+      "technique_name": "Obfuscated Files or Information"
+    },
+    {
+      "technique_id": "T1059",
+      "technique_name": "Command and Scripting Interpreter"
+    },
+    {
+      "technique_id": "T1033",
+      "technique_name": "System Owner/User Discovery"
+    },
+    {
+      "technique_id": "T1082",
+      "technique_name": "System Information Discovery"
+    },
+    {
+      "technique_id": "T1057",
+      "technique_name": "Process Discovery"
+    },
+    {
+      "technique_id": "T1071",
+      "technique_name": "Application Layer Protocol"
+    }
+  ],
+  "telemetry_sources": [
+    "auditd_execve",
+    "auditd_syscall",
+    "sysmon_linux_process_create"
+  ],
+  "risk_score": 92,
+  "risk_factors": {
+    "temporary_directory_execution": 40,
+    "discovery_activity": 20,
+    "network_activity": 20,
+    "filesystem_activity": 12
+  },
+  "recommended_investigation": [
+    "Review all child processes of PID 16858",
+    "Inspect contents of /tmp/payload.sh",
+    "Review network activity associated with curl execution",
+    "Verify whether additional payloads were downloaded",
+    "Determine origin of reconstructed payload"
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-1-direct-pipe",
+  "execution_method": "cat encoded_payload.txt | base64 -d | bash",
+  "timeline": [
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "initial_execution",
+      "process": "bash",
+      "pid": 14633,
+      "description": "Interactive shell initiated encoded payload execution."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "payload_decoding",
+      "process": "base64",
+      "pid": 14644,
+      "ppid": 14633,
+      "command": "base64 -d",
+      "description": "Encoded payload decoded from stdin."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "payload_execution",
+      "process": "bash",
+      "pid": 14645,
+      "ppid": 14633,
+      "description": "Decoded payload handed off to a secondary shell for execution."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "user_discovery",
+      "process": "whoami",
+      "pid": 14652,
+      "ppid": 14645,
+      "command": "whoami",
+      "description": "Enumerated current user context."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "user_discovery",
+      "process": "id",
+      "pid": 14653,
+      "ppid": 14645,
+      "command": "id",
+      "description": "Enumerated user and group membership information."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "host_discovery",
+      "process": "hostname",
+      "pid": 14656,
+      "ppid": 14645,
+      "command": "hostname",
+      "description": "Enumerated host identity."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "host_discovery",
+      "process": "uname",
+      "pid": 14657,
+      "ppid": 14645,
+      "command": "uname -a",
+      "description": "Enumerated operating system and kernel information."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "process_discovery",
+      "process": "ps",
+      "ppid": 14645,
+      "command": "ps aux",
+      "description": "Enumerated running processes."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "filesystem_modification",
+      "process": "touch",
+      "pid": 14663,
+      "ppid": 14645,
+      "command": "touch /tmp/.enc_exec_marker",
+      "description": "Created marker file in temporary directory."
+    },
+    {
+      "timestamp": "2026-05-30T20:55:29Z",
+      "phase": "network_activity",
+      "process": "curl",
+      "pid": 14666,
+      "ppid": 14645,
+      "command": "curl -s http://127.0.0.1:8080/ping",
+      "description": "Generated outbound HTTP request to local listener."
+    }
+  ],
+  "behavioral_summary": {
+    "execution_chain": "bash -> base64 -> bash",
+    "reconnaissance": [
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ps aux"
+    ],
+    "filesystem_activity": [
+      "touch /tmp/.enc_exec_marker"
+    ],
+    "network_activity": [
+      "curl -s http://127.0.0.1:8080/ping"
+    ]
+  }
+}

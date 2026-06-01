@@ -1,0 +1,266 @@
+----
+time->Sat May 30 23:21:52 2026
+type=PROCTITLE msg=audit(1780163512.578:200759): proctitle=636174006C6F67732F656E636F6465642D636F6D6D616E642D657865637574696F6E2F76617269616E742D322D66696C652D7265636F6E737472756374696F6E2F7061796C6F61645F66696C655F6D657461646174615F7072655F657865632E747874
+type=PATH msg=audit(1780163512.578:200759): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163512.578:200759): item=0 name="/usr/bin/cat" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163512.578:200759): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780163512.578:200759): argc=2 a0="cat" a1="logs/encoded-command-execution/variant-2-file-reconstruction/payload_file_metadata_pre_exec.txt"
+type=SYSCALL msg=audit(1780163512.578:200759): arch=c000003e syscall=59 success=yes exit=0 a0=5bd78f931950 a1=5bd78f92e860 a2=5bd78f8ed590 a3=71 items=2 ppid=14073 pid=16834 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=21 comm="cat" exe="/usr/lib/cargo/bin/coreutils/cat" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:21:52 2026
+type=PROCTITLE msg=audit(1780163512.596:200760): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780163512.596:200760): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163512.596:200760): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163512.596:200760): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780163512.596:200760): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780163512.596:200760): arch=c000003e syscall=59 success=yes exit=0 a0=5bd78f932d40 a1=5bd78f8de2d0 a2=5bd78f932d70 a3=8 items=2 ppid=14073 pid=16835 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=21 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:22:34 2026
+type=PROCTITLE msg=audit(1780163554.300:200762): proctitle=63686D6F64002B78002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163554.300:200762): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163554.300:200762): item=0 name="/usr/bin/chmod" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163554.300:200762): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163554.300:200762): argc=3 a0="chmod" a1="+x" a2="/tmp/payload.sh"
+type=SYSCALL msg=audit(1780163554.300:200762): arch=c000003e syscall=59 success=yes exit=0 a0=60fc28f22760 a1=60fc28f34430 a2=60fc28f354f0 a3=31 items=2 ppid=14633 pid=16839 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="chmod" exe="/usr/lib/cargo/bin/coreutils/chmod" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:22:34 2026
+type=PROCTITLE msg=audit(1780163554.318:200764): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780163554.318:200764): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163554.318:200764): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163554.318:200764): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163554.318:200764): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780163554.318:200764): arch=c000003e syscall=59 success=yes exit=0 a0=60fc28ef0500 a1=60fc28f340d0 a2=60fc28f354f0 a3=8 items=2 ppid=14633 pid=16841 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:22:36 2026
+type=PROCTITLE msg=audit(1780163556.583:200765): proctitle=6C73002D2D636F6C6F723D6175746F002D6C61002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163556.583:200765): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163556.583:200765): item=0 name="/usr/bin/ls" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163556.583:200765): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163556.583:200765): argc=4 a0="ls" a1="--color=auto" a2="-la" a3="/tmp/payload.sh"
+type=SYSCALL msg=audit(1780163556.583:200765): arch=c000003e syscall=59 success=yes exit=0 a0=60fc28eee220 a1=60fc28f21e90 a2=60fc28f354f0 a3=31 items=2 ppid=14633 pid=16845 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="ls" exe="/usr/lib/cargo/bin/coreutils/ls" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:22:36 2026
+type=PROCTITLE msg=audit(1780163556.612:200768): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780163556.612:200768): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163556.612:200768): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163556.612:200768): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163556.612:200768): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780163556.612:200768): arch=c000003e syscall=59 success=yes exit=0 a0=60fc28f34aa0 a1=60fc28f23550 a2=60fc28f354f0 a3=8 items=2 ppid=14633 pid=16846 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:23:56 2026
+type=PROCTITLE msg=audit(1780163636.855:200776): proctitle=73746174002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163636.855:200776): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163636.855:200776): item=0 name="/usr/bin/stat" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163636.855:200776): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780163636.855:200776): argc=2 a0="stat" a1="/tmp/payload.sh"
+type=SYSCALL msg=audit(1780163636.855:200776): arch=c000003e syscall=59 success=yes exit=0 a0=5bd78f92df80 a1=5bd78f81f8d0 a2=5bd78f8ed590 a3=70 items=2 ppid=14073 pid=16849 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=21 comm="stat" exe="/usr/lib/cargo/bin/coreutils/stat" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:23:56 2026
+type=PROCTITLE msg=audit(1780163636.878:200777): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780163636.878:200777): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163636.878:200777): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163636.878:200777): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780163636.878:200777): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780163636.878:200777): arch=c000003e syscall=59 success=yes exit=0 a0=5bd78f932dd0 a1=5bd78f8eccc0 a2=5bd78f932e00 a3=8 items=2 ppid=14073 pid=16850 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=21 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:24:06 2026
+type=PROCTITLE msg=audit(1780163646.926:200778): proctitle=636174006C6F67732F656E636F6465642D636F6D6D616E642D657865637574696F6E2F76617269616E742D322D66696C652D7265636F6E737472756374696F6E2F7061796C6F61645F66696C655F6D657461646174615F706F73745F63686D6F642E747874
+type=PATH msg=audit(1780163646.926:200778): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163646.926:200778): item=0 name="/usr/bin/cat" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163646.926:200778): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780163646.926:200778): argc=2 a0="cat" a1="logs/encoded-command-execution/variant-2-file-reconstruction/payload_file_metadata_post_chmod.txt"
+type=SYSCALL msg=audit(1780163646.926:200778): arch=c000003e syscall=59 success=yes exit=0 a0=5bd78f83d720 a1=5bd78f930470 a2=5bd78f8ed590 a3=71 items=2 ppid=14073 pid=16855 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=21 comm="cat" exe="/usr/lib/cargo/bin/coreutils/cat" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:24:06 2026
+type=PROCTITLE msg=audit(1780163646.960:200779): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780163646.960:200779): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163646.960:200779): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163646.960:200779): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780163646.960:200779): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780163646.960:200779): arch=c000003e syscall=59 success=yes exit=0 a0=5bd78f932d80 a1=5bd78f8e7bd0 a2=5bd78f932dd0 a3=8 items=2 ppid=14073 pid=16856 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=21 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:07 2026
+type=PROCTITLE msg=audit(1780163887.983:200780): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163887.983:200780): item=2 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163887.983:200780): item=1 name="/bin/bash" inode=1966510 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163887.983:200780): item=0 name="/tmp/payload.sh" inode=883 dev=00:2c mode=0100775 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163887.983:200780): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163887.983:200780): argc=2 a0="/bin/bash" a1="/tmp/payload.sh"
+type=SYSCALL msg=audit(1780163887.983:200780): arch=c000003e syscall=59 success=yes exit=0 a0=60fc28eedaf0 a1=60fc28ef1020 a2=60fc28f354f0 a3=21 items=3 ppid=14633 pid=16858 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="payload.sh" exe="/usr/bin/bash" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:07 2026
+type=PROCTITLE msg=audit(1780163887.998:200782): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163887.998:200782): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163887.998:200782): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163887.998:200782): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163887.998:200782): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163887.998:200782): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57740 a1=5e3567b57810 a2=5e3567b54e40 a3=8 items=2 ppid=16858 pid=16859 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.012:200784): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.012:200784): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.012:200784): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.012:200784): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.012:200784): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.012:200784): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57ae0 a1=5e3567b57bb0 a2=5e3567b54e40 a3=8 items=2 ppid=16858 pid=16860 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.021:200787): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.021:200787): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.021:200787): item=0 name="/usr/bin/whoami" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.021:200787): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.021:200787): argc=1 a0="whoami"
+type=SYSCALL msg=audit(1780163888.021:200787): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b5a250 a1=5e3567b544c0 a2=5e3567b54e40 a3=31 items=2 ppid=16858 pid=16861 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="whoami" exe="/usr/lib/cargo/bin/coreutils/whoami" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.041:200789): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.041:200789): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.041:200789): item=0 name="/usr/bin/id" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.041:200789): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.041:200789): argc=1 a0="id"
+type=SYSCALL msg=audit(1780163888.041:200789): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b5d4b0 a1=5e3567b5a340 a2=5e3567b54e40 a3=31 items=2 ppid=16858 pid=16862 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="id" exe="/usr/lib/cargo/bin/coreutils/id" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.050:200790): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.050:200790): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.050:200790): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.050:200790): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.050:200790): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.050:200790): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57b00 a1=5e3567b558a0 a2=5e3567b5ad40 a3=8 items=2 ppid=16858 pid=16863 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.059:200792): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.059:200792): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.059:200792): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.059:200792): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.059:200792): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.059:200792): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57950 a1=5e3567b558a0 a2=5e3567b57a00 a3=8 items=2 ppid=16858 pid=16864 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.068:200795): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.068:200795): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.068:200795): item=0 name="/usr/bin/hostname" inode=1966943 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.068:200795): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.068:200795): argc=1 a0="hostname"
+type=SYSCALL msg=audit(1780163888.068:200795): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b5d9c0 a1=5e3567b5d510 a2=5e3567b54e40 a3=30 items=2 ppid=16858 pid=16865 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="hostname" exe="/usr/bin/hostname" subj=hostname key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.079:200797): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.079:200797): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.079:200797): item=0 name="/usr/bin/uname" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.079:200797): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.079:200797): argc=2 a0="uname" a1="-a"
+type=SYSCALL msg=audit(1780163888.079:200797): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b5a250 a1=5e3567b5dd70 a2=5e3567b54e40 a3=31 items=2 ppid=16858 pid=16866 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="uname" exe="/usr/lib/cargo/bin/coreutils/uname" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.090:200798): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.090:200798): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.090:200798): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.090:200798): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.090:200798): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.090:200798): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57950 a1=5e3567b558a0 a2=5e3567b57a00 a3=8 items=2 ppid=16858 pid=16867 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.102:200800): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.102:200800): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.102:200800): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.102:200800): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.102:200800): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.102:200800): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57950 a1=5e3567b558a0 a2=5e3567b57a00 a3=8 items=2 ppid=16858 pid=16868 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.112:200803): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.112:200803): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.112:200803): item=0 name="/usr/bin/ps" inode=1967232 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.112:200803): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.112:200803): argc=2 a0="ps" a1="aux"
+type=SYSCALL msg=audit(1780163888.112:200803): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b5e250 a1=5e3567b59a50 a2=5e3567b54e40 a3=31 items=2 ppid=16858 pid=16869 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="ps" exe="/usr/bin/ps" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.155:200804): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.155:200804): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.155:200804): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.155:200804): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.155:200804): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.155:200804): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57930 a1=5e3567b558a0 a2=5e3567b579e0 a3=8 items=2 ppid=16858 pid=16870 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.166:200806): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.166:200806): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.166:200806): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.166:200806): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.166:200806): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.166:200806): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57930 a1=5e3567b558a0 a2=5e3567b579e0 a3=8 items=2 ppid=16858 pid=16871 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.177:200808): proctitle=746F756368002F746D702F2E656E635F657865635F6D61726B6572
+type=PATH msg=audit(1780163888.177:200808): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.177:200808): item=0 name="/usr/bin/touch" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.177:200808): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.177:200808): argc=2 a0="touch" a1="/tmp/.enc_exec_marker"
+type=SYSCALL msg=audit(1780163888.177:200808): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b59290 a1=5e3567b5a340 a2=5e3567b54e40 a3=21 items=2 ppid=16858 pid=16872 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="touch" exe="/usr/lib/cargo/bin/coreutils/touch" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.186:200810): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.186:200810): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.186:200810): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.186:200810): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.186:200810): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.186:200810): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57950 a1=5e3567b54ad0 a2=5e3567b57a00 a3=8 items=2 ppid=16858 pid=16873 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.196:200812): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.196:200812): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.196:200812): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.196:200812): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.196:200812): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.196:200812): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57950 a1=5e3567b558a0 a2=5e3567b57a00 a3=8 items=2 ppid=16858 pid=16874 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.206:200815): proctitle=2F62696E2F62617368002F746D702F7061796C6F61642E7368
+type=PATH msg=audit(1780163888.206:200815): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.206:200815): item=0 name="/usr/bin/curl" inode=1967021 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.206:200815): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.206:200815): argc=3 a0="curl" a1="-s" a2="http://127.0.0.1:8080/ping"
+type=SYSCALL msg=audit(1780163888.206:200815): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b59a00 a1=5e3567b5cbc0 a2=5e3567b54e40 a3=30 items=2 ppid=16858 pid=16875 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="curl" exe="/usr/bin/curl" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.260:200816): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.260:200816): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.260:200816): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.260:200816): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.260:200816): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.260:200816): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57930 a1=5e3567b558a0 a2=5e3567b579e0 a3=8 items=2 ppid=16858 pid=16877 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.272:200818): proctitle=64617465002B25592D256D2D25642025483A254D3A2553
+type=PATH msg=audit(1780163888.272:200818): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.272:200818): item=0 name="/usr/bin/date" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.272:200818): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.272:200818): argc=2 a0="date" a1=2B25592D256D2D25642025483A254D3A2553
+type=SYSCALL msg=audit(1780163888.272:200818): arch=c000003e syscall=59 success=yes exit=0 a0=5e3567b57950 a1=5e3567b54ad0 a2=5e3567b57a00 a3=8 items=2 ppid=16858 pid=16878 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="date" exe="/usr/lib/cargo/bin/coreutils/date" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:08 2026
+type=PROCTITLE msg=audit(1780163888.287:200820): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780163888.287:200820): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163888.287:200820): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163888.287:200820): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163888.287:200820): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780163888.287:200820): arch=c000003e syscall=59 success=yes exit=0 a0=60fc28f34b00 a1=60fc28ef0ad0 a2=60fc28f354f0 a3=8 items=2 ppid=14633 pid=16879 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:24 2026
+type=PROCTITLE msg=audit(1780163904.102:200821): proctitle=6C73002D2D636F6C6F723D6175746F002D6C61002F746D702F2E656E635F657865635F6D61726B6572
+type=PATH msg=audit(1780163904.102:200821): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163904.102:200821): item=0 name="/usr/bin/ls" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163904.102:200821): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163904.102:200821): argc=4 a0="ls" a1="--color=auto" a2="-la" a3="/tmp/.enc_exec_marker"
+type=SYSCALL msg=audit(1780163904.102:200821): arch=c000003e syscall=59 success=yes exit=0 a0=60fc28eee290 a1=60fc28eef010 a2=60fc28f354f0 a3=40 items=2 ppid=14633 pid=16880 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="ls" exe="/usr/lib/cargo/bin/coreutils/ls" subj=unconfined key="process_exec"
+----
+time->Sat May 30 23:28:24 2026
+type=PROCTITLE msg=audit(1780163904.122:200824): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780163904.122:200824): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780163904.122:200824): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780163904.122:200824): cwd="/home/bunny"
+type=EXECVE msg=audit(1780163904.122:200824): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780163904.122:200824): arch=c000003e syscall=59 success=yes exit=0 a0=60fc28f2d000 a1=60fc28eeeca0 a2=60fc28f354f0 a3=8 items=2 ppid=14633 pid=16881 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=21 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_exec"
+----

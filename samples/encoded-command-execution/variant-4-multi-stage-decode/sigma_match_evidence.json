@@ -1,0 +1,172 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-4-multi-stage-decode",
+  "rule_name": "Encoded Command Execution Followed By Discovery Activity",
+  "rule_status": "MATCHED",
+  "match_timestamp": "2026-06-01T00:22:37Z",
+  "sigma_condition": "(multi-stage decode activity) AND (shell execution) AND (discovery activity)",
+  "selector_evidence": {
+    "selection_decode_stage_1": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/base64",
+        "CommandLine|contains": "-d"
+      },
+      "telemetry_evidence": {
+        "process_name": "base64",
+        "command_line": "base64 -d",
+        "timestamp": "2026-06-01T00:22:37Z",
+        "parent_process": "bash",
+        "description": "First decoding stage observed."
+      }
+    },
+    "selection_decode_stage_2": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/base64",
+        "CommandLine|contains": "-d"
+      },
+      "telemetry_evidence": {
+        "process_name": "base64",
+        "command_line": "base64 -d",
+        "timestamp": "2026-06-01T00:22:37Z",
+        "parent_process": "base64",
+        "description": "Second decoding stage observed."
+      }
+    },
+    "selection_multi_stage_decode": {
+      "matched": true,
+      "sigma_logic": {
+        "decode_operations": ">=2"
+      },
+      "telemetry_evidence": {
+        "execution_chain": "bash -> base64 -> base64 -> bash",
+        "decode_count": 2
+      }
+    },
+    "selection_shell_execution": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/bash"
+      },
+      "telemetry_evidence": {
+        "process_name": "bash",
+        "timestamp": "2026-06-01T00:22:37Z",
+        "description": "Decoded payload executed through shell interpreter."
+      }
+    },
+    "selection_user_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": [
+          "/whoami",
+          "/id"
+        ]
+      },
+      "telemetry_evidence": [
+        {
+          "process_name": "whoami",
+          "command_line": "whoami"
+        },
+        {
+          "process_name": "id",
+          "command_line": "id"
+        }
+      ]
+    },
+    "selection_host_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": [
+          "/hostname",
+          "/uname"
+        ]
+      },
+      "telemetry_evidence": [
+        {
+          "process_name": "hostname",
+          "command_line": "hostname"
+        },
+        {
+          "process_name": "uname",
+          "command_line": "uname -a"
+        }
+      ]
+    },
+    "selection_process_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/ps"
+      },
+      "telemetry_evidence": {
+        "process_name": "ps",
+        "command_line": "ps aux"
+      }
+    },
+    "selection_network_enumeration": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/curl"
+      },
+      "telemetry_evidence": {
+        "process_name": "curl",
+        "command_line": "curl -s http://127.0.0.1:8080/ping"
+      }
+    }
+  },
+  "condition_evaluation": {
+    "decode_stage_1_detected": true,
+    "decode_stage_2_detected": true,
+    "multi_stage_decode_detected": true,
+    "shell_execution_detected": true,
+    "discovery_activity_detected": true,
+    "network_activity_detected": true,
+    "final_condition_result": true
+  },
+  "matched_process_chain": {
+    "execution_chain": [
+      {
+        "process": "bash",
+        "timestamp": "2026-06-01T00:22:37Z"
+      },
+      {
+        "process": "base64",
+        "command": "base64 -d",
+        "stage": 1
+      },
+      {
+        "process": "base64",
+        "command": "base64 -d",
+        "stage": 2
+      },
+      {
+        "process": "bash",
+        "description": "Decoded payload execution"
+      },
+      {
+        "processes": [
+          "whoami",
+          "id",
+          "hostname",
+          "uname",
+          "ps",
+          "touch",
+          "curl"
+        ]
+      }
+    ]
+  },
+  "supporting_telemetry": [
+    "auditd_execve.txt",
+    "auditd_tmp.txt",
+    "sysmon_logs.txt",
+    "encoded_execution.log",
+    "http_server_access.txt",
+    "tcpdump_capture.txt"
+  ],
+  "match_conclusion": {
+    "rule_matched": true,
+    "confidence": "high",
+    "reason": "Multiple decoding stages followed by shell execution and immediate discovery activity satisfied the Sigma detection logic."
+  }
+}

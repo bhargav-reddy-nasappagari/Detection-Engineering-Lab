@@ -1,0 +1,120 @@
+{
+  "scenario": "encoded-command-execution",
+  "technique": {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information"
+  },
+  "session": {
+    "auid": 1000,
+    "uid": 1000,
+    "tty": "pts1",
+    "session_id": 3,
+    "start_time": "2026-05-31T16:52:17Z"
+  },
+  "root_process": {
+    "pid": 6385,
+    "ppid": 5047,
+    "process_name": "python3",
+    "command_line": "python3 /home/bunny/Detection-Engineering-Lab/scenarios/encoded-command-execution/python_decoder.py",
+    "exe": "/usr/bin/python3.14",
+    "children": [
+      {
+        "pid": 6390,
+        "ppid": 6385,
+        "process_name": "bash",
+        "command_line": "/bin/bash /tmp/python_payload.sh",
+        "exe": "/usr/bin/bash",
+        "children": [
+          {
+            "pid": 6391,
+            "ppid": 6390,
+            "process_name": "date",
+            "command_line": "date +%Y-%m-%d %H:%M:%S"
+          },
+          {
+            "pid": 6393,
+            "ppid": 6390,
+            "process_name": "whoami",
+            "command_line": "whoami"
+          },
+          {
+            "pid": 6394,
+            "ppid": 6390,
+            "process_name": "id",
+            "command_line": "id"
+          },
+          {
+            "pid": 6397,
+            "ppid": 6390,
+            "process_name": "hostname",
+            "command_line": "hostname"
+          },
+          {
+            "pid": 6398,
+            "ppid": 6390,
+            "process_name": "uname",
+            "command_line": "uname -a"
+          },
+          {
+            "pid": 6401,
+            "ppid": 6390,
+            "process_name": "ps",
+            "command_line": "ps aux"
+          },
+          {
+            "pid": 6404,
+            "ppid": 6390,
+            "process_name": "touch",
+            "command_line": "touch /tmp/.enc_exec_marker"
+          },
+          {
+            "pid": 6407,
+            "ppid": 6390,
+            "process_name": "curl",
+            "command_line": "curl -s http://127.0.0.1:8080/ping"
+          }
+        ]
+      }
+    ]
+  },
+  "staging_artifacts": [
+    {
+      "path": "/tmp/python_payload.sh",
+      "action": "created",
+      "creator_pid": 6385,
+      "creator_process": "python3"
+    },
+    {
+      "path": "/tmp/python_payload.sh",
+      "action": "executed",
+      "executor_pid": 6390,
+      "executor_process": "bash"
+    }
+  ],
+  "lineage_summary": [
+    "python3 created temporary payload",
+    "python3 spawned bash",
+    "bash executed discovery commands",
+    "bash performed process enumeration",
+    "bash created execution marker file",
+    "bash initiated network activity"
+  ],
+  "process_tree": [
+    "python3(6385)",
+    "└── bash(6390)",
+    "    ├── whoami(6393)",
+    "    ├── id(6394)",
+    "    ├── hostname(6397)",
+    "    ├── uname -a(6398)",
+    "    ├── ps aux(6401)",
+    "    ├── touch /tmp/.enc_exec_marker(6404)",
+    "    └── curl -s http://127.0.0.1:8080/ping(6407)"
+  ],
+  "investigation_notes": {
+    "initial_execution": "Python decoder launched from interactive terminal session.",
+    "staging_behavior": "Temporary shell script written to /tmp and executed.",
+    "discovery_behavior": "User, host, operating system, and process information collected.",
+    "network_behavior": "Outbound HTTP request generated via curl.",
+    "assessment": "Observed process chain is consistent with encoded payload decoding followed by shell-based execution and host reconnaissance."
+  }
+}

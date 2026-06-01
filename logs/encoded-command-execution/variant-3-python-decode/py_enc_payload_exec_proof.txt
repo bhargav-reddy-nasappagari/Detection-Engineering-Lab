@@ -1,0 +1,4 @@
+unny@bunny-VirtualBox:~/Detection-Engineering-Lab$ ls -la /tmp/python_payload.sh
+-rwxr-xr-x 1 bunny bunny 2020 May 31 16:52 /tmp/python_payload.sh
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ ls -la /tmp/.enc_exec_marker
+-rw-rw-r-- 1 bunny bunny 0 May 31 16:52 /tmp/.enc_exec_marker

@@ -1,0 +1,134 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-3-python-decode",
+  "rule_name": "Encoded Command Execution Followed By Discovery Activity",
+  "rule_version": "1.0",
+  "validation_status": "PASS",
+  "detection_timestamp": "2026-05-31T16:52:18Z",
+  "detection_hypothesis": "Detect payload reconstruction performed by Python followed by shell execution and discovery activity.",
+  "trigger_summary": {
+    "python_decoder_detected": true,
+    "interpreter_handoff_detected": true,
+    "payload_execution_detected": true,
+    "discovery_activity_detected": true,
+    "network_activity_detected": true,
+    "rule_match": true
+  },
+  "matched_selections": {
+    "selection_python_decoder": {
+      "matched": true,
+      "evidence": {
+        "process_name": "python3",
+        "pid": 6385,
+        "command_line": "python3 python_decoder.py",
+        "timestamp": "2026-05-31T16:52:17Z"
+      }
+    },
+    "selection_interpreter_handoff": {
+      "matched": true,
+      "evidence": {
+        "parent_process": "python3",
+        "parent_pid": 6385,
+        "child_process": "bash",
+        "child_pid": 6390,
+        "command_line": "bash /tmp/python_payload.sh",
+        "timestamp": "2026-05-31T16:52:18Z"
+      }
+    },
+    "selection_payload_execution": {
+      "matched": true,
+      "evidence": {
+        "process_name": "bash",
+        "pid": 6390,
+        "ppid": 6385,
+        "command_line": "bash /tmp/python_payload.sh"
+      }
+    },
+    "selection_user_discovery": {
+      "matched": true,
+      "evidence": [
+        {
+          "process_name": "whoami",
+          "pid": 6393,
+          "ppid": 6390,
+          "command_line": "whoami"
+        },
+        {
+          "process_name": "id",
+          "pid": 6394,
+          "ppid": 6390,
+          "command_line": "id"
+        }
+      ]
+    },
+    "selection_host_discovery": {
+      "matched": true,
+      "evidence": [
+        {
+          "process_name": "hostname",
+          "pid": 6397,
+          "ppid": 6390,
+          "command_line": "hostname"
+        },
+        {
+          "process_name": "uname",
+          "pid": 6398,
+          "ppid": 6390,
+          "command_line": "uname -a"
+        }
+      ]
+    },
+    "selection_process_discovery": {
+      "matched": true,
+      "evidence": {
+        "process_name": "ps",
+        "ppid": 6390,
+        "command_line": "ps aux"
+      }
+    },
+    "selection_network_activity": {
+      "matched": true,
+      "evidence": {
+        "process_name": "curl",
+        "pid": 6407,
+        "ppid": 6390,
+        "command_line": "curl -s http://127.0.0.1:8080/ping"
+      }
+    }
+  },
+  "behavioral_chain_validation": {
+    "expected_chain": [
+      "python_decoder",
+      "shell_execution",
+      "discovery_activity"
+    ],
+    "observed_chain": [
+      "python3 python_decoder.py",
+      "bash /tmp/python_payload.sh",
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ps aux",
+      "touch /tmp/.enc_exec_marker",
+      "curl -s http://127.0.0.1:8080/ping"
+    ],
+    "chain_match": true
+  },
+  "telemetry_sources_used": [
+    "auditd_process_exec.txt",
+    "auditd_tmp.txt",
+    "sysmon_logs.txt",
+    "python_decoded_payload.sh",
+    "py_enc_payload_exec_proof.txt",
+    "http_server_access.txt",
+    "tcpsump_capture.txt"
+  ],
+  "validation_conclusion": {
+    "rule_triggered": true,
+    "expected_behavior_observed": true,
+    "variant_covered": true,
+    "false_positive_indicators_observed": false,
+    "assessment": "Detection successfully identified Python-based payload reconstruction, interpreter handoff from python3 to bash, payload execution, and subsequent discovery activity."
+  }
+}

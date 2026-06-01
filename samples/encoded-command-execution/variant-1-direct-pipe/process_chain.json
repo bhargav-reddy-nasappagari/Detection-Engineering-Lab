@@ -1,0 +1,116 @@
+{
+"scenario": "Encoded Command Execution - Variant 1 (Direct Pipe Decode & Execute)",
+"session": {
+"auid": 1000,
+"tty": "pts/4",
+"session_id": 21
+},
+"root_process": {
+"name": "bash",
+"description": "Interactive user shell"
+},
+"execution_chain": [
+{
+"pid": 14643,
+"ppid": 14633,
+"process": "cat",
+"command_line": "cat encoded_payload.txt",
+"role": "payload_retrieval",
+"children": [14644]
+},
+{
+"pid": 14644,
+"ppid": 14633,
+"process": "base64",
+"command_line": "base64 -d",
+"role": "payload_decoder",
+"children": [14645]
+},
+{
+"pid": 14645,
+"ppid": 14633,
+"process": "bash",
+"command_line": "decoded payload execution",
+"role": "payload_executor",
+"children": [
+14653,
+14656,
+14657,
+14660,
+14663,
+14666
+]
+},
+{
+"pid": 14653,
+"ppid": 14645,
+"process": "id",
+"command_line": "id",
+"role": "identity_discovery"
+},
+{
+"pid": 14656,
+"ppid": 14645,
+"process": "hostname",
+"command_line": "hostname",
+"role": "host_discovery"
+},
+{
+"pid": 14657,
+"ppid": 14645,
+"process": "uname",
+"command_line": "uname -a",
+"role": "host_discovery"
+},
+{
+"pid": 14660,
+"ppid": 14645,
+"process": "ps",
+"command_line": "ps aux",
+"role": "process_discovery"
+},
+{
+"pid": 14663,
+"ppid": 14645,
+"process": "touch",
+"command_line": "touch /tmp/.enc_exec_marker",
+"role": "artifact_creation",
+"artifact": "/tmp/.enc_exec_marker"
+},
+{
+"pid": 14666,
+"ppid": 14645,
+"process": "curl",
+"command_line": "curl -s http://127.0.0.1:8080/ping",
+"role": "network_activity",
+"destination": {
+"ip": "127.0.0.1",
+"port": 8080,
+"protocol": "http"
+}
+}
+],
+"behavior_summary": {
+"execution_method": "direct_pipe_execution",
+"decoder": "base64",
+"interpreter": "bash",
+"discovery_activity": true,
+"filesystem_activity": true,
+"network_activity": true
+},
+"graph": {
+"14633": [
+14643,
+14644,
+14645
+],
+"14645": [
+14653,
+14656,
+14657,
+14660,
+14663,
+14666
+]
+}
+}

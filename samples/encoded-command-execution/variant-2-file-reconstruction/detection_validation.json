@@ -1,0 +1,121 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-2-file-reconstruction",
+  "rule_name": "Encoded Command Execution Followed By Discovery Activity",
+  "rule_version": "1.0",
+  "validation_status": "PASS",
+  "detection_timestamp": "2026-05-30T23:28:08Z",
+  "detection_hypothesis": "Detect payload reconstruction in a temporary directory followed by execution and discovery behavior.",
+  "trigger_summary": {
+    "payload_reconstruction_detected": true,
+    "permission_change_detected": true,
+    "script_execution_detected": true,
+    "discovery_activity_detected": true,
+    "network_activity_detected": true,
+    "rule_match": true
+  },
+  "matched_selections": {
+    "selection_tmp_script": {
+      "matched": true,
+      "evidence": {
+        "artifact": "/tmp/payload.sh",
+        "creation_time": "2026-05-30T23:21:52Z",
+        "source": "payload reconstruction"
+      }
+    },
+    "selection_chmod": {
+      "matched": true,
+      "evidence": {
+        "process_name": "chmod",
+        "command_line": "chmod +x /tmp/payload.sh",
+        "timestamp": "2026-05-30T23:22:34Z"
+      }
+    },
+    "selection_script_execution": {
+      "matched": true,
+      "evidence": {
+        "process_name": "bash",
+        "command_line": "bash /tmp/payload.sh",
+        "timestamp": "2026-05-30T23:28:07Z"
+      }
+    },
+    "selection_user_discovery": {
+      "matched": true,
+      "evidence": [
+        {
+          "process_name": "whoami",
+          "command_line": "whoami"
+        },
+        {
+          "process_name": "id",
+          "command_line": "id"
+        }
+      ]
+    },
+    "selection_host_discovery": {
+      "matched": true,
+      "evidence": [
+        {
+          "process_name": "hostname",
+          "command_line": "hostname"
+        },
+        {
+          "process_name": "uname",
+          "command_line": "uname -a"
+        }
+      ]
+    },
+    "selection_process_discovery": {
+      "matched": true,
+      "evidence": {
+        "process_name": "ps",
+        "command_line": "ps aux"
+      }
+    },
+    "selection_network_activity": {
+      "matched": true,
+      "evidence": {
+        "process_name": "curl",
+        "command_line": "curl -s http://127.0.0.1:8080/ping"
+      }
+    }
+  },
+  "behavioral_chain_validation": {
+    "expected_chain": [
+      "payload reconstruction",
+      "chmod",
+      "script execution",
+      "discovery activity"
+    ],
+    "observed_chain": [
+      "/tmp/payload.sh created",
+      "chmod +x /tmp/payload.sh",
+      "bash /tmp/payload.sh",
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ps aux",
+      "touch /tmp/.enc_exec_marker",
+      "curl -s http://127.0.0.1:8080/ping"
+    ],
+    "chain_match": true
+  },
+  "telemetry_sources_used": [
+    "auditd_execve.txt",
+    "auditd_tmp.txt",
+    "payload_file_metadata_pre_exec.txt",
+    "payload_file_metadata_post_chmod.txt",
+    "permission_change_proof.txt",
+    "sysmon_logs.txt",
+    "http_server_access.txt",
+    "tcpdump_capture.txt"
+  ],
+  "validation_conclusion": {
+    "rule_triggered": true,
+    "expected_behavior_observed": true,
+    "variant_covered": true,
+    "false_positive_indicators_observed": false,
+    "assessment": "Detection successfully identified decoded payload reconstruction in a temporary directory, permission modification, payload execution, and subsequent discovery activity."
+  }
+}

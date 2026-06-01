@@ -1,0 +1,177 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-3-python-decode",
+  "rule_name": "Encoded Command Execution Followed By Discovery Activity",
+  "rule_status": "MATCHED",
+  "match_timestamp": "2026-05-31T16:52:18Z",
+  "sigma_condition": "(python decoder activity) AND (shell execution) AND (discovery activity)",
+  "selector_evidence": {
+    "selection_python_decoder": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": [
+          "/python",
+          "/python3"
+        ]
+      },
+      "telemetry_evidence": {
+        "process_name": "python3",
+        "pid": 6385,
+        "command_line": "python3 python_decoder.py",
+        "timestamp": "2026-05-31T16:52:17Z",
+        "parent_process": "bash"
+      }
+    },
+    "selection_interpreter_handoff": {
+      "matched": true,
+      "sigma_logic": {
+        "ParentImage|endswith": [
+          "/python",
+          "/python3"
+        ],
+        "Image|endswith": "/bash"
+      },
+      "telemetry_evidence": {
+        "parent_process": "python3",
+        "parent_pid": 6385,
+        "child_process": "bash",
+        "child_pid": 6390,
+        "command_line": "bash /tmp/python_payload.sh",
+        "timestamp": "2026-05-31T16:52:18Z"
+      }
+    },
+    "selection_tmp_script": {
+      "matched": true,
+      "sigma_logic": {
+        "CommandLine|contains": [
+          "/tmp/",
+          ".sh"
+        ]
+      },
+      "telemetry_evidence": {
+        "process_name": "bash",
+        "pid": 6390,
+        "command_line": "bash /tmp/python_payload.sh"
+      }
+    },
+    "selection_user_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": [
+          "/whoami",
+          "/id"
+        ]
+      },
+      "telemetry_evidence": [
+        {
+          "process_name": "whoami",
+          "pid": 6393,
+          "ppid": 6390,
+          "command_line": "whoami"
+        },
+        {
+          "process_name": "id",
+          "pid": 6394,
+          "ppid": 6390,
+          "command_line": "id"
+        }
+      ]
+    },
+    "selection_host_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": [
+          "/hostname",
+          "/uname"
+        ]
+      },
+      "telemetry_evidence": [
+        {
+          "process_name": "hostname",
+          "pid": 6397,
+          "ppid": 6390,
+          "command_line": "hostname"
+        },
+        {
+          "process_name": "uname",
+          "pid": 6398,
+          "ppid": 6390,
+          "command_line": "uname -a"
+        }
+      ]
+    },
+    "selection_process_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/ps"
+      },
+      "telemetry_evidence": {
+        "process_name": "ps",
+        "command_line": "ps aux",
+        "ppid": 6390
+      }
+    },
+    "selection_network_enumeration": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/curl"
+      },
+      "telemetry_evidence": {
+        "process_name": "curl",
+        "pid": 6407,
+        "ppid": 6390,
+        "command_line": "curl -s http://127.0.0.1:8080/ping"
+      }
+    }
+  },
+  "condition_evaluation": {
+    "python_decoder_detected": true,
+    "interpreter_handoff_detected": true,
+    "temporary_script_execution_detected": true,
+    "discovery_activity_detected": true,
+    "network_activity_detected": true,
+    "final_condition_result": true
+  },
+  "matched_process_chain": {
+    "execution_chain": [
+      {
+        "process": "bash"
+      },
+      {
+        "process": "python3",
+        "pid": 6385,
+        "command": "python3 python_decoder.py"
+      },
+      {
+        "process": "bash",
+        "pid": 6390,
+        "command": "bash /tmp/python_payload.sh"
+      },
+      {
+        "processes": [
+          "whoami",
+          "id",
+          "hostname",
+          "uname",
+          "ps",
+          "touch",
+          "curl"
+        ]
+      }
+    ]
+  },
+  "supporting_telemetry": [
+    "auditd_process_exec.txt",
+    "auditd_tmp.txt",
+    "sysmon_logs.txt",
+    "py_enc_payload_exec_proof.txt",
+    "python_decoded_payload.sh",
+    "http_server_access.txt",
+    "tcpsump_capture.txt"
+  ],
+  "match_conclusion": {
+    "rule_matched": true,
+    "confidence": "high",
+    "reason": "Python decoder activity, interpreter handoff to bash, temporary payload execution, and immediate discovery behavior satisfied the Sigma detection logic."
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "session_id": "variant1-encoded-command-execution",
+  "host": "bunny-VirtualBox",
+  "user": "bunny",
+  "execution_chain": {
+    "level_0": {
+      "process_name": "bash",
+      "role": "interactive_shell",
+      "command_line": "cat encoded_payload.txt | base64 -d | bash"
+    },
+    "level_1": {
+      "process_name": "base64",
+      "role": "payload_decoder",
+      "command_line": "base64 -d",
+      "parent": "bash"
+    },
+    "level_2": {
+      "process_name": "bash",
+      "role": "decoded_payload_executor",
+      "stdin_source": "base64_decoded_stream",
+      "parent": "base64"
+    },
+    "level_3": [
+      {
+        "process_name": "whoami",
+        "role": "environment_discovery",
+        "parent": "decoded_payload_executor"
+      },
+      {
+        "process_name": "id",
+        "role": "environment_discovery",
+        "parent": "decoded_payload_executor"
+      },
+      {
+        "process_name": "uname",
+        "role": "environment_discovery",
+        "parent": "decoded_payload_executor"
+      },
+      {
+        "process_name": "touch",
+        "command_line": "touch /tmp/.enc_exec_marker",
+        "role": "payload_activity",
+        "parent": "decoded_payload_executor"
+      },
+      {
+        "process_name": "curl",
+        "role": "network_activity",
+        "parent": "decoded_payload_executor"
+      },
+      {
+        "process_name": "date",
+        "role": "execution_marker",
+        "parent": "decoded_payload_executor"
+      }
+    ]
+  }
+}

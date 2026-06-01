@@ -1,0 +1,664 @@
+# Encoded Command Execution Telemetry Analysis Report
+
+## Scenario Overview
+
+This report documents the telemetry analysis conducted for the **Encoded Command Execution** adversary simulation.
+
+The objective of this simulation was to emulate attacker tradecraft that leverages encoded payloads to conceal malicious shell activity from defenders while still generating observable execution telemetry.
+
+Four execution variants were simulated to represent increasingly sophisticated forms of encoded command execution commonly observed in real-world intrusions.
+
+---
+
+## ATT&CK Mapping
+
+| Technique | Name                                                              |
+| --------- | ----------------------------------------------------------------- |
+| T1027     | Obfuscated Files or Information                                   |
+| T1059.004 | Command and Scripting Interpreter: Unix Shell                     |
+| T1082     | System Information Discovery                                      |
+| T1057     | Process Discovery                                                 |
+| T1016     | System Network Configuration Discovery                            |
+| T1105     | Ingress Tool Transfer / Network Activity                          |
+| T1070.004 | File Deletion / Artifact Manipulation (simulated marker creation) |
+
+---
+
+# Simulation Variants
+
+## Variant 1
+
+### Base64 Decode and Execute
+
+Encoded payload decoded at runtime and piped directly into a shell.
+
+```text
+cat encoded_payload.txt
+        ↓
+base64 -d
+        ↓
+bash
+        ↓
+payload execution
+```
+
+No payload file was written to disk before execution.
+
+---
+
+## Variant 2
+
+### Encoded Payload Reconstruction
+
+Encoded content was decoded into a shell script written to disk before execution.
+
+```text
+Encoded Content
+       ↓
+/tmp/payload.sh
+       ↓
+chmod +x
+       ↓
+bash /tmp/payload.sh
+```
+
+Introduced observable filesystem artifacts.
+
+---
+
+## Variant 3
+
+### Python Decoder Execution
+
+Python was used as the decoding and execution engine.
+
+```text
+python3 python_decoder.py
+          ↓
+/tmp/python_payload.sh
+          ↓
+bash
+          ↓
+payload execution
+```
+
+Demonstrated an alternative decoding mechanism that avoids direct base64 execution telemetry.
+
+---
+
+## Variant 4
+
+### Multi-Stage Double Encoded Execution
+
+Payload was encoded twice and required multiple decode stages before execution.
+
+```text
+cat double_encoded_payload.txt
+          ↓
+base64 -d
+          ↓
+base64 -d
+          ↓
+bash
+          ↓
+payload execution
+```
+
+Represents a more realistic evasion-oriented workflow.
+
+---
+
+# Payload Behavior Analysis
+
+The same operational payload was executed across all variants after decoding.
+
+The payload was intentionally designed to emulate early-stage attacker behavior immediately following successful code execution.
+
+---
+
+# Phase 1 — System Discovery
+
+## Objective
+
+Determine the identity of the compromised host and current user context.
+
+### Commands Executed
+
+```bash
+whoami
+id
+hostname
+uname -a
+```
+
+---
+
+## Telemetry Generated
+
+### User Discovery
+
+```bash
+whoami
+```
+
+Provides:
+
+* current username
+* execution context
+
+Observed in process execution telemetry.
+
+---
+
+### Privilege Discovery
+
+```bash
+id
+```
+
+Provides:
+
+* UID
+* GID
+* group memberships
+* privilege context
+
+Observed in process execution telemetry.
+
+---
+
+### Host Discovery
+
+```bash
+hostname
+```
+
+Provides:
+
+* system hostname
+
+Frequently used for victim identification.
+
+---
+
+### Operating System Discovery
+
+```bash
+uname -a
+```
+
+Provides:
+
+* kernel version
+* architecture
+* OS information
+
+Commonly executed immediately after compromise.
+
+---
+
+## ATT&CK Mapping
+
+| Command  | ATT&CK |
+| -------- | ------ |
+| whoami   | T1082  |
+| id       | T1082  |
+| hostname | T1082  |
+| uname -a | T1082  |
+
+---
+
+# Phase 2 — Process Discovery
+
+## Objective
+
+Identify running processes and security tooling.
+
+### Command Executed
+
+```bash
+ps aux
+```
+
+---
+
+## Telemetry Generated
+
+Process execution event:
+
+```text
+bash
+ └── ps aux
+```
+
+Produces visibility into:
+
+* running applications
+* security agents
+* monitoring tools
+* user sessions
+
+---
+
+## ATT&CK Mapping
+
+| Command | ATT&CK |
+| ------- | ------ |
+| ps aux  | T1057  |
+
+---
+
+# Phase 3 — Artifact Creation
+
+## Objective
+
+Create a filesystem artifact indicating successful execution.
+
+### Command Executed
+
+```bash
+touch .enc_exec_marker
+```
+
+---
+
+## Telemetry Generated
+
+Creates a marker file.
+
+Observed artifacts:
+
+```text
+.enc_exec_marker
+```
+
+Investigative value:
+
+* confirms payload execution
+* establishes execution timeline
+* enables forensic reconstruction
+
+---
+
+## ATT&CK Mapping
+
+| Activity      | ATT&CK    |
+| ------------- | --------- |
+| File Creation | T1070.004 |
+
+---
+
+# Phase 4 — Network Discovery
+
+## Objective
+
+Validate local network reachability and identify available services.
+
+### Command Executed
+
+```bash
+ping 127.0.0.1
+```
+
+---
+
+## Telemetry Generated
+
+Network activity generated by a shell-spawned process.
+
+Observed behavior:
+
+```text
+bash
+ └── ping
+```
+
+Provides:
+
+* network stack validation
+* connectivity verification
+
+---
+
+## ATT&CK Mapping
+
+| Command | ATT&CK |
+| ------- | ------ |
+| ping    | T1016  |
+
+---
+
+# Phase 5 — HTTP Service Interaction
+
+## Objective
+
+Simulate communication with a locally hosted service.
+
+---
+
+## Local HTTP Service
+
+A Python HTTP server was intentionally launched to emulate realistic network activity.
+
+Server launched:
+
+```bash
+python3 -m http.server 8080
+```
+
+Generated telemetry:
+
+```text
+python3
+ └── HTTP Server
+```
+
+---
+
+## Client Interaction
+
+Command executed:
+
+```bash
+curl http://127.0.0.1:8080
+```
+
+---
+
+## Telemetry Generated
+
+Observed process chain:
+
+```text
+bash
+ └── curl
+```
+
+Generated:
+
+* HTTP request
+* TCP connection
+* network telemetry
+* application-layer activity
+
+---
+
+## ATT&CK Mapping
+
+| Command             | ATT&CK |
+| ------------------- | ------ |
+| curl                | T1105  |
+| python3 http.server | T1105  |
+
+---
+
+# Normalized Behavioral Breakdown
+
+## Discovery Activity
+
+### Indicators
+
+```text
+whoami
+id
+hostname
+uname -a
+```
+
+Purpose:
+
+* identify victim
+* determine privileges
+* fingerprint operating system
+
+ATT&CK:
+
+```text
+T1082
+```
+
+---
+
+## Process Discovery
+
+### Indicators
+
+```text
+ps aux
+```
+
+Purpose:
+
+* identify running software
+* identify security controls
+* identify opportunities for lateral movement
+
+ATT&CK:
+
+```text
+T1057
+```
+
+---
+
+## Network Discovery
+
+### Indicators
+
+```text
+ping
+curl
+```
+
+Purpose:
+
+* validate connectivity
+* discover reachable services
+* test command execution success
+
+ATT&CK:
+
+```text
+T1016
+```
+
+---
+
+## Artifact Creation
+
+### Indicators
+
+```text
+touch .enc_exec_marker
+```
+
+Purpose:
+
+* execution validation
+* persistence testing
+* forensic marker
+
+ATT&CK:
+
+```text
+T1070.004
+```
+
+---
+
+# Variant-Specific Telemetry Characteristics
+
+| Variant   | Primary Decoder              | Key Indicator            |
+| --------- | ---------------------------- | ------------------------ |
+| Variant 1 | base64                       | base64 → bash            |
+| Variant 2 | base64 + file reconstruction | chmod +x /tmp/payload.sh |
+| Variant 3 | python3                      | python3 → bash           |
+| Variant 4 | double base64                | base64 → base64 → bash   |
+
+---
+
+# Cross-Variant Process Patterns
+
+## Variant 1
+
+```text
+bash
+ └── base64
+      └── bash
+           ├── whoami
+           ├── id
+           ├── hostname
+           ├── uname -a
+           ├── ps aux
+           ├── touch .enc_exec_marker
+           └── curl
+```
+
+---
+
+## Variant 2
+
+```text
+bash
+ ├── chmod +x /tmp/payload.sh
+ └── bash /tmp/payload.sh
+       ├── whoami
+       ├── id
+       ├── hostname
+       ├── uname -a
+       ├── ps aux
+       ├── touch .enc_exec_marker
+       └── curl
+```
+
+---
+
+## Variant 3
+
+```text
+python3
+ └── bash
+      ├── whoami
+      ├── id
+      ├── hostname
+      ├── uname -a
+      ├── ps aux
+      ├── touch .enc_exec_marker
+      └── curl
+```
+
+---
+
+## Variant 4
+
+```text
+cat
+ └── base64
+      └── base64
+           └── bash
+                ├── whoami
+                ├── id
+                ├── hostname
+                ├── uname -a
+                ├── ps aux
+                ├── touch .enc_exec_marker
+                └── curl
+```
+
+---
+
+# Detection-Relevant Telemetry
+
+The following telemetry elements consistently appeared throughout the simulations:
+
+### Decoder Activity
+
+```text
+base64 -d
+python3 decoder
+multiple decode stages
+```
+
+### Shell Execution
+
+```text
+bash
+```
+
+### Discovery Commands
+
+```text
+whoami
+id
+hostname
+uname -a
+```
+
+### Process Discovery
+
+```text
+ps aux
+```
+
+### Network Activity
+
+```text
+ping
+curl
+python3 -m http.server
+```
+
+### Artifact Creation
+
+```text
+touch .enc_exec_marker
+```
+
+### Temporary File Execution
+
+```text
+/tmp/payload.sh
+/tmp/python_payload.sh
+```
+
+### Permission Changes
+
+```text
+chmod +x
+```
+
+---
+
+# Detection Engineering Insights
+
+The simulations demonstrate that encoded command execution is most reliably detected through behavioral telemetry rather than encoded content inspection.
+
+Highest-value detection opportunities include:
+
+* base64 spawning bash
+* repeated base64 decoding stages
+* python spawning shell interpreters
+* chmod followed by execution from /tmp
+* discovery commands immediately after decode activity
+* process discovery following shell execution
+* shell-originated network activity
+* artifact creation following decode and execution chains
+
+---
+
+# Conclusion
+
+The Encoded Command Execution simulation successfully generated telemetry representative of multiple attacker techniques used to conceal shell execution.
+
+Across all four variants, the payload consistently produced observable evidence of:
+
+* System Discovery
+* Process Discovery
+* Network Discovery
+* Artifact Creation
+* Encoded Command Decoding
+* Shell Execution
+* Local Network Communication
+
+While the obfuscation mechanisms differed between variants, the underlying behavioral patterns remained stable and highly detectable through process telemetry, command-line visibility, parent-child process relationships, filesystem activity, and network interactions.
+

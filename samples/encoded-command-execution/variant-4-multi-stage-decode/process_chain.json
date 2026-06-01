@@ -1,0 +1,126 @@
+{
+  "artifact_type": "process_chain",
+  "simulation": "Encoded Command Execution Variant 4",
+  "technique": {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information"
+  },
+  "session_context": {
+    "hostname": "bunny-VirtualBox",
+    "username": "bunny",
+    "auid": 1000,
+    "session_id": 3,
+    "tty": "pts1",
+    "execution_time": "2026-06-01T00:22:37Z"
+  },
+  "execution_chain": {
+    "pid": 4830,
+    "process_name": "bash",
+    "image": "/usr/bin/bash",
+    "role": "interactive_shell",
+    "children": [
+      {
+        "pid": 5189,
+        "process_name": "cat",
+        "image": "/usr/bin/cat",
+        "command_line": "cat double_encoded_payload.txt",
+        "role": "payload_reader",
+        "stage": "payload_access"
+      },
+      {
+        "pid": 5190,
+        "process_name": "base64",
+        "image": "/usr/bin/base64",
+        "command_line": "base64 -d",
+        "role": "decoder_stage_1",
+        "stage": "payload_decoding"
+      },
+      {
+        "pid": 5191,
+        "process_name": "base64",
+        "image": "/usr/bin/base64",
+        "command_line": "base64 -d",
+        "role": "decoder_stage_2",
+        "stage": "payload_decoding"
+      },
+      {
+        "pid": 5192,
+        "process_name": "bash",
+        "image": "/usr/bin/bash",
+        "command_line": "bash",
+        "role": "decoded_payload_executor",
+        "stage": "payload_execution",
+        "children": [
+          {
+            "pid": 5195,
+            "process_name": "whoami",
+            "command_line": "whoami",
+            "stage": "discovery"
+          },
+          {
+            "pid": 5196,
+            "process_name": "id",
+            "command_line": "id",
+            "stage": "discovery"
+          },
+          {
+            "pid": 5199,
+            "process_name": "hostname",
+            "command_line": "hostname",
+            "stage": "discovery"
+          },
+          {
+            "pid": 5200,
+            "process_name": "uname",
+            "command_line": "uname -a",
+            "stage": "discovery"
+          },
+          {
+            "pid": 5203,
+            "process_name": "ps",
+            "command_line": "ps aux",
+            "stage": "process_enumeration"
+          },
+          {
+            "pid": 5206,
+            "process_name": "touch",
+            "command_line": "touch /tmp/.enc_exec_marker",
+            "stage": "artifact_creation"
+          },
+          {
+            "pid": 5209,
+            "process_name": "curl",
+            "command_line": "curl -s http://127.0.0.1:8080/ping",
+            "stage": "network_activity"
+          }
+        ]
+      }
+    ]
+  },
+  "behavior_summary": {
+    "encoded_payload_accessed": true,
+    "decode_operations": 2,
+    "shell_spawned_after_decode": true,
+    "discovery_activity": true,
+    "process_enumeration": true,
+    "temporary_artifact_created": true,
+    "network_activity_observed": true
+  },
+  "execution_flow": [
+    "Interactive Shell",
+    "Read Encoded Payload",
+    "Base64 Decode Stage 1",
+    "Base64 Decode Stage 2",
+    "Execute Decoded Bash Payload",
+    "Environment Discovery",
+    "Process Enumeration",
+    "Temporary Artifact Creation",
+    "Network Callback Activity"
+  ],
+  "detection_significance": {
+    "risk_level": "high",
+    "confidence": "high",
+    "key_indicator": "base64 -> base64 -> bash execution chain",
+    "correlation_strength": "strong"
+  }
+}

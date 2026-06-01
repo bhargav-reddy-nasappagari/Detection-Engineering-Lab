@@ -1,0 +1,10 @@
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ whoami
+bunny
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ id
+uid=1000(bunny) gid=1000(bunny) groups=1000(bunny),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users),111(lpadmin),114(lxd)
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ tty
+/dev/pts/0
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ hostname
+bunny-VirtualBox
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ date
+Sat May 30 02:14:25 PM IST 2026

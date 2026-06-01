@@ -1,0 +1,8 @@
+-a always,exit -F arch=b64 -S execve -F key=process_exec
+-a always,exit -F arch=b32 -S execve -F key=process_exec
+-w /tmp -p rwxa -k tmp_activity
+-w /dev/shm -p rwxa -k shm_activity
+-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F key=permission_change
+-w /usr/bin/base64 -p x -k base64_exec
+-w /usr/bin/python3 -p x -k python_exec
+-w /usr/bin/bash -p x -k bash_exec

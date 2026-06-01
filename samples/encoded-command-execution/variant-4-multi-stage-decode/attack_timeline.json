@@ -1,0 +1,111 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-4-multi-stage-decode",
+  "execution_method": "double base64 decode and direct execution",
+  "timeline": [
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "initial_execution",
+      "process": "bash",
+      "description": "Interactive shell initiated multi-stage encoded payload execution."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "payload_decoding_stage_1",
+      "process": "base64",
+      "command": "base64 -d",
+      "description": "First layer of Base64 encoding decoded."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "payload_decoding_stage_2",
+      "process": "base64",
+      "command": "base64 -d",
+      "description": "Second layer of Base64 encoding decoded, revealing executable payload content."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "payload_execution",
+      "process": "bash",
+      "description": "Decoded payload executed through a shell interpreter."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "user_discovery",
+      "process": "whoami",
+      "command": "whoami",
+      "description": "Enumerated current user context."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "user_discovery",
+      "process": "id",
+      "command": "id",
+      "description": "Enumerated user and group membership information."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "host_discovery",
+      "process": "hostname",
+      "command": "hostname",
+      "description": "Enumerated host identity."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "host_discovery",
+      "process": "uname",
+      "command": "uname -a",
+      "description": "Enumerated operating system and kernel information."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "process_discovery",
+      "process": "ps",
+      "command": "ps aux",
+      "description": "Enumerated running processes."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "filesystem_modification",
+      "process": "touch",
+      "command": "touch /tmp/.enc_exec_marker",
+      "description": "Created marker file in temporary directory."
+    },
+    {
+      "timestamp": "2026-06-01T00:22:37Z",
+      "phase": "network_activity",
+      "process": "curl",
+      "command": "curl -s http://127.0.0.1:8080/ping",
+      "description": "Generated outbound HTTP request to local listener."
+    }
+  ],
+  "behavioral_summary": {
+    "execution_chain": "bash -> base64 -> base64 -> bash",
+    "obfuscation_layers": 2,
+    "reconnaissance": [
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ps aux"
+    ],
+    "filesystem_activity": [
+      "touch /tmp/.enc_exec_marker"
+    ],
+    "network_activity": [
+      "curl -s http://127.0.0.1:8080/ping"
+    ]
+  },
+  "investigation_notes": {
+    "primary_behavior": "multi-stage payload deobfuscation followed by shell execution",
+    "detection_anchor": "base64 -> base64 -> bash execution chain",
+    "attck_mappings": [
+      "T1027",
+      "T1140",
+      "T1059.004",
+      "T1033",
+      "T1082",
+      "T1057"
+    ]
+  }
+}

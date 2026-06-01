@@ -1,0 +1,145 @@
+{
+"scenario": "encoded-command-execution",
+"correlation_type": "session_activity_correlation",
+"correlation_keys": {
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4",
+"originating_parent_pid": 14633,
+"payload_pid": 16858
+},
+"session_summary": {
+"user": "bunny",
+"authentication_uid": 1000,
+"terminal": "pts4",
+"session_start_context": "Interactive shell session",
+"correlation_confidence": "high"
+},
+"correlated_events": [
+{
+"timestamp": "2026-05-30T23:22:34Z",
+"pid": 16839,
+"ppid": 14633,
+"command": "chmod +x /tmp/payload.sh",
+"category": "payload_preparation",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:22:36Z",
+"pid": 16845,
+"ppid": 14633,
+"command": "ls -la /tmp/payload.sh",
+"category": "payload_verification",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:23:56Z",
+"pid": 16849,
+"ppid": 14633,
+"command": "stat /tmp/payload.sh",
+"category": "payload_verification",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:28:07Z",
+"pid": 16858,
+"ppid": 14633,
+"command": "/bin/bash /tmp/payload.sh",
+"category": "payload_execution",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:28:08Z",
+"pid": 16861,
+"ppid": 16858,
+"command": "whoami",
+"category": "user_discovery",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:28:08Z",
+"pid": 16862,
+"ppid": 16858,
+"command": "id",
+"category": "privilege_discovery",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:28:08Z",
+"pid": 16865,
+"ppid": 16858,
+"command": "hostname",
+"category": "host_discovery",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:28:08Z",
+"pid": 16866,
+"ppid": 16858,
+"command": "uname -a",
+"category": "system_discovery",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:28:08Z",
+"pid": 16869,
+"ppid": 16858,
+"command": "ps aux",
+"category": "process_discovery",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:28:08Z",
+"pid": 16872,
+"ppid": 16858,
+"command": "touch /tmp/.enc_exec_marker",
+"category": "filesystem_activity",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+},
+{
+"timestamp": "2026-05-30T23:28:08Z",
+"pid": 16875,
+"ppid": 16858,
+"command": "curl -s http://127.0.0.1:8080/ping",
+"category": "network_activity",
+"auid": 1000,
+"session_id": 21,
+"tty": "pts4"
+}
+],
+"correlation_findings": {
+"shared_auid": true,
+"shared_session_id": true,
+"shared_terminal": true,
+"shared_execution_context": true,
+"child_processes_linked_to_payload": true,
+"evidence_of_single_operator_activity": true
+},
+"investigation_value": {
+"primary_pivot": "session_id=21",
+"secondary_pivot": "auid=1000",
+"lineage_pivot": "pid=16858",
+"terminal_pivot": "tty=pts4"
+},
+"analyst_conclusion": "All observed discovery, filesystem, and network actions belong to a single interactive session that executed a temporary payload from /tmp. Session correlation links preparation, execution, and post-execution activity into one attack chain."
+}

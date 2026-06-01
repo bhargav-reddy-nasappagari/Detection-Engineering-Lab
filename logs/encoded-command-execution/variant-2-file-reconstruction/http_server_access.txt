@@ -1,0 +1,2 @@
+127.0.0.1 - - [30/May/2026 23:28:08] code 404, message File not found
+127.0.0.1 - - [30/May/2026 23:28:08] "GET /ping HTTP/1.1" 404 -

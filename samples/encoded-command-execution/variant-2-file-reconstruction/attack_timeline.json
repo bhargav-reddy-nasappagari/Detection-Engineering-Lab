@@ -1,0 +1,108 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-2-file-reconstruction",
+  "execution_method": "decode encoded payload to temporary script and execute",
+  "timeline": [
+    {
+      "timestamp": "2026-05-30T23:21:52Z",
+      "phase": "payload_reconstruction",
+      "process": "cat",
+      "command": "cat encoded_payload.txt",
+      "description": "Encoded payload content processed and reconstructed into /tmp/payload.sh."
+    },
+    {
+      "timestamp": "2026-05-30T23:21:52Z",
+      "phase": "file_creation",
+      "artifact": "/tmp/payload.sh",
+      "description": "Decoded payload script created in temporary directory."
+    },
+    {
+      "timestamp": "2026-05-30T23:22:34Z",
+      "phase": "permission_modification",
+      "process": "chmod",
+      "command": "chmod +x /tmp/payload.sh",
+      "description": "Execution permission granted to reconstructed payload."
+    },
+    {
+      "timestamp": "2026-05-30T23:22:36Z",
+      "phase": "payload_verification",
+      "process": "ls",
+      "command": "ls -la /tmp/payload.sh",
+      "description": "Operator verified payload file existence and permissions."
+    },
+    {
+      "timestamp": "2026-05-30T23:28:07Z",
+      "phase": "payload_execution",
+      "process": "bash",
+      "command": "bash /tmp/payload.sh",
+      "description": "Reconstructed payload execution initiated."
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "phase": "user_discovery",
+      "process": "whoami",
+      "command": "whoami",
+      "description": "Enumerated current user context."
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "phase": "user_discovery",
+      "process": "id",
+      "command": "id",
+      "description": "Enumerated user and group membership information."
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "phase": "host_discovery",
+      "process": "hostname",
+      "command": "hostname",
+      "description": "Enumerated host identity."
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "phase": "host_discovery",
+      "process": "uname",
+      "command": "uname -a",
+      "description": "Enumerated operating system and kernel information."
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "phase": "process_discovery",
+      "process": "ps",
+      "command": "ps aux",
+      "description": "Enumerated running processes."
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "phase": "filesystem_modification",
+      "process": "touch",
+      "command": "touch /tmp/.enc_exec_marker",
+      "description": "Created marker file in temporary directory."
+    },
+    {
+      "timestamp": "2026-05-30T23:28:08Z",
+      "phase": "network_activity",
+      "process": "curl",
+      "command": "curl -s http://127.0.0.1:8080/ping",
+      "description": "Generated HTTP request to local listener."
+    }
+  ],
+  "behavioral_summary": {
+    "execution_chain": "payload reconstruction -> chmod -> verification -> execution",
+    "reconnaissance": [
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ps aux"
+    ],
+    "filesystem_activity": [
+      "/tmp/payload.sh creation",
+      "chmod +x /tmp/payload.sh",
+      "touch /tmp/.enc_exec_marker"
+    ],
+    "network_activity": [
+      "curl -s http://127.0.0.1:8080/ping"
+    ]
+  }
+}

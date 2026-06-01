@@ -1,0 +1,5 @@
+bunny@bunny-VirtualBox:~$ ls -la /tmp/payload.sh
+-rw-rw-r-- 1 bunny bunny 2020 May 30 23:18 /tmp/payload.sh
+bunny@bunny-VirtualBox:~$ chmod +x /tmp/payload.sh
+bunny@bunny-VirtualBox:~$ ls -la /tmp/payload.sh
+-rwxrwxr-x 1 bunny bunny 2020 May 30 23:18 /tmp/payload.sh

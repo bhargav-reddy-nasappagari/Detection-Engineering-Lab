@@ -1,0 +1,136 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-4-multi-stage-decode",
+  "rule_name": "Encoded Command Execution Followed By Discovery Activity",
+  "rule_version": "1.0",
+  "validation_status": "PASS",
+  "detection_timestamp": "2026-06-01T00:22:37Z",
+  "detection_hypothesis": "Detect multi-stage payload decoding followed by shell execution and discovery activity.",
+  "trigger_summary": {
+    "first_decode_detected": true,
+    "second_decode_detected": true,
+    "multi_stage_decode_detected": true,
+    "shell_execution_detected": true,
+    "discovery_activity_detected": true,
+    "network_activity_detected": true,
+    "rule_match": true
+  },
+  "matched_selections": {
+    "selection_base64_decode_stage_1": {
+      "matched": true,
+      "evidence": {
+        "process_name": "base64",
+        "command_line": "base64 -d",
+        "timestamp": "2026-06-01T00:22:37Z",
+        "description": "First decoding stage observed."
+      }
+    },
+    "selection_base64_decode_stage_2": {
+      "matched": true,
+      "evidence": {
+        "process_name": "base64",
+        "command_line": "base64 -d",
+        "timestamp": "2026-06-01T00:22:37Z",
+        "description": "Second decoding stage observed."
+      }
+    },
+    "selection_multi_stage_decode": {
+      "matched": true,
+      "evidence": {
+        "decode_count": 2,
+        "execution_chain": "bash -> base64 -> base64 -> bash"
+      }
+    },
+    "selection_shell_execution": {
+      "matched": true,
+      "evidence": {
+        "process_name": "bash",
+        "timestamp": "2026-06-01T00:22:37Z",
+        "description": "Decoded payload executed through shell interpreter."
+      }
+    },
+    "selection_user_discovery": {
+      "matched": true,
+      "evidence": [
+        {
+          "process_name": "whoami",
+          "command_line": "whoami"
+        },
+        {
+          "process_name": "id",
+          "command_line": "id"
+        }
+      ]
+    },
+    "selection_host_discovery": {
+      "matched": true,
+      "evidence": [
+        {
+          "process_name": "hostname",
+          "command_line": "hostname"
+        },
+        {
+          "process_name": "uname",
+          "command_line": "uname -a"
+        }
+      ]
+    },
+    "selection_process_discovery": {
+      "matched": true,
+      "evidence": {
+        "process_name": "ps",
+        "command_line": "ps aux"
+      }
+    },
+    "selection_network_activity": {
+      "matched": true,
+      "evidence": {
+        "process_name": "curl",
+        "command_line": "curl -s http://127.0.0.1:8080/ping"
+      }
+    }
+  },
+  "behavioral_chain_validation": {
+    "expected_chain": [
+      "base64_decode",
+      "base64_decode",
+      "shell_execution",
+      "discovery_activity"
+    ],
+    "observed_chain": [
+      "base64 -d",
+      "base64 -d",
+      "bash",
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ps aux",
+      "touch /tmp/.enc_exec_marker",
+      "curl -s http://127.0.0.1:8080/ping"
+    ],
+    "chain_match": true
+  },
+  "telemetry_sources_used": [
+    "auditd_execve.txt",
+    "auditd_tmp.txt",
+    "sysmon_logs.txt",
+    "encoded_execution.log",
+    "http_server_access.txt",
+    "tcpdump_capture.txt"
+  ],
+  "variant_specific_validation": {
+    "multi_stage_decoding_confirmed": true,
+    "decode_layers_observed": 2,
+    "payload_reconstruction_observed": false,
+    "python_decoder_observed": false,
+    "execution_method_validated": "double base64 decode and execute"
+  },
+  "validation_conclusion": {
+    "rule_triggered": true,
+    "expected_behavior_observed": true,
+    "variant_covered": true,
+    "false_positive_indicators_observed": false,
+    "assessment": "Detection successfully identified multi-stage payload deobfuscation, shell execution, and subsequent discovery activity. The rule correctly generalized the behavior without relying on payload content and successfully covered the double-decoding execution path."
+  }
+}

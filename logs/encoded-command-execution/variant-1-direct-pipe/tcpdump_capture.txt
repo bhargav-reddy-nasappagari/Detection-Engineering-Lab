@@ -1,0 +1,14 @@
+tcpdump: verbose output suppressed, use -v[v]... for full protocol decode
+listening on lo, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+20:55:29.204667 IP 127.0.0.1.34556 > 127.0.0.1.8080: Flags [S], seq 2991250607, win 65495, options [mss 65495,sackOK,TS val 2699977264 ecr 0,nop,wscale 9], length 0
+20:55:29.204689 IP 127.0.0.1.8080 > 127.0.0.1.34556: Flags [S.], seq 628096627, ack 2991250608, win 65483, options [mss 65495,sackOK,TS val 2321438878 ecr 2699977264,nop,wscale 9], length 0
+20:55:29.204779 IP 127.0.0.1.34556 > 127.0.0.1.8080: Flags [.], ack 1, win 128, options [nop,nop,TS val 2699977264 ecr 2321438878], length 0
+20:55:29.204927 IP 127.0.0.1.34556 > 127.0.0.1.8080: Flags [P.], seq 1:83, ack 1, win 128, options [nop,nop,TS val 2699977264 ecr 2321438878], length 82: HTTP: GET /ping HTTP/1.1
+20:55:29.204931 IP 127.0.0.1.8080 > 127.0.0.1.34556: Flags [.], ack 83, win 128, options [nop,nop,TS val 2321438878 ecr 2699977264], length 0
+20:55:29.211770 IP 127.0.0.1.8080 > 127.0.0.1.34556: Flags [P.], seq 1:186, ack 83, win 128, options [nop,nop,TS val 2321438885 ecr 2699977264], length 185: HTTP: HTTP/1.0 404 File not found
+20:55:29.211785 IP 127.0.0.1.34556 > 127.0.0.1.8080: Flags [.], ack 186, win 128, options [nop,nop,TS val 2699977271 ecr 2321438885], length 0
+20:55:29.211820 IP 127.0.0.1.8080 > 127.0.0.1.34556: Flags [P.], seq 186:646, ack 83, win 128, options [nop,nop,TS val 2321438885 ecr 2699977271], length 460: HTTP
+20:55:29.211823 IP 127.0.0.1.34556 > 127.0.0.1.8080: Flags [.], ack 646, win 128, options [nop,nop,TS val 2699977271 ecr 2321438885], length 0
+20:55:29.211863 IP 127.0.0.1.8080 > 127.0.0.1.34556: Flags [F.], seq 646, ack 83, win 128, options [nop,nop,TS val 2321438885 ecr 2699977271], length 0
+20:55:29.212178 IP 127.0.0.1.34556 > 127.0.0.1.8080: Flags [F.], seq 83, ack 647, win 128, options [nop,nop,TS val 2699977271 ecr 2321438885], length 0
+20:55:29.212294 IP 127.0.0.1.8080 > 127.0.0.1.34556: Flags [.], ack 84, win 128, options [nop,nop,TS val 2321438885 ecr 2699977271], length 0

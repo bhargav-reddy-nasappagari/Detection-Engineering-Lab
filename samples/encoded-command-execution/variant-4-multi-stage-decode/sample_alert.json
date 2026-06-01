@@ -1,0 +1,87 @@
+{
+  "alert_id": "ENCODED-CMD-0004",
+  "alert_name": "Multi-Stage Base64 Decoding Followed by Shell Execution",
+  "severity": "high",
+  "status": "triggered",
+  "timestamp": "2026-06-01T00:22:37Z",
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Ubuntu Linux"
+  },
+  "user": {
+    "username": "bunny",
+    "uid": 1000,
+    "auid": 1000,
+    "session_id": 3,
+    "tty": "pts1"
+  },
+  "attack": {
+    "technique_id": "T1027",
+    "technique_name": "Obfuscated Files or Information",
+    "tactic": "Defense Evasion"
+  },
+  "process_chain": [
+    {
+      "pid": 5189,
+      "process": "cat",
+      "command_line": "cat double_encoded_payload.txt"
+    },
+    {
+      "pid": 5190,
+      "process": "base64",
+      "command_line": "base64 -d"
+    },
+    {
+      "pid": 5191,
+      "process": "base64",
+      "command_line": "base64 -d"
+    },
+    {
+      "pid": 5192,
+      "process": "bash",
+      "command_line": "bash"
+    }
+  ],
+  "trigger_reason": [
+    "Multiple base64 decode operations observed in a single execution chain",
+    "Decoded content executed directly by bash",
+    "Shell execution occurred immediately after decoding activity",
+    "Follow-on discovery commands observed",
+    "Temporary file activity observed in /tmp",
+    "Network communication initiated after payload execution"
+  ],
+  "supporting_evidence": {
+    "decoded_shell_pid": 5192,
+    "base64_decode_count": 2,
+    "discovery_commands": [
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ps aux"
+    ],
+    "file_activity": [
+      "/tmp/encoded_execution.log",
+      "/tmp/.enc_exec_marker"
+    ],
+    "network_activity": [
+      "curl -s http://127.0.0.1:8080/ping"
+    ]
+  },
+  "risk_score": 95,
+  "confidence": "high",
+  "recommended_actions": [
+    "Review command execution history for the affected user session",
+    "Inspect decoded payload source and origin",
+    "Analyze child processes spawned by the decoded shell",
+    "Review file modifications under /tmp",
+    "Investigate outbound network connections initiated by the payload"
+  ],
+  "detection_metadata": {
+    "rule_name": "Linux Encoded Command Execution - Multi Stage Decode",
+    "rule_version": "1.0",
+    "detection_engine": "Detection Engineering Lab",
+    "simulation": "Encoded Command Execution Variant 4",
+    "validation_status": "successful"
+  }
+}

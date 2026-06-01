@@ -1,0 +1,175 @@
+{
+  "simulation": "Encoded Command Execution - Variant 4 (Double Base64 Decode)",
+  "technique": "T1027",
+  "session": {
+    "auid": 1000,
+    "uid": 1000,
+    "tty": "pts1",
+    "session_id": 3,
+    "hostname": "bunny-VirtualBox"
+  },
+  "process_events": [
+    {
+      "pid": 5189,
+      "ppid": 4830,
+      "image": "/usr/bin/cat",
+      "process_name": "cat",
+      "command_line": "cat /home/bunny/Detection-Engineering-Lab/scenarios/encoded-command-execution/double_encoded_payload.txt",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5190,
+      "ppid": 4830,
+      "image": "/usr/bin/base64",
+      "process_name": "base64",
+      "command_line": "base64 -d",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5191,
+      "ppid": 4830,
+      "image": "/usr/bin/base64",
+      "process_name": "base64",
+      "command_line": "base64 -d",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5192,
+      "ppid": 4830,
+      "image": "/usr/bin/bash",
+      "process_name": "bash",
+      "command_line": "bash",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation",
+      "role": "decoded_payload_executor"
+    },
+    {
+      "pid": 5195,
+      "ppid": 5192,
+      "image": "/usr/bin/whoami",
+      "process_name": "whoami",
+      "command_line": "whoami",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5196,
+      "ppid": 5192,
+      "image": "/usr/bin/id",
+      "process_name": "id",
+      "command_line": "id",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5199,
+      "ppid": 5192,
+      "image": "/usr/bin/hostname",
+      "process_name": "hostname",
+      "command_line": "hostname",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5200,
+      "ppid": 5192,
+      "image": "/usr/bin/uname",
+      "process_name": "uname",
+      "command_line": "uname -a",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5203,
+      "ppid": 5192,
+      "image": "/usr/bin/ps",
+      "process_name": "ps",
+      "command_line": "ps aux",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5206,
+      "ppid": 5192,
+      "image": "/usr/bin/touch",
+      "process_name": "touch",
+      "command_line": "touch /tmp/.enc_exec_marker",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    },
+    {
+      "pid": 5209,
+      "ppid": 5192,
+      "image": "/usr/bin/curl",
+      "process_name": "curl",
+      "command_line": "curl -s http://127.0.0.1:8080/ping",
+      "timestamp": "2026-06-01T00:22:37",
+      "event_type": "process_creation"
+    }
+  ],
+  "process_lineage": {
+    "root_process": {
+      "pid": 4830,
+      "image": "/usr/bin/bash",
+      "children": [
+        {
+          "pid": 5189,
+          "image": "/usr/bin/cat"
+        },
+        {
+          "pid": 5190,
+          "image": "/usr/bin/base64"
+        },
+        {
+          "pid": 5191,
+          "image": "/usr/bin/base64"
+        },
+        {
+          "pid": 5192,
+          "image": "/usr/bin/bash",
+          "children": [
+            {
+              "pid": 5195,
+              "image": "/usr/bin/whoami"
+            },
+            {
+              "pid": 5196,
+              "image": "/usr/bin/id"
+            },
+            {
+              "pid": 5199,
+              "image": "/usr/bin/hostname"
+            },
+            {
+              "pid": 5200,
+              "image": "/usr/bin/uname"
+            },
+            {
+              "pid": 5203,
+              "image": "/usr/bin/ps"
+            },
+            {
+              "pid": 5206,
+              "image": "/usr/bin/touch"
+            },
+            {
+              "pid": 5209,
+              "image": "/usr/bin/curl"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "detection_observations": {
+    "double_base64_decode": true,
+    "shell_spawn_after_decode": true,
+    "discovery_commands_executed": true,
+    "tmp_file_activity": true,
+    "network_activity": true,
+    "risk_score": 95
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "simulation": "encoded-command-execution",
+  "variant": "variant-1-direct-pipe",
+  "rule_name": "Encoded Command Execution Followed By Discovery Activity",
+  "rule_status": "MATCHED",
+  "match_timestamp": "2026-05-30T20:55:29Z",
+  "sigma_condition": "(base64 decode activity) AND (discovery activity)",
+  "selector_evidence": {
+    "selection_base64_decode": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/base64",
+        "CommandLine|contains": "-d"
+      },
+      "telemetry_evidence": {
+        "event_type": "process_creation",
+        "process_name": "base64",
+        "pid": 14644,
+        "ppid": 14633,
+        "command_line": "base64 -d",
+        "parent_process": "bash"
+      }
+    },
+    "selection_user_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": [
+          "/whoami",
+          "/id"
+        ]
+      },
+      "telemetry_evidence": [
+        {
+          "process_name": "whoami",
+          "pid": 14652,
+          "ppid": 14645,
+          "command_line": "whoami"
+        },
+        {
+          "process_name": "id",
+          "pid": 14653,
+          "ppid": 14645,
+          "command_line": "id"
+        }
+      ]
+    },
+    "selection_host_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": [
+          "/hostname",
+          "/uname"
+        ]
+      },
+      "telemetry_evidence": [
+        {
+          "process_name": "hostname",
+          "pid": 14656,
+          "ppid": 14645,
+          "command_line": "hostname"
+        },
+        {
+          "process_name": "uname",
+          "pid": 14657,
+          "ppid": 14645,
+          "command_line": "uname -a"
+        }
+      ]
+    },
+    "selection_process_discovery": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/ps"
+      },
+      "telemetry_evidence": {
+        "process_name": "ps",
+        "command_line": "ps aux",
+        "parent_process": "bash",
+        "ppid": 14645
+      }
+    },
+    "selection_network_enumeration": {
+      "matched": true,
+      "sigma_logic": {
+        "Image|endswith": "/curl"
+      },
+      "telemetry_evidence": {
+        "process_name": "curl",
+        "pid": 14666,
+        "ppid": 14645,
+        "command_line": "curl -s http://127.0.0.1:8080/ping"
+      }
+    }
+  },
+  "condition_evaluation": {
+    "decode_activity_present": true,
+    "discovery_activity_present": true,
+    "network_activity_present": true,
+    "final_condition_result": true
+  },
+  "matched_process_chain": {
+    "execution_chain": [
+      {
+        "process": "bash",
+        "pid": 14633
+      },
+      {
+        "process": "base64",
+        "pid": 14644
+      },
+      {
+        "process": "bash",
+        "pid": 14645
+      },
+      {
+        "processes": [
+          "whoami",
+          "id",
+          "hostname",
+          "uname",
+          "ps",
+          "touch",
+          "curl"
+        ]
+      }
+    ]
+  },
+  "supporting_telemetry": [
+    "sysmon_logs.txt",
+    "sysmon_process_events.txt",
+    "auditd_execve.txt",
+    "http_server_access.log",
+    "tcpdump_capture.txt"
+  ],
+  "match_conclusion": {
+    "rule_matched": true,
+    "confidence": "high",
+    "reason": "Observed base64 decoding activity immediately followed by shell-based discovery and network activity."
+  }
+}

@@ -1,0 +1,180 @@
+{
+  "artifact_type": "session_reconstruction",
+  "simulation": "Encoded Command Execution Variant 4",
+  "technique": {
+    "id": "T1027",
+    "name": "Obfuscated Files or Information"
+  },
+  "session": {
+    "hostname": "bunny-VirtualBox",
+    "username": "bunny",
+    "uid": 1000,
+    "auid": 1000,
+    "session_id": 3,
+    "tty": "pts1",
+    "root_process_pid": 4830,
+    "root_process_name": "bash"
+  },
+  "investigation_summary": {
+    "finding": "User executed a double Base64 encoded payload which was decoded in multiple stages and executed through bash.",
+    "risk_level": "high",
+    "confidence": "high",
+    "encoded_layers_detected": 2,
+    "payload_execution_confirmed": true,
+    "network_activity_observed": true
+  },
+  "timeline": [
+    {
+      "sequence": 1,
+      "stage": "interactive_shell",
+      "pid": 4830,
+      "process": "bash",
+      "description": "User operating within an interactive terminal session."
+    },
+    {
+      "sequence": 2,
+      "stage": "payload_access",
+      "pid": 5189,
+      "ppid": 4830,
+      "process": "cat",
+      "command_line": "cat double_encoded_payload.txt",
+      "description": "Encoded payload file accessed and streamed into pipeline."
+    },
+    {
+      "sequence": 3,
+      "stage": "decode_stage_1",
+      "pid": 5190,
+      "ppid": 4830,
+      "process": "base64",
+      "command_line": "base64 -d",
+      "description": "First Base64 decoding stage executed."
+    },
+    {
+      "sequence": 4,
+      "stage": "decode_stage_2",
+      "pid": 5191,
+      "ppid": 4830,
+      "process": "base64",
+      "command_line": "base64 -d",
+      "description": "Second Base64 decoding stage executed."
+    },
+    {
+      "sequence": 5,
+      "stage": "payload_execution",
+      "pid": 5192,
+      "ppid": 4830,
+      "process": "bash",
+      "command_line": "bash",
+      "description": "Fully decoded payload executed within a child bash process."
+    },
+    {
+      "sequence": 6,
+      "stage": "artifact_creation",
+      "pid": 5192,
+      "process": "bash",
+      "artifact": "/tmp/encoded_execution.log",
+      "description": "Payload created execution log file."
+    },
+    {
+      "sequence": 7,
+      "stage": "discovery",
+      "pid": 5195,
+      "ppid": 5192,
+      "process": "whoami",
+      "description": "User context enumeration."
+    },
+    {
+      "sequence": 8,
+      "stage": "discovery",
+      "pid": 5196,
+      "ppid": 5192,
+      "process": "id",
+      "description": "Privilege and identity discovery."
+    },
+    {
+      "sequence": 9,
+      "stage": "discovery",
+      "pid": 5199,
+      "ppid": 5192,
+      "process": "hostname",
+      "description": "Host identification."
+    },
+    {
+      "sequence": 10,
+      "stage": "discovery",
+      "pid": 5200,
+      "ppid": 5192,
+      "process": "uname",
+      "command_line": "uname -a",
+      "description": "Operating system discovery."
+    },
+    {
+      "sequence": 11,
+      "stage": "process_enumeration",
+      "pid": 5203,
+      "ppid": 5192,
+      "process": "ps",
+      "command_line": "ps aux",
+      "description": "Running process enumeration."
+    },
+    {
+      "sequence": 12,
+      "stage": "artifact_creation",
+      "pid": 5206,
+      "ppid": 5192,
+      "process": "touch",
+      "command_line": "touch /tmp/.enc_exec_marker",
+      "description": "Execution marker created."
+    },
+    {
+      "sequence": 13,
+      "stage": "network_activity",
+      "pid": 5209,
+      "ppid": 5192,
+      "process": "curl",
+      "command_line": "curl -s http://127.0.0.1:8080/ping",
+      "description": "Local callback/network activity observed."
+    }
+  ],
+  "observed_artifacts": {
+    "files_created": [
+      "/tmp/encoded_execution.log",
+      "/tmp/.enc_exec_marker"
+    ],
+    "commands_executed": [
+      "whoami",
+      "id",
+      "hostname",
+      "uname -a",
+      "ps aux",
+      "curl -s http://127.0.0.1:8080/ping"
+    ]
+  },
+  "process_correlation": {
+    "parent_process": {
+      "pid": 4830,
+      "name": "bash"
+    },
+    "decoder_processes": [
+      {
+        "pid": 5190,
+        "name": "base64"
+      },
+      {
+        "pid": 5191,
+        "name": "base64"
+      }
+    ],
+    "payload_executor": {
+      "pid": 5192,
+      "name": "bash"
+    }
+  },
+  "behavioral_assessment": {
+    "execution_pattern": "cat -> base64 -d -> base64 -d -> bash",
+    "defense_evasion_indicator": true,
+    "discovery_indicator": true,
+    "network_indicator": true,
+    "overall_classification": "Multi-stage encoded command execution"
+  }
+}
