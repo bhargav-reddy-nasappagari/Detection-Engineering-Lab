@@ -1,0 +1,1 @@
+-rw-rw-r-- 1 bunny bunny 32 Jun  1 23:20 /tmp/updater.sh

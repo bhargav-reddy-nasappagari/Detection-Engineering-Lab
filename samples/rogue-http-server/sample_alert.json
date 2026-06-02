@@ -1,0 +1,133 @@
+{
+  "alert_id": "ALERT-2026-0001",
+  "alert_name": "Ingress Tool Transfer Followed By Temporary File Execution",
+  "status": "open",
+  "severity": "high",
+  "confidence": "high",
+  "category": "Command and Control",
+  "generated_time": "2026-06-01T23:32:24Z",
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Ubuntu Linux",
+    "user": "bunny"
+  },
+  "detection": {
+    "rule_name": "Linux Ingress Tool Transfer Followed By Temporary File Execution",
+    "rule_id": "4f4d7d7a-9b3a-4a7b-a52c-rogue-http-server",
+    "detection_method": "Behavioral Correlation"
+  },
+  "attack": {
+    "tactics": [
+      "Command and Control",
+      "Execution",
+      "Discovery"
+    ],
+    "techniques": [
+      {
+        "id": "T1105",
+        "name": "Ingress Tool Transfer"
+      },
+      {
+        "id": "T1059.004",
+        "name": "Unix Shell"
+      },
+      {
+        "id": "T1033",
+        "name": "System Owner/User Discovery"
+      },
+      {
+        "id": "T1082",
+        "name": "System Information Discovery"
+      }
+    ]
+  },
+  "summary": {
+    "description": "A payload was downloaded from a Python HTTP server, written to a temporary directory, made executable, and subsequently executed. The payload immediately performed host discovery activity.",
+    "risk": "Behavior is consistent with post-compromise tool transfer and execution."
+  },
+  "evidence": [
+    {
+      "stage": "Staging Server",
+      "process": "python3",
+      "command_line": "python3 -m http.server 8000",
+      "timestamp": "2026-06-01T23:11:16Z"
+    },
+    {
+      "stage": "Tool Transfer",
+      "process": "curl",
+      "command_line": "curl http://127.0.0.1:8000/updater.sh -o /tmp/updater.sh",
+      "timestamp": "2026-06-01T23:20:08Z"
+    },
+    {
+      "stage": "Permission Modification",
+      "process": "chmod",
+      "command_line": "chmod +x /tmp/updater.sh",
+      "timestamp": "2026-06-01T23:22:43Z"
+    },
+    {
+      "stage": "Execution",
+      "process": "bash",
+      "command_line": "/bin/bash /tmp/updater.sh",
+      "timestamp": "2026-06-01T23:32:24Z"
+    }
+  ],
+  "process_chain": {
+    "root_process": {
+      "image": "/usr/bin/bash",
+      "pid": 5899
+    },
+    "children": [
+      {
+        "image": "/usr/bin/curl",
+        "pid": 6284
+      },
+      {
+        "image": "/usr/bin/chmod",
+        "pid": 6306
+      },
+      {
+        "image": "/usr/bin/bash",
+        "pid": 6556,
+        "command_line": "/bin/bash /tmp/updater.sh",
+        "children": [
+          {
+            "image": "/usr/bin/whoami",
+            "pid": 6557
+          },
+          {
+            "image": "/usr/bin/id",
+            "pid": 6558
+          },
+          {
+            "image": "/usr/bin/hostname",
+            "pid": 6559
+          }
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "downloaded_file": "/tmp/updater.sh",
+    "download_source": "http://127.0.0.1:8000/updater.sh",
+    "execution_path": "/tmp/updater.sh"
+  },
+  "behavior_chain": [
+    "Python HTTP Server Creation",
+    "HTTP Tool Transfer",
+    "Temporary File Creation",
+    "Permission Modification",
+    "Execution From Temporary Directory",
+    "User Discovery",
+    "Host Discovery"
+  ],
+  "analyst_notes": {
+    "assessment": "Likely post-compromise tool transfer activity.",
+    "recommended_actions": [
+      "Acquire transferred payload for analysis",
+      "Review parent shell activity",
+      "Identify additional payload downloads",
+      "Investigate subsequent discovery commands",
+      "Determine initial access vector"
+    ]
+  }
+}

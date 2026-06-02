@@ -1,0 +1,78 @@
+```yaml
+title: Linux Ingress Tool Transfer Followed By Temporary File Execution
+id: 4f4d7d7a-9b3a-4a7b-a52c-rogue-http-server
+status: experimental
+description: |
+  Detects execution of scripts or binaries from temporary directories
+  after being staged through common download utilities. This behavior
+  is commonly observed during ATT&CK T1105 Ingress Tool Transfer
+  operations and post-compromise payload staging.
+
+author: Bunny
+date: 2026-06-02
+
+references:
+  - https://attack.mitre.org/techniques/T1105/
+  - https://attack.mitre.org/techniques/T1059/004/
+
+tags:
+  - attack.command-and-control
+  - attack.t1105
+  - attack.execution
+  - attack.t1059.004
+
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+
+  download_utilities:
+    Image|endswith:
+      - '/curl'
+      - '/wget'
+
+  temp_file_targets:
+    CommandLine|contains:
+      - '/tmp/'
+      - '/var/tmp/'
+      - '/dev/shm/'
+
+  chmod_execution:
+    Image|endswith: '/chmod'
+    CommandLine|contains:
+      - '+x'
+
+  temp_directory_execution:
+    CommandLine|contains:
+      - '/tmp/'
+      - '/var/tmp/'
+      - '/dev/shm/'
+
+  shell_execution:
+    Image|endswith:
+      - '/bash'
+      - '/sh'
+      - '/dash'
+
+  condition: >
+    (
+      download_utilities and temp_file_targets
+    )
+    or
+    (
+      chmod_execution and temp_file_targets
+    )
+    or
+    (
+      shell_execution and temp_directory_execution
+    )
+
+falsepositives:
+  - Administrative scripting
+  - Software installation workflows
+  - Development and testing environments
+  - Automation frameworks executing temporary scripts
+
+level: medium
+```

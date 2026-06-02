@@ -1,0 +1,8 @@
+  File: /tmp/updater.sh
+  size: 32        	Blocks: 8          IO Block: 4096   regular file
+Device: 0,38	Inode: 276         Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/   bunny)   Gid: ( 1000/   bunny)
+Access: 2026-06-01 23:21:44.898838071 +0530
+Modify: 2026-06-01 23:20:08.962341945 +0530
+Change: 2026-06-01 23:20:08.962341945 +0530
+ Birth: 2026-06-01 23:20:08.960341935 +0530

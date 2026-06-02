@@ -1,0 +1,92 @@
+{
+  "scenario": "rogue_http_server",
+  "artifact_type": "process_chain",
+  "attack_technique": {
+    "id": "T1105",
+    "name": "Ingress Tool Transfer"
+  },
+  "session": {
+    "user": "bunny",
+    "hostname": "bunny-VirtualBox",
+    "root_process": {
+      "pid": 5899,
+      "ppid": 5862,
+      "image": "/usr/bin/bash",
+      "command_line": "/usr/bin/bash",
+      "children": [
+        {
+          "pid": 6039,
+          "ppid": 5899,
+          "image": "/usr/bin/python3",
+          "command_line": "python3 -m http.server 8000",
+          "role": "rogue_http_server"
+        },
+        {
+          "pid": 6284,
+          "ppid": 5899,
+          "image": "/usr/bin/curl",
+          "command_line": "curl http://127.0.0.1:8000/updater.sh -o /tmp/updater.sh",
+          "role": "payload_download"
+        },
+        {
+          "pid": 6306,
+          "ppid": 5899,
+          "image": "/usr/bin/chmod",
+          "command_line": "chmod +x /tmp/updater.sh",
+          "role": "permission_modification"
+        },
+        {
+          "pid": 6556,
+          "ppid": 5899,
+          "image": "/usr/bin/bash",
+          "command_line": "/bin/bash /tmp/updater.sh",
+          "role": "payload_execution",
+          "children": [
+            {
+              "pid": 6557,
+              "ppid": 6556,
+              "image": "/usr/bin/whoami",
+              "command_line": "whoami",
+              "role": "user_discovery"
+            },
+            {
+              "pid": 6558,
+              "ppid": 6556,
+              "image": "/usr/bin/id",
+              "command_line": "id",
+              "role": "privilege_discovery"
+            },
+            {
+              "pid": 6559,
+              "ppid": 6556,
+              "image": "/usr/bin/hostname",
+              "command_line": "hostname",
+              "role": "system_discovery"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "process_tree_visualization": [
+    "bash",
+    "├── python3 -m http.server 8000",
+    "├── curl http://127.0.0.1:8000/updater.sh -o /tmp/updater.sh",
+    "├── chmod +x /tmp/updater.sh",
+    "└── bash /tmp/updater.sh",
+    "    ├── whoami",
+    "    ├── id",
+    "    └── hostname"
+  ],
+  "behavior_summary": {
+    "staging": "Python HTTP server started to host payload",
+    "transfer": "curl downloaded payload from local HTTP server",
+    "preparation": "chmod applied executable permissions",
+    "execution": "bash executed transferred payload",
+    "discovery": [
+      "whoami",
+      "id",
+      "hostname"
+    ]
+  }
+}

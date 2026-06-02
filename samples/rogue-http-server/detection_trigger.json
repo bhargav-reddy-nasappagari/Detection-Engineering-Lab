@@ -1,0 +1,127 @@
+{
+  "detection_name": "Linux Ingress Tool Transfer Followed By Temporary File Execution",
+  "detection_id": "4f4d7d7a-9b3a-4a7b-a52c-rogue-http-server",
+  "detection_type": "behavioral_correlation",
+  "trigger_time": "2026-06-01T23:32:24Z",
+  "trigger_reason": "Observed a payload download to a temporary directory followed by permission modification and execution from the same location.",
+  "triggered_conditions": [
+    {
+      "condition_name": "Tool Download To Temporary Directory",
+      "status": "matched",
+      "matched_event": {
+        "timestamp": "2026-06-01T23:20:08Z",
+        "image": "/usr/bin/curl",
+        "command_line": "curl http://127.0.0.1:8000/updater.sh -o /tmp/updater.sh"
+      },
+      "matched_fields": {
+        "Image": "/usr/bin/curl",
+        "CommandLine": "curl http://127.0.0.1:8000/updater.sh -o /tmp/updater.sh",
+        "TargetPath": "/tmp/updater.sh"
+      },
+      "rule_logic": {
+        "Image|endswith": [
+          "/curl",
+          "/wget"
+        ],
+        "TargetPath|contains": [
+          "/tmp/",
+          "/var/tmp/",
+          "/dev/shm/"
+        ]
+      }
+    },
+    {
+      "condition_name": "Permission Modification Of Temporary File",
+      "status": "matched",
+      "matched_event": {
+        "timestamp": "2026-06-01T23:22:43Z",
+        "image": "/usr/bin/chmod",
+        "command_line": "chmod +x /tmp/updater.sh"
+      },
+      "matched_fields": {
+        "Image": "/usr/bin/chmod",
+        "CommandLine": "chmod +x /tmp/updater.sh"
+      },
+      "rule_logic": {
+        "Image|endswith": "/chmod",
+        "CommandLine|contains": "+x",
+        "CommandLine|contains_path": "/tmp/"
+      }
+    },
+    {
+      "condition_name": "Execution From Temporary Directory",
+      "status": "matched",
+      "matched_event": {
+        "timestamp": "2026-06-01T23:32:24Z",
+        "image": "/usr/bin/bash",
+        "command_line": "/bin/bash /tmp/updater.sh"
+      },
+      "matched_fields": {
+        "Image": "/usr/bin/bash",
+        "CommandLine": "/bin/bash /tmp/updater.sh"
+      },
+      "rule_logic": {
+        "Image|endswith": [
+          "/bash",
+          "/sh",
+          "/dash"
+        ],
+        "CommandLine|contains": [
+          "/tmp/",
+          "/var/tmp/",
+          "/dev/shm/"
+        ]
+      }
+    }
+  ],
+  "correlation_logic": {
+    "sequence": [
+      {
+        "step": 1,
+        "event": "Download Payload",
+        "process": "curl",
+        "artifact": "/tmp/updater.sh"
+      },
+      {
+        "step": 2,
+        "event": "Modify Permissions",
+        "process": "chmod",
+        "artifact": "/tmp/updater.sh"
+      },
+      {
+        "step": 3,
+        "event": "Execute Payload",
+        "process": "bash",
+        "artifact": "/tmp/updater.sh"
+      }
+    ],
+    "correlation_result": "matched"
+  },
+  "supporting_context": {
+    "staging_server": {
+      "timestamp": "2026-06-01T23:11:16Z",
+      "image": "/usr/bin/python3",
+      "command_line": "python3 -m http.server 8000"
+    },
+    "post_execution_activity": [
+      {
+        "image": "/usr/bin/whoami",
+        "command_line": "whoami"
+      },
+      {
+        "image": "/usr/bin/id",
+        "command_line": "id"
+      },
+      {
+        "image": "/usr/bin/hostname",
+        "command_line": "hostname"
+      }
+    ]
+  },
+  "trigger_summary": {
+    "primary_trigger": "Download -> Permission Change -> Execute",
+    "secondary_context": "Python HTTP Server staging activity observed prior to transfer",
+    "confidence": "high",
+    "severity": "high"
+  }
+}

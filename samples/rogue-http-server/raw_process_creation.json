@@ -1,0 +1,69 @@
+{
+  "scenario": "rogue_http_server",
+  "event_type": "process_creation",
+  "events": [
+    {
+      "timestamp": "2026-06-01T23:11:16",
+      "pid": 6039,
+      "ppid": 5862,
+      "image": "/usr/bin/python3",
+      "command_line": "python3 -m http.server 8000",
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny"
+    },
+    {
+      "timestamp": "2026-06-01T23:20:08",
+      "pid": 6284,
+      "ppid": 5899,
+      "image": "/usr/bin/curl",
+      "command_line": "curl http://127.0.0.1:8000/updater.sh -o /tmp/updater.sh",
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny"
+    },
+    {
+      "timestamp": "2026-06-01T23:22:43",
+      "pid": 6306,
+      "ppid": 5899,
+      "image": "/usr/bin/chmod",
+      "command_line": "chmod +x /tmp/updater.sh",
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny"
+    },
+    {
+      "timestamp": "2026-06-01T23:32:24",
+      "pid": 6556,
+      "ppid": 5899,
+      "image": "/usr/bin/bash",
+      "command_line": "/bin/bash /tmp/updater.sh",
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny"
+    },
+    {
+      "timestamp": "2026-06-01T23:32:24",
+      "pid": 6557,
+      "ppid": 6556,
+      "image": "/usr/bin/whoami",
+      "command_line": "whoami",
+      "parent_image": "/tmp/updater.sh",
+      "user": "bunny"
+    },
+    {
+      "timestamp": "2026-06-01T23:32:24",
+      "pid": 6558,
+      "ppid": 6556,
+      "image": "/usr/bin/id",
+      "command_line": "id",
+      "parent_image": "/tmp/updater.sh",
+      "user": "bunny"
+    },
+    {
+      "timestamp": "2026-06-01T23:32:24",
+      "pid": 6559,
+      "ppid": 6556,
+      "image": "/usr/bin/hostname",
+      "command_line": "hostname",
+      "parent_image": "/tmp/updater.sh",
+      "user": "bunny"
+    }
+  ]
+}

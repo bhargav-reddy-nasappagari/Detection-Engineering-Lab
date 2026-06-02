@@ -1,0 +1,110 @@
+{
+  "scenario": "rogue_http_server",
+  "event_type": "network_activity",
+  "protocol": "HTTP",
+  "events": [
+    {
+      "timestamp": "2026-06-01T23:11:16",
+      "activity": "server_start",
+      "process": {
+        "pid": 6039,
+        "image": "/usr/bin/python3",
+        "command_line": "python3 -m http.server 8000"
+      },
+      "network": {
+        "local_address": "0.0.0.0",
+        "local_port": 8000,
+        "protocol": "TCP",
+        "state": "LISTEN"
+      },
+      "description": "Python HTTP server begins listening for inbound connections."
+    },
+    {
+      "timestamp": "2026-06-01T23:20:08",
+      "activity": "http_connection",
+      "process": {
+        "pid": 6284,
+        "image": "/usr/bin/curl",
+        "command_line": "curl http://127.0.0.1:8000/updater.sh -o /tmp/updater.sh"
+      },
+      "network": {
+        "source_ip": "127.0.0.1",
+        "source_port": 49152,
+        "destination_ip": "127.0.0.1",
+        "destination_port": 8000,
+        "protocol": "TCP"
+      },
+      "description": "Curl establishes a connection to the Python HTTP server."
+    },
+    {
+      "timestamp": "2026-06-01T23:20:08",
+      "activity": "http_request",
+      "process": {
+        "pid": 6284,
+        "image": "/usr/bin/curl"
+      },
+      "http": {
+        "method": "GET",
+        "uri": "/updater.sh",
+        "host": "127.0.0.1:8000",
+        "user_agent": "curl"
+      },
+      "description": "Payload retrieval request issued by curl."
+    },
+    {
+      "timestamp": "2026-06-01T23:20:08",
+      "activity": "http_response",
+      "server_process": {
+        "pid": 6039,
+        "image": "/usr/bin/python3"
+      },
+      "http": {
+        "status_code": 200,
+        "content_type": "text/x-shellscript",
+        "resource": "/updater.sh"
+      },
+      "description": "Python HTTP server returns the requested payload."
+    },
+    {
+      "timestamp": "2026-06-01T23:20:08",
+      "activity": "file_transfer",
+      "source": {
+        "ip": "127.0.0.1",
+        "port": 8000
+      },
+      "destination": {
+        "host": "localhost",
+        "path": "/tmp/updater.sh"
+      },
+      "artifact": {
+        "file_name": "updater.sh",
+        "transfer_method": "HTTP GET"
+      },
+      "description": "Payload successfully transferred from the HTTP staging server to temporary storage."
+    },
+    {
+      "timestamp": "2026-06-01T23:20:09",
+      "activity": "connection_close",
+      "network": {
+        "source_ip": "127.0.0.1",
+        "destination_ip": "127.0.0.1",
+        "destination_port": 8000,
+        "protocol": "TCP"
+      },
+      "description": "HTTP session terminated following successful payload transfer."
+    }
+  ],
+  "behavior_summary": {
+    "pattern": "HTTP Staging Server -> HTTP GET Request -> Payload Transfer",
+    "technique": {
+      "id": "T1105",
+      "name": "Ingress Tool Transfer"
+    },
+    "network_indicators": [
+      "python3 listening on TCP/8000",
+      "curl outbound HTTP request",
+      "HTTP GET /updater.sh",
+      "payload transferred to /tmp/updater.sh"
+    ]
+  }
+}

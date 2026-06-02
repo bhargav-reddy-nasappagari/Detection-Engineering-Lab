@@ -1,0 +1,10 @@
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 22:14 ?        00:00:03 /usr/lib/systemd/systemd --switched-root --system --deserialize=52 splash
+bunny       5167    2830  2 22:41 ?        00:00:52  \_ ptyxis --new-window
+bunny       5185    5167  0 22:41 ?        00:00:00      \_ /usr/libexec/ptyxis-agent --socket-fd=3 --rlimit-nofile=1024
+bunny       5227    5185  0 22:41 pts/0    00:00:00          \_ /usr/bin/bash
+bunny       6070    5227 99 23:14 pts/0    00:00:00          |   \_ ps -ef --forest
+bunny       5862    5185  0 23:02 pts/1    00:00:00          \_ /usr/bin/bash
+bunny       6039    5862  0 23:11 pts/1    00:00:00          |   \_ python3 -m http.server 8000
+bunny       5899    5185  0 23:03 pts/2    00:00:00          \_ /usr/bin/bash
+
