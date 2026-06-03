@@ -1,0 +1,174 @@
+{
+  "scenario": "Data Staging And Compression",
+  "host": "bunny-VirtualBox",
+  "user": "bunny",
+  "session_id": "interactive-shell-11000",
+
+  "root_process": {
+    "image": "/usr/bin/bash",
+    "pid": 11000,
+    "command_line": "-bash",
+    "children": [
+      {
+        "image": "/usr/bin/find",
+        "pid": 11033,
+        "command_line": "find /home/bunny -name \"*.csv\"",
+        "phase": "Discovery",
+        "technique": "T1083"
+      },
+      {
+        "image": "/usr/bin/find",
+        "pid": 11041,
+        "command_line": "find /home/bunny -name \"*.xlsx\"",
+        "phase": "Discovery",
+        "technique": "T1083"
+      },
+      {
+        "image": "/usr/bin/find",
+        "pid": 11043,
+        "command_line": "find /home/bunny -name \"*.docx\"",
+        "phase": "Discovery",
+        "technique": "T1083"
+      },
+      {
+        "image": "/usr/bin/find",
+        "pid": 11045,
+        "command_line": "find /home/bunny -name \"*.conf\"",
+        "phase": "Discovery",
+        "technique": "T1083"
+      },
+      {
+        "image": "/usr/bin/find",
+        "pid": 11054,
+        "command_line": "find /home/bunny -name \"*.txt\"",
+        "phase": "Discovery",
+        "technique": "T1083"
+      },
+      {
+        "image": "/usr/bin/find",
+        "pid": 11124,
+        "command_line": "find /home/bunny -name \"*.sql\"",
+        "phase": "Discovery",
+        "technique": "T1083"
+      },
+      {
+        "image": "/usr/bin/find",
+        "pid": 11137,
+        "command_line": "find /home/bunny -name \"*.md\"",
+        "phase": "Discovery",
+        "technique": "T1083"
+      },
+      {
+        "image": "/usr/bin/mkdir",
+        "pid": 11443,
+        "command_line": "mkdir /tmp/archive_stage",
+        "phase": "Local Staging",
+        "technique": "T1074.001"
+      },
+      {
+        "image": "/usr/bin/ls",
+        "pid": 11445,
+        "command_line": "ls -ld /tmp/archive_stage",
+        "phase": "Verification"
+      },
+      {
+        "image": "/usr/bin/cp",
+        "pid": 11695,
+        "command_line": "cp Employee_Compensation.csv Payroll_Data.csv /tmp/archive_stage",
+        "phase": "Collection",
+        "technique": "T1005"
+      },
+      {
+        "image": "/usr/bin/cp",
+        "pid": 11720,
+        "command_line": "cp Budget_2026.xlsx Q1_Financial_Report.xlsx /tmp/archive_stage",
+        "phase": "Collection",
+        "technique": "T1005"
+      },
+      {
+        "image": "/usr/bin/cp",
+        "pid": 11731,
+        "command_line": "cp Meeting_Minutes.docx Project_Roadmap.docx Vendor_List.docx /tmp/archive_stage",
+        "phase": "Collection",
+        "technique": "T1005"
+      },
+      {
+        "image": "/usr/bin/cp",
+        "pid": 11745,
+        "command_line": "cp database_backup.sql /tmp/archive_stage",
+        "phase": "Collection",
+        "technique": "T1005"
+      },
+      {
+        "image": "/usr/bin/cp",
+        "pid": 11753,
+        "command_line": "cp nginx.conf server_backup.conf /tmp/archive_stage",
+        "phase": "Collection",
+        "technique": "T1005"
+      },
+      {
+        "image": "/usr/bin/tar",
+        "pid": 11892,
+        "command_line": "tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage",
+        "phase": "Archive Creation",
+        "technique": "T1560.001",
+        "children": [
+          {
+            "image": "/usr/bin/gzip",
+            "pid": 11893,
+            "command_line": "gzip",
+            "phase": "Compression",
+            "technique": "T1560.001"
+          }
+        ]
+      },
+      {
+        "image": "/usr/bin/ls",
+        "pid": 11905,
+        "command_line": "ls -lh /tmp/company_backup.tar.gz",
+        "phase": "Verification"
+      },
+      {
+        "image": "/usr/bin/tar",
+        "pid": 11912,
+        "command_line": "tar -tzf /tmp/company_backup.tar.gz",
+        "phase": "Archive Validation",
+        "children": [
+          {
+            "image": "/usr/bin/gzip",
+            "pid": 11913,
+            "command_line": "gzip -d"
+          }
+        ]
+      }
+    ]
+  },
+
+  "behavioral_flow": [
+    "Discovery",
+    "Local Staging",
+    "Collection",
+    "Archive Creation",
+    "Compression",
+    "Archive Validation"
+  ],
+
+  "attack_techniques": [
+    {
+      "id": "T1083",
+      "name": "File and Directory Discovery"
+    },
+    {
+      "id": "T1005",
+      "name": "Data from Local System"
+    },
+    {
+      "id": "T1074.001",
+      "name": "Local Data Staging"
+    },
+    {
+      "id": "T1560.001",
+      "name": "Archive Collected Data via Utility"
+    }
+  ]
+}

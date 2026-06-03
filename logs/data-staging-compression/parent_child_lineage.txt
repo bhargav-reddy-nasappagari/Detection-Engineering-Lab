@@ -1,0 +1,67 @@
+bash (PID 11000)
+│
+├── find (PID 11033)
+│   Command: find /home/bunny -name "*.csv"
+│
+├── find (PID 11041)
+│   Command: find /home/bunny -name "*.xlsx"
+│
+├── find (PID 11043)
+│   Command: find /home/bunny -name "*.docx"
+│
+├── find (PID 11045)
+│   Command: find /home/bunny -name "*.conf"
+│
+├── find (PID 11054)
+│   Command: find /home/bunny -name "*.txt"
+│
+├── find (PID 11124)
+│   Command: find /home/bunny -name "*.sql"
+│
+├── find (PID 11137)
+│   Command: find /home/bunny -name "*.md"
+│
+├── mkdir (PID 11443)
+│   Command: mkdir /tmp/archive_stage
+│
+├── ls (PID 11445)
+│   Command: ls -ld /tmp/archive_stage
+│
+├── cp (PID 11695)
+│   Command: cp Employee_Compensation.csv Payroll_Data.csv /tmp/archive_stage
+│
+├── cp (PID 11720)
+│   Command: cp Budget_2026.xlsx Q1_Financial_Report.xlsx /tmp/archive_stage
+│
+├── cp (PID 11722)
+│   Command: cp Meeting_Minutes.docx Project_Roadmap.docx Vendor_List.docx /tmp/archive_stage
+│
+├── cp (PID 11780)
+│   Command: cp Internal_Notes.csv /tmp/archive_stage
+│
+├── cp (PID 11794)
+│   Command: cp database_backup.sql /tmp/archive_stage
+│
+├── cp (PID 11804)
+│   Command: cp nginx.conf server_backup.conf /tmp/archive_stage
+│
+├── cp (PID 11812)
+│   Command: cp architecture.md roadmap.md /tmp/archive_stage
+│
+├── cp (PID 11814)
+│   Command: cp sprint-plan.xlsx /tmp/archive_stage
+│
+├── tar (PID 12305)
+│   Command: tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage
+│   │
+│   └── gzip (PID 12307)
+│       Command: gzip (compression operation)
+│
+├── ls (PID 12386)
+│   Command: ls -lh /tmp/company_backup.tar.gz
+│
+└── tar (PID 12388)
+    Command: tar -tzf /tmp/company_backup.tar.gz
+    │
+    └── gzip (PID 1289)
+        Command: gzip -d

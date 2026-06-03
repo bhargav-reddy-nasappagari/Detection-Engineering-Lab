@@ -1,0 +1,96 @@
+{
+  "alert_id": "DSC-2026-0001",
+  "alert_name": "Data Staging And Compression Via Native Archiving Utilities",
+  "alert_time": "2026-06-03T23:40:58Z",
+  "severity": "high",
+  "status": "open",
+  "category": "Collection",
+  "confidence": "high",
+
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Ubuntu Linux"
+  },
+
+  "user": {
+    "username": "bunny",
+    "uid": 1000,
+    "tty": "pts1"
+  },
+
+  "process": {
+    "image": "/usr/bin/tar",
+    "command_line": "tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage",
+    "pid": 11892,
+    "parent_image": "/usr/bin/bash",
+    "parent_pid": 11000
+  },
+
+  "artifacts": {
+    "staging_directory": "/tmp/archive_stage",
+    "archive_file": "/tmp/company_backup.tar.gz",
+    "archive_type": "tar.gz"
+  },
+
+  "rule": {
+    "name": "Data Staging And Compression Via Native Archiving Utilities",
+    "rule_id": "9d3e3c84-2a1c-4c66-b5e9-8a6c8a8f5d11",
+    "engine": "Sigma",
+    "version": "1.0"
+  },
+
+  "mitre_attack": [
+    {
+      "technique_id": "T1005",
+      "technique": "Data from Local System"
+    },
+    {
+      "technique_id": "T1074.001",
+      "technique": "Local Data Staging"
+    },
+    {
+      "technique_id": "T1560.001",
+      "technique": "Archive Collected Data via Utility"
+    }
+  ],
+
+  "trigger_conditions": {
+    "archive_utility_detected": true,
+    "compression_flag_detected": true,
+    "temporary_staging_path_detected": true,
+    "archive_extension_detected": true
+  },
+
+  "supporting_evidence": [
+    {
+      "timestamp": "2026-06-03T22:48:38Z",
+      "event": "File Discovery",
+      "command": "find /home/bunny -name '*.csv'"
+    },
+    {
+      "timestamp": "2026-06-03T22:56:25Z",
+      "event": "Staging Directory Creation",
+      "command": "mkdir /tmp/archive_stage"
+    },
+    {
+      "timestamp": "2026-06-03T23:06:27Z",
+      "event": "Data Collection",
+      "command": "cp Employee_Compensation.csv Payroll_Data.csv /tmp/archive_stage"
+    },
+    {
+      "timestamp": "2026-06-03T23:40:58Z",
+      "event": "Archive Creation",
+      "command": "tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage"
+    }
+  ],
+
+  "analyst_summary": "A user staged multiple files into a temporary collection directory and compressed them into a tar.gz archive. The activity follows a discovery → staging → collection → compression workflow consistent with ATT&CK techniques T1005, T1074.001, and T1560.001. This behavior is commonly observed during preparation for data exfiltration.",
+
+  "recommended_actions": [
+    "Review contents of the generated archive",
+    "Determine whether archive transfer occurred",
+    "Investigate user activity preceding archive creation",
+    "Examine network telemetry for potential exfiltration",
+    "Identify additional archive creation activity on the host"
+  ]
+}

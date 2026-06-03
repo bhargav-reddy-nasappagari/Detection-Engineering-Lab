@@ -1,0 +1,81 @@
+title: Data Staging And Compression Via Native Archiving Utilities
+id: 9d3e3c84-2a1c-4c66-b5e9-8a6c8a8f5d11
+status: experimental
+description: |
+Detects creation of compressed archives from temporary staging
+locations using native Linux archiving utilities. This behavior
+was observed during a data staging and compression workflow where
+files were collected into a temporary directory and compressed
+into a single archive for potential exfiltration.
+
+references:
+
+* https://attack.mitre.org/techniques/T1074/001/
+* https://attack.mitre.org/techniques/T1560/001/
+
+author: Bunny
+date: 2026-06-04
+
+tags:
+
+* attack.collection
+* attack.t1005
+* attack.t1074.001
+* attack.t1560.001
+
+logsource:
+product: linux
+category: process_creation
+
+detection:
+
+selection_tar:
+Image|endswith:
+- '/tar'
+CommandLine|contains:
+- '-czf'
+- '-cf'
+
+selection_zip:
+Image|endswith:
+- '/zip'
+CommandLine|contains:
+- '-r'
+
+selection_7z:
+Image|endswith:
+- '/7z'
+
+staging_paths:
+CommandLine|contains:
+- '/tmp/'
+- '/var/tmp/'
+- '/dev/shm/'
+
+archive_extensions:
+CommandLine|contains:
+- '.tar'
+- '.tar.gz'
+- '.tgz'
+- '.zip'
+- '.7z'
+
+condition: (
+selection_tar or
+selection_zip or
+selection_7z
+)
+and
+(
+staging_paths or
+archive_extensions
+)
+
+falsepositives:
+
+* Administrative backup operations
+* System migration activities
+* Developer packaging workflows
+* Software build pipelines
+
+level: medium

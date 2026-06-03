@@ -1,0 +1,8 @@
+  File: /tmp/company_backup.tar.gz
+  size: 487       	Blocks: 8          IO Block: 4096   regular file
+Device: 0,36	Inode: 715         Links: 1
+Access: (0664/-rw-rw-r--)  Uid: ( 1000/   bunny)   Gid: ( 1000/   bunny)
+Access: 2026-06-03 23:49:08.784264061 +0530
+Modify: 2026-06-03 23:44:36.870206691 +0530
+Change: 2026-06-03 23:44:36.870206691 +0530
+ Birth: 2026-06-03 23:40:58.151539710 +0530

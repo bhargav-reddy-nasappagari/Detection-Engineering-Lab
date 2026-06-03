@@ -1,0 +1,57 @@
+----
+time->Wed Jun  3 22:48:38 2026
+type=PROCTITLE msg=audit(1780507118.728:1860): proctitle=66696E64002F686F6D652F62756E6E79002D6E616D65002A2E637376
+type=PATH msg=audit(1780507118.728:1860): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507118.728:1860): item=0 name="/usr/bin/find" inode=1966663 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507118.728:1860): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507118.728:1860): argc=4 a0="find" a1="/home/bunny" a2="-name" a3="*.csv"
+type=SYSCALL msg=audit(1780507118.728:1860): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8d6c0 a1=59e6ead9b2f0 a2=59e6eae4b720 a3=31 items=2 ppid=11000 pid=11033 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="find" exe="/usr/bin/find" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 22:49:04 2026
+type=PROCTITLE msg=audit(1780507144.805:1862): proctitle=66696E64002F686F6D652F62756E6E79002D6E616D65002A2E786C7378
+type=PATH msg=audit(1780507144.805:1862): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507144.805:1862): item=0 name="/usr/bin/find" inode=1966663 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507144.805:1862): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507144.805:1862): argc=4 a0="find" a1="/home/bunny" a2="-name" a3="*.xlsx"
+type=SYSCALL msg=audit(1780507144.805:1862): arch=c000003e syscall=59 success=yes exit=0 a0=59e6ead7ebc0 a1=59e6eae8e7c0 a2=59e6eae4b720 a3=31 items=2 ppid=11000 pid=11041 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="find" exe="/usr/bin/find" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 22:49:12 2026
+type=PROCTITLE msg=audit(1780507152.554:1864): proctitle=66696E64002F686F6D652F62756E6E79002D6E616D65002A2E646F6378
+type=PATH msg=audit(1780507152.554:1864): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507152.554:1864): item=0 name="/usr/bin/find" inode=1966663 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507152.554:1864): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507152.554:1864): argc=4 a0="find" a1="/home/bunny" a2="-name" a3="*.docx"
+type=SYSCALL msg=audit(1780507152.554:1864): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8b7a0 a1=59e6ead9b940 a2=59e6eae4b720 a3=30 items=2 ppid=11000 pid=11043 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="find" exe="/usr/bin/find" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 22:49:17 2026
+type=PROCTITLE msg=audit(1780507157.936:1866): proctitle=66696E64002F686F6D652F62756E6E79002D6E616D65002A2E636F6E66
+type=PATH msg=audit(1780507157.936:1866): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507157.936:1866): item=0 name="/usr/bin/find" inode=1966663 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507157.936:1866): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507157.936:1866): argc=4 a0="find" a1="/home/bunny" a2="-name" a3="*.conf"
+type=SYSCALL msg=audit(1780507157.936:1866): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8d110 a1=59e6eae8ee10 a2=59e6eae4b720 a3=30 items=2 ppid=11000 pid=11045 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="find" exe="/usr/bin/find" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 22:49:43 2026
+type=PROCTITLE msg=audit(1780507183.950:1868): proctitle=66696E64002F686F6D652F62756E6E79002D6E616D65002A2E747874
+type=PATH msg=audit(1780507183.950:1868): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507183.950:1868): item=0 name="/usr/bin/find" inode=1966663 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507183.950:1868): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507183.950:1868): argc=4 a0="find" a1="/home/bunny" a2="-name" a3="*.txt"
+type=SYSCALL msg=audit(1780507183.950:1868): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8cd30 a1=59e6eae641d0 a2=59e6eae4b720 a3=30 items=2 ppid=11000 pid=11054 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="find" exe="/usr/bin/find" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 22:50:27 2026
+type=PROCTITLE msg=audit(1780507227.477:1887): proctitle=66696E64002F686F6D652F62756E6E79002D6E616D65002A2E73716C
+type=PATH msg=audit(1780507227.477:1887): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507227.477:1887): item=0 name="/usr/bin/find" inode=1966663 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507227.477:1887): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507227.477:1887): argc=4 a0="find" a1="/home/bunny" a2="-name" a3="*.sql"
+type=SYSCALL msg=audit(1780507227.477:1887): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8c4b0 a1=59e6eae8bde0 a2=59e6eae4b720 a3=30 items=2 ppid=11000 pid=11124 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="find" exe="/usr/bin/find" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 22:50:34 2026
+type=PROCTITLE msg=audit(1780507234.635:1891): proctitle=66696E64002F686F6D652F62756E6E79002D6E616D65002A2E6D64
+type=PATH msg=audit(1780507234.635:1891): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507234.635:1891): item=0 name="/usr/bin/find" inode=1966663 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507234.635:1891): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507234.635:1891): argc=4 a0="find" a1="/home/bunny" a2="-name" a3="*.md"
+type=SYSCALL msg=audit(1780507234.635:1891): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8c020 a1=59e6eae8d6b0 a2=59e6eae4b720 a3=30 items=2 ppid=11000 pid=11137 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="find" exe="/usr/bin/find" subj=unconfined key="process_exec"
+----

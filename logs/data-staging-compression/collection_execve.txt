@@ -1,0 +1,73 @@
+----
+time->Wed Jun  3 23:06:27 2026
+type=PROCTITLE msg=audit(1780508187.749:2062): proctitle=6370002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F46696E616E63652F456D706C6F7965655F436F6D70656E736174696F6E2E637376002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F46696E616E63652F506179726F6C6C5F446174612E637376002F746D702F617263
+type=PATH msg=audit(1780508187.749:2062): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508187.749:2062): item=0 name="/usr/bin/cp" inode=1966761 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508187.749:2062): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508187.749:2062): argc=4 a0="cp" a1="/home/bunny/Data-Staging-Lab/Finance/Employee_Compensation.csv" a2="/home/bunny/Data-Staging-Lab/Finance/Payroll_Data.csv" a3="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508187.749:2062): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8e780 a1=59e6eae8d200 a2=59e6eae4b720 a3=41 items=2 ppid=11000 pid=11695 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="cp" exe="/usr/bin/gnucp" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:06:37 2026
+type=PROCTITLE msg=audit(1780508197.354:2069): proctitle=6370002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F46696E616E63652F4275646765745F323032362E786C7378002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F46696E616E63652F51315F46696E616E6369616C5F5265706F72742E786C7378002F746D702F61726368
+type=PATH msg=audit(1780508197.354:2069): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508197.354:2069): item=0 name="/usr/bin/cp" inode=1966761 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508197.354:2069): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508197.354:2069): argc=4 a0="cp" a1="/home/bunny/Data-Staging-Lab/Finance/Budget_2026.xlsx" a2="/home/bunny/Data-Staging-Lab/Finance/Q1_Financial_Report.xlsx" a3="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508197.354:2069): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8c3e0 a1=59e6eae8ca90 a2=59e6eae4b720 a3=41 items=2 ppid=11000 pid=11720 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="cp" exe="/usr/bin/gnucp" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:06:54 2026
+type=PROCTITLE msg=audit(1780508214.382:2071): proctitle=6370002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F446F63756D656E74732F4D656574696E675F4D696E757465732E646F6378002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F446F63756D656E74732F50726F6A6563745F526F61646D61702E646F6378002F686F6D65
+type=PATH msg=audit(1780508214.382:2071): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508214.382:2071): item=0 name="/usr/bin/cp" inode=1966761 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508214.382:2071): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508214.382:2071): argc=5 a0="cp" a1="/home/bunny/Data-Staging-Lab/Documents/Meeting_Minutes.docx" a2="/home/bunny/Data-Staging-Lab/Documents/Project_Roadmap.docx" a3="/home/bunny/Data-Staging-Lab/Documents/Vendor_List.docx" a4="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508214.382:2071): arch=c000003e syscall=59 success=yes exit=0 a0=59e6ead7d7b0 a1=59e6ead7cd60 a2=59e6eae4b720 a3=50 items=2 ppid=11000 pid=11722 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="cp" exe="/usr/bin/gnucp" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:07:16 2026
+type=PROCTITLE msg=audit(1780508236.031:2082): proctitle=6370002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F446F63756D656E74732F496E7465726E616C5F4E6F7465732E637376002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780508236.031:2082): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508236.031:2082): item=0 name="/usr/bin/cp" inode=1966761 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508236.031:2082): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508236.031:2082): argc=3 a0="cp" a1="/home/bunny/Data-Staging-Lab/Documents/Internal_Notes.csv" a2="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508236.031:2082): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8f540 a1=59e6eae8ca90 a2=59e6eae4b720 a3=51 items=2 ppid=11000 pid=11780 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="cp" exe="/usr/bin/gnucp" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:07:31 2026
+type=PROCTITLE msg=audit(1780508251.853:2090): proctitle=6370002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F4261636B7570732F64617461626173655F6261636B75702E73716C002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780508251.853:2090): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508251.853:2090): item=0 name="/usr/bin/cp" inode=1966761 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508251.853:2090): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508251.853:2090): argc=3 a0="cp" a1="/home/bunny/Data-Staging-Lab/Backups/database_backup.sql" a2="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508251.853:2090): arch=c000003e syscall=59 success=yes exit=0 a0=59e6ead52fa0 a1=59e6eae8f980 a2=59e6eae4b720 a3=40 items=2 ppid=11000 pid=11794 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="cp" exe="/usr/bin/gnucp" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:07:49 2026
+type=PROCTITLE msg=audit(1780508269.403:2092): proctitle=6370002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F4261636B7570732F6E67696E782E636F6E66002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F4261636B7570732F7365727665725F6261636B75702E636F6E66002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780508269.403:2092): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508269.403:2092): item=0 name="/usr/bin/cp" inode=1966761 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508269.403:2092): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508269.403:2092): argc=4 a0="cp" a1="/home/bunny/Data-Staging-Lab/Backups/nginx.conf" a2="/home/bunny/Data-Staging-Lab/Backups/server_backup.conf" a3="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508269.403:2092): arch=c000003e syscall=59 success=yes exit=0 a0=59e6ead7f810 a1=59e6eae8c760 a2=59e6eae4b720 a3=41 items=2 ppid=11000 pid=11804 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="cp" exe="/usr/bin/gnucp" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:08:14 2026
+type=PROCTITLE msg=audit(1780508294.769:2094): proctitle=6370002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F50726F6A656374732F6172636869746563747572652E6D64002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F50726F6A656374732F726F61646D61702E6D64002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780508294.769:2094): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508294.769:2094): item=0 name="/usr/bin/cp" inode=1966761 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508294.769:2094): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508294.769:2094): argc=4 a0="cp" a1="/home/bunny/Data-Staging-Lab/Projects/architecture.md" a2="/home/bunny/Data-Staging-Lab/Projects/roadmap.md" a3="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508294.769:2094): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae64060 a1=59e6eae8f8f0 a2=59e6eae4b720 a3=40 items=2 ppid=11000 pid=11812 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="cp" exe="/usr/bin/gnucp" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:08:25 2026
+type=PROCTITLE msg=audit(1780508305.847:2096): proctitle=6370002F686F6D652F62756E6E792F446174612D53746167696E672D4C61622F50726F6A656374732F737072696E742D706C616E2E786C7378002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780508305.847:2096): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508305.847:2096): item=0 name="/usr/bin/cp" inode=1966761 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508305.847:2096): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508305.847:2096): argc=3 a0="cp" a1="/home/bunny/Data-Staging-Lab/Projects/sprint-plan.xlsx" a2="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508305.847:2096): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8e920 a1=59e6eae8fb60 a2=59e6eae4b720 a3=50 items=2 ppid=11000 pid=11814 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="cp" exe="/usr/bin/gnucp" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:08:37 2026
+type=PROCTITLE msg=audit(1780508317.458:2098): proctitle=6C73002D2D636F6C6F723D6175746F002D6C61002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780508317.458:2098): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780508317.458:2098): item=0 name="/usr/bin/ls" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780508317.458:2098): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780508317.458:2098): argc=4 a0="ls" a1="--color=auto" a2="-la" a3="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780508317.458:2098): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8f4f0 a1=59e6eae8f450 a2=59e6eae4b720 a3=31 items=2 ppid=11000 pid=11816 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="ls" exe="/usr/lib/cargo/bin/coreutils/ls" subj=unconfined key="process_exec"
+----

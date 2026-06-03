@@ -1,0 +1,93 @@
+{
+  "rule_name": "Data Staging And Compression Via Native Archiving Utilities",
+  "rule_id": "9d3e3c84-2a1c-4c66-b5e9-8a6c8a8f5d11",
+  "trigger_time": "2026-06-03T23:40:58Z",
+  "detection_result": "MATCH",
+
+  "matched_event": {
+    "event_type": "ProcessCreate",
+    "image": "/usr/bin/tar",
+    "command_line": "tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage",
+    "process_id": 11892,
+    "parent_image": "/usr/bin/bash",
+    "parent_process_id": 11000,
+    "user": "bunny",
+    "host": "bunny-VirtualBox"
+  },
+
+  "rule_conditions": {
+    "selection_tar": {
+      "field": "Image",
+      "operator": "endswith",
+      "expected": "/tar",
+      "actual": "/usr/bin/tar",
+      "result": true
+    },
+
+    "compression_flag": {
+      "field": "CommandLine",
+      "operator": "contains",
+      "expected": "-czf",
+      "actual": "tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage",
+      "result": true
+    },
+
+    "staging_path": {
+      "field": "CommandLine",
+      "operator": "contains",
+      "expected": "/tmp/",
+      "actual": "tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage",
+      "result": true
+    },
+
+    "archive_extension": {
+      "field": "CommandLine",
+      "operator": "contains",
+      "expected": ".tar.gz",
+      "actual": "tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage",
+      "result": true
+    }
+  },
+
+  "matched_indicators": [
+    {
+      "indicator": "Native archiving utility execution",
+      "value": "/usr/bin/tar"
+    },
+    {
+      "indicator": "Compression operation",
+      "value": "-czf"
+    },
+    {
+      "indicator": "Temporary staging directory",
+      "value": "/tmp/archive_stage"
+    },
+    {
+      "indicator": "Compressed archive output",
+      "value": "/tmp/company_backup.tar.gz"
+    }
+  ],
+
+  "behavioral_context": {
+    "previous_activity": [
+      "File discovery using find",
+      "Creation of /tmp/archive_stage",
+      "Multiple file copy operations into staging directory"
+    ],
+    "current_activity": "Archive creation and compression",
+    "attack_stage": "Collection",
+    "attack_techniques": [
+      "T1005",
+      "T1074.001",
+      "T1560.001"
+    ]
+  },
+
+  "trigger_summary": {
+    "archive_utility_detected": true,
+    "compression_detected": true,
+    "temporary_staging_detected": true,
+    "archive_output_detected": true,
+    "rule_triggered": true
+  }
+}

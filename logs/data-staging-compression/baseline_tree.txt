@@ -1,0 +1,528 @@
+systemd,1 --switched-root --system --deserialize=52 splash
+  |-ModemManager,1420
+  |   |-{ModemManager},1443
+  |   |-{ModemManager},1450
+  |   `-{ModemManager},1458
+  |-NetworkManager,1332 --no-daemon
+  |   |-{NetworkManager},1431
+  |   |-{NetworkManager},1432
+  |   `-{NetworkManager},1433
+  |-VBoxDRMClient,1935
+  |   |-{VBoxDRMClient},1946
+  |   |-{VBoxDRMClient},1951
+  |   |-{VBoxDRMClient},1953
+  |   |-{VBoxDRMClient},1954
+  |   `-{VBoxDRMClient},10124
+  |-VBoxService,1940 --pidfile /var/run/vboxadd-service.sh
+  |   |-{VBoxService},1942
+  |   |-{VBoxService},1943
+  |   |-{VBoxService},1944
+  |   |-{VBoxService},1945
+  |   |-{VBoxService},1947
+  |   |-{VBoxService},1948
+  |   |-{VBoxService},1949
+  |   `-{VBoxService},1950
+  |-accounts-daemon,1194
+  |   |-{accounts-daemon},1294
+  |   |-{accounts-daemon},1295
+  |   `-{accounts-daemon},1320
+  |-auditd,758
+  |   `-{auditd},760
+  |-avahi-daemon,1144
+  |   `-avahi-daemon,1277
+  |-chronyd-starter,1147 /usr/lib/systemd/scripts/chronyd-starter.sh -n -F 1
+  |   `-chronyd,1355 -n -F 1
+  |       `-chronyd,1375 -n -F 1
+  |-colord,2295
+  |   |-{colord},2302
+  |   |-{colord},2303
+  |   `-{colord},2305
+  |-cron,1202 -f -P
+  |-cups-browsed,1787
+  |   |-{cups-browsed},1925
+  |   |-{cups-browsed},1926
+  |   `-{cups-browsed},1927
+  |-cupsd,1502 -l
+  |   `-dbus,1577 dbus://
+  |-dbus-daemon,1149 --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+  |-fwupd,4953
+  |   |-{fwupd},4961
+  |   |-{fwupd},4962
+  |   `-{fwupd},4963
+  |-gdm3,1952
+  |   |-gdm-session-wor,8996
+  |   |   |-gdm-wayland-ses,9186 /usr/bin/gnome-session --session=ubuntu
+  |   |   |   |-gnome-session-i,9192 ubuntu
+  |   |   |   |   |-{gnome-session-i},9291
+  |   |   |   |   |-{gnome-session-i},9292
+  |   |   |   |   `-{gnome-session-i},9293
+  |   |   |   |-{gdm-wayland-ses},9187
+  |   |   |   |-{gdm-wayland-ses},9188
+  |   |   |   `-{gdm-wayland-ses},9190
+  |   |   |-{gdm-session-wor},8998
+  |   |   |-{gdm-session-wor},8999
+  |   |   `-{gdm-session-wor},9005
+  |   |-{gdm3},1962
+  |   |-{gdm3},1963
+  |   |-{gdm3},1964
+  |   `-{gdm3},1966
+  |-geoclue,2671
+  |   |-{geoclue},2696
+  |   |-{geoclue},2697
+  |   `-{geoclue},2700
+  |-networkd-dispat,1169 /usr/bin/networkd-dispatcher --run-startup-triggers
+  |-polkitd,1171 --no-debug --log-level=notice
+  |   |-{polkitd},1372
+  |   |-{polkitd},1373
+  |   `-{polkitd},1376
+  |-power-profiles-,2498
+  |   |-{power-profiles-},2623
+  |   |-{power-profiles-},2624
+  |   `-{power-profiles-},2626
+  |-rsyslogd,1253 -n -iNONE
+  |   |-{rsyslogd},1325
+  |   |-{rsyslogd},1326
+  |   `-{rsyslogd},1327
+  |-rtkit-daemon,2137
+  |   |-{rtkit-daemon},2142
+  |   `-{rtkit-daemon},2143
+  |-snapd,6766
+  |   |-{snapd},6826
+  |   |-{snapd},6827
+  |   |-{snapd},6828
+  |   |-{snapd},6829
+  |   |-{snapd},6856
+  |   |-{snapd},6901
+  |   |-{snapd},7002
+  |   `-{snapd},7010
+  |-sshd,1570
+  |-switcheroo-cont,1210
+  |   |-{switcheroo-cont},1240
+  |   |-{switcheroo-cont},1241
+  |   `-{switcheroo-cont},1321
+  |-sysmon,1903 -i /opt/sysmon/config.xml -service
+  |-systemd,2823 --user
+  |   |-(sd-pam),2831
+  |   |-VBoxClient,10077 --clipboard
+  |   |   `-VBoxClient,10079 --clipboard
+  |   |       |-{VBoxClient},10080
+  |   |       |-{VBoxClient},10081
+  |   |       `-{VBoxClient},10088
+  |   |-VBoxClient,10120 --vmsvga-session
+  |   |   `-VBoxClient,10121 --vmsvga-session
+  |   |       |-{VBoxClient},10123
+  |   |       `-{VBoxClient},10125
+  |   |-at-spi-bus-laun,9353
+  |   |   |-dbus-daemon,9365 --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11...
+  |   |   |-{at-spi-bus-laun},9359
+  |   |   |-{at-spi-bus-laun},9360
+  |   |   |-{at-spi-bus-laun},9361
+  |   |   `-{at-spi-bus-laun},9362
+  |   |-at-spi2-registr,9373 --use-gnome-session
+  |   |   |-{at-spi2-registr},9374
+  |   |   |-{at-spi2-registr},9375
+  |   |   `-{at-spi2-registr},9376
+  |   |-dbus-daemon,9080 --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+  |   |-dconf-service,10024
+  |   |   |-{dconf-service},10030
+  |   |   |-{dconf-service},10031
+  |   |   `-{dconf-service},10037
+  |   |-evolution-addre,9786
+  |   |   |-{evolution-addre},9796
+  |   |   |-{evolution-addre},9797
+  |   |   |-{evolution-addre},9801
+  |   |   |-{evolution-addre},9809
+  |   |   |-{evolution-addre},9810
+  |   |   `-{evolution-addre},9817
+  |   |-evolution-alarm,9530
+  |   |   |-{evolution-alarm},9601
+  |   |   |-{evolution-alarm},9602
+  |   |   |-{evolution-alarm},9603
+  |   |   |-{evolution-alarm},9606
+  |   |   |-{evolution-alarm},9651
+  |   |   |-{evolution-alarm},10253
+  |   |   `-{evolution-alarm},10255
+  |   |-evolution-calen,9580
+  |   |   |-{evolution-calen},9622
+  |   |   |-{evolution-calen},9625
+  |   |   |-{evolution-calen},9665
+  |   |   |-{evolution-calen},9689
+  |   |   |-{evolution-calen},9690
+  |   |   |-{evolution-calen},9765
+  |   |   |-{evolution-calen},9783
+  |   |   |-{evolution-calen},9784
+  |   |   `-{evolution-calen},9799
+  |   |-evolution-sourc,9459
+  |   |   |-{evolution-sourc},9460
+  |   |   |-{evolution-sourc},9461
+  |   |   |-{evolution-sourc},9462
+  |   |   `-{evolution-sourc},9463
+  |   |-gcr-ssh-agent,3098 --base-dir /run/user/1000/gcr
+  |   |   |-{gcr-ssh-agent},3112
+  |   |   `-{gcr-ssh-agent},3113
+  |   |-gjs,9469 -m /usr/share/gnome-shell/org.gnome.Shell.Notifications
+  |   |   |-{gjs},9475
+  |   |   |-{gjs},9476
+  |   |   |-{gjs},9477
+  |   |   |-{gjs},9480
+  |   |   |-{gjs},9481
+  |   |   `-{gjs},9482
+  |   |-gjs,9753 -m /usr/share/gnome-shell/org.gnome.ScreenSaver
+  |   |   |-{gjs},9759
+  |   |   |-{gjs},9760
+  |   |   |-{gjs},9772
+  |   |   |-{gjs},9791
+  |   |   |-{gjs},9792
+  |   |   `-{gjs},9793
+  |   |-gnome-keyring-d,9154 --foreground --components=pkcs11,secrets --control-directory=/run/user/1000/keyring
+  |   |   |-{gnome-keyring-d},9159
+  |   |   |-{gnome-keyring-d},9160
+  |   |   |-{gnome-keyring-d},9161
+  |   |   `-{gnome-keyring-d},9162
+  |   |-gnome-session-c,9294 --monitor
+  |   |   `-{gnome-session-c},9298
+  |   |-gnome-session-s,9314 --session=ubuntu
+  |   |   |-{gnome-session-s},9320
+  |   |   |-{gnome-session-s},9321
+  |   |   |-{gnome-session-s},9322
+  |   |   `-{gnome-session-s},9324
+  |   |-gnome-shell,9325 --mode=ubuntu
+  |   |   |-Xwayland,9656 :0 -rootless -noreset -accessx -core -auth /run/user/1000/.mutter-Xwaylandauth.ZKYEQ3 -listenfd 4 ...
+  |   |   |-gjs,10344 /usr/share/gnome-shell/extensions/ding@rastersoft.com/app/ding.js -E -P...
+  |   |   |   |-{gjs},10346
+  |   |   |   |-{gjs},10347
+  |   |   |   |-{gjs},10348
+  |   |   |   |-{gjs},10349
+  |   |   |   |-{gjs},10350
+  |   |   |   |-{gjs},10351
+  |   |   |   |-{gjs},10361
+  |   |   |   |-{gjs},10362
+  |   |   |   |-{gjs},10383
+  |   |   |   `-{gjs},10384
+  |   |   |-mutter-x11-fram,10065
+  |   |   |   |-{mutter-x11-fram},10086
+  |   |   |   |-{mutter-x11-fram},10087
+  |   |   |   |-{mutter-x11-fram},10090
+  |   |   |   |-{mutter-x11-fram},10093
+  |   |   |   |-{mutter-x11-fram},10134
+  |   |   |   |-{mutter-x11-fram},10135
+  |   |   |   |-{mutter-x11-fram},10139
+  |   |   |   |-{mutter-x11-fram},10140
+  |   |   |   |-{mutter-x11-fram},10147
+  |   |   |   `-{mutter-x11-fram},10324
+  |   |   |-{gnome-shell},9327
+  |   |   |-{gnome-shell},9328
+  |   |   |-{gnome-shell},9330
+  |   |   |-{gnome-shell},9331
+  |   |   |-{gnome-shell},9332
+  |   |   |-{gnome-shell},9333
+  |   |   |-{gnome-shell},9334
+  |   |   |-{gnome-shell},9336
+  |   |   |-{gnome-shell},9338
+  |   |   |-{gnome-shell},9339
+  |   |   |-{gnome-shell},9340
+  |   |   |-{gnome-shell},9341
+  |   |   |-{gnome-shell},9342
+  |   |   |-{gnome-shell},9351
+  |   |   |-{gnome-shell},9486
+  |   |   |-{gnome-shell},9487
+  |   |   |-{gnome-shell},9527
+  |   |   |-{gnome-shell},9944
+  |   |   |-{gnome-shell},10475
+  |   |   `-{gnome-shell},10962
+  |   |-gnome-shell-cal,9451
+  |   |   |-{gnome-shell-cal},9453
+  |   |   |-{gnome-shell-cal},9454
+  |   |   |-{gnome-shell-cal},9456
+  |   |   |-{gnome-shell-cal},9457
+  |   |   |-{gnome-shell-cal},9458
+  |   |   `-{gnome-shell-cal},9561
+  |   |-goa-daemon,9479
+  |   |   |-{goa-daemon},9499
+  |   |   |-{goa-daemon},9500
+  |   |   `-{goa-daemon},9504
+  |   |-goa-identity-se,9574
+  |   |   |-{goa-identity-se},9611
+  |   |   |-{goa-identity-se},9612
+  |   |   `-{goa-identity-se},9654
+  |   |-gsd-a11y-settin,9489
+  |   |   |-{gsd-a11y-settin},9557
+  |   |   |-{gsd-a11y-settin},9575
+  |   |   |-{gsd-a11y-settin},9647
+  |   |   `-{gsd-a11y-settin},9661
+  |   |-gsd-color,9492
+  |   |   |-{gsd-color},9524
+  |   |   |-{gsd-color},9539
+  |   |   |-{gsd-color},9540
+  |   |   `-{gsd-color},9592
+  |   |-gsd-datetime,9493
+  |   |   |-{gsd-datetime},9525
+  |   |   |-{gsd-datetime},9543
+  |   |   |-{gsd-datetime},9594
+  |   |   `-{gsd-datetime},9657
+  |   |-gsd-disk-utilit,9513
+  |   |   |-{gsd-disk-utilit},9516
+  |   |   |-{gsd-disk-utilit},9519
+  |   |   `-{gsd-disk-utilit},9545
+  |   |-gsd-housekeepin,9494
+  |   |   |-{gsd-housekeepin},9526
+  |   |   |-{gsd-housekeepin},9531
+  |   |   |-{gsd-housekeepin},9576
+  |   |   `-{gsd-housekeepin},9671
+  |   |-gsd-keyboard,9502
+  |   |   |-{gsd-keyboard},9563
+  |   |   |-{gsd-keyboard},9564
+  |   |   |-{gsd-keyboard},9572
+  |   |   `-{gsd-keyboard},9649
+  |   |-gsd-media-keys,9507
+  |   |   |-{gsd-media-keys},9588
+  |   |   |-{gsd-media-keys},9589
+  |   |   |-{gsd-media-keys},9591
+  |   |   `-{gsd-media-keys},9675
+  |   |-gsd-power,9517
+  |   |   |-{gsd-power},9532
+  |   |   |-{gsd-power},9548
+  |   |   |-{gsd-power},9593
+  |   |   `-{gsd-power},9678
+  |   |-gsd-print-notif,9521
+  |   |   |-{gsd-print-notif},9629
+  |   |   |-{gsd-print-notif},9640
+  |   |   `-{gsd-print-notif},9664
+  |   |-gsd-printer,9712
+  |   |   |-{gsd-printer},9745
+  |   |   |-{gsd-printer},9746
+  |   |   `-{gsd-printer},9762
+  |   |-gsd-rfkill,9538
+  |   |   |-{gsd-rfkill},9628
+  |   |   |-{gsd-rfkill},9630
+  |   |   `-{gsd-rfkill},9666
+  |   |-gsd-screensaver,9542
+  |   |   |-{gsd-screensaver},9610
+  |   |   |-{gsd-screensaver},9614
+  |   |   `-{gsd-screensaver},9653
+  |   |-gsd-sharing,9544
+  |   |   |-{gsd-sharing},9615
+  |   |   |-{gsd-sharing},9616
+  |   |   |-{gsd-sharing},9617
+  |   |   `-{gsd-sharing},9655
+  |   |-gsd-smartcard,9551
+  |   |   |-{gsd-smartcard},9631
+  |   |   |-{gsd-smartcard},9632
+  |   |   |-{gsd-smartcard},9662
+  |   |   `-{gsd-smartcard},9677
+  |   |-gsd-sound,9552
+  |   |   |-{gsd-sound},9579
+  |   |   |-{gsd-sound},9595
+  |   |   |-{gsd-sound},9652
+  |   |   `-{gsd-sound},9669
+  |   |-gsd-usb-protect,9553
+  |   |   |-{gsd-usb-protect},9633
+  |   |   |-{gsd-usb-protect},9634
+  |   |   |-{gsd-usb-protect},9668
+  |   |   `-{gsd-usb-protect},9747
+  |   |-gsd-wwan,9556
+  |   |   |-{gsd-wwan},9641
+  |   |   |-{gsd-wwan},9642
+  |   |   |-{gsd-wwan},9667
+  |   |   `-{gsd-wwan},9699
+  |   |-gsd-xsettings,10041
+  |   |   |-{gsd-xsettings},10047
+  |   |   |-{gsd-xsettings},10048
+  |   |   |-{gsd-xsettings},10049
+  |   |   `-{gsd-xsettings},10051
+  |   |-gvfs-afc-volume,9838
+  |   |   |-{gvfs-afc-volume},9839
+  |   |   |-{gvfs-afc-volume},9840
+  |   |   |-{gvfs-afc-volume},9841
+  |   |   `-{gvfs-afc-volume},9843
+  |   |-gvfs-goa-volume,9794
+  |   |   |-{gvfs-goa-volume},9804
+  |   |   |-{gvfs-goa-volume},9805
+  |   |   `-{gvfs-goa-volume},9815
+  |   |-gvfs-gphoto2-vo,9833
+  |   |   |-{gvfs-gphoto2-vo},9834
+  |   |   |-{gvfs-gphoto2-vo},9835
+  |   |   `-{gvfs-gphoto2-vo},9837
+  |   |-gvfs-mtp-volume,9828
+  |   |   |-{gvfs-mtp-volume},9829
+  |   |   |-{gvfs-mtp-volume},9830
+  |   |   `-{gvfs-mtp-volume},9832
+  |   |-gvfs-udisks2-vo,9694
+  |   |   |-{gvfs-udisks2-vo},9742
+  |   |   |-{gvfs-udisks2-vo},9743
+  |   |   |-{gvfs-udisks2-vo},9744
+  |   |   `-{gvfs-udisks2-vo},9781
+  |   |-gvfsd,9304
+  |   |   |-gvfsd-dnssd,10696 --spawner :1.10 /org/gtk/gvfs/exec_spaw/3
+  |   |   |   |-{gvfsd-dnssd},10697
+  |   |   |   |-{gvfsd-dnssd},10698
+  |   |   |   `-{gvfsd-dnssd},10699
+  |   |   |-gvfsd-network,10688 --spawner :1.10 /org/gtk/gvfs/exec_spaw/2
+  |   |   |   |-{gvfsd-network},10691
+  |   |   |   |-{gvfsd-network},10692
+  |   |   |   |-{gvfsd-network},10693
+  |   |   |   `-{gvfsd-network},10695
+  |   |   |-gvfsd-recent,10678 --spawner :1.10 /org/gtk/gvfs/exec_spaw/1
+  |   |   |   |-{gvfsd-recent},10680
+  |   |   |   |-{gvfsd-recent},10684
+  |   |   |   `-{gvfsd-recent},10685
+  |   |   |-gvfsd-trash,10068 --spawner :1.10 /org/gtk/gvfs/exec_spaw/0
+  |   |   |   |-{gvfsd-trash},10072
+  |   |   |   |-{gvfsd-trash},10073
+  |   |   |   |-{gvfsd-trash},10074
+  |   |   |   `-{gvfsd-trash},10092
+  |   |   |-gvfsd-wsdd,10702 --spawner :1.10 /org/gtk/gvfs/exec_spaw/4
+  |   |   |   |-python3,10707 /usr/bin/wsdd --no-host --discovery --listen /run/user/1000/gvfsd/wsdd
+  |   |   |   |-{gvfsd-wsdd},10703
+  |   |   |   |-{gvfsd-wsdd},10704
+  |   |   |   `-{gvfsd-wsdd},10705
+  |   |   |-{gvfsd},9305
+  |   |   |-{gvfsd},9306
+  |   |   `-{gvfsd},9307
+  |   |-gvfsd-fuse,9310 /run/user/1000/gvfs -f
+  |   |   |-{gvfsd-fuse},9315
+  |   |   |-{gvfsd-fuse},9316
+  |   |   |-{gvfsd-fuse},9317
+  |   |   |-{gvfsd-fuse},9318
+  |   |   |-{gvfsd-fuse},9319
+  |   |   `-{gvfsd-fuse},10437
+  |   |-gvfsd-metadata,9988
+  |   |   |-{gvfsd-metadata},9990
+  |   |   |-{gvfsd-metadata},9995
+  |   |   `-{gvfsd-metadata},9996
+  |   |-ibus-daemon,9485 --panel disable
+  |   |   |-ibus-dconf,9683
+  |   |   |   |-{ibus-dconf},9705
+  |   |   |   |-{ibus-dconf},9714
+  |   |   |   |-{ibus-dconf},9750
+  |   |   |   `-{ibus-dconf},9764
+  |   |   |-ibus-engine-sim,9896
+  |   |   |   |-{ibus-engine-sim},9898
+  |   |   |   |-{ibus-engine-sim},9899
+  |   |   |   `-{ibus-engine-sim},9903
+  |   |   |-ibus-extension-,9688
+  |   |   |   |-{ibus-extension-},9726
+  |   |   |   |-{ibus-extension-},9727
+  |   |   |   |-{ibus-extension-},9728
+  |   |   |   |-{ibus-extension-},9730
+  |   |   |   `-{ibus-extension-},9751
+  |   |   |-{ibus-daemon},9637
+  |   |   |-{ibus-daemon},9638
+  |   |   `-{ibus-daemon},9663
+  |   |-ibus-portal,9711
+  |   |   |-{ibus-portal},9717
+  |   |   |-{ibus-portal},9718
+  |   |   `-{ibus-portal},9720
+  |   |-ibus-x11,10107
+  |   |   |-{ibus-x11},10179
+  |   |   |-{ibus-x11},10180
+  |   |   `-{ibus-x11},10182
+  |   |-localsearch-3,9709
+  |   |   |-{localsearch-3},9748
+  |   |   |-{localsearch-3},9749
+  |   |   |-{localsearch-3},9763
+  |   |   |-{localsearch-3},9773
+  |   |   |-{localsearch-3},9777
+  |   |   |-{localsearch-3},9824
+  |   |   `-{localsearch-3},9827
+  |   |-pipewire,9695
+  |   |   |-{pipewire},9771
+  |   |   `-{pipewire},9774
+  |   |-pipewire-pulse,9697
+  |   |   |-{pipewire-pulse},9766
+  |   |   `-{pipewire-pulse},9775
+  |   |-ptyxis,10293 --new-window
+  |   |   |-ptyxis-agent,10352 --socket-fd=3 --rlimit-nofile=1024
+  |   |   |   |-bash,10421
+  |   |   |   |   `-pstree,10963 -ap
+  |   |   |   |-{ptyxis-agent},10353
+  |   |   |   |-{ptyxis-agent},10355
+  |   |   |   |-{ptyxis-agent},10356
+  |   |   |   `-{ptyxis-agent},10419
+  |   |   |-{ptyxis},10301
+  |   |   |-{ptyxis},10302
+  |   |   |-{ptyxis},10303
+  |   |   |-{ptyxis},10304
+  |   |   |-{ptyxis},10317
+  |   |   |-{ptyxis},10371
+  |   |   |-{ptyxis},10372
+  |   |   |-{ptyxis},10373
+  |   |   |-{ptyxis},10374
+  |   |   |-{ptyxis},10375
+  |   |   |-{ptyxis},10376
+  |   |   |-{ptyxis},10377
+  |   |   |-{ptyxis},10378
+  |   |   |-{ptyxis},10379
+  |   |   |-{ptyxis},10380
+  |   |   `-{ptyxis},10381
+  |   |-snapd-desktop-i,9352
+  |   |   `-snapd-desktop-i,9426
+  |   |       |-{snapd-desktop-i},9427
+  |   |       |-{snapd-desktop-i},9428
+  |   |       |-{snapd-desktop-i},9429
+  |   |       |-{snapd-desktop-i},9430
+  |   |       `-{snapd-desktop-i},9440
+  |   |-ssh-agent,3101 -D
+  |   |-update-notifier,9523
+  |   |   |-{update-notifier},9567
+  |   |   |-{update-notifier},9568
+  |   |   |-{update-notifier},9569
+  |   |   |-{update-notifier},9573
+  |   |   `-{update-notifier},9650
+  |   |-wireplumber,9696
+  |   |   |-{wireplumber},9754
+  |   |   |-{wireplumber},9761
+  |   |   |-{wireplumber},9795
+  |   |   |-{wireplumber},9806
+  |   |   `-{wireplumber},9808
+  |   |-xdg-desktop-por,9724
+  |   |   |-{xdg-desktop-por},9755
+  |   |   |-{xdg-desktop-por},9756
+  |   |   |-{xdg-desktop-por},9768
+  |   |   |-{xdg-desktop-por},10284
+  |   |   `-{xdg-desktop-por},10305
+  |   |-xdg-desktop-por,9802
+  |   |   |-{xdg-desktop-por},9818
+  |   |   |-{xdg-desktop-por},9819
+  |   |   |-{xdg-desktop-por},9821
+  |   |   |-{xdg-desktop-por},9861
+  |   |   `-{xdg-desktop-por},10050
+  |   |-xdg-desktop-por,10285
+  |   |   |-{xdg-desktop-por},10286
+  |   |   |-{xdg-desktop-por},10287
+  |   |   |-{xdg-desktop-por},10288
+  |   |   |-{xdg-desktop-por},10290
+  |   |   `-{xdg-desktop-por},10291
+  |   |-xdg-document-po,9081
+  |   |   |-fusermount3,9092 -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal -- /run/user/1000/doc
+  |   |   |-{xdg-document-po},9082
+  |   |   |-{xdg-document-po},9083
+  |   |   |-{xdg-document-po},9084
+  |   |   |-{xdg-document-po},9091
+  |   |   |-{xdg-document-po},9094
+  |   |   |-{xdg-document-po},9095
+  |   |   `-{xdg-document-po},9104
+  |   `-xdg-permission-,9085
+  |       |-{xdg-permission-},9086
+  |       |-{xdg-permission-},9087
+  |       `-{xdg-permission-},9089
+  |-systemd-journal,6811
+  |-systemd-logind,6860
+  |-systemd-oomd,6774
+  |-systemd-resolve,6792
+  |-systemd-udevd,6802
+  |-udisksd,1224
+  |   |-{udisksd},1255
+  |   |-{udisksd},1256
+  |   |-{udisksd},1319
+  |   |-{udisksd},1436
+  |   |-{udisksd},1437
+  |   `-{udisksd},1456
+  |-unattended-upgr,1519 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+  |   `-{unattended-upgr},1672
+  |-upowerd,2328
+  |   |-{upowerd},2338
+  |   |-{upowerd},2339
+  |   `-{upowerd},2344
+  |-uuidd,10709 --socket-activation --cont-clock
+  `-wpa_supplicant,1341 -u -s -O DIR=/run/wpa_supplicant GROUP=netdev

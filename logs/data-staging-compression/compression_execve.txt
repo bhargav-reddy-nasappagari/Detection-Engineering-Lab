@@ -1,0 +1,68 @@
+----
+time->Wed Jun  3 23:40:58 2026
+type=PROCTITLE msg=audit(1780510258.140:2254): proctitle=746172002D637A66002F746D702F636F6D70616E795F6261636B75702E7461722E677A002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780510258.140:2254): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780510258.140:2254): item=0 name="/usr/bin/tar" inode=1967420 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510258.140:2254): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780510258.140:2254): argc=4 a0="tar" a1="-czf" a2="/tmp/company_backup.tar.gz" a3="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780510258.140:2254): arch=c000003e syscall=59 success=yes exit=0 a0=59e6ead7ea80 a1=59e6eae8f620 a2=59e6eae4b720 a3=40 items=2 ppid=11000 pid=12305 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="tar" exe="/usr/bin/tar" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:40:58 2026
+type=PROCTITLE msg=audit(1780510258.151:2255): proctitle=2F62696E2F7368002D6300677A6970
+type=PATH msg=audit(1780510258.151:2255): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780510258.151:2255): item=0 name="/bin/sh" inode=1966584 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510258.151:2255): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780510258.151:2255): argc=3 a0="/bin/sh" a1="-c" a2="gzip"
+type=SYSCALL msg=audit(1780510258.151:2255): arch=c000003e syscall=59 success=yes exit=0 a0=63175f38f2ef a1=7ffc78339ff0 a2=7ffc7833a6a0 a3=0 items=2 ppid=12305 pid=12306 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="sh" exe="/usr/bin/dash" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:40:58 2026
+type=PROCTITLE msg=audit(1780510258.153:2256): proctitle="gzip"
+type=PATH msg=audit(1780510258.153:2256): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780510258.153:2256): item=0 name="/usr/bin/gzip" inode=1966929 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510258.153:2256): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780510258.153:2256): argc=1 a0="gzip"
+type=SYSCALL msg=audit(1780510258.153:2256): arch=c000003e syscall=59 success=yes exit=0 a0=564be63bee18 a1=564bd8a1e538 a2=564be63bec58 a3=300 items=2 ppid=12306 pid=12307 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="gzip" exe="/usr/bin/gzip" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:47:06 2026
+type=PROCTITLE msg=audit(1780510626.923:2283): proctitle=6C73002D2D636F6C6F723D6175746F002D6C68002F746D702F636F6D70616E795F6261636B75702E7461722E677A
+type=PATH msg=audit(1780510626.923:2283): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780510626.923:2283): item=0 name="/usr/bin/ls" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510626.923:2283): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780510626.923:2283): argc=4 a0="ls" a1="--color=auto" a2="-lh" a3="/tmp/company_backup.tar.gz"
+type=SYSCALL msg=audit(1780510626.923:2283): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8f220 a1=59e6eae8faa0 a2=59e6eae4b720 a3=40 items=2 ppid=11000 pid=12386 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="ls" exe="/usr/lib/cargo/bin/coreutils/ls" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:47:28 2026
+type=PROCTITLE msg=audit(1780510648.757:2285): proctitle=746172002D747A66002F746D702F636F6D70616E795F6261636B75702E7461722E677A
+type=PATH msg=audit(1780510648.757:2285): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780510648.757:2285): item=0 name="/usr/bin/tar" inode=1967420 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510648.757:2285): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780510648.757:2285): argc=3 a0="tar" a1="-tzf" a2="/tmp/company_backup.tar.gz"
+type=SYSCALL msg=audit(1780510648.757:2285): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8d450 a1=59e6ead9b740 a2=59e6eae4b720 a3=30 items=2 ppid=11000 pid=12388 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="tar" exe="/usr/bin/tar" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:47:28 2026
+type=PROCTITLE msg=audit(1780510648.771:2286): proctitle=746172002D747A66002F746D702F636F6D70616E795F6261636B75702E7461722E677A
+type=PATH msg=audit(1780510648.771:2286): item=0 name="/usr/local/sbin/gzip" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510648.771:2286): cwd="/home/bunny/Data-Staging-Lab"
+type=SYSCALL msg=audit(1780510648.771:2286): arch=c000003e syscall=59 success=no exit=-2 a0=7ffdd9900a60 a1=588321343270 a2=7ffdd9901108 a3=7ffdd9903e80 items=1 ppid=12388 pid=12389 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="tar" exe="/usr/bin/tar" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:47:28 2026
+type=PROCTITLE msg=audit(1780510648.771:2287): proctitle=746172002D747A66002F746D702F636F6D70616E795F6261636B75702E7461722E677A
+type=PATH msg=audit(1780510648.771:2287): item=0 name="/usr/local/bin/gzip" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510648.771:2287): cwd="/home/bunny/Data-Staging-Lab"
+type=SYSCALL msg=audit(1780510648.771:2287): arch=c000003e syscall=59 success=no exit=-2 a0=7ffdd9900a60 a1=588321343270 a2=7ffdd9901108 a3=7ffdd9903e80 items=1 ppid=12388 pid=12389 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="tar" exe="/usr/bin/tar" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:47:28 2026
+type=PROCTITLE msg=audit(1780510648.772:2288): proctitle=746172002D747A66002F746D702F636F6D70616E795F6261636B75702E7461722E677A
+type=PATH msg=audit(1780510648.772:2288): item=0 name="/usr/sbin/gzip" nametype=UNKNOWN cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510648.772:2288): cwd="/home/bunny/Data-Staging-Lab"
+type=SYSCALL msg=audit(1780510648.772:2288): arch=c000003e syscall=59 success=no exit=-2 a0=7ffdd9900a60 a1=588321343270 a2=7ffdd9901108 a3=7ffdd9903e80 items=1 ppid=12388 pid=12389 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="tar" exe="/usr/bin/tar" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 23:47:28 2026
+type=PROCTITLE msg=audit(1780510648.772:2289): proctitle=746172002D747A66002F746D702F636F6D70616E795F6261636B75702E7461722E677A
+type=PATH msg=audit(1780510648.772:2289): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780510648.772:2289): item=0 name="/usr/bin/gzip" inode=1966929 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780510648.772:2289): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780510648.772:2289): argc=2 a0="gzip" a1="-d"
+type=SYSCALL msg=audit(1780510648.772:2289): arch=c000003e syscall=59 success=yes exit=0 a0=7ffdd9900a60 a1=588321343270 a2=7ffdd9901108 a3=7ffdd9903e80 items=2 ppid=12388 pid=12389 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="gzip" exe="/usr/bin/gzip" subj=unconfined key="process_exec"
+----
+

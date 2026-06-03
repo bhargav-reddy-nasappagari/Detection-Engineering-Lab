@@ -1,0 +1,48 @@
+{
+  "EventType": "ProcessCreate",
+  "EventID": 1,
+  "UtcTime": "2026-06-03T23:40:58.000Z",
+  "Computer": "bunny-VirtualBox",
+  "User": "bunny",
+
+  "ProcessGuid": "{c4d8e89a-9a8d-6475-0000-0010b4f12a00}",
+  "ProcessId": 11892,
+
+  "Image": "/usr/bin/tar",
+  "CommandLine": "tar -czf /tmp/company_backup.tar.gz /tmp/archive_stage",
+  "CurrentDirectory": "/home/bunny/Data-Staging-Lab",
+
+  "ParentProcessGuid": "{c4d8e89a-9a8d-6475-0000-0010b4f11000}",
+  "ParentProcessId": 11000,
+  "ParentImage": "/usr/bin/bash",
+  "ParentCommandLine": "-bash",
+
+  "Terminal": "pts1",
+  "IntegrityLevel": "N/A",
+
+  "Hashes": {
+    "SHA256": "SIMULATED_HASH_VALUE",
+    "MD5": "SIMULATED_HASH_VALUE"
+  },
+
+  "ProcessTree": {
+    "Parent": {
+      "Image": "/usr/bin/bash",
+      "ProcessId": 11000
+    },
+    "Child": {
+      "Image": "/usr/bin/tar",
+      "ProcessId": 11892
+    }
+  },
+
+  "BehaviorContext": {
+    "Technique": [
+      "T1074.001",
+      "T1560.001"
+    ],
+    "Stage": "Archive Creation",
+    "StagingDirectory": "/tmp/archive_stage",
+    "ArchiveOutput": "/tmp/company_backup.tar.gz"
+  }
+}

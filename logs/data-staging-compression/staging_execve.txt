@@ -1,0 +1,16 @@
+time->Wed Jun  3 22:56:25 2026
+type=PROCTITLE msg=audit(1780507585.220:1984): proctitle=6D6B646972002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780507585.220:1984): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507585.220:1984): item=0 name="/usr/bin/mkdir" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507585.220:1984): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507585.220:1984): argc=2 a0="mkdir" a1="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780507585.220:1984): arch=c000003e syscall=59 success=yes exit=0 a0=59e6ead7d7b0 a1=59e6eae8e730 a2=59e6eae4b720 a3=30 items=2 ppid=11000 pid=11443 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="mkdir" exe="/usr/lib/cargo/bin/coreutils/mkdir" subj=unconfined key="process_exec"
+----
+time->Wed Jun  3 22:56:37 2026
+type=PROCTITLE msg=audit(1780507597.634:1986): proctitle=6C73002D2D636F6C6F723D6175746F002D6C64002F746D702F617263686976655F7374616765
+type=PATH msg=audit(1780507597.634:1986): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780507597.634:1986): item=0 name="/usr/bin/ls" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780507597.634:1986): cwd="/home/bunny/Data-Staging-Lab"
+type=EXECVE msg=audit(1780507597.634:1986): argc=4 a0="ls" a1="--color=auto" a2="-ld" a3="/tmp/archive_stage"
+type=SYSCALL msg=audit(1780507597.634:1986): arch=c000003e syscall=59 success=yes exit=0 a0=59e6eae8e570 a1=59e6ead7ea80 a2=59e6eae4b720 a3=31 items=2 ppid=11000 pid=11445 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts1 ses=3 comm="ls" exe="/usr/lib/cargo/bin/coreutils/ls" subj=unconfined key="process_exec"
+----

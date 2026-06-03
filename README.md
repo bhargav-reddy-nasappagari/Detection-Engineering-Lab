@@ -2,13 +2,24 @@
 
 ## Overview
 
-Detection Engineering Laboratory is a hands-on Linux detection engineering platform focused on adversary simulation, telemetry collection, behavioral analysis, investigation, threat mapping, detection development, and validation.
+Detection Engineering Laboratory is a hands-on Linux detection engineering platform focused on adversary simulation, telemetry collection, behavioral analysis, investigation, threat mapping, detection development, and evidence-driven validation.
 
-The project recreates realistic attacker techniques within a controlled Linux environment and follows a complete detection engineering lifecycle from attack execution through validated detection content.
+The project recreates realistic ATT&CK-aligned adversary behaviors within a controlled Linux environment and follows a complete detection engineering lifecycle from attack execution through validated detection content.
 
-Rather than focusing exclusively on rule writing, the laboratory emphasizes understanding how attacker behavior manifests in telemetry, how investigations reconstruct activity, how ATT&CK techniques can be identified through observable artifacts, and how reliable detections are engineered from evidence.
+Unlike traditional detection repositories that focus primarily on rule creation, this laboratory emphasizes understanding attacker behavior through telemetry, reconstructing activity through investigation, mapping observations to MITRE ATT&CK, and engineering detections from evidence.
 
-Every scenario follows the same workflow and produces telemetry reports, investigation findings, ATT&CK mappings, detection logic, Sigma rules, validation reports, supporting evidence, and sample detection artifacts.
+Every completed scenario produces:
+
+* Telemetry Analysis
+* Investigation Report
+* Threat Mapping
+* Detection Logic
+* Sigma Rule
+* Validation Report
+* Sample Detection Artifacts
+* Evidence Collection
+
+The result is a repeatable and evidence-backed detection engineering workflow that mirrors real-world security operations and detection development practices.
 
 ---
 
@@ -16,17 +27,17 @@ Every scenario follows the same workflow and produces telemetry reports, investi
 
 The objectives of this repository are to:
 
-* Develop practical Linux detection engineering skills.
-* Simulate realistic attacker behaviors.
-* Understand Linux telemetry sources and visibility gaps.
-* Analyze process lineage and execution behavior.
-* Reconstruct attacker activity from collected evidence.
-* Map observed behavior to MITRE ATT&CK.
-* Engineer behavioral detections from real telemetry.
-* Develop platform-agnostic Sigma detections.
-* Validate detections against observed attack activity.
-* Build a reusable ATT&CK-aligned detection engineering workflow.
-* Create a practical detection engineering portfolio.
+* Develop practical Linux detection engineering skills
+* Simulate realistic adversary tradecraft
+* Study Linux telemetry visibility and limitations
+* Perform telemetry-first investigations
+* Reconstruct attacker activity from evidence
+* Map observed behavior to MITRE ATT&CK
+* Engineer behavioral detections from telemetry
+* Develop Sigma detection content
+* Validate detections against observed activity
+* Build a reusable Linux detection engineering methodology
+* Create a practical detection engineering portfolio
 
 ---
 
@@ -47,9 +58,9 @@ Investigation & Reconstruction
         ↓
 Threat Mapping
         ↓
-Detection Logic Analysis
+Detection Logic Engineering
         ↓
-Sigma Rule Engineering
+Sigma Rule Development
         ↓
 Detection Validation
         ↓
@@ -58,17 +69,17 @@ Evidence Collection
 Scenario Documentation
 ```
 
-The workflow prioritizes:
+Core principles:
 
 * Telemetry-first analysis
+* Evidence-backed investigation
 * Behavioral detection engineering
-* Process lineage reconstruction
-* Session reconstruction
 * ATT&CK alignment
 * Detection validation
-* Evidence-backed conclusions
+* Process lineage analysis
+* Session reconstruction
 
-The goal is to understand attacker behavior before writing detections.
+The objective is to understand behavior before building detections.
 
 ---
 
@@ -85,7 +96,7 @@ The goal is to understand attacker behavior before writing detections.
 │   └── threat-mapping/
 │
 ├── evidence/
-│
+│   
 ├── investigations/
 │
 ├── logs/
@@ -111,16 +122,12 @@ The goal is to understand attacker behavior before writing detections.
 
 * T1053.003 – Scheduled Task/Job: Cron
 
-### Scenario Summary
-
-Simulates persistence through recurring cron job execution.
-
 ### Detection Focus
 
-* Scheduled task execution
-* Cron-spawned shell activity
-* Recurring process execution
-* Long-lived persistence behavior
+* Cron execution telemetry
+* Scheduled task persistence
+* Cron-spawned process chains
+* Long-term persistence detection
 
 ---
 
@@ -130,17 +137,12 @@ Simulates persistence through recurring cron job execution.
 
 * T1543.002 – Create or Modify System Process: Systemd Service
 
-### Scenario Summary
-
-Simulates persistence through creation and enablement of a malicious systemd service.
-
 ### Detection Focus
 
 * Service creation
 * Service enablement
 * Daemon reload activity
 * Persistent service execution
-* Systemd-backed payload execution
 
 ---
 
@@ -151,14 +153,10 @@ Simulates persistence through creation and enablement of a malicious systemd ser
 * T1059.004 – Unix Shell
 * T1071 – Application Layer Protocol
 
-### Scenario Summary
-
-Simulates outbound reverse shell communication and remote command execution.
-
 ### Detection Focus
 
 * Shell-to-network relationships
-* Interactive shell execution
+* Interactive shell activity
 * Outbound command channels
 * Process and network correlation
 
@@ -170,16 +168,12 @@ Simulates outbound reverse shell communication and remote command execution.
 
 * T1110 – Brute Force
 
-### Scenario Summary
-
-Simulates repeated SSH authentication failures and password guessing behavior.
-
 ### Detection Focus
 
 * Authentication failures
-* PAM authentication telemetry
+* PAM telemetry
 * Invalid user activity
-* Threshold-based detection logic
+* Threshold-based detections
 
 ---
 
@@ -195,17 +189,12 @@ Simulates repeated SSH authentication failures and password guessing behavior.
 * T1007 – Service Discovery
 * T1083 – File and Directory Discovery
 
-### Scenario Summary
-
-Simulates structured post-compromise host reconnaissance.
-
 ### Detection Focus
 
-* Discovery command execution
+* Host reconnaissance
 * Session correlation
-* Temporal clustering
+* Discovery command clustering
 * Behavioral scoring
-* Reconnaissance activity detection
 
 ---
 
@@ -216,10 +205,6 @@ Simulates structured post-compromise host reconnaissance.
 * T1059.004 – Unix Shell
 * T1140 – Deobfuscate/Decode Files or Information
 * T1027 – Obfuscated/Compressed Files and Information
-
-### Scenario Summary
-
-Simulates execution of Base64-encoded payloads through multiple execution methods.
 
 ### Variants
 
@@ -233,12 +218,12 @@ base64
 bash
 ```
 
-#### Variant 2 – File Reconstruction
+#### Variant 2 – Payload Reconstruction
 
 ```text
 base64
   ↓
-payload reconstruction
+file reconstruction
   ↓
 chmod
   ↓
@@ -270,9 +255,8 @@ bash
 ### Detection Focus
 
 * Base64 decoding activity
-* Multi-stage decoding chains
+* Multi-stage decode chains
 * Python-based payload execution
-* Temporary payload reconstruction
 * Process lineage reconstruction
 
 ---
@@ -284,17 +268,12 @@ bash
 * T1105 – Ingress Tool Transfer
 * T1059.004 – Unix Shell
 
-### Scenario Summary
-
-Simulates an attacker-hosted HTTP server used to stage and deliver payloads to a victim system.
-
 ### Detection Focus
 
 * Python HTTP server execution
 * User-owned listening services
-* Payload delivery behavior
+* Payload staging
 * Download-and-execute workflows
-* Network and process correlation
 
 ---
 
@@ -304,12 +283,6 @@ Simulates an attacker-hosted HTTP server used to stage and deliver payloads to a
 
 * T1548.003 – Sudo and Sudo Caching
 * T1059.004 – Unix Shell
-* T1033 – System Owner/User Discovery
-* T1082 – System Information Discovery
-
-### Scenario Summary
-
-Simulates abuse of sudo-authorized binaries to obtain root access through GTFOBins techniques.
 
 ### Attack Workflow
 
@@ -329,19 +302,68 @@ hostname
 
 * Sudo privilege enumeration
 * GTFOBins abuse
-* Find-to-bash process relationships
+* Find-to-bash process chains
 * Root shell creation
-* Privilege escalation telemetry
+
+---
+
+## 9. Data Staging and Compression
+
+### ATT&CK
+
+* T1083 – File and Directory Discovery
+* T1005 – Data from Local System
+* T1074.001 – Local Data Staging
+* T1560.001 – Archive Collected Data via Utility
+
+### Attack Workflow
+
+```text
+File Discovery
+        ↓
+Local Staging
+        ↓
+Data Collection
+        ↓
+Archive Creation
+        ↓
+Archive Validation
+```
+
+### Simulated Activity
+
+```text
+find
+        ↓
+mkdir /tmp/archive_stage
+        ↓
+cp
+        ↓
+tar -czf
+        ↓
+gzip
+        ↓
+tar -tzf
+```
+
+### Detection Focus
+
+* Discovery of sensitive file types
+* Temporary staging directory creation
+* File aggregation behavior
+* Archive creation using native utilities
+* Compression workflow detection
+* Pre-exfiltration behavioral analytics
 
 ---
 
 # Detection Content
 
-Each completed scenario produces:
+Each completed scenario contains:
 
 ## Telemetry Analysis
 
-Observed telemetry, visibility assessment, and investigation-oriented breakdown.
+Observed telemetry, visibility assessment, and investigative breakdown.
 
 ```text
 telemetry/
@@ -349,7 +371,7 @@ telemetry/
 
 ## Investigation Reports
 
-Session reconstruction and behavioral analysis.
+Behavioral reconstruction and attacker workflow analysis.
 
 ```text
 investigations/
@@ -357,7 +379,7 @@ investigations/
 
 ## ATT&CK Threat Mapping
 
-Mapping of observed behaviors to known adversary techniques.
+Behavior-to-technique mapping.
 
 ```text
 docs/threat-mapping/
@@ -365,7 +387,7 @@ docs/threat-mapping/
 
 ## Detection Logic
 
-Detection engineering rationale and behavioral logic derivation.
+Behavioral detection strategy and analytic development.
 
 ```text
 detections/logic/
@@ -381,36 +403,37 @@ detections/sigma/linux/
 
 ## Validation Reports
 
-Evidence-backed detection validation.
+Evidence-backed validation.
 
 ```text
 detections/validation/
 ```
 
-## Detection Samples
+## Detection Artifacts
 
-Example alerts, process events, process chains, detection triggers, and validation artifacts.
+Example alerts, raw events, process chains, trigger evidence, and screenshots.
 
 ```text
-samples/
+evidence/
 ```
 
 ---
 
 # Telemetry Sources
 
-Current telemetry sources include:
+Current telemetry collection includes:
 
 * Auditd EXECVE telemetry
-* Sysmon for Linux process events
-* SSH authentication logs
-* PAM authentication logs
+* Auditd SYSCALL telemetry
+* Sysmon for Linux
 * Auth.log
+* PAM authentication logs
 * Journalctl
 * Process creation telemetry
 * Parent-child process lineage
-* Service management telemetry
-* Cron execution telemetry
+* Cron telemetry
+* Systemd telemetry
+* SSH telemetry
 * Temporary file activity
 * Session reconstruction data
 * Network connection telemetry
@@ -418,68 +441,75 @@ Current telemetry sources include:
 
 ---
 
-# Detection Engineering Topics Covered
+# ATT&CK Coverage
 
-The repository currently covers:
+Current ATT&CK coverage includes:
 
 ## Execution
 
-* Reverse shells
-* Encoded command execution
-* Rogue HTTP server activity
+* T1059.004 – Unix Shell
 
 ## Persistence
 
-* Cron persistence
-* Systemd service persistence
+* T1053.003 – Cron
+* T1543.002 – Systemd Service
 
 ## Discovery
 
-* Host reconnaissance
-* User discovery
-* Process discovery
-* Service discovery
-* Network discovery
+* T1033 – System Owner/User Discovery
+* T1057 – Process Discovery
+* T1049 – System Network Connections Discovery
+* T1082 – System Information Discovery
+* T1016 – Network Configuration Discovery
+* T1007 – Service Discovery
+* T1083 – File and Directory Discovery
 
 ## Credential Access
 
-* SSH brute force
+* T1110 – Brute Force
 
 ## Privilege Escalation
 
-* Sudo abuse
-* GTFOBins techniques
+* T1548.003 – Sudo and Sudo Caching
 
-## Detection Engineering
+## Collection
 
-* Telemetry analysis
-* Investigation workflows
-* ATT&CK mapping
-* Sigma rule development
-* Detection validation
-* Process lineage analysis
-* Session reconstruction
+* T1005 – Data from Local System
+* T1074.001 – Local Data Staging
+* T1560.001 – Archive Collected Data via Utility
+
+## Command and Control
+
+* T1071 – Application Layer Protocol
+* T1105 – Ingress Tool Transfer
+
+## Defense Evasion / Obfuscation
+
+* T1027 – Obfuscated/Compressed Files and Information
+* T1140 – Deobfuscate/Decode Files or Information
 
 ---
 
 # Evidence-Driven Validation
 
-Every completed scenario contains validation artifacts collected during execution.
+Every scenario includes validation artifacts collected during execution.
 
-Examples include:
+Examples:
 
 * Auditd telemetry
 * Sysmon telemetry
-* Process lineage screenshots
+* Process creation events
 * Detection trigger evidence
 * Session reconstructions
 * Attack timelines
 * Authentication logs
 * Network captures
-* Service execution proof
+* Service execution evidence
 * Privilege escalation proof
+* Sample alerts
+* Process chain reconstructions
 
-The objective is to validate detections using observed behavior rather than assumptions.
+Detections are validated against observed behavior rather than assumptions.
 
 ---
 
@@ -514,43 +544,44 @@ The objective is to validate detections using observed behavior rather than assu
 * SSH
 * Base64
 * HTTP Services
-* GTFOBins Techniques
+* GTFOBins
+* Native Linux Utilities
 
 ---
 
 # Current Project Statistics
 
 ```text
-Completed Scenarios      : 8
-Sigma Rules              : 8
-Detection Logic Reports  : 8
-Validation Reports       : 8
-Investigation Reports    : 8
-Threat Mapping Reports   : 8
-Telemetry Reports        : 8
-Evidence Collections     : 8
-ATT&CK Techniques Covered: 15+
+Completed Scenarios      : 9
+Detection Logic Reports  : 9
+Threat Mapping Reports   : 9
+Investigation Reports    : 9
+Validation Reports       : 9
+Sigma Rules              : 9
+Evidence Collections     : 9
+ATT&CK Techniques Covered: 18+
+Telemetry Sources        : Auditd + Sysmon + Native Linux Logs
 ```
 
 ---
 
 # Future Roadmap
 
-Planned future work includes:
+Planned areas of expansion:
 
-* Defense evasion techniques
-* Credential dumping simulations
-* Linux malware persistence
-* Service abuse techniques
-* SUID abuse scenarios
-* Container security detections
-* Lateral movement simulations
-* ATT&CK coverage matrix
-* Detection severity framework
-* Automated validation workflows
-* Elastic detection content
-* Wazuh detection content
-* Threat hunting playbooks
+* Defense Evasion
+* SUID Abuse
+* Credential Dumping
+* Linux Malware Persistence
+* Service Abuse
+* Container Security Detection
+* Lateral Movement
+* ATT&CK Coverage Matrix
+* Detection Severity Framework
+* Automated Validation Pipelines
+* Elastic Detection Content
+* Wazuh Detection Content
+* Threat Hunting Playbooks
 
 ---
 
@@ -558,7 +589,7 @@ Planned future work includes:
 
 > Reliable detections are engineered from telemetry, investigation, behavioral analysis, and validation—not from signatures alone.
 
-This repository focuses on understanding:
+This laboratory focuses on understanding:
 
 * How attacks behave
 * How telemetry captures behavior
@@ -567,7 +598,7 @@ This repository focuses on understanding:
 * How detections are engineered
 * How detections are validated
 
-The objective is to develop practical detection engineering expertise through repeatable adversary simulation and evidence-driven analysis.
+The goal is to build practical detection engineering expertise through repeatable adversary simulation and evidence-driven analysis.
 
 ---
 
@@ -575,12 +606,12 @@ The objective is to develop practical detection engineering expertise through re
 
 ```text
 Project Status      : Active Development
-Completed Scenarios : 8
+Completed Scenarios : 9
 Validation Status   : All Scenarios Validated
 Primary Platform    : Linux
 Detection Framework : Sigma
 Methodology         : Evidence-Driven Detection Engineering
 ```
 
-The laboratory continues to expand through new ATT&CK-aligned attack simulations, telemetry studies, detection content, and validation workflows.
+The laboratory continues to expand through ATT&CK-aligned adversary simulations, telemetry studies, behavioral investigations, detection content development, and validation-driven detection engineering.
 
