@@ -1,0 +1,57 @@
+{
+  "rule_name": "sudo_gtfobins_find_privilege_escalation",
+  "rule_type": "sigma",
+  "trigger_time": "2026-06-03T13:35:57Z",
+  "detection_result": "matched",
+  "severity": "high",
+  "triggered_detection": "sudo_find_exec_shell",
+  "attack_technique": {
+    "id": "T1548.003",
+    "name": "Sudo and Sudo Caching"
+  },
+  "matched_fields": {
+    "Image": "/usr/bin/sudo",
+    "CommandLine": "sudo find . -exec /bin/bash \\; -quit",
+    "User": "bunny",
+    "ProcessId": 5737,
+    "ParentProcessId": 5547
+  },
+  "rule_conditions_satisfied": [
+    {
+      "field": "Image",
+      "operator": "endswith",
+      "expected": "/sudo",
+      "observed": "/usr/bin/sudo"
+    },
+    {
+      "field": "CommandLine",
+      "operator": "contains",
+      "expected": "find",
+      "observed": "sudo find . -exec /bin/bash \\; -quit"
+    },
+    {
+      "field": "CommandLine",
+      "operator": "contains",
+      "expected": "-exec",
+      "observed": "sudo find . -exec /bin/bash \\; -quit"
+    },
+    {
+      "field": "CommandLine",
+      "operator": "contains",
+      "expected": "/bin/bash",
+      "observed": "sudo find . -exec /bin/bash \\; -quit"
+    }
+  ],
+  "process_context": {
+    "parent_process": {
+      "pid": 5547,
+      "name": "bash",
+      "user": "bunny"
+    },
+    "process": {
+      "pid": 5737,
+      "name": "sudo"
+    }
+  },
+  "validation_status": "true_positive"
+}

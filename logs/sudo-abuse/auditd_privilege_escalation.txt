@@ -1,0 +1,5 @@
+----
+time->Wed Jun  3 13:35:57 2026
+type=PROCTITLE msg=audit(1780473957.163:1434): proctitle=7375646F0066696E64002E002D65786563002F62696E2F62617368003B002D71756974
+type=SYSCALL msg=audit(1780473957.163:1434): arch=c000003e syscall=117 success=yes exit=0 a0=ffffffff a1=0 a2=ffffffff a3=f1 items=0 ppid=5547 pid=5737 auid=1000 uid=1000 gid=1000 euid=0 suid=0 fsuid=0 egid=0 sgid=1000 fsgid=0 tty=pts1 ses=3 comm="sudo" exe="/usr/lib/cargo/bin/sudo" subj=unconfined key="privilege_escalation"
+----

@@ -1,0 +1,32 @@
+{
+  "event_type": "process_creation",
+  "event_source": "auditd",
+  "timestamp": "2026-06-03T13:35:57Z",
+  "host": "linux-lab",
+  "user": {
+    "name": "bunny",
+    "uid": 1000
+  },
+  "process": {
+    "pid": 5737,
+    "ppid": 5547,
+    "name": "sudo",
+    "executable": "/usr/bin/sudo",
+    "command_line": "sudo find . -exec /bin/bash \\; -quit"
+  },
+  "parent_process": {
+    "pid": 5547,
+    "name": "bash",
+    "executable": "/usr/bin/bash"
+  },
+  "privileges": {
+    "uid": 1000,
+    "euid": 0
+  },
+  "detection_context": {
+    "technique": "T1548.003",
+    "technique_name": "Sudo and Sudo Caching",
+    "behavior": "GTFOBins sudo abuse",
+    "severity": "high"
+  }
+}

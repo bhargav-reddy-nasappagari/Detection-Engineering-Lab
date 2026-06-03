@@ -1,0 +1,11 @@
+UID          PID    PPID  C STIME TTY          TIME CMD
+bunny       4316    2848  0 12:45 ?        00:00:28  \_ ptyxis --new-window
+bunny       4334    4316  0 12:45 ?        00:00:01      \_ /usr/libexec/ptyxis-agent --socket-fd=3 --rlimit-nofile=1024
+bunny       4375    4334  0 12:45 pts/0    00:00:00          \_ /usr/bin/bash
+bunny       5805    4375 99 13:37 pts/0    00:00:00          |   \_ ps -ef --forest
+bunny       5547    4334  0 13:34 pts/1    00:00:00          \_ /usr/bin/bash
+root        5737    5547  0 13:35 pts/1    00:00:00              \_ sudo find . -exec /bin/bash ; -quit
+root        5744    5737  0 13:35 pts/2    00:00:00                  \_ sudo find . -exec /bin/bash ; -quit
+root        5745    5744  0 13:35 pts/2    00:00:00                      \_ find . -exec /bin/bash ; -quit
+root        5746    5745  0 13:35 pts/2    00:00:00                          \_ /bin/bash
+

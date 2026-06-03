@@ -1,0 +1,64 @@
+{
+  "alert_id": "ALERT-SUDO-ABUSE-001",
+  "alert_name": "Sudo GTFOBins Privilege Escalation via Find",
+  "status": "true_positive",
+  "severity": "high",
+  "confidence": "high",
+  "timestamp": "2026-06-03T13:35:57Z",
+  "host": {
+    "hostname": "linux-lab",
+    "os": "Ubuntu Linux"
+  },
+  "user": {
+    "name": "bunny",
+    "uid": 1000
+  },
+  "detection": {
+    "rule_name": "sudo_gtfobins_find_privilege_escalation",
+    "technique_id": "T1548.003",
+    "technique_name": "Sudo and Sudo Caching",
+    "tactic": "Privilege Escalation"
+  },
+  "triggering_event": {
+    "pid": 5737,
+    "ppid": 5547,
+    "process_name": "sudo",
+    "command_line": "sudo find . -exec /bin/bash \\; -quit"
+  },
+  "process_chain": [
+    {
+      "pid": 5547,
+      "process_name": "bash",
+      "user": "bunny"
+    },
+    {
+      "pid": 5737,
+      "process_name": "sudo",
+      "command_line": "sudo find . -exec /bin/bash \\; -quit"
+    },
+    {
+      "pid": 5745,
+      "process_name": "find",
+      "command_line": "find . -exec /bin/bash \\; -quit"
+    },
+    {
+      "pid": 5746,
+      "process_name": "bash",
+      "user": "root"
+    }
+  ],
+  "evidence": [
+    "User executed sudo privilege enumeration using 'sudo -l'",
+    "Sudo launched find with -exec argument",
+    "Find spawned /bin/bash",
+    "Privilege transition observed from uid=1000 to euid=0",
+    "Root shell subsequently executed discovery commands"
+  ],
+  "risk_summary": "A user abused sudo permissions to execute the GTFOBins find technique and spawn an interactive root shell, resulting in successful privilege escalation.",
+  "recommended_actions": [
+    "Review sudoers configuration for unnecessary command permissions",
+    "Investigate activity performed from the spawned root shell",
+    "Validate legitimacy of the user's administrative actions",
+    "Restrict GTFOBins-capable binaries from sudo where possible"
+  ]
+}\

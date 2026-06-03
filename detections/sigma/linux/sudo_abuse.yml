@@ -1,0 +1,60 @@
+title: Sudo GTFOBins Find Privilege Escalation
+id: 4b0d7b3a-5c72-4f54-b0c6-f7e9c0f7d001
+status: experimental
+description: Detects abuse of sudo permissions to spawn a root shell through the GTFOBins find technique. The rule identifies command-line patterns associated with shell execution through find as well as suspicious find-to-bash parent-child relationships.
+references:
+
+* https://gtfobins.github.io/gtfobins/find/
+* https://attack.mitre.org/techniques/T1548/003/
+  author: Bunny
+  date: 2026-06-03
+  tags:
+* attack.privilege_escalation
+* attack.execution
+* attack.t1548.003
+* attack.t1059.004
+
+logsource:
+product: linux
+category: process_creation
+
+detection:
+
+sudo_find_exec_shell:
+Image|endswith: '/sudo'
+CommandLine|contains|all:
+- 'find'
+- '-exec'
+- '/bin/bash'
+
+find_spawned_shell:
+ParentImage|endswith: '/find'
+Image|endswith:
+- '/bash'
+- '/sh'
+
+privileged_discovery:
+Image|endswith:
+- '/whoami'
+- '/id'
+- '/hostname'
+
+condition: sudo_find_exec_shell or find_spawned_shell
+
+fields:
+
+* Image
+* ParentImage
+* CommandLine
+* User
+* ProcessId
+* ParentProcessId
+
+falsepositives:
+
+* Administrative troubleshooting using GTFOBins techniques
+* Security testing and detection validation exercises
+* Authorized red team activity
+* Laboratory environments
+
+level: high

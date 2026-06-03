@@ -1,0 +1,41 @@
+----
+time->Wed Jun  3 12:54:47 2026
+type=PROCTITLE msg=audit(1780471487.722:540): proctitle="whoami"
+type=PATH msg=audit(1780471487.722:540): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780471487.722:540): item=0 name="/usr/bin/whoami" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780471487.722:540): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780471487.722:540): argc=1 a0="whoami"
+type=SYSCALL msg=audit(1780471487.722:540): arch=c000003e syscall=59 success=yes exit=0 a0=578d4c684c80 a1=578d4c591cd0 a2=578d4c642600 a3=21 items=2 ppid=4375 pid=4569 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=3 comm="whoami" exe="/usr/lib/cargo/bin/coreutils/whoami" subj=unconfined key="process_execve"
+----
+time->Wed Jun  3 12:54:47 2026
+type=PROCTITLE msg=audit(1780471487.744:541): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780471487.744:541): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780471487.744:541): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780471487.744:541): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780471487.744:541): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780471487.744:541): arch=c000003e syscall=59 success=yes exit=0 a0=578d4c685990 a1=578d4c60b790 a2=578d4c6859c0 a3=8 items=2 ppid=4375 pid=4570 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=3 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_execve"
+----
+time->Wed Jun  3 12:54:49 2026
+type=PROCTITLE msg=audit(1780471489.227:542): proctitle="id"
+type=PATH msg=audit(1780471489.227:542): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780471489.227:542): item=0 name="/usr/bin/id" inode=1966575 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780471489.227:542): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780471489.227:542): argc=1 a0="id"
+type=SYSCALL msg=audit(1780471489.227:542): arch=c000003e syscall=59 success=yes exit=0 a0=578d4c592870 a1=578d4c5919c0 a2=578d4c642600 a3=20 items=2 ppid=4375 pid=4571 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=3 comm="id" exe="/usr/lib/cargo/bin/coreutils/id" subj=unconfined key="process_execve"
+----
+time->Wed Jun  3 12:54:49 2026
+type=PROCTITLE msg=audit(1780471489.297:543): proctitle="/usr/libexec/vte-urlencode-cwd"
+type=PATH msg=audit(1780471489.297:543): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780471489.297:543): item=0 name="/usr/libexec/vte-urlencode-cwd" inode=1982522 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780471489.297:543): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780471489.297:543): argc=1 a0="/usr/libexec/vte-urlencode-cwd"
+type=SYSCALL msg=audit(1780471489.297:543): arch=c000003e syscall=59 success=yes exit=0 a0=578d4c6859f0 a1=578d4c60b770 a2=578d4c685a20 a3=8 items=2 ppid=4375 pid=4572 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=3 comm="vte-urlencode-c" exe="/usr/libexec/vte-urlencode-cwd" subj=unconfined key="process_execve"
+----
+time->Wed Jun  3 12:54:52 2026
+type=PROCTITLE msg=audit(1780471492.723:544): proctitle=66696E64002E
+type=PATH msg=audit(1780471492.723:544): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1981380 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=PATH msg=audit(1780471492.723:544): item=0 name="/usr/bin/find" inode=1966663 dev=08:02 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0
+type=CWD msg=audit(1780471492.723:544): cwd="/home/bunny/Detection-Engineering-Lab"
+type=EXECVE msg=audit(1780471492.723:544): argc=2 a0="find" a1="."
+type=SYSCALL msg=audit(1780471492.723:544): arch=c000003e syscall=59 success=yes exit=0 a0=578d4c5744e0 a1=578d4c575010 a2=578d4c642600 a3=21 items=2 ppid=4375 pid=4574 auid=1000 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts0 ses=3 comm="find" exe="/usr/bin/find" subj=unconfined key="process_execve"
+----

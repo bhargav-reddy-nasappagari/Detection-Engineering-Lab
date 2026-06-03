@@ -1,0 +1,87 @@
+{
+  "scenario": "sudo_abuse_gtfobins_find",
+  "host": "linux-lab",
+  "event_type": "process_creation",
+  "events": [
+    {
+      "timestamp": "2026-06-03T13:35:17Z",
+      "pid": 5597,
+      "ppid": 5547,
+      "process_name": "sudo",
+      "command_line": "sudo -l",
+      "user": "bunny",
+      "uid": 1000,
+      "euid": 0
+    },
+    {
+      "timestamp": "2026-06-03T13:35:57Z",
+      "pid": 5737,
+      "ppid": 5547,
+      "process_name": "sudo",
+      "command_line": "sudo find . -exec /bin/bash \\; -quit",
+      "user": "bunny",
+      "uid": 1000,
+      "euid": 0
+    },
+    {
+      "timestamp": "2026-06-03T13:35:57Z",
+      "pid": 5744,
+      "ppid": 5737,
+      "process_name": "sudo",
+      "command_line": "sudo find . -exec /bin/bash \\; -quit",
+      "user": "root",
+      "uid": 0,
+      "euid": 0
+    },
+    {
+      "timestamp": "2026-06-03T13:35:57Z",
+      "pid": 5745,
+      "ppid": 5744,
+      "process_name": "find",
+      "command_line": "find . -exec /bin/bash \\; -quit",
+      "user": "root",
+      "uid": 0,
+      "euid": 0
+    },
+    {
+      "timestamp": "2026-06-03T13:35:57Z",
+      "pid": 5746,
+      "ppid": 5745,
+      "process_name": "bash",
+      "command_line": "/bin/bash",
+      "user": "root",
+      "uid": 0,
+      "euid": 0
+    },
+    {
+      "timestamp": "2026-06-03T13:36:01Z",
+      "pid": 5752,
+      "ppid": 5746,
+      "process_name": "whoami",
+      "command_line": "whoami",
+      "user": "root",
+      "uid": 0,
+      "euid": 0
+    },
+    {
+      "timestamp": "2026-06-03T13:36:03Z",
+      "pid": 5753,
+      "ppid": 5746,
+      "process_name": "id",
+      "command_line": "id",
+      "user": "root",
+      "uid": 0,
+      "euid": 0
+    },
+    {
+      "timestamp": "2026-06-03T13:36:05Z",
+      "pid": 5754,
+      "ppid": 5746,
+      "process_name": "hostname",
+      "command_line": "hostname",
+      "user": "root",
+      "uid": 0,
+      "euid": 0
+    }
+  ]
+}
