@@ -1,0 +1,117 @@
+{
+  "detection_name": "Correlated Beaconing Activity From Repeated HTTP Callbacks",
+  "detection_id": "f3c1d76d-1d72-4d4c-9ef4-bf8eacon002",
+  "trigger_time": "2026-06-04T15:02:13Z",
+  "detection_result": "triggered",
+
+  "correlation_window": {
+    "duration": "20m",
+    "start_time": "2026-06-04T14:38:11Z",
+    "end_time": "2026-06-04T14:58:11Z"
+  },
+
+  "trigger_conditions": {
+    "minimum_execution_threshold": {
+      "required": 10,
+      "observed": 20,
+      "status": "met"
+    },
+    "same_parent_process": {
+      "required": true,
+      "observed": true,
+      "status": "met"
+    },
+    "same_destination": {
+      "required": true,
+      "observed": true,
+      "status": "met"
+    },
+    "consistent_interval": {
+      "required": true,
+      "observed": true,
+      "average_interval_seconds": 60,
+      "status": "met"
+    },
+    "repeated_http_communication": {
+      "required": true,
+      "observed": true,
+      "status": "met"
+    }
+  },
+
+  "grouping_fields": {
+    "hostname": "lab-linux",
+    "user": "bunny",
+    "parent_process_name": "bash",
+    "parent_pid": 5309,
+    "process_name": "curl",
+    "destination_ip": "127.0.0.1",
+    "destination_port": 8080,
+    "uri": "/checkin"
+  },
+
+  "evidence_summary": {
+    "first_observed": "2026-06-04T14:38:11Z",
+    "last_observed": "2026-06-04T14:58:11Z",
+    "total_process_executions": 20,
+    "unique_parent_processes": 1,
+    "unique_destinations": 1,
+    "unique_users": 1
+  },
+
+  "responsible_fields": [
+    {
+      "field": "process.name",
+      "value": "curl",
+      "reason": "Network-capable communication utility executed repeatedly"
+    },
+    {
+      "field": "process.command_line",
+      "value": "curl http://127.0.0.1:8080/checkin",
+      "reason": "Repeated HTTP callback command observed"
+    },
+    {
+      "field": "process.parent.name",
+      "value": "bash",
+      "reason": "Common parent process across all executions"
+    },
+    {
+      "field": "process.parent.pid",
+      "value": 5309,
+      "reason": "Single long-lived controller process"
+    },
+    {
+      "field": "destination.ip",
+      "value": "127.0.0.1",
+      "reason": "Consistent callback destination"
+    },
+    {
+      "field": "destination.port",
+      "value": 8080,
+      "reason": "Consistent callback service"
+    },
+    {
+      "field": "url.path",
+      "value": "/checkin",
+      "reason": "Repeated access to identical endpoint"
+    },
+    {
+      "field": "event.created",
+      "value": "2026-06-04T14:38:11Z → 2026-06-04T14:58:11Z",
+      "reason": "Events occurred at predictable 60-second intervals"
+    }
+  ],
+
+  "behavioral_classification": {
+    "behavior": "Beaconing",
+    "technique": "T1071",
+    "tactic": "TA0011",
+    "confidence": "high"
+  },
+
+  "analytic_decision": {
+    "reason": "Repeated HTTP communications originated from the same parent process and targeted the same destination at a fixed interval for more than 20 minutes.",
+    "severity": "medium",
+    "recommended_verdict": "Investigate"
+  }
+}

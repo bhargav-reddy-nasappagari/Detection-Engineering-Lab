@@ -1,0 +1,77 @@
+```json
+{
+  "scenario": "Beaconing / Periodic Callback",
+  "description": "Reconstructed process chain responsible for recurring HTTP callback activity observed during the simulation.",
+  "host": {
+    "hostname": "lab-linux",
+    "user": "bunny"
+  },
+  "process_chain": {
+    "root_process": {
+      "pid": 5113,
+      "name": "bash",
+      "executable": "/usr/bin/bash",
+      "role": "Interactive user shell",
+      "children": [
+        {
+          "pid": 5309,
+          "name": "bash",
+          "executable": "/usr/bin/bash",
+          "command_line": "while true; do curl http://127.0.0.1:8080/checkin; sleep 60; done",
+          "role": "Beacon controller process",
+          "children": [
+            {
+              "pid": 5310,
+              "name": "curl",
+              "executable": "/usr/bin/curl",
+              "command_line": "curl http://127.0.0.1:8080/checkin",
+              "role": "HTTP callback execution",
+              "network_activity": {
+                "protocol": "HTTP",
+                "destination_ip": "127.0.0.1",
+                "destination_port": 8080,
+                "uri": "/checkin"
+              }
+            },
+            {
+              "pid": 5311,
+              "name": "sleep",
+              "executable": "/usr/bin/sleep",
+              "command_line": "sleep 60",
+              "role": "Beacon interval delay"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "server_process": {
+    "pid": 4686,
+    "name": "python3",
+    "executable": "/usr/bin/python3",
+    "command_line": "python3 -m http.server 8080",
+    "role": "HTTP callback server",
+    "listening_port": 8080
+  },
+  "observed_behavior": {
+    "callback_process": "curl",
+    "callback_destination": "http://127.0.0.1:8080/checkin",
+    "interval_seconds": 60,
+    "observation_duration_minutes": 20,
+    "execution_pattern": [
+      "curl -> sleep",
+      "curl -> sleep",
+      "curl -> sleep",
+      "curl -> sleep"
+    ]
+  },
+  "behavioral_summary": {
+    "same_parent_process": true,
+    "same_destination": true,
+    "fixed_interval": true,
+    "repeated_process_creation": true,
+    "long_lived_controller_process": true,
+    "classification": "Beaconing / Periodic Callback Activity"
+  }
+}
+```

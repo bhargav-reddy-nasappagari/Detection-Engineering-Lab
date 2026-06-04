@@ -1,0 +1,9 @@
+|-ptyxis,4264 --new-window
+          |-ptyxis-agent,4282 --socket-fd=3 --rlimit-nofile=1024
+             |-bash,4324
+             |   `-pstree,5346 -ap
+             |-bash,4672
+             |   `-python3,4686 -m http.server 8080
+             |-bash,5113
+             |   `-bash,5309
+             |       `-sleep,5344 60

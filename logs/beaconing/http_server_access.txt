@@ -1,0 +1,48 @@
+bunny@bunny-VirtualBox:~$ python3 -m http.server 8080
+Serving HTTP on 0.0.0.0 port 8080 (http://0.0.0.0:8080/) ...
+127.0.0.1 - - [04/Jun/2026 14:38:11] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:38:11] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:39:11] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:39:11] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:40:11] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:40:11] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:41:11] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:41:11] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:42:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:42:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:43:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:43:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:44:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:44:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:45:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:45:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:46:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:46:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:47:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:47:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:48:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:48:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:49:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:49:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:50:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:50:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:51:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:51:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:52:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:52:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:53:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:53:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:54:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:54:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:55:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:55:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:56:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:56:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:57:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:57:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:58:12] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:58:12] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 14:59:13] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 14:59:13] "GET /checkin HTTP/1.1" 404 -
+127.0.0.1 - - [04/Jun/2026 15:00:13] code 404, message File not found
+127.0.0.1 - - [04/Jun/2026 15:00:13] "GET /checkin HTTP/1.1" 404 -

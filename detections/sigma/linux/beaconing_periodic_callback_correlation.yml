@@ -1,0 +1,56 @@
+```yaml
+title: Correlated Beaconing Activity From Repeated HTTP Callbacks
+id: f3c1d76d-1d72-4d4c-9ef4-bf8eacon002
+status: experimental
+
+description: >
+  Detects beaconing behavior by correlating repeated executions of
+  network communication utilities originating from the same parent
+  process and targeting the same destination within a defined
+  observation window.
+
+author: Detection Engineering Lab
+date: 2026-06-04
+
+references:
+  - https://attack.mitre.org/techniques/T1071/
+
+tags:
+  - attack.command_and_control
+  - attack.t1071
+  - attack.ta0011
+  - beaconing
+  - correlation
+
+correlation:
+
+  type: event_count
+
+  rules:
+    - b4dbe8c9-9e7f-4c0f-92ea-bf8eacon001
+
+  group-by:
+    - Hostname
+    - ParentProcessId
+    - ParentImage
+    - CommandLine
+
+  timespan: 10m
+
+  condition:
+    gte: 10
+
+fields:
+  - Hostname
+  - ParentImage
+  - ParentProcessId
+  - CommandLine
+  - User
+
+falsepositives:
+  - Aggressive monitoring scripts
+  - Internal polling services
+  - Scheduled API health checks
+
+level: medium
+```

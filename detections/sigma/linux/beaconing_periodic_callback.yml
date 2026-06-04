@@ -1,0 +1,84 @@
+```yaml
+title: Potential Beaconing Via Repeated HTTP Communication Utilities
+id: b4dbe8c9-9e7f-4c0f-92ea-bf8eacon001
+status: experimental
+
+description: >
+  Detects execution of network-capable command line utilities commonly used
+  for HTTP/HTTPS callback communications. This rule is intended as a signal
+  generation analytic and should be correlated with execution frequency,
+  destination consistency, and interval analysis to identify beaconing.
+
+author: Detection Engineering Lab
+date: 2026-06-04
+
+references:
+  - https://attack.mitre.org/techniques/T1071/
+  - https://attack.mitre.org/tactics/TA0011/
+
+tags:
+  - attack.command_and_control
+  - attack.t1071
+  - attack.ta0011
+  - linux
+  - beaconing
+
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+
+  selection_curl:
+    Image|endswith:
+      - '/curl'
+    CommandLine|contains:
+      - 'http://'
+      - 'https://'
+
+  selection_wget:
+    Image|endswith:
+      - '/wget'
+    CommandLine|contains:
+      - 'http://'
+      - 'https://'
+
+  selection_python_requests:
+    Image|endswith:
+      - '/python'
+      - '/python3'
+    CommandLine|contains:
+      - 'requests'
+      - 'urllib'
+      - 'http://'
+      - 'https://'
+
+  filter_common_package_management:
+    ParentImage|endswith:
+      - '/apt'
+      - '/apt-get'
+      - '/dnf'
+      - '/yum'
+      - '/snap'
+      - '/packagekitd'
+
+  condition: (1 of selection_*) and not filter_common_package_management
+
+fields:
+  - Image
+  - ParentImage
+  - CommandLine
+  - User
+  - ProcessId
+  - ParentProcessId
+  - Hostname
+
+falsepositives:
+  - Software update mechanisms
+  - Health monitoring scripts
+  - Configuration management tools
+  - Internal automation
+  - Scheduled administrative jobs
+
+level: low
+```

@@ -1,0 +1,124 @@
+```json
+{
+  "scenario": "Beaconing / Periodic Callback",
+  "telemetry_source": "Auditd + Sysmon Linux",
+  "description": "Representative process creation events observed during the beaconing simulation.",
+  "events": [
+    {
+      "timestamp": "2026-06-04T14:18:06Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/python3",
+      "command_line": "python3 -m http.server 8080",
+      "pid": 4686,
+      "ppid": 4672,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Callback server initialization"
+    },
+    {
+      "timestamp": "2026-06-04T14:38:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/curl",
+      "command_line": "curl http://127.0.0.1:8080/checkin",
+      "pid": 5310,
+      "ppid": 5309,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Beacon callback #1"
+    },
+    {
+      "timestamp": "2026-06-04T14:38:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/sleep",
+      "command_line": "sleep 60",
+      "pid": 5311,
+      "ppid": 5309,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Beacon delay interval"
+    },
+    {
+      "timestamp": "2026-06-04T14:39:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/curl",
+      "command_line": "curl http://127.0.0.1:8080/checkin",
+      "pid": 5312,
+      "ppid": 5309,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Beacon callback #2"
+    },
+    {
+      "timestamp": "2026-06-04T14:39:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/sleep",
+      "command_line": "sleep 60",
+      "pid": 5313,
+      "ppid": 5309,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Beacon delay interval"
+    },
+    {
+      "timestamp": "2026-06-04T14:40:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/curl",
+      "command_line": "curl http://127.0.0.1:8080/checkin",
+      "pid": 5314,
+      "ppid": 5309,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Beacon callback #3"
+    },
+    {
+      "timestamp": "2026-06-04T14:40:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/sleep",
+      "command_line": "sleep 60",
+      "pid": 5315,
+      "ppid": 5309,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Beacon delay interval"
+    },
+    {
+      "timestamp": "2026-06-04T14:41:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/curl",
+      "command_line": "curl http://127.0.0.1:8080/checkin",
+      "pid": 5316,
+      "ppid": 5309,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Beacon callback #4"
+    },
+    {
+      "timestamp": "2026-06-04T14:41:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/sleep",
+      "command_line": "sleep 60",
+      "pid": 5317,
+      "ppid": 5309,
+      "parent_image": "/usr/bin/bash",
+      "user": "bunny",
+      "purpose": "Beacon delay interval"
+    }
+  ],
+  "behavior_summary": {
+    "beacon_parent_process": {
+      "image": "/usr/bin/bash",
+      "pid": 5309
+    },
+    "callback_process": "/usr/bin/curl",
+    "sleep_process": "/usr/bin/sleep",
+    "callback_destination": "http://127.0.0.1:8080/checkin",
+    "callback_interval_seconds": 60,
+    "observation_window_minutes": 20,
+    "observed_pattern": [
+      "curl -> sleep",
+      "curl -> sleep",
+      "curl -> sleep"
+    ]
+  }
+}
+```

@@ -1,0 +1,80 @@
+```json
+{
+  "event": {
+    "kind": "event",
+    "category": "process",
+    "type": "start",
+    "action": "process_create",
+    "outcome": "success",
+    "created": "2026-06-04T14:38:11Z"
+  },
+  "host": {
+    "hostname": "lab-linux",
+    "os": {
+      "family": "linux",
+      "name": "Ubuntu"
+    }
+  },
+  "user": {
+    "name": "bunny",
+    "uid": 1000
+  },
+  "process": {
+    "pid": 5310,
+    "name": "curl",
+    "executable": "/usr/bin/curl",
+    "command_line": "curl http://127.0.0.1:8080/checkin",
+    "working_directory": "/home/bunny",
+    "args": [
+      "curl",
+      "http://127.0.0.1:8080/checkin"
+    ]
+  },
+  "parent": {
+    "pid": 5309,
+    "name": "bash",
+    "executable": "/usr/bin/bash",
+    "command_line": "while true; do curl http://127.0.0.1:8080/checkin; sleep 60; done"
+  },
+  "process_lineage": {
+    "grandparent": {
+      "pid": 5113,
+      "name": "bash"
+    },
+    "parent": {
+      "pid": 5309,
+      "name": "bash"
+    },
+    "child": {
+      "pid": 5310,
+      "name": "curl"
+    }
+  },
+  "network": {
+    "protocol": "http",
+    "destination": {
+      "ip": "127.0.0.1",
+      "port": 8080
+    },
+    "url": {
+      "full": "http://127.0.0.1:8080/checkin",
+      "path": "/checkin"
+    }
+  },
+  "simulation_context": {
+    "scenario": "Beaconing / Periodic Callback",
+    "callback_number": 1,
+    "callback_interval_seconds": 60,
+    "behavior": "Periodic HTTP callback"
+  },
+  "tags": [
+    "process_creation",
+    "linux",
+    "curl",
+    "http",
+    "beaconing",
+    "command_and_control",
+    "simulation"
+  ]
+}
+```

@@ -1,0 +1,209 @@
+# Beaconing / Periodic Callback Timeline
+
+## Scenario Summary
+
+This simulation emulated a simple beaconing mechanism where a shell process periodically executed HTTP callbacks using curl against a local HTTP server.
+
+The objective was to generate recurring outbound application-layer traffic that could be reconstructed through process execution telemetry and server-side logs.
+
+---
+
+## Callback Infrastructure Initialization
+
+### 14:18:06
+
+HTTP callback server started.
+
+Process:
+
+```text
+python3 -m http.server 8080
+```
+
+Process Information:
+
+| Field | Value |
+|---------|---------|
+| PID | 4686 |
+| PPID | 4672 |
+| User | bunny |
+| Port | 8080 |
+
+Observed Lineage:
+
+```text
+bash (4672)
+└── python3 -m http.server 8080
+```
+
+---
+
+## Beacon Initialization
+
+### Prior to 14:38:11
+
+A secondary shell process (PID 5309) was launched.
+
+Observed lineage:
+
+```text
+bash (5113)
+└── bash (5309)
+```
+
+This shell became the long-running beacon parent process.
+
+---
+
+## Periodic Callback Activity
+
+Beginning at 14:38:11, PID 5309 repeatedly executed:
+
+```text
+curl http://127.0.0.1:8080/checkin
+sleep 60
+```
+
+The following pattern repeated continuously:
+
+```text
+bash (5309)
+├── curl http://127.0.0.1:8080/checkin
+└── sleep 60
+```
+
+---
+
+## Observed Callback Timeline
+
+| Time | Activity |
+|--------|----------|
+| 14:38:11 | Callback #1 |
+| 14:39:11 | Callback #2 |
+| 14:40:11 | Callback #3 |
+| 14:41:11 | Callback #4 |
+| 14:42:12 | Callback #5 |
+| 14:43:12 | Callback #6 |
+| 14:44:12 | Callback #7 |
+| 14:45:12 | Callback #8 |
+| 14:46:12 | Callback #9 |
+| 14:47:12 | Callback #10 |
+| 14:48:12 | Callback #11 |
+| 14:49:12 | Callback #12 |
+| 14:50:12 | Callback #13 |
+| 14:51:12 | Callback #14 |
+| 14:52:12 | Callback #15 |
+| 14:53:12 | Callback #16 |
+| 14:54:12 | Callback #17 |
+| 14:55:12 | Callback #18 |
+| 14:56:12 | Callback #19 |
+| 14:57:12 | Callback #20 |
+| 15:02:13 | Callback activity still present |
+
+---
+
+## Beacon Characteristics
+
+### Destination
+
+```text
+http://127.0.0.1:8080/checkin
+```
+
+### Protocol
+
+```text
+HTTP
+```
+
+### Beacon Interval
+
+```text
+~60 seconds
+```
+
+### Executable
+
+```text
+/usr/bin/curl
+```
+
+### Sleep Utility
+
+```text
+/usr/bin/sleep
+```
+
+### Parent Process
+
+```text
+bash (PID 5309)
+```
+
+---
+
+## Detection-Relevant Behaviors
+
+### Recurring Network Utility Execution
+
+The same parent process repeatedly spawned:
+
+```text
+curl
+```
+
+at nearly identical intervals.
+
+### Consistent Destination
+
+Every callback targeted:
+
+```text
+127.0.0.1:8080
+```
+
+and requested:
+
+```text
+/checkin
+```
+
+### Timing Regularity
+
+Observed interval:
+
+```text
+60 seconds
+```
+
+with minimal drift.
+
+### Long-Lived Parent Process
+
+A single bash process persisted throughout the callback lifecycle and continuously generated network activity.
+
+---
+
+## Detection Conclusion
+
+The telemetry demonstrates a classic periodic callback pattern:
+
+```text
+Long-lived shell
+        ↓
+curl HTTP request
+        ↓
+sleep 60
+        ↓
+curl HTTP request
+        ↓
+sleep 60
+        ↓
+(repeats)
+```
+
+This behavior aligns with:
+
+ATT&CK T1071 – Application Layer Protocol
+
+and provides sufficient evidence for beaconing-oriented detection analytics based on recurring process execution and timing correlation.

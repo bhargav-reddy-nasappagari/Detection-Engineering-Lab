@@ -1,0 +1,110 @@
+```json
+{
+  "alert_id": "BEACON-2026-0001",
+  "alert_name": "Potential Beaconing Activity Detected",
+  "alert_time": "2026-06-04T15:02:13Z",
+  "status": "open",
+  "severity": "medium",
+  "confidence": "high",
+  "category": "Command and Control",
+  "detection_rule": "Correlated Beaconing Activity From Repeated HTTP Callbacks",
+  "detection_id": "f3c1d76d-1d72-4d4c-9ef4-bf8eacon002",
+
+  "host": {
+    "hostname": "lab-linux",
+    "os": "Ubuntu Linux",
+    "user": "bunny"
+  },
+
+  "mitre_attack": {
+    "tactic": {
+      "id": "TA0011",
+      "name": "Command and Control"
+    },
+    "technique": {
+      "id": "T1071",
+      "name": "Application Layer Protocol"
+    }
+  },
+
+  "process_context": {
+    "parent_process": {
+      "image": "/usr/bin/bash",
+      "pid": 5309
+    },
+    "child_processes": [
+      {
+        "image": "/usr/bin/curl",
+        "command_line": "curl http://127.0.0.1:8080/checkin"
+      },
+      {
+        "image": "/usr/bin/sleep",
+        "command_line": "sleep 60"
+      }
+    ]
+  },
+
+  "network_context": {
+    "protocol": "HTTP",
+    "destination": "127.0.0.1:8080",
+    "uri": "/checkin"
+  },
+
+  "correlation_summary": {
+    "observation_window": "20 minutes",
+    "execution_count": 20,
+    "unique_destination_count": 1,
+    "common_parent_process": true,
+    "average_interval_seconds": 60,
+    "interval_variance_seconds": 1
+  },
+
+  "trigger_conditions": [
+    "Repeated network-capable process execution detected",
+    "Same destination observed across all executions",
+    "Common parent process observed",
+    "Execution threshold exceeded",
+    "Consistent callback interval identified"
+  ],
+
+  "evidence": [
+    {
+      "timestamp": "2026-06-04T14:38:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/curl",
+      "command_line": "curl http://127.0.0.1:8080/checkin"
+    },
+    {
+      "timestamp": "2026-06-04T14:39:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/curl",
+      "command_line": "curl http://127.0.0.1:8080/checkin"
+    },
+    {
+      "timestamp": "2026-06-04T14:40:11Z",
+      "event_type": "process_creation",
+      "image": "/usr/bin/curl",
+      "command_line": "curl http://127.0.0.1:8080/checkin"
+    }
+  ],
+
+  "behavior_assessment": {
+    "observed_pattern": "Periodic HTTP callback behavior",
+    "behavior_type": "Beaconing",
+    "automation_detected": true,
+    "destination_consistency": true,
+    "fixed_interval_detected": true,
+    "long_lived_parent_process": true
+  },
+
+  "analyst_summary": "A long-lived bash process repeatedly spawned curl to communicate with the same HTTP endpoint approximately every 60 seconds for more than 20 minutes. The activity demonstrates a beaconing pattern consistent with command-and-control polling behavior. No evidence of payload execution or data exfiltration was observed during the simulation; however, the communication pattern aligns with ATT&CK T1071 Application Layer Protocol and warrants investigation.",
+
+  "recommended_actions": [
+    "Review process lineage associated with the parent shell",
+    "Investigate destination ownership and purpose",
+    "Search for additional beaconing activity from the host",
+    "Review persistence mechanisms associated with the parent process",
+    "Validate whether the activity belongs to approved automation"
+  ]
+}
+```
