@@ -1,0 +1,36 @@
+title: Suspicious Callback Or Beaconing Activity
+id: 0a45e19c-c90e-4ca0-b4f1-7f67fdd2f004
+status: experimental
+
+description: Detects common callback patterns frequently observed during beaconing activity.
+
+author: Bunny
+date: 2026-06-05
+
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+
+  network_tools:
+    Image|endswith:
+      - '/curl'
+      - '/wget'
+
+  suspicious_strings:
+    CommandLine|contains:
+      - 'heartbeat'
+      - 'callback'
+      - 'checkin'
+      - 'beacon'
+      - 'ping'
+
+  condition: network_tools and suspicious_strings
+
+falsepositives:
+  - Health checks
+  - Monitoring software
+  - Internal automation
+
+level: medium

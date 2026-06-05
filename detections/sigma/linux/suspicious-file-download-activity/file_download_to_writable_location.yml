@@ -1,0 +1,43 @@
+title: File Download To User Writable Location
+id: 9db1f59f-f4a7-4d85-8f79-6df23f8f7001
+status: experimental
+
+description: Detects curl, wget, or ftp usage that downloads content into user-writable locations commonly abused for payload staging.
+
+author: Bunny
+date: 2026-06-05
+
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+
+  tools:
+    Image|endswith:
+      - '/curl'
+      - '/wget'
+      - '/ftp'
+
+  remote_source:
+    CommandLine|contains:
+      - 'http://'
+      - 'https://'
+      - 'ftp://'
+
+  writable_locations:
+    CommandLine|contains:
+      - '/tmp/'
+      - '/var/tmp/'
+      - '/dev/shm/'
+      - '/home/'
+      - '/Downloads/'
+
+  condition: tools and remote_source and writable_locations
+
+falsepositives:
+  - Software installation
+  - Administrative scripting
+  - Developer testing
+
+level: low

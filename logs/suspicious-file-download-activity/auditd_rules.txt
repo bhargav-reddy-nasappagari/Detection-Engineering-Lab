@@ -1,0 +1,7 @@
+-a always,exit -F arch=b64 -S execve -F key=process_exec
+-a always,exit -F arch=b64 -S chmod,fchmod,fchmodat -F key=permission_change
+-w /tmp -p wa -k tmp_activity
+-w /usr/bin/curl -p x -k file_download
+-w /usr/bin/wget -p x -k file_download
+-w /usr/bin/ftp -p x -k file_download
+-w /usr/bin/chmod -p x -k permission_change

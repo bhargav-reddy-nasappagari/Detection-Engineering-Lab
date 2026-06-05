@@ -1,0 +1,33 @@
+title: Executable Permission Added To File
+id: 43a78b85-a0ec-40d4-a1b1-c86cb5b5b002
+status: experimental
+
+description: Detects chmod operations that make files executable.
+
+author: Bunny
+date: 2026-06-05
+
+logsource:
+  product: linux
+  category: process_creation
+
+detection:
+
+  chmod:
+    Image|endswith: '/chmod'
+
+  executable_modes:
+    CommandLine|contains:
+      - '+x'
+      - '755'
+      - '775'
+      - '777'
+
+  condition: chmod and executable_modes
+
+falsepositives:
+  - Software installation
+  - Script deployment
+  - Administrative operations
+
+level: low

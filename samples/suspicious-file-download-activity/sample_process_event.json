@@ -1,0 +1,53 @@
+{
+  "timestamp": "2026-06-05T17:46:14Z",
+  "event_type": "process_creation",
+  "host": {
+    "hostname": "bunny-VirtualBox",
+    "os": "Linux"
+  },
+  "user": {
+    "username": "bunny",
+    "uid": 1000
+  },
+  "process": {
+    "pid": 14811,
+    "ppid": 11818,
+    "name": "bash",
+    "image": "/usr/bin/bash",
+    "command_line": "/bin/bash ./update.sh",
+    "cwd": "/tmp",
+    "sha256": "simulation-placeholder-hash"
+  },
+  "parent_process": {
+    "pid": 11818,
+    "name": "bash",
+    "image": "/usr/bin/bash",
+    "command_line": "/usr/bin/bash"
+  },
+  "file": {
+    "path": "/tmp/update.sh",
+    "permissions": "-rwxr-xr-x"
+  },
+  "network": {
+    "connection_observed": true,
+    "destination_ip": "127.0.0.1",
+    "destination_port": 8080,
+    "protocol": "http"
+  },
+  "attack": {
+    "tactic": "Execution",
+    "technique_id": "T1059",
+    "technique_name": "Command and Scripting Interpreter"
+  },
+  "tags": [
+    "payload_execution",
+    "downloaded_file",
+    "temporary_directory",
+    "bash_execution"
+  ],
+  "investigation_context": {
+    "downloaded_via": "ftp",
+    "permission_change_observed": true,
+    "subsequent_beaconing_observed": true
+  }
+}

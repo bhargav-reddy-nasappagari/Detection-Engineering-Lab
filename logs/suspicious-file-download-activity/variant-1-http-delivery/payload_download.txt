@@ -1,0 +1,5 @@
+bunny@bunny-VirtualBox:~$ curl http://127.0.0.1:8080/update.sh -o /tmp/update.sh
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+100    122 100    122   0      0   7014      0                              0
+bunny@bunny-VirtualBox:~$ 

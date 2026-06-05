@@ -1,0 +1,18 @@
+bunny@bunny-VirtualBox:~$ ftp 127.0.0.1
+Connected to 127.0.0.1.
+220 (vsFTPd 3.0.5)
+Name (127.0.0.1:bunny): anonymous
+331 Please specify the password.
+Password: 
+230 Login successful.
+Remote system type is UNIX.
+Using binary mode to transfer files.
+ftp> get update.sh
+local: update.sh remote: update.sh
+229 Entering Extended Passive Mode (|||19494|)
+150 Opening BINARY mode data connection for update.sh (122 bytes).
+100% |****************************************************|   122      179.97 KiB/s    00:00 ETA
+226 Transfer complete.
+122 bytes received in 00:00 (31.59 KiB/s)
+ftp> bye
+221 Goodbye.

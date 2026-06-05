@@ -1,0 +1,11 @@
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ ls -la /tmp/update.sh
+-rwxrwxr-x 1 bunny bunny 122 Jun  5 16:20 /tmp/update.sh
+bunny@bunny-VirtualBox:~/Detection-Engineering-Lab$ stat /tmp/update.sh
+  File: /tmp/update.sh
+  size: 122       	Blocks: 8          IO Block: 4096   regular file
+Device: 0,44	Inode: 585         Links: 1
+Access: (0775/-rwxrwxr-x)  Uid: ( 1000/   bunny)   Gid: ( 1000/   bunny)
+Access: 2026-06-05 16:24:31.155717901 +0530
+Modify: 2026-06-05 16:20:16.518438411 +0530
+Change: 2026-06-05 16:24:53.573893990 +0530
+ Birth: 2026-06-05 16:20:16.513438386 +0530
