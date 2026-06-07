@@ -1,0 +1,102 @@
+{
+  "alert": {
+    "alert_id": "LT-2026-0001",
+    "rule_name": "Linux Log Tampering and Logging Suppression Chain",
+    "severity": "high",
+    "confidence": "high",
+    "status": "triggered",
+    "trigger_time": "2026-06-05T17:36:26Z",
+    "correlation_window": "15m"
+  },
+  "entity": {
+    "host": "victim-linux",
+    "user": "bunny"
+  },
+  "matched_sequence": [
+    {
+      "stage": "historical_evidence_destruction",
+      "timestamp": "2026-06-05T17:27:03Z",
+      "event_id": "evt-001",
+      "matched_rule": "history_removal",
+      "matched_fields": {
+        "process.name": "rm",
+        "process.command_line": "rm /home/bunny/.bash_history",
+        "file.path": "/home/bunny/.bash_history",
+        "user.name": "bunny"
+      }
+    },
+    {
+      "stage": "log_tampering",
+      "timestamp": "2026-06-05T17:34:35Z",
+      "event_id": "evt-002",
+      "matched_rule": "log_tampering",
+      "matched_fields": {
+        "process.name": "truncate",
+        "process.command_line": "truncate -s 0 /var/log/auth.log",
+        "file.path": "/var/log/auth.log",
+        "user.name": "root"
+      }
+    },
+    {
+      "stage": "logging_suppression",
+      "timestamp": "2026-06-05T17:36:26Z",
+      "event_id": "evt-003",
+      "matched_rule": "logging_suppression",
+      "matched_fields": {
+        "process.name": "systemctl",
+        "process.command_line": "systemctl stop rsyslog",
+        "service.name": "rsyslog",
+        "service.action": "stop",
+        "user.name": "root"
+      }
+    }
+  ],
+  "correlation_logic": {
+    "type": "ordered_sequence",
+    "sequence": [
+      "history_removal",
+      "log_tampering",
+      "logging_suppression"
+    ],
+    "group_by": [
+      "host",
+      "user"
+    ],
+    "time_window": "15m"
+  },
+  "trigger_reason": {
+    "summary": "Multiple anti-forensic behaviors observed in sequence.",
+    "conditions_satisfied": [
+      "Shell history removal detected",
+      "Authentication log tampering detected",
+      "Logging service suppression detected",
+      "All events occurred within correlation window"
+    ]
+  },
+  "supporting_events": [
+    {
+      "timestamp": "2026-06-05T17:04:28Z",
+      "process.name": "wget",
+      "process.command_line": "wget http://127.0.0.1:8080/update.sh -O /tmp/update.sh"
+    },
+    {
+      "timestamp": "2026-06-05T17:18:17Z",
+      "process.name": "bash",
+      "process.command_line": "bash ./update.sh.1"
+    }
+  ],
+  "mitre_attack": [
+    {
+      "id": "T1070.003",
+      "name": "Clear Command History"
+    },
+    {
+      "id": "T1070.001",
+      "name": "Clear Linux or Mac System Logs"
+    },
+    {
+      "id": "T1562.001",
+      "name": "Impair Defenses"
+    }
+  ]
+}

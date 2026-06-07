@@ -1,0 +1,123 @@
+title: Linux Log Tampering and Logging Suppression Chain
+id: 9f8d7a92-6f5b-4d8a-a4ef-1f4b3f2c9e61
+status: experimental
+description: >
+  Detects a sequence of anti-forensic actions where a user or process
+  removes historical evidence, tampers with log files, and suppresses
+  future logging within a short time window.
+
+author: Bunny
+date: 2026-06-06
+
+references:
+  - https://attack.mitre.org/techniques/T1070/
+  - https://attack.mitre.org/techniques/T1562/001/
+
+tags:
+  - attack.defense_evasion
+  - attack.t1070
+  - attack.t1070.001
+  - attack.t1070.003
+  - attack.t1562.001
+
+correlation:
+  type: temporal_ordered
+
+rules:
+
+#
+# Stage 1 - Historical Evidence Destruction
+#
+
+  - id: history_removal
+
+    logsource:
+      product: linux
+      category: process_creation
+
+    detection:
+      selection:
+        Image|endswith:
+          - rm
+          - shred
+        CommandLine|contains:
+          - ".bash_history"
+          - "HISTFILE"
+          - "history -c"
+      condition: selection
+
+#
+# Stage 2 - Log Tampering
+#
+
+  - id: log_tampering
+
+    logsource:
+      product: linux
+      category: process_creation
+
+    detection:
+      selection:
+        Image|endswith:
+          - truncate
+          - rm
+          - shred
+          - sed
+        CommandLine|contains:
+          - "/var/log/"
+          - "auth.log"
+          - "secure"
+          - "syslog"
+          - "messages"
+      condition: selection
+
+#
+# Stage 3 - Logging Suppression
+#
+
+  - id: logging_suppression
+
+    logsource:
+      product: linux
+      category: process_creation
+
+    detection:
+      selection:
+        Image|endswith:
+          - systemctl
+          - service
+        CommandLine|contains:
+          - "stop rsyslog"
+          - "disable rsyslog"
+          - "stop auditd"
+          - "disable auditd"
+          - "killall rsyslogd"
+          - "killall auditd"
+      condition: selection
+
+sequence:
+  - history_removal
+  - log_tampering
+  - logging_suppression
+
+group-by:
+  - User
+  - Hostname
+
+timespan: 15m
+
+level: high
+
+falsepositives:
+  - Log maintenance performed by administrators
+  - System hardening activities
+  - Logging infrastructure migration
+  - Incident response actions performed by defenders
+
+fields:
+  - User
+  - CommandLine
+  - ParentCommandLine
+  - Image
+  - ParentImage
+  - Hostname

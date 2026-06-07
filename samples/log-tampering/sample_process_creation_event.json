@@ -1,0 +1,50 @@
+{
+  "event": {
+    "kind": "event",
+    "category": "process",
+    "type": "start",
+    "action": "process_create",
+    "outcome": "success",
+    "created": "2026-06-05T17:34:35Z"
+  },
+  "host": {
+    "hostname": "victim-linux",
+    "os": {
+      "family": "linux",
+      "name": "Ubuntu"
+    }
+  },
+  "user": {
+    "name": "root",
+    "uid": 0,
+    "gid": 0
+  },
+  "process": {
+    "pid": 10241,
+    "name": "truncate",
+    "executable": "/usr/bin/truncate",
+    "command_line": "truncate -s 0 /var/log/auth.log",
+    "working_directory": "/home/bunny",
+    "parent": {
+      "pid": 10187,
+      "name": "bash",
+      "executable": "/usr/bin/bash",
+      "command_line": "-bash"
+    }
+  },
+  "file": {
+    "path": "/var/log/auth.log",
+    "name": "auth.log"
+  },
+  "rule_context": {
+    "simulation": "log_tampering",
+    "attack_stage": "log_tampering",
+    "behavior": "authentication_log_truncation"
+  },
+  "tags": [
+    "process_creation",
+    "linux",
+    "log_tampering",
+    "defense_evasion"
+  ]
+}

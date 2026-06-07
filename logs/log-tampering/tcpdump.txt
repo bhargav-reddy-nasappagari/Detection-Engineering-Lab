@@ -1,0 +1,5 @@
+17:02:21.546717 IP localhost.58462 > localhost.http-alt: Flags [P.], seq 1:141, ack 1, win 128, options [nop,nop,TS val 1031204395 ecr 908121115], length 140: HTTP: GET /update.sh-O HTTP/1.1
+17:02:21.555698 IP localhost.http-alt > localhost.58462: Flags [P.], seq 1:186, ack 141, win 128, options [nop,nop,TS val 908121125 ecr 1031204395], length 185: HTTP: HTTP/1.0 404 File not found
+17:04:28.056909 IP localhost.37614 > localhost.http-alt: Flags [P.], seq 1:139, ack 1, win 128, options [nop,nop,TS val 2473373037 ecr 3613669597], length 138: HTTP: GET /update.sh HTTP/1.1
+17:04:28.058527 IP localhost.http-alt > localhost.37614: Flags [P.], seq 1:194, ack 139, win 128, options [nop,nop,TS val 3613669600 ecr 2473373037], length 193: HTTP: HTTP/1.0 200 OK
+

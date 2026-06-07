@@ -1,0 +1,90 @@
+{
+  "alert_id": "LT-2026-0001",
+  "alert_name": "Linux Log Tampering and Logging Suppression",
+  "alert_type": "Behavioral Correlation",
+  "severity": "high",
+  "confidence": "high",
+  "status": "new",
+  "detection_time": "2026-06-05T17:36:26Z",
+  "host": {
+    "hostname": "victim-linux",
+    "os": "Ubuntu Linux"
+  },
+  "user": {
+    "username": "bunny",
+    "uid": 1000
+  },
+  "detection_strategy": {
+    "name": "Historical Evidence Destruction -> Log Tampering -> Logging Suppression",
+    "correlation_window": "15m"
+  },
+  "triggering_events": [
+    {
+      "stage": "historical_evidence_destruction",
+      "timestamp": "2026-06-05T17:27:03Z",
+      "process": "rm",
+      "command_line": "rm /home/bunny/.bash_history",
+      "description": "Shell history removed"
+    },
+    {
+      "stage": "log_tampering",
+      "timestamp": "2026-06-05T17:34:35Z",
+      "process": "truncate",
+      "command_line": "truncate -s 0 /var/log/auth.log",
+      "description": "Authentication log cleared"
+    },
+    {
+      "stage": "logging_suppression",
+      "timestamp": "2026-06-05T17:36:26Z",
+      "process": "systemctl",
+      "command_line": "systemctl stop rsyslog",
+      "description": "Logging service stopped"
+    }
+  ],
+  "supporting_context": {
+    "preceding_activity": [
+      {
+        "timestamp": "2026-06-05T17:04:28Z",
+        "process": "wget",
+        "command_line": "wget http://127.0.0.1:8080/update.sh -O /tmp/update.sh"
+      },
+      {
+        "timestamp": "2026-06-05T17:06:17Z",
+        "process": "chmod",
+        "command_line": "chmod +x /tmp/update.sh"
+      },
+      {
+        "timestamp": "2026-06-05T17:18:17Z",
+        "process": "bash",
+        "command_line": "bash ./update.sh.1"
+      }
+    ]
+  },
+  "risk_assessment": {
+    "impact": "High",
+    "likelihood": "High",
+    "reason": "Multiple anti-forensic actions observed in sequence following execution of downloaded content."
+  },
+  "mitre_attack": [
+    {
+      "technique_id": "T1070.003",
+      "technique": "Clear Command History"
+    },
+    {
+      "technique_id": "T1070.001",
+      "technique": "Clear Linux Logs"
+    },
+    {
+      "technique_id": "T1562.001",
+      "technique": "Impair Defenses"
+    }
+  ],
+  "analyst_guidance": [
+    "Determine whether the user intentionally removed shell history.",
+    "Review authentication logs for evidence of prior access before truncation.",
+    "Identify who stopped rsyslog and whether authorization existed.",
+    "Investigate processes executed before anti-forensic activity occurred.",
+    "Review network activity associated with downloaded scripts or payloads."
+  ],
+  "recommended_disposition": "Escalate for incident investigation"
+}

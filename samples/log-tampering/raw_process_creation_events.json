@@ -1,0 +1,160 @@
+{
+  "scenario": "linux_log_tampering_and_defense_evasion",
+  "host": "victim-linux",
+  "events": [
+    {
+      "timestamp": "2026-06-05T16:59:56",
+      "event_type": "process_creation",
+      "process_name": "whoami",
+      "command_line": "whoami",
+      "parent_process": "bash",
+      "stage": "discovery"
+    },
+    {
+      "timestamp": "2026-06-05T17:00:03",
+      "event_type": "process_creation",
+      "process_name": "id",
+      "command_line": "id",
+      "parent_process": "bash",
+      "stage": "discovery"
+    },
+    {
+      "timestamp": "2026-06-05T17:00:07",
+      "event_type": "process_creation",
+      "process_name": "hostname",
+      "command_line": "hostname",
+      "parent_process": "bash",
+      "stage": "discovery"
+    },
+    {
+      "timestamp": "2026-06-05T17:00:30",
+      "event_type": "process_creation",
+      "process_name": "ls",
+      "command_line": "ls -la /home/bunny",
+      "parent_process": "bash",
+      "stage": "enumeration"
+    },
+    {
+      "timestamp": "2026-06-05T17:04:28",
+      "event_type": "process_creation",
+      "process_name": "wget",
+      "command_line": "wget http://127.0.0.1:8080/update.sh -O /tmp/update.sh",
+      "parent_process": "bash",
+      "stage": "payload_retrieval"
+    },
+    {
+      "timestamp": "2026-06-05T17:05:37",
+      "event_type": "process_creation",
+      "process_name": "ls",
+      "command_line": "ls -la /tmp/update.sh",
+      "parent_process": "bash",
+      "stage": "payload_validation"
+    },
+    {
+      "timestamp": "2026-06-05T17:05:47",
+      "event_type": "process_creation",
+      "process_name": "stat",
+      "command_line": "stat /tmp/update.sh",
+      "parent_process": "bash",
+      "stage": "payload_validation"
+    },
+    {
+      "timestamp": "2026-06-05T17:06:17",
+      "event_type": "process_creation",
+      "process_name": "chmod",
+      "command_line": "chmod +x /tmp/update.sh",
+      "parent_process": "bash",
+      "stage": "payload_preparation"
+    },
+    {
+      "timestamp": "2026-06-05T17:14:38",
+      "event_type": "process_creation",
+      "process_name": "update.sh",
+      "command_line": "/tmp/update.sh",
+      "parent_process": "bash",
+      "result": "failed",
+      "stage": "execution_attempt"
+    },
+    {
+      "timestamp": "2026-06-05T17:15:40",
+      "event_type": "process_creation",
+      "process_name": "update.sh",
+      "command_line": "/tmp/update.sh",
+      "parent_process": "bash",
+      "result": "failed",
+      "stage": "execution_attempt"
+    },
+    {
+      "timestamp": "2026-06-05T17:18:05",
+      "event_type": "process_creation",
+      "process_name": "chmod",
+      "command_line": "chmod +x update.sh.1",
+      "parent_process": "bash",
+      "stage": "payload_preparation"
+    },
+    {
+      "timestamp": "2026-06-05T17:18:17",
+      "event_type": "process_creation",
+      "process_name": "bash",
+      "command_line": "bash ./update.sh.1",
+      "parent_process": "bash",
+      "stage": "payload_execution"
+    },
+    {
+      "timestamp": "2026-06-05T17:18:18",
+      "event_type": "process_creation",
+      "process_name": "date",
+      "command_line": "date",
+      "parent_process": "update.sh.1",
+      "stage": "script_activity"
+    },
+    {
+      "timestamp": "2026-06-05T17:18:18",
+      "event_type": "process_creation",
+      "process_name": "whoami",
+      "command_line": "whoami",
+      "parent_process": "update.sh.1",
+      "stage": "script_activity"
+    },
+    {
+      "timestamp": "2026-06-05T17:18:19",
+      "event_type": "process_creation",
+      "process_name": "hostname",
+      "command_line": "hostname",
+      "parent_process": "update.sh.1",
+      "stage": "script_activity"
+    },
+    {
+      "timestamp": "2026-06-05T17:18:20",
+      "event_type": "process_creation",
+      "process_name": "sleep",
+      "command_line": "sleep 5",
+      "parent_process": "update.sh.1",
+      "stage": "script_activity"
+    },
+    {
+      "timestamp": "2026-06-05T17:27:03",
+      "event_type": "process_creation",
+      "process_name": "rm",
+      "command_line": "rm /home/bunny/.bash_history",
+      "parent_process": "bash",
+      "stage": "historical_evidence_destruction"
+    },
+    {
+      "timestamp": "2026-06-05T17:34:35",
+      "event_type": "process_creation",
+      "process_name": "truncate",
+      "command_line": "truncate -s 0 /var/log/auth.log",
+      "parent_process": "bash",
+      "stage": "log_tampering"
+    },
+    {
+      "timestamp": "2026-06-05T17:36:26",
+      "event_type": "process_creation",
+      "process_name": "systemctl",
+      "command_line": "systemctl stop rsyslog",
+      "parent_process": "bash",
+      "stage": "logging_suppression"
+    }
+  ]
+}
